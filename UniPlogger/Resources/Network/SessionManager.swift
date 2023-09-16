@@ -8,11 +8,11 @@
 
 import Moya
 
-enum NetworkEnvironment: String{
+enum NetworkEnvironment: String {
     case development = "http://49.50.174.68/"
 }
 
-class SessionManager: Session{
+final class SessionManager: Session {
     static let environment: NetworkEnvironment = .development
     static let shared: SessionManager = {
         let configuration = URLSessionConfiguration.default

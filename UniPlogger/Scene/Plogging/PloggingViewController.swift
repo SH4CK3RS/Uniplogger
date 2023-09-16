@@ -163,11 +163,8 @@ class PloggingViewController: BaseViewController {
     lazy var trashButton = UIButton(type: .custom).then{
         $0.setImage(UIImage(named: "ic_ploggingAddTrashcan")?.withRenderingMode(.alwaysOriginal), for: .normal)
         $0.setImage(UIImage(named: "ic_ploggingAddTrashcanCancel")?.withRenderingMode(.alwaysOriginal), for: .selected)
-        
-        if #available(iOS 13.0, *) {
-          $0.setPreferredSymbolConfiguration(.init(scale: .default), forImageIn: .normal)
-          $0.setPreferredSymbolConfiguration(.init(scale: .default), forImageIn: .selected)
-        }
+        $0.setPreferredSymbolConfiguration(.init(scale: .default), forImageIn: .normal)
+        $0.setPreferredSymbolConfiguration(.init(scale: .default), forImageIn: .selected)
         $0.imageView?.contentMode = .scaleAspectFit
         $0.addTarget(self, action: #selector(trashButtonTapped), for: .touchUpInside)
     }
@@ -425,15 +422,8 @@ class PloggingViewController: BaseViewController {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        if #available(iOS 12.0, *) {
-                // User Interface is Dark
-                [distanceImageView, timeImageView].forEach{
-                    $0.tintColor = self.traitCollection.userInterfaceStyle == .dark ? .white : .black
-                }
-        } else {
-            [distanceImageView, timeImageView].forEach{
-                $0.tintColor = .black
-            }
+        [distanceImageView, timeImageView].forEach {
+            $0.tintColor = self.traitCollection.userInterfaceStyle == .dark ? .white : .black
         }
     }
     

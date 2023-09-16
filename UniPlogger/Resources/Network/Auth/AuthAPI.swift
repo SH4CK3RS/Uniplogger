@@ -8,7 +8,7 @@
 
 import Moya
 import RxSwift
-final class AuthAPI{
+final class AuthAPI {
     typealias Response<T: Codable> = BaseResponse<T>
     
     let disposeBag = DisposeBag()
@@ -19,7 +19,7 @@ final class AuthAPI{
         plugins: [VerbosePlugin(verbose: true)]
     )
     
-    func login(email: String, password: String, completionHandler: @escaping (Result<Response<LoginResponse>, Error>) -> Void){
+    func login(email: String, password: String, completionHandler: @escaping (Result<Response<LoginResponse>, Error>) -> Void) {
         provider.rx.request(.login(email: email, password: password))
             .filterSuccessfulStatusCodes()
             .map(Response<LoginResponse>.self)
@@ -30,7 +30,7 @@ final class AuthAPI{
             }.disposed(by: disposeBag)
     }
     
-    func getUser(uid: Int, completionHandler: @escaping (Result<Response<User>, Error>) -> Void){
+    func getUser(uid: Int, completionHandler: @escaping (Result<Response<User>, Error>) -> Void) {
         provider.rx.request(.getUser(uid: uid))
             .filterSuccessfulStatusCodes()
             .map(Response<User>.self)

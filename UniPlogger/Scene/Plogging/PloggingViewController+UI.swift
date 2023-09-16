@@ -44,17 +44,10 @@ extension PloggingViewController {
         trashInfoContainer.addSubview(trashInfoAddressLabel)
         trashInfoContainer.addSubview(trashInfoDescriptionLabel)
         trashInfoContainer.addSubview(addTrashCanConfirmButton)
-        if #available(iOS 12.0, *) {
-            // User Interface is Dark
-            [distanceImageView, timeImageView].forEach{
-                $0.tintColor = self.traitCollection.userInterfaceStyle == .dark ? .white : .black
-            }
-        } else {
-            [distanceImageView, timeImageView].forEach{
-                $0.tintColor = .black
-            }
+       
+        [distanceImageView, timeImageView].forEach{
+            $0.tintColor = self.traitCollection.userInterfaceStyle == .dark ? .white : .black
         }
-        
     }
     
     func setupLayout() {
@@ -65,7 +58,6 @@ extension PloggingViewController {
         if !UserDefaults.standard.bool(forDefines: .ploggingCoachmark){
             setupCoachmarkViews()
         }
-        
         
         doingPauseBottomContainerView.isHidden = true
         stopButton.isHidden = true

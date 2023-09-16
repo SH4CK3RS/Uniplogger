@@ -14,16 +14,11 @@ class StartCountingViewController: UIViewController{
     var count = 3
     var timer: Timer?
     lazy var backgroundView = UIImageView().then {
-        if #available(iOS 12.0, *) {
-            if self.traitCollection.userInterfaceStyle == .dark {
-                // User Interface is Dark
-                $0.image = UIImage(named: "countingDarkBackground")
-            } else {
-                // User Interface is Light
-                $0.image = UIImage(named: "countingLightBackground")
-            }
+        if self.traitCollection.userInterfaceStyle == .dark {
+            // User Interface is Dark
+            $0.image = UIImage(named: "countingDarkBackground")
         } else {
-            // Fallback on earlier versions
+            // User Interface is Light
             $0.image = UIImage(named: "countingLightBackground")
         }
         

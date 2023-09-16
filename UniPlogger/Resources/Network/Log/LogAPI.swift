@@ -9,18 +9,18 @@
 import Moya
 import RxSwift
 
-final class LogAPI{
+final class LogAPI {
     typealias Response<T: Codable> = BaseResponse<T>
     
     let disposeBag = DisposeBag()
     
     static let shared = LogAPI()
-    private let provider = MoyaProvider<LogAPITarget>(
+    private let provider = MoyaProvider<LogAPITarget> (
         session: SessionManager.shared,
         plugins: [VerbosePlugin(verbose: true)]
     )
     
-    func getFeed(uid: Int, completionHandler: @escaping (Result<Response<[Feed]>, Error>) -> Void){
+    func getFeed(uid: Int, completionHandler: @escaping (Result<Response<[Feed]>, Error>) -> Void) {
         provider.rx.request(.getFeed(uId: uid))
             .filterSuccessfulStatusCodes()
             .map(Response<[Feed]>.self)
@@ -31,7 +31,7 @@ final class LogAPI{
             }.disposed(by: self.disposeBag)
     }
     
-    func getUserFeed(uid: Int, completionHandler: @escaping (Result<Response<[Feed]>, Error>) -> Void){
+    func getUserFeed(uid: Int, completionHandler: @escaping (Result<Response<[Feed]>, Error>) -> Void) {
         provider.rx.request(.getUserFeed(uid: uid))
             .filterSuccessfulStatusCodes()
             .map(Response<[Feed]>.self)
@@ -42,7 +42,7 @@ final class LogAPI{
             }.disposed(by: self.disposeBag)
     }
     
-    func getOtherUser(uid: Int, completionHandler: @escaping (Result<BaseResponse<User>, Error>) -> Void){
+    func getOtherUser(uid: Int, completionHandler: @escaping (Result<BaseResponse<User>, Error>) -> Void) {
         provider.rx.request(.getOtherUser(uid: uid))
             .filterSuccessfulStatusCodes()
             .map(BaseResponse<User>.self)
