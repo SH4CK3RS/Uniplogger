@@ -30,7 +30,7 @@ class RegistrationViewController: UIViewController {
         $0.layer.masksToBounds = true
     }
     
-    let accountField = UITextField().then {
+    lazy var accountField = UITextField().then {
         $0.font = .notoSans(ofSize: 16, weight: .regular)
         $0.keyboardType = .emailAddress
         $0.backgroundColor = .clear
@@ -45,7 +45,7 @@ class RegistrationViewController: UIViewController {
         $0.layer.masksToBounds = true
     }
     
-    let passwordField = UITextField().then {
+    lazy var passwordField = UITextField().then {
         $0.font = .notoSans(ofSize: 16, weight: .regular)
         $0.keyboardType = .asciiCapable
         $0.isSecureTextEntry = true
@@ -69,7 +69,7 @@ class RegistrationViewController: UIViewController {
         $0.layer.masksToBounds = true
     }
     
-    let passwordConfirmField = UITextField().then {
+    lazy var passwordConfirmField = UITextField().then {
         $0.font = .notoSans(ofSize: 16, weight: .regular)
         $0.keyboardType = .asciiCapable
         $0.isSecureTextEntry = true
@@ -87,7 +87,7 @@ class RegistrationViewController: UIViewController {
         $0.layer.masksToBounds = true
     }
     
-    let nicknameField = UITextField().then {
+    lazy var nicknameField = UITextField().then {
         $0.font = .notoSans(ofSize: 16, weight: .regular)
         $0.backgroundColor = .clear
         $0.borderStyle = .none

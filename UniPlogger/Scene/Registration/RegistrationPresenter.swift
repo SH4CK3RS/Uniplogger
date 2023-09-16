@@ -62,7 +62,7 @@ class RegistrationPresenter: RegistrationPresentationLogic {
     }
     
     func presentRegistration(response: Registration.Registration.Response) {
-        guard let loginResponse = response.response, response.error == nil else {
+        guard response.response != nil, response.error == nil else {
             viewController?.displayError(error: response.error!, useCase: .Registration(response.request))
             return
         }

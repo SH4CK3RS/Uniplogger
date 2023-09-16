@@ -39,7 +39,7 @@ class FindPasswordViewController: UIViewController, UIGestureRecognizerDelegate 
         $0.layer.masksToBounds = true
     }
     
-    let accountField = UITextField().then {
+    lazy var accountField = UITextField().then {
         $0.font = .notoSans(ofSize: 16, weight: .regular)
         $0.keyboardType = .emailAddress
         $0.backgroundColor = .clear

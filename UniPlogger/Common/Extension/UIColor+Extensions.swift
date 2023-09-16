@@ -8,37 +8,37 @@
 
 import UIKit
 
-public typealias Color = UIColor
+typealias Color = UIColor
 
 extension Color {
     
-    class var text: Color { return Color(named: "text")! }
+    static var text: Color { return Color(named: "text")! }
     
     // MARK: Login, Registration
-    open class var loginRegistrationBackground: Color { return Color(named: "color_loginRegistrationBackground")! }
+    static var loginRegistrationBackground: Color { return Color(named: "color_loginRegistrationBackground")! }
     
     // MARK: Common
-    open class var buttonEnabled: Color { return Color(named: "color_buttonEnabled")! }
-    open class var buttonDisabled: Color { return Color(named: "color_buttonDisabled")! }
-    open class var formBoxBackground: Color { return Color(named: "color_formBoxBackground")! }
-    open class var tabbarNavbar: Color { return  Color(named: "color_tabbarNavbar")!}
-    open class var bubbleBackgroudColor: Color { return Color(named: "bubbleBackgroudColor")! }
-    open class var mainBackgroundColor: Color { return Color(named: "color_mainBackground")! }
-    open class var tabBarTint: Color { return Color(named: "TabBarTint")! }
-    open class var tabBarUnselectedTint: Color { return Color(named: "TabBarUnselectedTint")! }
+    static var buttonEnabled: Color { return Color(named: "color_buttonEnabled")! }
+    static var buttonDisabled: Color { return Color(named: "color_buttonDisabled")! }
+    static var formBoxBackground: Color { return Color(named: "color_formBoxBackground")! }
+    static var tabbarNavbar: Color { return  Color(named: "color_tabbarNavbar")!}
+    static var bubbleBackgroudColor: Color { return Color(named: "bubbleBackgroudColor")! }
+    static var mainBackgroundColor: Color { return Color(named: "color_mainBackground")! }
+    static var tabBarTint: Color { return Color(named: "TabBarTint")! }
+    static var tabBarUnselectedTint: Color { return Color(named: "TabBarUnselectedTint")! }
     
     // MARK: Quest
-    class var questBackground: Color { return Color(named: "questBackground")! }
-    class var questBackgroundTint: Color { return Color(named: "questBackgroundTint")! }
-    class var questTint: Color { return Color(named: "questTint")! }
-    class var trainingTint: Color { return Color(named: "trainingTint")! }
-    class var routineTint: Color { return Color(named: "routineTint")! }
+    static var questBackground: Color { return Color(named: "questBackground")! }
+    static var questBackgroundTint: Color { return Color(named: "questBackgroundTint")! }
+    static var questTint: Color { return Color(named: "questTint")! }
+    static var trainingTint: Color { return Color(named: "trainingTint")! }
+    static var routineTint: Color { return Color(named: "routineTint")! }
 
 }
 
 // MARK: - Initializers
 
-public extension Color {
+extension Color {
     
     convenience init(hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)

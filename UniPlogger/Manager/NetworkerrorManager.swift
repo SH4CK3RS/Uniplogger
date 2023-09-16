@@ -9,7 +9,7 @@
 import UIKit
 import Moya
 class NetworkErrorManager{
-    class func alert(_ error: URLError, completion: ((UIAlertAction) -> Void)?) {
+    static func alert(_ error: URLError, completion: ((UIAlertAction) -> Void)?) {
         let viewController = UIApplication.topViewController()
         switch error.code {
         case .notConnectedToInternet:
@@ -29,7 +29,7 @@ class NetworkErrorManager{
         }
     }
     
-    class func alert(_ error: MoyaError) {
+    static func alert(_ error: MoyaError) {
         let viewController = UIApplication.topViewController()
         switch error {
         case .statusCode(let response):

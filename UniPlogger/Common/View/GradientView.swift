@@ -14,7 +14,7 @@ class GradientView: UIView{
     var isHorizontal: Bool = false
     var isDiagonal: Bool = false
     
-    override class var layerClass: AnyClass { CAGradientLayer.self }
+    override static var layerClass: AnyClass { CAGradientLayer.self }
     
     var gradientLayer: CAGradientLayer { layer as! CAGradientLayer }
     

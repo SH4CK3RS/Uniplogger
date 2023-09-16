@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 @objc(ProceedingQuest)
-public class ProceedingQuest: NSManagedObject {
+class ProceedingQuest: NSManagedObject {
     
     func append(_ ploggingData: PloggingData) {
         time += Int64(ploggingData.time)

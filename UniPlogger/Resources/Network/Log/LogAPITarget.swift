@@ -82,7 +82,7 @@ extension LogAPITarget: BaseTarget{
         }
     }
     
-    public var sampleData: Data{
+    var sampleData: Data{
       switch self {
       default:
         return Data()

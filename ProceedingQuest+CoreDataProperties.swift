@@ -13,16 +13,16 @@ import CoreData
 
 extension ProceedingQuest {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<ProceedingQuest> {
+    @nonobjc static func fetchRequest() -> NSFetchRequest<ProceedingQuest> {
         return NSFetchRequest<ProceedingQuest>(entityName: "ProceedingQuest")
     }
     
-    @NSManaged public var email: String
-    @NSManaged public var questId: Int16
-    @NSManaged public var time: Int64
-    @NSManaged public var distance: Double
-    @NSManaged public var finishDates: [Date]?
-    @NSManaged public var completeCount: Int16
-    @NSManaged public var pickedUpTrashs: [String: Int]?
-    @NSManaged public var finishCount: Int16
+    @NSManaged var email: String
+    @NSManaged var questId: Int16
+    @NSManaged var time: Int64
+    @NSManaged var distance: Double
+    @NSManaged var finishDates: [Date]?
+    @NSManaged var completeCount: Int16
+    @NSManaged var pickedUpTrashs: [String: Int]?
+    @NSManaged var finishCount: Int16
 }

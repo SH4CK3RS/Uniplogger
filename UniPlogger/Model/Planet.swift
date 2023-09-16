@@ -23,7 +23,7 @@ struct Planet: Codable {
         case players
     }
     
-    public init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Planet.CodingKeys.self)
         id = try container.decodeIfPresent(Int.self, forKey: .id) ?? -1
         startDate = try container.decodeIfPresent(String.self, forKey: .startDate) ?? ""

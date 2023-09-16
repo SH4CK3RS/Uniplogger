@@ -17,7 +17,7 @@ class QuestTutorialViewController4: UIViewController {
         $0.image = UIImage(named: "quest_tutorial4")
     }
     
-    let skipButton = HightlightButton().then {
+    lazy var skipButton = HightlightButton().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setTitle("Skip", for: .normal)
         $0.setTitleColor(.text, for: .normal)

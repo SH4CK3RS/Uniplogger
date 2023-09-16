@@ -13,12 +13,12 @@ protocol BaseTarget: TargetType {
 }
 
 extension BaseTarget {
-    public var baseURL: URL {
+    var baseURL: URL {
         guard let url = URL(string: SessionManager.environment.rawValue) else { fatalError("baseURL could not be configured") }
         return url
     }
     
-    public var headers: [String : String]? {
+    var headers: [String : String]? {
         var headers = [
             "Content-type": "application/json",
         ]

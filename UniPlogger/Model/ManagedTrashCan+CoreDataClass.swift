@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 
-public class ManagedTrashCan: NSManagedObject {
+class ManagedTrashCan: NSManagedObject {
     func toTrashCan() -> TrashCan {
         let objectIdString = objectID.uriRepresentation().absoluteString
         return TrashCan(id: id, latitude: latitude, longitude: longitude, isRemoved: isRemoved, address: address, objectIDString: objectIdString)

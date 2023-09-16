@@ -40,7 +40,7 @@ class ResetPasswordViewController: UIViewController {
         $0.layer.masksToBounds = true
     }
     
-    let password1Field = UITextField().then {
+    lazy var password1Field = UITextField().then {
         $0.font = .notoSans(ofSize: 16, weight: .regular)
         $0.keyboardType = .asciiCapable
         $0.isSecureTextEntry = true
@@ -58,7 +58,7 @@ class ResetPasswordViewController: UIViewController {
         $0.layer.masksToBounds = true
     }
     
-    let password2Field = UITextField().then {
+    lazy var password2Field = UITextField().then {
         $0.font = .notoSans(ofSize: 16, weight: .regular)
         $0.keyboardType = .asciiCapable
         $0.isSecureTextEntry = true

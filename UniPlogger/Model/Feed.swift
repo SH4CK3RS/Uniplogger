@@ -27,7 +27,7 @@ struct Feed: Codable {
         case user
     }
     
-    public init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Feed.CodingKeys.self)
         id = try container.decodeIfPresent(Int.self, forKey: .id) ?? -1
         title = try container.decodeIfPresent(String.self, forKey: .title) ?? ""

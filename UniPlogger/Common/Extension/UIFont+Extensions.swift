@@ -8,7 +8,7 @@
 
 import UIKit
 
-public enum Roboto{
+enum Roboto{
     case black
     case blackItalic
     case bold
@@ -51,7 +51,7 @@ public enum Roboto{
         }
     }
 }
-public enum NotoSans {
+enum NotoSans {
   case black
   case bold
   case demiLight
@@ -80,7 +80,7 @@ public enum NotoSans {
   }
 }
 
-public enum NotoSansKR {
+enum NotoSansKR {
     case black
     case bold
     case light
@@ -106,20 +106,20 @@ public enum NotoSansKR {
     }
 }
 
-public protocol CustomFont {
+protocol CustomFont {
     static func roboto(ofSize fontSize: CGFloat, weight: Roboto) -> UIFont
     static func notoSans(ofSize fontSize: CGFloat, weight: NotoSans) -> UIFont
 }
 
 extension UIFont: CustomFont {
-    public static func roboto(ofSize fontSize: CGFloat, weight: Roboto) -> UIFont {
+    static func roboto(ofSize fontSize: CGFloat, weight: Roboto) -> UIFont {
         return UIFont(name: weight.name, size: fontSize)!
     }
-    public static func notoSans(ofSize fontSize: CGFloat, weight: NotoSans) -> UIFont {
+    static func notoSans(ofSize fontSize: CGFloat, weight: NotoSans) -> UIFont {
         return UIFont(name: weight.name, size: fontSize)!
     }
     
-    public static func dynamicNotosans(fontSize size: CGFloat, weight: NotoSans) -> UIFont {
+    static func dynamicNotosans(fontSize size: CGFloat, weight: NotoSans) -> UIFont {
       let bounds = UIScreen.main.bounds
       let height = bounds.size.height
       switch height {
@@ -135,7 +135,7 @@ extension UIFont: CustomFont {
         return .notoSans(ofSize: size, weight: weight)
       }
     }
-    public static func dynamicRoboto(fontSize size: CGFloat, weight: Roboto) -> UIFont {
+    static func dynamicRoboto(fontSize size: CGFloat, weight: Roboto) -> UIFont {
       let bounds = UIScreen.main.bounds
       let height = bounds.size.height
       switch height {

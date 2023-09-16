@@ -38,7 +38,7 @@ class PolicyViewController: InfoBaseViewController, WKNavigationDelegate, WKUIDe
         webView.load(request)
     }
     
-    public func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Swift.Void){
+    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Swift.Void){
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let otherAction = UIAlertAction(title: "OK", style: .default, handler: {action in completionHandler()})
         alert.addAction(otherAction)

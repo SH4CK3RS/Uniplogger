@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
         $0.layer.masksToBounds = true
     }
     
-    let accountField = UITextField().then {
+    lazy var accountField = UITextField().then {
         $0.font = .notoSans(ofSize: 16, weight: .regular)
         $0.keyboardType = .emailAddress
         $0.backgroundColor = .clear
@@ -57,7 +57,7 @@ class LoginViewController: UIViewController {
         $0.layer.masksToBounds = true
     }
     
-    let passwordField = UITextField().then {
+    lazy var passwordField = UITextField().then {
         $0.font = .notoSans(ofSize: 16, weight: .regular)
         $0.isSecureTextEntry = true
         $0.textContentType = .password

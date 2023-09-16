@@ -29,7 +29,7 @@ struct TrashCan: Codable{
         case address
     }
     
-    public init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: TrashCan.CodingKeys.self)
         id = try container.decodeIfPresent(Int64.self, forKey: .id) ?? -1
         latitude = try container.decodeIfPresent(Double.self, forKey: .latitude) ?? 0
@@ -38,7 +38,7 @@ struct TrashCan: Codable{
         address = try container.decodeIfPresent(String.self, forKey: .address) ?? ""
     }
     
-    public init(
+    init(
         id: Int64 = -1,
         latitude: Double,
         longitude: Double,

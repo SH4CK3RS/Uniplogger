@@ -22,7 +22,7 @@ class SharePresenter: SharePresentationLogic {
     // MARK: Do something
   
     func presentFetchRecord(response: Share.FetchRecord.Response) {
-        guard let feed = response.feed, response.error == nil else {
+        guard response.feed != nil, response.error == nil else {
             self.viewController?.displayError(error: response.error!, useCase: .FetchRecord)
             return
         }

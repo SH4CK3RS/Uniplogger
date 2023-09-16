@@ -55,7 +55,7 @@ class TrashDetailPopupView: UIViewController {
         $0.distribution = .fillEqually
     }
     
-    let closeButton = UIButton().then {
+    lazy var closeButton = UIButton().then {
         $0.backgroundColor = .buttonEnabled
         $0.setTitle("닫기", for: .normal)
         $0.titleLabel?.font = .roboto(ofSize: 15, weight: .bold)

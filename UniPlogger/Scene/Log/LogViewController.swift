@@ -25,7 +25,7 @@ class LogViewController: UIViewController {
     
     var feedList: [Feed] = []
     
-    var scrollView = ScrollStackView().then {
+    lazy var scrollView = ScrollStackView().then {
         $0.alwaysBounceVertical = true
         $0.refreshControl = UIRefreshControl()
         $0.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)

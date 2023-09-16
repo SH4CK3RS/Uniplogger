@@ -24,7 +24,7 @@ class UPLoader: UIView {
     var currentTime: TimeInterval = 10
     var timer: Timer?
     
-    var activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+    var activityIndicator = UIActivityIndicatorView(style: .large)
     
     lazy var container: UIView = {
         let container = UIView(frame: UIScreen.main.bounds)

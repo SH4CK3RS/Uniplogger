@@ -43,7 +43,7 @@ struct User: Codable{
         case monthlyStat = "monthly_stats"
     }
     
-    public init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: User.CodingKeys.self)
         id = try container.decodeIfPresent(Int.self, forKey: .id) ?? -1
         registeredDate = try container.decodeIfPresent(String.self, forKey: .registeredDate) ?? ""
