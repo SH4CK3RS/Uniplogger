@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ReportDisplayLogic: class {
+protocol ReportDisplayLogic: AnyObject {
 
 }
     

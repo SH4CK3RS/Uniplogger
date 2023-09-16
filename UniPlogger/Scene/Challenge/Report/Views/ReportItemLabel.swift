@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ReportDelegate: class {
+protocol ReportDelegate: AnyObject {
     func selectItem(_ item: ReportItem)
 }
 

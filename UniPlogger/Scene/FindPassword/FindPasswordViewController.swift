@@ -11,8 +11,9 @@
 //
 
 import UIKit
+import Moya
 
-protocol FindPasswordDisplayLogic: class {
+protocol FindPasswordDisplayLogic: AnyObject {
     func displayValidation(viewModel: FindPassword.ValidationViewModel)
     func displayFindPassword(viewModel: FindPassword.FindPassword.ViewModel)
     func displayError(error: Common.CommonError, useCase: FindPassword.UseCase)

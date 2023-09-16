@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TopViewDelegate: class {
+protocol TopViewDelegate: AnyObject {
     func touchUpTopRank(tag: Int)
 }
 

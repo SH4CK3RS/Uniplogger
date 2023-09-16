@@ -14,7 +14,7 @@ import UIKit
 import SnapKit
 import Then
 
-protocol ChallengeDisplayLogic: class {
+protocol ChallengeDisplayLogic: AnyObject {
     func displayPlayers(viewModel: [Challenge.RankCellViewModel])
     func displayTopImages(images: [UIImage])
 }

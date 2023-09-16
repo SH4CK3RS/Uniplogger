@@ -11,8 +11,9 @@
 //
 
 import UIKit
+import Moya
 
-protocol ResetPasswordDisplayLogic: class {
+protocol ResetPasswordDisplayLogic: AnyObject {
     func displayResetPassword(viewModel: ResetPassword.ResetPassword.ViewModel)
     func displayValidation(viewModel: ResetPassword.ValidationViewModel)
     func displayError(error: Common.CommonError, useCase: ResetPassword.UseCase)

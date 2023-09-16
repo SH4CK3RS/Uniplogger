@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol DismissDelegate: class {
+protocol DismissDelegate: AnyObject {
     func dismiss()
 }
 

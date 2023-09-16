@@ -14,8 +14,9 @@ import UIKit
 import Photos
 import SnapKit
 import Then
+import Moya
 
-protocol ShareDisplayLogic: class {
+protocol ShareDisplayLogic: AnyObject {
     func displayFetchRecord(viewModel: Share.FetchRecord.ViewModel)
     func displayError(error: Common.CommonError, useCase: Share.UseCase)
 }

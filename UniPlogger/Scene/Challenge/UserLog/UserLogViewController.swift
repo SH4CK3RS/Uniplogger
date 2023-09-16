@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol UserLogDisplayLogic: class {
+protocol UserLogDisplayLogic: AnyObject {
     func displayGetFeed(viewModel: Log.GetFeed.ViewModel)
     func displayUserInfo(nickname: String, level: Int, rank: Double)
 }

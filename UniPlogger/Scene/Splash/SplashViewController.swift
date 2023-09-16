@@ -13,7 +13,7 @@
 import UIKit
 import Then
 
-protocol SplashDisplayLogic: class {
+protocol SplashDisplayLogic: AnyObject {
     func displayLogined()
     func displayNotLogined()
     func displayError(error: Common.CommonError, useCase: Splash.UseCase)

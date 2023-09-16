@@ -11,8 +11,9 @@
 //
 
 import UIKit
+import Moya
 
-protocol LogDisplayLogic: class {
+protocol LogDisplayLogic: AnyObject {
     func displayGetUser(viewModel: Log.GetUser.ViewModel)
     func displayGetFeed(viewModel: Log.GetFeed.ViewModel)
     func displayError(error: Common.CommonError, useCase: Log.UseCase)

@@ -13,8 +13,9 @@
 import UIKit
 import Then
 import SnapKit
+import Moya
 
-protocol LoginDisplayLogic: class {
+protocol LoginDisplayLogic: AnyObject {
     func displayValidation(viewModel: Login.ValidationViewModel)
     func displayLogin()
     func displayError(error: Common.CommonError, useCase: Login.UseCase)

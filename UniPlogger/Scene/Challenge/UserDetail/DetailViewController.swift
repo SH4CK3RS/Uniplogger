@@ -8,7 +8,8 @@
 
 import UIKit
 import Photos
-protocol DetailDisplayLogic: class {
+
+protocol DetailDisplayLogic: AnyObject {
     func displayGetFeed(viewModel: Detail.GetFeed.ViewModel, uid: Int)
     func displayDeleteFeed()
 }

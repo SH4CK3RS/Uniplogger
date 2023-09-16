@@ -13,7 +13,7 @@
 import UIKit
 import Then
 
-protocol PloggingRecordDisplayLogic: class {
+protocol PloggingRecordDisplayLogic: AnyObject {
     func displayFetchRecord(viewModel: PloggingRecord.FetchRecord.ViewModel)
     func displayError(error: Common.CommonError, useCase: PloggingRecord.UseCase)
 }

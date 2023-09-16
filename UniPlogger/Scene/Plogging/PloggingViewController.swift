@@ -16,8 +16,9 @@ import Then
 import MapKit
 import CoreGraphics
 import Toast_Swift
+import Moya
 
-protocol PloggingDisplayLogic: class {
+protocol PloggingDisplayLogic: AnyObject {
     // 플로깅 관련 메소드
     func displayStartPlogging()
     func displayPausePlogging()

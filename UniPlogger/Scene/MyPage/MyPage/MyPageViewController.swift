@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol MyPageDisplayLogic: class {
+protocol MyPageDisplayLogic: AnyObject {
     func displayUserInfo(level: Int, rank: String)
 }
 

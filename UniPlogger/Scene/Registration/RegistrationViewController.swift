@@ -12,7 +12,8 @@
 
 import UIKit
 import Moya
-protocol RegistrationDisplayLogic: class {
+
+protocol RegistrationDisplayLogic: AnyObject {
     func displayFetchNickname(viewModel: Registration.FetchNickname.ViewModel)
     func displayValidation(viewModel: Registration.ValidationViewModel)
     func displayRegistration()
