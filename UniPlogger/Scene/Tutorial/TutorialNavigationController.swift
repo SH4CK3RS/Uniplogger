@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TutorialNavigationController: UINavigationController {
+final class TutorialNavigationController: UINavigationController {
     let navView = UIView().then{
         $0.backgroundColor = .tabbarNavbar
         $0.layer.cornerRadius = 30

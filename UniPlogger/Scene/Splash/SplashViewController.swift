@@ -19,14 +19,9 @@ protocol SplashDisplayLogic: AnyObject {
     func displayError(error: Common.CommonError, useCase: Splash.UseCase)
 }
 
-class SplashViewController: UIViewController {
+final class SplashViewController: UIViewController {
     var interactor: SplashBusinessLogic?
     var router: (NSObjectProtocol & SplashRoutingLogic & SplashDataPassing)?
-    
-    let splashImageView = UIImageView().then{
-        $0.image = UIImage(named: "splashBackground")
-        $0.contentMode = .scaleAspectFill
-    }
     
     // MARK: Object lifecycle
     
@@ -67,34 +62,34 @@ class SplashViewController: UIViewController {
     }
     
     // MARK: View lifecycle
+    override func loadView() {
+        view = mainView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(splashImageView)
-        splashImageView.snp.makeConstraints{
-            $0.edges.equalToSuperview()
-        }
-        
-        self.interactor?.setData()
-        self.interactor?.checkLogin()
+        interactor?.setData()
+        interactor?.checkLogin()
     }
+    
+    private let mainView = SplashView()
 }
 
-extension SplashViewController: SplashDisplayLogic{
+extension SplashViewController: SplashDisplayLogic {
     func displayLogined() {
-        self.router?.routeToMain()
+        router?.routeToMain()
     }
     
     func displayNotLogined() {
         if !UserDefaults.standard.bool(forDefines: .hasTutorial) {
-            self.router?.routeToTutorial()
+            router?.routeToTutorial()
         } else {
-            self.router?.routeToLogin()
+            router?.routeToLogin()
         }
         
     }
     
-    func displayError(error: Common.CommonError, useCase: Splash.UseCase){
+    func displayError(error: Common.CommonError, useCase: Splash.UseCase) {
         //handle error with its usecase
     }
 }

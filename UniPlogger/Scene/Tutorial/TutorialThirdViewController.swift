@@ -10,29 +10,29 @@ import UIKit
 import SnapKit
 import Then
 
-class TutorialThirdViewController: UIViewController {
+final class TutorialThirdViewController: UIViewController {
     
-    lazy var backgroundImageView = UIImageView().then {
+    private lazy var backgroundImageView = UIImageView().then {
         $0.image = UIImage(named: "bg_tutorialThird")!.resizeTopAlignedToFill(newWidth: self.view.frame.width)
         $0.contentMode = .top
     }
-    lazy var skipButton = UIButton().then {
+    private lazy var skipButton = UIButton().then {
         $0.setAttributedTitle(UPStyle().font(.roboto(ofSize: 15, weight: .bold)).color(UIColor(hexString: "#999999")).kern(-0.41).apply(to: "로그인하러가기"), for: .normal)
         $0.setTitleColor(.init(hexString: "#999999"), for: .normal)
         $0.addTarget(self, action: #selector(skipButtonTapped), for: .touchUpInside)
     }
-    let ploggerImageView = UIImageView().then {
+    private let ploggerImageView = UIImageView().then {
         $0.image = UIImage(named: "ic_tutorialThirdPlogger")
         $0.contentMode = .scaleAspectFit
     }
     
-    let ploggerBubbleImageView = UIImageView().then {
+    private let ploggerBubbleImageView = UIImageView().then {
         $0.image = UIImage(named: "ic_tutorialThirdPloggerBubble")
         $0.contentMode = .scaleAspectFit
     }
     
-    let nicknameContainer = UIView()
-    lazy var nicknameField = NicknameField().then {
+    private let nicknameContainer = UIView()
+    private lazy var nicknameField = NicknameField().then {
         $0.borderStyle = .none
         $0.font = .dynamicNotosans(fontSize: 24, weight: .bold)
         $0.textAlignment = .center
@@ -41,26 +41,26 @@ class TutorialThirdViewController: UIViewController {
         $0.attributedPlaceholder = NSMutableAttributedString().string("(여기를 눌러 닉네임을 입력하세요)", font: .dynamicNotosans(fontSize: 20, weight: .bold), color: .white)
     }
     
-    let nicknameLabel = UILabel().then{
+    private let nicknameLabel = UILabel().then{
         $0.textColor = .black
         $0.font = .notoSans(ofSize: 14, weight: .regular)
         $0.text = "나에게 이름을\n만들어 주세요"
         $0.numberOfLines = 2
     }
     
-    let firstLabel = UILabel().then {
+    private let firstLabel = UILabel().then {
         $0.text = "신입 우주 청소부인"
         $0.textColor = .white
         $0.font = .dynamicNotosans(fontSize: 24, weight: .bold)
     }
     
-    let 은 = UILabel().then {
+    private let 은 = UILabel().then {
         $0.text = "은(는)"
         $0.textColor = .white
         $0.font = .dynamicNotosans(fontSize: 24, weight: .bold)
     }
     
-    let secondLabel = UILabel().then {
+    private let secondLabel = UILabel().then {
         $0.text = """
         ‘플로거짱'이 되고자하는
         새로운 목표를
@@ -72,25 +72,25 @@ class TutorialThirdViewController: UIViewController {
         $0.font = .dynamicNotosans(fontSize: 24, weight: .bold)
     }
     
-    let nextButtonView = UIView().then{
+    private let nextButtonView = UIView().then{
         $0.backgroundColor = .clear
         $0.layer.cornerRadius = 26
         $0.layer.borderWidth = 0.5
         $0.layer.borderColor = UIColor(red: 196, green: 196, blue: 196).cgColor
     }
     
-    let nextLabel = UILabel().then{
+    private let nextLabel = UILabel().then{
         $0.text = "NEXT"
         $0.textColor = .white
         $0.font = .roboto(ofSize: 15, weight: .bold)
     }
     
-    let nextImageView = UIImageView().then{
+    private let nextImageView = UIImageView().then{
         $0.contentMode = .center
         $0.image = UIImage(named: "ic_BtnNextRight")
     }
     
-    lazy var nextButton = UIButton().then {
+    private lazy var nextButton = UIButton().then {
         $0.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
     override func viewDidLoad() {
@@ -191,7 +191,8 @@ class TutorialThirdViewController: UIViewController {
         self.nicknameField.becomeFirstResponder()
     }
     
-    @objc func nextButtonTapped() {
+    @objc
+    private func nextButtonTapped() {
         guard let nickname = nicknameField.text, !nickname.isEmpty  else {
             self.errorAlert(title: "닉네임을 입력해주세요", message: "Uniplogger 을(를) 사용하기 위해서는 닉네임이 필요합니다.", completion: nil)
             return
@@ -206,7 +207,8 @@ class TutorialThirdViewController: UIViewController {
     }
     
     
-    @objc func textChanged(){
+    @objc
+    private func textChanged(){
         self.nicknameField.invalidateIntrinsicContentSize()
         if let text = self.nicknameField.text, !text.isEmpty {
             nicknameLabel.text = text
@@ -216,20 +218,21 @@ class TutorialThirdViewController: UIViewController {
     }
     
     
-    @objc func skipButtonTapped() {
+    @objc
+    private func skipButtonTapped() {
         UserDefaults.standard.set(true, forDefines: .hasTutorial)
         self.navigationController?.pushViewController(LoginViewController(), animated: true)
     }
 }
 
-class NicknameField: UITextField{
+final class NicknameField: UITextField {
     override var intrinsicContentSize: CGSize{
-        if let text = self.text, !text.isEmpty {
+        if let text, !text.isEmpty {
             let label = UILabel()
-            label.font = self.font
+            label.font = font
             label.numberOfLines = 0
             label.textAlignment = .center
-            label.text = self.text
+            label.text = text
             var originSize = super.intrinsicContentSize
             originSize.width = 0
             let newSize = label.sizeThatFits(originSize)

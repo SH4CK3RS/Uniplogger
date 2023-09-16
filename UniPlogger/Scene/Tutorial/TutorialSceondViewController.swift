@@ -11,20 +11,20 @@ import SnapKit
 import Then
 import AVFoundation
 
-class TutorialSecondViewController: UIViewController {
-    var stopFlag = false
-    lazy var backgroundImageView = UIImageView().then {
+final class TutorialSecondViewController: UIViewController {
+    private var stopFlag = false
+    private lazy var backgroundImageView = UIImageView().then {
         $0.image = UIImage(named: "bg_tutorialSecond")!.resizeTopAlignedToFill(newWidth: self.view.frame.width)
         $0.contentMode = .top
     }
     
-    lazy var skipButton = UIButton().then {
+    private lazy var skipButton = UIButton().then {
         $0.setAttributedTitle(UPStyle().font(.roboto(ofSize: 15, weight: .bold)).color(UIColor(hexString: "#999999")).kern(1.25).apply(to: "SKIP"), for: .normal)
         $0.setTitleColor(.init(hexString: "#999999"), for: .normal)
         $0.addTarget(self, action: #selector(skipButtonTapped), for: .touchUpInside)
     }
     
-    let hideLabel = UILabel().then {
+    private let hideLabel = UILabel().then {
         $0.text = """
         회의에서는 다름 아닌,
         MVP 우주 청소부,
@@ -40,7 +40,8 @@ class TutorialSecondViewController: UIViewController {
         $0.textColor = .white
         $0.font = .dynamicNotosans(fontSize: 20, weight: .bold)
     }
-    let contentLabel = UILabel().then {
+    
+    private let contentLabel = UILabel().then {
         $0.text = ""
         $0.textAlignment = .center
         $0.numberOfLines = 0
@@ -48,25 +49,25 @@ class TutorialSecondViewController: UIViewController {
         $0.font = .dynamicNotosans(fontSize: 20, weight: .bold)
     }
     
-    let nextButtonView = UIView().then{
+    private let nextButtonView = UIView().then{
         $0.backgroundColor = .clear
         $0.layer.cornerRadius = 26
         $0.layer.borderWidth = 0.5
         $0.layer.borderColor = UIColor(red: 196, green: 196, blue: 196).cgColor
     }
     
-    let nextLabel = UILabel().then{
+    private let nextLabel = UILabel().then{
         $0.text = "NEXT"
         $0.textColor = .white
         $0.font = .roboto(ofSize: 15, weight: .bold)
     }
     
-    let nextImageView = UIImageView().then{
+    private let nextImageView = UIImageView().then{
         $0.contentMode = .center
         $0.image = UIImage(named: "ic_BtnNextRight")
     }
     
-    lazy var nextButton = UIButton().then {
+    private lazy var nextButton = UIButton().then {
         $0.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
     
@@ -138,13 +139,15 @@ class TutorialSecondViewController: UIViewController {
         }
     }
     
-    @objc func skipButtonTapped() {
+    @objc
+    private func skipButtonTapped() {
         self.stopFlag = true
         UserDefaults.standard.set(true, forDefines: .hasTutorial)
         self.navigationController?.pushViewController(LoginViewController(), animated: true)
     }
     
-    @objc func nextButtonTapped() {
+    @objc
+    private func nextButtonTapped() {
         self.stopFlag = true
         self.navigationController?.pushViewController(TutorialThirdViewController(), animated: true)
     }

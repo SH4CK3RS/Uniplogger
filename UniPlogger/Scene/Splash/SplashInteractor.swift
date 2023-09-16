@@ -23,7 +23,6 @@ protocol SplashDataStore {
 
 class SplashInteractor: SplashBusinessLogic, SplashDataStore {
     var presenter: SplashPresentationLogic?
-    var worker: SplashWorker?
     //var name: String = ""
     
     func checkLogin(){
