@@ -27,14 +27,13 @@ class UserInfoView: UIView {
     
     func setupViews() {
         [backgroundImageView, characterImageView, leftStarImageView, rightStarImageView].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview($0)
         }
     }
     
     func setUpLayout() {
-        backgroundImageView.snp.makeConstraints { (make) in
-            make.leading.trailing.top.bottom.equalToSuperview()
+        backgroundImageView.snp.makeConstraints {
+            $0.leading.trailing.top.bottom.equalToSuperview()
         }
         
     }

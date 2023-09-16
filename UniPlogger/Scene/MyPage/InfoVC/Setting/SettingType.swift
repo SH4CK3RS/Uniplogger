@@ -9,13 +9,10 @@
 import Foundation
 
 enum SettingType: Int, CaseIterable {
-//    case getPush = 0
      case autosave = 0
     
     var description: String {
         switch self {
-//        case .getPush:
-//            return "알림"
         case .autosave:
             return "사진자동저장"
         }

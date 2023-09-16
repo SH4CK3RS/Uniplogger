@@ -67,8 +67,7 @@ class PloggingInfoView: UIView {
 extension PloggingInfoView {
     func setUpView() {
         [gradientView, characterImageView, leftView, rightView, ploggerImageView, timerImageView, distanceLabel, timeLabel].forEach {
-            self.addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
+            addSubview($0)
         }
     }
     
@@ -94,14 +93,10 @@ extension PloggingInfoView {
         }
         ploggerImageView.snp.makeConstraints {
             $0.top.centerX.equalTo(leftView)
-//            $0.leading.equalTo(characterImageView.snp.trailing).offset(42)
-//            $0.top.equalToSuperview().offset(76)
             $0.width.height.equalTo(26)
         }
         timerImageView.snp.makeConstraints {
             $0.top.centerX.equalTo(rightView)
-//            $0.trailing.equalToSuperview().offset(-55)
-//            $0.top.equalToSuperview().offset(76)
             $0.width.equalTo(22)
             $0.height.equalTo(25.67)
         }
@@ -116,13 +111,13 @@ extension PloggingInfoView {
     }
     
     func updateView(){
-        guard let vm = self.viewModel else { return }
-        self.distanceLabel.text = vm.distance
-        self.timeLabel.text = vm.time
+        guard let viewModel else { return }
+        distanceLabel.text = viewModel.distance
+        timeLabel.text = viewModel.time
         
-        if let feed = vm.feed{
-            self.distanceLabel.text = "\(feed.distance)"
-            self.timeLabel.text = "\(feed.time)"
+        if let feed = viewModel.feed{
+            distanceLabel.text = "\(feed.distance)"
+            timeLabel.text = "\(feed.time)"
         }
     }
 }

@@ -18,32 +18,24 @@ class QuestTableViewCell: UITableViewCell {
     // MARK: - Views
     
     private var cellBackgroundView = UIView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.layer.cornerRadius = 22
     }
     
-    private var sproutBackgroundView = UIView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
+    private var sproutBackgroundView = UIView()
     
     private var sproutImageView = UIImageView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.contentMode = .scaleToFill
     }
     
-    private var questContentView = UIView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
+    private var questContentView = UIView()
     
     private var questTitleLabel = UILabel().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.font = UIFont.notoSans(ofSize: 14, weight: .regular)
         $0.textColor = .text
         $0.setContentCompressionResistancePriority(.init(rawValue: 900), for: .vertical)
     }
     
     private var questContentLabel = UILabel().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.font = UIFont.notoSans(ofSize: 16, weight: .bold)
         $0.textColor = .text
         $0.numberOfLines = 0

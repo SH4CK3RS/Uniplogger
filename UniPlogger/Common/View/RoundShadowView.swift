@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class RoundShadowView: UIView {
 
@@ -14,14 +15,14 @@ final class RoundShadowView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        layoutView()
+        setupViews()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func layoutView() {
+    func setupViews() {
         // set the shadow of the view's layer
         layer.backgroundColor = UIColor.clear.cgColor
         layer.shadowColor = UIColor.black.cgColor
@@ -32,12 +33,10 @@ final class RoundShadowView: UIView {
         containerView.layer.masksToBounds = true
 
         addSubview(containerView)
-        containerView.translatesAutoresizingMaskIntoConstraints = false
 
         // pin the containerView to the edges to the view
-        containerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        containerView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        containerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        containerView.snp.makeConstraints {
+            $0.top.leading.trailing.bottom.equalToSuperview()
+        }
     }
 }

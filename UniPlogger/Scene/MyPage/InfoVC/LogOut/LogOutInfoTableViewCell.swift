@@ -38,22 +38,21 @@ class LogOutInfoTableViewCell: UITableViewCell {
     func setupViews() {
         self.backgroundColor = .clear
         [itemLabel, nextImageView].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview($0)
         }
     }
     
     func setupLayout() {
-        itemLabel.snp.makeConstraints { (make) in
-            make.leading.equalTo(8)
-            make.height.equalTo(24)
-            make.centerY.equalToSuperview()
+        itemLabel.snp.makeConstraints {
+            $0.leading.equalTo(8)
+            $0.height.equalTo(24)
+            $0.centerY.equalToSuperview()
         }
-        nextImageView.snp.makeConstraints { (make) in
-            make.trailing.equalTo(-20)
-            make.centerY.equalToSuperview()
-            make.width.equalTo(6)
-            make.height.equalTo(12)
+        nextImageView.snp.makeConstraints {
+            $0.trailing.equalTo(-20)
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(6)
+            $0.height.equalTo(12)
         }
     }
 

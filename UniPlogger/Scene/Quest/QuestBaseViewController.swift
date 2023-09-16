@@ -14,7 +14,6 @@ class QuestBaseViewController: BaseViewController {
     // view: tabBar 색
     // backgroundView: 원하는 배경색
     var backgroundView = UIView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = Color.questBackground
     }
     

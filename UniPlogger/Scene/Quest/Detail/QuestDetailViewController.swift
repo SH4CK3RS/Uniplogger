@@ -13,7 +13,7 @@ protocol QuestDetailDisplayLogic {
     func dismiss()
 }
 
-class QuestDetailViewController: QuestBaseViewController {
+final class QuestDetailViewController: QuestBaseViewController {
     
     // MARK: - Constants
     
@@ -35,25 +35,19 @@ class QuestDetailViewController: QuestBaseViewController {
     
     // MARK: - Views
     
-    private var contentScrollView = UIScrollView().then { scrollView in
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-    }
+    private var contentScrollView = UIScrollView()
     
-    private var contentView = UIView().then { view in
-        view.translatesAutoresizingMaskIntoConstraints = false
-    }
+    private var contentView = UIView()
     
     // MARK: Main
     
     private var mainView = UIView().then { view in
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = Color.trainingTint
         view.layer.cornerRadius = 18
         view.isUserInteractionEnabled = false
     }
     
     private var mainTitleLabel = UILabel().then { label in
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "습관 1 Step"
         label.textColor = .white
         label.font = .systemFont(ofSize: 40, weight: .bold)
@@ -61,7 +55,6 @@ class QuestDetailViewController: QuestBaseViewController {
     }
     
     private var mainDescriptionLabel = UILabel().then { label in
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textColor = .white
         label.text = "오늘부터 1달 동안,\n주1회 이상 꾸준히 플로깅하기에\n도전하세요!"
@@ -72,18 +65,15 @@ class QuestDetailViewController: QuestBaseViewController {
     // MARK: Recommand
     
     private var recommandView = UIView().then { view in
-        view.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private var recommandTitleLabel = UILabel().then { label in
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.isUserInteractionEnabled = false
         label.text = "이런 퀘스트도 있어요!"
         label.textAlignment = .center
     }
     
     private var recommandSubStackView = UIStackView().then { stackView in
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 21
         stackView.distribution = .fillEqually
@@ -92,7 +82,6 @@ class QuestDetailViewController: QuestBaseViewController {
     // MARK: Buttons
     
     private var buttonsBackgroundView = UIView().then { view in
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = Color.questBackgroundTint
         view.layer.applySketchShadow(color: Color.questBackgroundTint, alpha: 0.3, x: 0, y: -5, blur: 30, spread: 0)
         view.layer.cornerRadius = 22
@@ -100,7 +89,6 @@ class QuestDetailViewController: QuestBaseViewController {
     }
     
     private var buttonsStackView = UIStackView().then { stackView in
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = 20
         stackView.distribution = .fill
         stackView.axis = .vertical

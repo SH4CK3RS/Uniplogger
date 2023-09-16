@@ -35,16 +35,11 @@ class RecommandOtherView: UIView {
         static let spacing: CGFloat = 6
     }
     
-    let contentView = UIView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
+    let contentView = UIView()
 
-    let titleLabel = UILabel().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
+    let titleLabel = UILabel()
 
     let descripionLabel = UILabel().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.numberOfLines = 0
     }
     

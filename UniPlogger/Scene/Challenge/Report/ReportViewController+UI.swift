@@ -9,11 +9,9 @@
 import Foundation
 
 extension ReportViewController {
-    
     func setUpViews() {
         [reportView, textStackView, firstItemStackView, secondItemStackView, buttonStackView, cancelLabel, reportLabel].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            self.view.addSubview($0)
+            view.addSubview($0)
         }
     }
     

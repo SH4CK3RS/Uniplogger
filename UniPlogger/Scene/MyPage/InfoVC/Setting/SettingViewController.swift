@@ -8,12 +8,11 @@
 
 import UIKit
 
-class SettingViewController: InfoBaseViewController {
+final class SettingViewController: InfoBaseViewController {
 
     lazy var tableView = UITableView().then {
         $0.delegate = self
         $0.dataSource = self
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.ID)
         $0.isScrollEnabled = false
         $0.allowsSelection = false
@@ -53,12 +52,11 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
 extension SettingViewController {
     
     func setupLayout() {
-        tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(98)
-            make.leading.equalTo(20)
-            make.trailing.equalTo(-20)
-//            make.height.equalTo(104.5)
-            make.height.equalTo(52)
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(98)
+            $0.leading.equalTo(20)
+            $0.trailing.equalTo(-20)
+            $0.height.equalTo(52)
         }
     }
     

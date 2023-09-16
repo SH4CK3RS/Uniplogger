@@ -12,8 +12,7 @@ extension ChallengeViewController {
     
     func setUpView() {
         [backgroundImageView, weekLabel, rankTableView, infoButton, scoreInfoView, dimView].forEach {
-            self.view.addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview($0)
         }
         scoreInfoView.isHidden = true
     }

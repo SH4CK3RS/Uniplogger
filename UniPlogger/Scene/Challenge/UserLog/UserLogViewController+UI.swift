@@ -19,53 +19,52 @@ extension UserLogViewController: UIGestureRecognizerDelegate {
             userInfoContainer.addSubview($0)
         }
         scrollView.addArrangedSubview(collectionView)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func setUpLayout() {
-        scrollView.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+        scrollView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
         }
-        userInfoContainer.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(self.view.frame.height * 0.36)
+        userInfoContainer.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(self.view.frame.height * 0.36)
         }
-        characterImageView.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(userInfoContainer).offset(-self.view.frame.height * 0.047)
-            make.width.equalTo(self.view.frame.width * 0.21)
-            make.height.equalTo(characterImageView.snp.width).multipliedBy(1.67)
+        characterImageView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(userInfoContainer).offset(-self.view.frame.height * 0.047)
+            $0.width.equalTo(self.view.frame.width * 0.21)
+            $0.height.equalTo(characterImageView.snp.width).multipliedBy(1.67)
         }
-        leftStarImageView.snp.makeConstraints { (make) in
-            make.bottom.equalTo(userInfoContainer).offset(-self.view.frame.height * 0.093)
-            make.trailing.equalTo(characterImageView.snp.leading).offset(-self.view.frame.width * 0.08)
+        leftStarImageView.snp.makeConstraints {
+            $0.bottom.equalTo(userInfoContainer).offset(-self.view.frame.height * 0.093)
+            $0.trailing.equalTo(characterImageView.snp.leading).offset(-self.view.frame.width * 0.08)
 
         }
-        rightStarImageView.snp.makeConstraints { (make) in
-            make.top.equalTo(leftStarImageView.snp.top)
-            make.leading.equalTo(characterImageView.snp.trailing).offset(self.view.frame.width * 0.08)
+        rightStarImageView.snp.makeConstraints {
+            $0.top.equalTo(leftStarImageView.snp.top)
+            $0.leading.equalTo(characterImageView.snp.trailing).offset(self.view.frame.width * 0.08)
         }
-        levelTitleLabel.snp.makeConstraints { (make) in
-            make.centerX.equalTo(leftStarImageView)
-            make.centerY.equalTo(leftStarImageView).offset(-7)
+        levelTitleLabel.snp.makeConstraints {
+            $0.centerX.equalTo(leftStarImageView)
+            $0.centerY.equalTo(leftStarImageView).offset(-7)
         }
-        rankTitleLabel.snp.makeConstraints { (make) in
-            make.centerX.equalTo(rightStarImageView)
-            make.centerY.equalTo(rightStarImageView).offset(-7)
+        rankTitleLabel.snp.makeConstraints {
+            $0.centerX.equalTo(rightStarImageView)
+            $0.centerY.equalTo(rightStarImageView).offset(-7)
         }
-        levelLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(levelTitleLabel.snp.bottom).offset(-7)
-            make.centerX.equalTo(levelTitleLabel)
+        levelLabel.snp.makeConstraints {
+            $0.top.equalTo(levelTitleLabel.snp.bottom).offset(-7)
+            $0.centerX.equalTo(levelTitleLabel)
         }
-        rankLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(rankTitleLabel.snp.bottom).offset(-7)
-            make.centerX.equalTo(rankTitleLabel)
+        rankLabel.snp.makeConstraints {
+            $0.top.equalTo(rankTitleLabel.snp.bottom).offset(-7)
+            $0.centerX.equalTo(rankTitleLabel)
         }
-        collectionView.snp.makeConstraints { (make) in
-            make.top.equalTo(userInfoContainer.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+        collectionView.snp.makeConstraints {
+            $0.top.equalTo(userInfoContainer.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
     

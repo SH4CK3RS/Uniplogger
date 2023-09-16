@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScoreInfoViewController: UIViewController, DismissDelegate {
+final class ScoreInfoViewController: UIViewController, DismissDelegate {
     
     lazy var infoView = ScoreInfoView().then {
         $0.backgroundColor = UIColor(named: "infoBackgroundColor")
@@ -38,7 +38,6 @@ extension ScoreInfoViewController {
     
     func setUpViews() {
         [infoView].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview($0)
         }
     }

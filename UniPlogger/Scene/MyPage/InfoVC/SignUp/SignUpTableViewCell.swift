@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpTableViewCell: UITableViewCell {
+final class SignUpTableViewCell: UITableViewCell {
 
     static let ID = "signupCell"
     
@@ -49,21 +49,20 @@ class SignUpTableViewCell: UITableViewCell {
         self.backgroundColor = .clear
         self.selectionStyle = .none
         [itemLabel, valueLabel].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview($0)
         }
     }
     
     func setupLayout() {
-        itemLabel.snp.makeConstraints { (make) in
-            make.leading.equalTo(8)
-            make.height.equalTo(24)
-            make.centerY.equalToSuperview()
+        itemLabel.snp.makeConstraints {
+            $0.leading.equalTo(8)
+            $0.height.equalTo(24)
+            $0.centerY.equalToSuperview()
         }
-        valueLabel.snp.makeConstraints { (make) in
-            make.trailing.equalTo(-8.05)
-            make.centerY.equalToSuperview()
-            make.height.equalTo(31)
+        valueLabel.snp.makeConstraints {
+            $0.trailing.equalTo(-8.05)
+            $0.centerY.equalToSuperview()
+            $0.height.equalTo(31)
         }
     }
 

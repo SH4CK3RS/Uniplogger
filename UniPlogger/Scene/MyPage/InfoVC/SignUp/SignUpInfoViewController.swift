@@ -8,12 +8,11 @@
 
 import UIKit
 
-class SignUpInfoViewController: InfoBaseViewController {
+final class SignUpInfoViewController: InfoBaseViewController {
 
     lazy var tableView = UITableView().then {
         $0.delegate = self
         $0.dataSource = self
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.register(SignUpTableViewCell.self, forCellReuseIdentifier: SignUpTableViewCell.ID)
         $0.isScrollEnabled = false
         $0.allowsSelection = true
@@ -52,11 +51,11 @@ extension SignUpInfoViewController: UITableViewDelegate, UITableViewDataSource {
 extension SignUpInfoViewController {
     
     func setupLayout() {
-        tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(98)
-            make.leading.equalTo(20)
-            make.trailing.equalTo(-20)
-            make.height.equalTo(156.5)
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(98)
+            $0.leading.equalTo(20)
+            $0.trailing.equalTo(-20)
+            $0.height.equalTo(156.5)
         }
     }
     

@@ -8,17 +8,15 @@
 
 import UIKit
 
-class QuestTutorialViewController4: UIViewController {
+final class QuestTutorialViewController4: UIViewController {
     
     let backgroundImageView = UIImageView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.contentMode = .scaleAspectFit
         $0.isUserInteractionEnabled = true
         $0.image = UIImage(named: "quest_tutorial4")
     }
     
     lazy var skipButton = HightlightButton().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setTitle("Skip", for: .normal)
         $0.setTitleColor(.text, for: .normal)
         $0.contentEdgeInsets = .init(top: 10, left: 10, bottom: 10, right: 10)
@@ -26,7 +24,6 @@ class QuestTutorialViewController4: UIViewController {
     }
     
     lazy var nextButton = NextButtonView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.layer.borderWidth = 0.5
         $0.layer.borderColor = UIColor.text.cgColor
         $0.clipsToBounds = true
@@ -36,7 +33,6 @@ class QuestTutorialViewController4: UIViewController {
     }
     
     let startQuestButton = UIButton().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setTitle("퀘스트 시작하기", for: .normal)
         $0.setTitleColor(.text, for: .normal)
     }

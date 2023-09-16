@@ -57,7 +57,6 @@ extension RankTableViewCell {
     func setUpView() {
         self.backgroundColor = .clear
         [background, rankLabel, userImageView, nameLabel, scoreLabel].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview($0)
         }
     }

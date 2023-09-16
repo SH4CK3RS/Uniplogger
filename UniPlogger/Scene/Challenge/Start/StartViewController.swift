@@ -11,7 +11,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class StartViewController: UIViewController {
+final class StartViewController: UIViewController {
     let interactor = ChallengeInteractor()
     
     var router: (NSObjectProtocol & StartRoutingLogic)?
@@ -71,7 +71,6 @@ extension StartViewController {
     
     func setUpViews() {
         [backgroundView, spaceshipImageView, characterImageView, startButton].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview($0)
         }
     }

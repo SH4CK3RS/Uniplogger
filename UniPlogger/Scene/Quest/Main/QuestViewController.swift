@@ -14,7 +14,7 @@ protocol QuestDisplayLogic {
     func displayDetail(quest: Quest, recommads: [Quest])
 }
 
-class QuestViewController: QuestBaseViewController {
+final class QuestViewController: QuestBaseViewController {
     
     // MARK: - Constants
     
@@ -32,12 +32,10 @@ class QuestViewController: QuestBaseViewController {
     // MARK: - Views
     
     private var titleLabel = UILabel().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "챌린지"
     }
     
     private var navigationTabsView = NavigationTabsView<QuestState>(items: [.todo, .doing, .done], tintColor: UIColor(named: "questTint")).then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.layer.masksToBounds = true
         $0.spacing = 1
         $0.axis = .horizontal
@@ -47,7 +45,6 @@ class QuestViewController: QuestBaseViewController {
     }
     
     private lazy var questTableView = UITableView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.separatorStyle = .none
         $0.backgroundColor = .clear
         $0.contentInset = .init(top: 0, left: 0, bottom: Metric.verticalSpacing, right: 0)

@@ -8,10 +8,9 @@
 
 import UIKit
 
-class QuestTutorialViewController1: UIViewController {
+final class QuestTutorialViewController1: UIViewController {
     
     lazy var backgroundImageView = UIImageView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isUserInteractionEnabled = true
         $0.image = UIImage(named: "quest_tutorial1")!.resizeTopAlignedToFill(newWidth: self.view.frame.width)
         $0.contentMode = .scaleAspectFill
@@ -19,7 +18,6 @@ class QuestTutorialViewController1: UIViewController {
     }
     
     lazy var skipButton = HightlightButton().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setTitle("Skip", for: .normal)
         $0.setTitleColor(.text, for: .normal)
         $0.contentEdgeInsets = .init(top: 10, left: 10, bottom: 10, right: 10)
@@ -27,7 +25,6 @@ class QuestTutorialViewController1: UIViewController {
     }
     
     lazy var nextButton = NextButtonView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.layer.borderWidth = 0.5
         $0.layer.borderColor = UIColor.text.cgColor
         $0.clipsToBounds = true
@@ -38,7 +35,6 @@ class QuestTutorialViewController1: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
         setupViews()
         setupLayouts()
     }

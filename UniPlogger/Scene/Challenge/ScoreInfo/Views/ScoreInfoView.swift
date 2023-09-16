@@ -12,7 +12,7 @@ protocol DismissDelegate: AnyObject {
     func dismiss()
 }
 
-class ScoreInfoView: UIView {
+final class ScoreInfoView: UIView {
     weak var delegate: DismissDelegate?
     
     lazy var titleView = UIView()
@@ -73,7 +73,6 @@ extension ScoreInfoView {
 
     func setUpView() {
         [titleView, infoImageView, headerLabel, descriptionLabel, circleBackgroundView, firstCircleView, secondCircleView, thirdCircleView, dismissButton, dismissLabel].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview($0)
         }
     }

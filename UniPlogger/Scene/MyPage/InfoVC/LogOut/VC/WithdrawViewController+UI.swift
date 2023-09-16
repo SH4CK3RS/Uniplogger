@@ -12,23 +12,22 @@ extension WithdrawViewController {
     
     func setupViews() {
         [titleLabel, descriptionLabel, questionLabel, buttonStackView, cancelLabel, withdrawLabel].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview($0)
         }
     }
     
     func setupLayout() {
-        titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(24)
-            make.leading.equalTo(20)
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(24)
+            $0.leading.equalTo(20)
         }
-        descriptionLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp.bottom).offset(20)
-            make.leading.equalTo(20)
+        descriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+            $0.leading.equalTo(20)
         }
-        questionLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(24)
-            make.leading.equalTo(20)
+        questionLabel.snp.makeConstraints {
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(24)
+            $0.leading.equalTo(20)
         }
         buttonStackView.snp.makeConstraints {
             $0.top.equalTo(questionLabel.snp.bottom).offset(23)

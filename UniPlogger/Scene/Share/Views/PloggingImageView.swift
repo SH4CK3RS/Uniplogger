@@ -25,10 +25,7 @@ class PloggingImageView: UIImageView {
     }
 
     func setUpView() {
-        [ploggingInfoView].forEach {
-            self.addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
+        addSubview(ploggingInfoView)
     }
     
     func setUpLayout() {

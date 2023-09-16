@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CircleInfoView: UIView {
+final class CircleInfoView: UIView {
     lazy var infoLabel = UILabel().then {
         $0.font = .notoSans(ofSize: 14, weight: .bold)
         $0.textAlignment = .center
@@ -29,15 +29,12 @@ class CircleInfoView: UIView {
 
 extension CircleInfoView {
     func setUpView() {
-        [infoLabel].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            self.addSubview($0)
-        }
+        addSubview(infoLabel)
     }
     
     func setUpLayout() {
-        self.backgroundColor = UIColor(named: "scoreCircleColor")
-        self.layer.cornerRadius = 40
+        backgroundColor = UIColor(named: "scoreCircleColor")
+        layer.cornerRadius = 40
         infoLabel.snp.makeConstraints {
             $0.leading.trailing.top.bottom.equalToSuperview()
         }

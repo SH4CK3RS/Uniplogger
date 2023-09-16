@@ -13,26 +13,22 @@ class SuccessPopupView: UIView {
     var tapHandler: (() -> Void)?
     
     let backgroundView = UIView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = UIColor.black.withAlphaComponent(0.6)
     }
     
     let contentView = UIView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = .questBackground
         $0.layer.cornerRadius = 18
         $0.clipsToBounds = true
     }
     
     let greetingLabel = UILabel().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "축하드려요!"
         $0.font = .notoSans(ofSize: 30, weight: .bold)
         $0.textColor = .text
     }
     
     let questContentsLabel = UILabel().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = ""
         $0.numberOfLines = 0
         $0.font = .notoSans(ofSize: 14, weight: .bold)
@@ -40,20 +36,17 @@ class SuccessPopupView: UIView {
     }
     
     let endLabel = UILabel().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "퀘스트를 달성했어요."
         $0.font = .notoSans(ofSize: 14, weight: .regular)
         $0.textColor = .text
     }
     
     let contentsImageView = UIImageView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.image = UIImage(named: "ic_popup_success")
         $0.contentMode = .scaleAspectFit
     }
     
     let agreeButton = HightlightButton().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setTitle("확인", for: .normal)
         $0.backgroundColor = .questTint
         $0.setTitleColor(.white, for: .normal)

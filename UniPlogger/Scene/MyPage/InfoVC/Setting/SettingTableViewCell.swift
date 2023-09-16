@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingTableViewCell: UITableViewCell {
+final class SettingTableViewCell: UITableViewCell {
 
     static let ID = "settingCell"
     
@@ -36,8 +36,6 @@ class SettingTableViewCell: UITableViewCell {
         itemLabel.text = infoItem.description
         itemLabel.font = .notoSans(ofSize: 16, weight: .regular)
         switch infoItem {
-//        case .getPush:
-//            switchButton.isOn = AuthManager.shared.getPush
         case .autosave:
             switchButton.isOn = AuthManager.shared.autoSave
         }
@@ -45,8 +43,6 @@ class SettingTableViewCell: UITableViewCell {
     
     @objc func onClickSwitch() {
         switch infoItem {
-//        case .getPush:
-//            AuthManager.shared.getPush = switchButton.isOn
         case .autosave:
             AuthManager.shared.autoSave = switchButton.isOn
         }
@@ -55,22 +51,21 @@ class SettingTableViewCell: UITableViewCell {
     func setupViews() {
         self.backgroundColor = .clear
         [itemLabel, switchButton].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview($0)
         }
     }
     
     func setupLayout() {
-        itemLabel.snp.makeConstraints { (make) in
-            make.leading.equalTo(8)
-            make.height.equalTo(24)
-            make.centerY.equalToSuperview()
+        itemLabel.snp.makeConstraints {
+            $0.leading.equalTo(8)
+            $0.height.equalTo(24)
+            $0.centerY.equalToSuperview()
         }
-        switchButton.snp.makeConstraints { (make) in
-            make.trailing.equalTo(-8.05)
-            make.centerY.equalToSuperview()
-            make.width.equalTo(51)
-            make.height.equalTo(31)
+        switchButton.snp.makeConstraints {
+            $0.trailing.equalTo(-8.05)
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(51)
+            $0.height.equalTo(31)
         }
     }
 }

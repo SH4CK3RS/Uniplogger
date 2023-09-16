@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TopRankView: UIView {
+final class TopRankView: UIView {
     var viewModel: Challenge.RankCellViewModel?
     
     lazy var rankImageView = UIImageView().then {
@@ -44,8 +44,7 @@ class TopRankView: UIView {
 extension TopRankView {
     func setUpView() {
         [rankImageView, nameLabel, scoreLabel].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            self.addSubview($0)
+            addSubview($0)
         }
     }
     
