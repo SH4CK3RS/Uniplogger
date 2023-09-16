@@ -8,7 +8,8 @@
 
 import Moya
 import RxSwift
-final class AuthAPI {
+
+struct AuthAPI {
     typealias Response<T: Codable> = BaseResponse<T>
     
     let disposeBag = DisposeBag()

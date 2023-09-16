@@ -8,7 +8,7 @@
 
 import UIKit
 import Moya
-class NetworkErrorManager{
+struct NetworkErrorManager {
     static func alert(_ error: URLError, completion: ((UIAlertAction) -> Void)?) {
         let viewController = UIApplication.topViewController()
         switch error.code {

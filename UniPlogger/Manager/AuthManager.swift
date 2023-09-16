@@ -8,8 +8,8 @@
 
 import Foundation
 
-class AuthManager{
-    static let shared: AuthManager = AuthManager()
+struct AuthManager {
+    static var shared: AuthManager = AuthManager()
     
     var userToken: String? {
         get {
@@ -21,7 +21,7 @@ class AuthManager{
         }
     }
     
-    var user: User?{
+    var user: User? {
         get{
             guard let user = UserDefaults.standard.object(User.self, with: .user) else { return nil }
             return user

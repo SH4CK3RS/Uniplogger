@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageDownloadManager{
+struct ImageDownloadManager {
     private let cache = NSCache<NSString, UIImage>()
     static let shared = ImageDownloadManager()
     private init() { }

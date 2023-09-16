@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 class ManagedTrashCan: NSManagedObject {
     func toTrashCan() -> TrashCan {
         let objectIdString = objectID.uriRepresentation().absoluteString

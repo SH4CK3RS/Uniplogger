@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Route{
+struct Route {
   var title: String
   var distance: Double
   var duration: Int

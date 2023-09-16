@@ -8,5 +8,5 @@
 
 import UIKit
 
-class BaseViewController: UIViewController{
+class BaseViewController: UIViewController {
 }

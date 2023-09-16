@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MultiColorPolyline: MKPolyline {
+final class MultiColorPolyline: MKPolyline {
   var color = UIColor.black
   private func segmentColor(speed: Double, midSpeed: Double, slowestSpeed: Double, fastestSpeed: Double) -> UIColor{
     enum BaseColors {

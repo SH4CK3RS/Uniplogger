@@ -13,7 +13,7 @@ protocol PhotoManagerDelegate {
     func showAuthAlert(completion: @escaping () -> ())
 }
 
-class PhotoManager {
+final class PhotoManager {
 
     private var albumName: String
     private var album: PHAssetCollection?

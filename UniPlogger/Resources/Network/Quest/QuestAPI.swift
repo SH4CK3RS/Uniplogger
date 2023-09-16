@@ -9,7 +9,7 @@
 import Moya
 import RxSwift
 
-final class QuestAPI {
+struct QuestAPI {
     typealias Response<T: Codable> = BaseResponse<T>
     let disposeBag = DisposeBag()
     

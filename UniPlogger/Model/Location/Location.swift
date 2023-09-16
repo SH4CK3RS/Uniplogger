@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Location{
+struct Location {
   var latitude: Double
   var longitude: Double
   var timestamp: Date

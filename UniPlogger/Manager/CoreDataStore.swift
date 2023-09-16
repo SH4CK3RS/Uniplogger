@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class CoreDataStore{
+final class CoreDataStore {
     static let shared: CoreDataStore = CoreDataStore()
     
     var mainManagedObjectContext: NSManagedObjectContext

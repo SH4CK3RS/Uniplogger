@@ -8,41 +8,41 @@
 
 import UIKit
 
-class ScrollStackView: UIScrollView {
-  var containerView = UIView()
-  let stackView: UIStackView = {
-    let sv = UIStackView()
-    sv.alignment = .fill
-    sv.distribution = .fill
-    sv.axis = .vertical
-    sv.spacing = 0
-    return sv
-  }()
-  
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    setupUI()
-  }
-  
-  required init?(coder: NSCoder) {
-    super.init(coder: coder)
-    setupUI()
-  }
-  
-  func addArrangedSubview(_ view: UIView){
-    self.stackView.addArrangedSubview(view)
-  }
-  
-  private func setupUI(){
-    contentInsetAdjustmentBehavior = .never
+final class ScrollStackView: UIScrollView {
+    var containerView = UIView()
+    private let stackView: UIStackView = {
+        let sv = UIStackView()
+        sv.alignment = .fill
+        sv.distribution = .fill
+        sv.axis = .vertical
+        sv.spacing = 0
+        return sv
+    }()
     
-    addSubview(containerView)
-    containerView.addSubview(stackView)
-    containerView.snp.makeConstraints{
-      $0.leading.trailing.top.bottom.width.equalToSuperview()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
     }
-    stackView.snp.makeConstraints{
-      $0.leading.trailing.top.bottom.equalToSuperview()
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupUI()
     }
-  }
+    
+    func addArrangedSubview(_ view: UIView){
+        self.stackView.addArrangedSubview(view)
+    }
+    
+    private func setupUI(){
+        contentInsetAdjustmentBehavior = .never
+        
+        addSubview(containerView)
+        containerView.addSubview(stackView)
+        containerView.snp.makeConstraints{
+            $0.leading.trailing.top.bottom.width.equalToSuperview()
+        }
+        stackView.snp.makeConstraints{
+            $0.leading.trailing.top.bottom.equalToSuperview()
+        }
+    }
 }

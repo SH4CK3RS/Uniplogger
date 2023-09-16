@@ -8,7 +8,8 @@
 
 import Foundation
 import CoreData
-struct TrashCan: Codable{
+
+struct TrashCan: Codable {
     ///id
     var id: Int64
     ///위도
@@ -45,7 +46,7 @@ struct TrashCan: Codable{
         isRemoved: Bool = false,
         address: String = "",
         objectIDString: String? = nil
-    ){
+    ) {
         self.id = id
         self.latitude = latitude
         self.longitude = longitude

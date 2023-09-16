@@ -8,9 +8,9 @@
 
 import UIKit
 
-class RoundShadowView: UIView {
+final class RoundShadowView: UIView {
 
-    let containerView = UIView()
+    private let containerView = UIView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)

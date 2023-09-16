@@ -11,7 +11,7 @@ import Foundation
 import Moya
 import RxSwift
 
-class ChallengeAPI {
+struct ChallengeAPI {
     typealias Response<T: Codable> = BaseResponse<T>
     
     let disposeBag = DisposeBag()

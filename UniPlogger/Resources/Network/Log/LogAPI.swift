@@ -9,7 +9,7 @@
 import Moya
 import RxSwift
 
-final class LogAPI {
+struct LogAPI {
     typealias Response<T: Codable> = BaseResponse<T>
     
     let disposeBag = DisposeBag()

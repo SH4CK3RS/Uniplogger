@@ -8,17 +8,17 @@
 
 import UIKit
 
-class GradientView: UIView{
+final class GradientView: UIView {
     var colors: [UIColor] = []
     var locations: [Double] = []
-    var isHorizontal: Bool = false
-    var isDiagonal: Bool = false
+    private var isHorizontal: Bool = false
+    private var isDiagonal: Bool = false
     
     override static var layerClass: AnyClass { CAGradientLayer.self }
     
-    var gradientLayer: CAGradientLayer { layer as! CAGradientLayer }
+    private var gradientLayer: CAGradientLayer { layer as! CAGradientLayer }
     
-    func updatePoints() {
+    private func updatePoints() {
         if isHorizontal{
             gradientLayer.startPoint = isDiagonal ? .init(x: 1, y: 0) : .init(x: 0, y: 0.5)
             gradientLayer.endPoint = isDiagonal ? .init(x: 0, y: 1) : .init(x: 1, y: 0.5)
@@ -28,11 +28,11 @@ class GradientView: UIView{
         }
     }
     
-    func updateLocations() {
+    private func updateLocations() {
         gradientLayer.locations = locations.map { $0 as NSNumber }
     }
     
-    func updateColors() {
+    private func updateColors() {
         gradientLayer.colors = colors.map { $0.cgColor }
     }
     
@@ -41,7 +41,7 @@ class GradientView: UIView{
         setupGradients()
     }
     
-    func setupGradients(){
+    private func setupGradients(){
         updatePoints()
         updateLocations()
         updateColors()

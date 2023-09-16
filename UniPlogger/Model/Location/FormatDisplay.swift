@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FormatDisplay{
+struct FormatDisplay {
     static func distance(_ distance: Double) -> String{
         let distanceMeasurement = Measurement(value: distance, unit: UnitLength.kilometers)
         return FormatDisplay.distance(distanceMeasurement)
