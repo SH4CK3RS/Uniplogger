@@ -191,7 +191,6 @@
 		AA7658F2258279A500BA0A3E /* FindPasswordModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7658EC258279A500BA0A3E /* FindPasswordModels.swift */; };
 		AA7658F3258279A500BA0A3E /* FindPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7658ED258279A500BA0A3E /* FindPasswordViewController.swift */; };
 		AA7658F4258279A500BA0A3E /* FindPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7658EE258279A500BA0A3E /* FindPasswordInteractor.swift */; };
-		AA7F54DE2532C10A001C4012 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F54DD2532C109001C4012 /* BaseViewController.swift */; };
 		AA7F54DF2532C165001C4012 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3B5062520D16800F0311A /* UIColor+Extensions.swift */; };
 		AA7F54E02532C16E001C4012 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB887B02524603E000A9D58 /* UIFont+Extensions.swift */; };
 		AA7F54E12532C176001C4012 /* UserDefault+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1AC8C4252E1C120022ACE5 /* UserDefault+Extensions.swift */; };
@@ -471,7 +470,6 @@
 		AA7658EC258279A500BA0A3E /* FindPasswordModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordModels.swift; sourceTree = "<group>"; };
 		AA7658ED258279A500BA0A3E /* FindPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordViewController.swift; sourceTree = "<group>"; };
 		AA7658EE258279A500BA0A3E /* FindPasswordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordInteractor.swift; sourceTree = "<group>"; };
-		AA7F54DD2532C109001C4012 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AA7F54E42532C1A6001C4012 /* StartCountingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartCountingViewController.swift; sourceTree = "<group>"; };
 		AA7F54E52532C1A6001C4012 /* PloggingInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PloggingInteractor.swift; sourceTree = "<group>"; };
 		AA7F54E62532C1A6001C4012 /* PloggingViewController+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PloggingViewController+UI.swift"; sourceTree = "<group>"; };
@@ -1096,14 +1094,6 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		AA7F54DC2532C109001C4012 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				AA7F54DD2532C109001C4012 /* BaseViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
 		AA7F54E32532C1A6001C4012 /* Plogging */ = {
 			isa = PBXGroup;
 			children = (
@@ -1282,7 +1272,6 @@
 			isa = PBXGroup;
 			children = (
 				AA7F5526253356BE001C4012 /* Manager */,
-				AA7F54DC2532C109001C4012 /* ViewController */,
 				AAB3B4ED2520B2F400F0311A /* View */,
 				AAB3B4EA2520A78800F0311A /* Extension */,
 				AAB3B4E72520A77700F0311A /* TabBarController */,
@@ -1666,7 +1655,6 @@
 				AA2CAE092543EAD600105748 /* PloggingRecordInteractor.swift in Sources */,
 				835248472572283C00C9F495 /* InfoBaseViewController.swift in Sources */,
 				AA35BC77254FEEFA00AE32A7 /* CoreDataStore.swift in Sources */,
-				AA7F54DE2532C10A001C4012 /* BaseViewController.swift in Sources */,
 				835248B42574417000C9F495 /* UserLogWorker.swift in Sources */,
 				AAB3B4C82520A31100F0311A /* AppDelegate.swift in Sources */,
 				83DE07772566AD050085AC72 /* DetailViewController+UI.swift in Sources */,

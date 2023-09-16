@@ -42,7 +42,7 @@ protocol PloggingDisplayLogic: AnyObject {
     func displayError(error: Common.CommonError, useCase: Plogging.UseCase)
 }
 
-class PloggingViewController: BaseViewController {
+class PloggingViewController: UIViewController {
     var interactor: PloggingBusinessLogic?
     var router: (NSObjectProtocol & PloggingRoutingLogic & PloggingDataPassing)?
     

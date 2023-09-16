@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QuestBaseViewController: BaseViewController {
+class QuestBaseViewController: UIViewController {
 
     // status bar 색이랑 탭바 색을 맞추기 위해서 추가.
     // view: tabBar 색
