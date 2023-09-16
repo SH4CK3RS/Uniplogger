@@ -12,46 +12,70 @@
 
 import UIKit
 
-protocol SplashBusinessLogic {
-    func checkLogin()
-    func setData()
+protocol SplashPresntable: AnyObject {
+    var listener: SplashPresentableListener? { get set }
 }
 
-protocol SplashDataStore {
-    //var name: String { get set }
+
+protocol SplashRouting {
+    var viewController: SplashViewControllable { get }
 }
 
-class SplashInteractor: SplashBusinessLogic, SplashDataStore {
-    var presenter: SplashPresentationLogic?
-    //var name: String = ""
+enum SplashListenerRequest {
+    case main
+    case tutorial
+    case login
+}
+
+protocol SplashListener: AnyObject {
+    func request(_ request: SplashListenerRequest)
+}
+
+final class SplashInteractor: SplashInteractable, SplashPresentableListener {
+    var router: SplashRouting?
+    var presenter: SplashPresntable?
+    var listener: SplashListener?
     
-    func checkLogin(){
+    init(presenter: SplashPresntable) {
+        self.presenter = presenter
+        presenter.listener = self
+    }
+    
+    func checkLogin() {
         if AuthManager.shared.userToken != nil,
-           let user = AuthManager.shared.user{
-            //Todo Login with userToken
-            AuthAPI.shared.getUser(uid: user.id) { (response) in
-                switch response{
+           let user = AuthManager.shared.user {
+            AuthAPI.shared.getUser(uid: user.id) { [weak self] response in
+                guard let self else { return }
+                switch response {
                 case .success(let value):
                     if value.success, let user = value.data {
                         AuthManager.shared.user = user
-                        let response = Splash.CheckLogin.Response(isLogined: true)
-                        self.presenter?.presentCheckLogin(response: response)
+                        self.listener?.request(.main)
                     } else {
-                        let response = Splash.CheckLogin.Response(isLogined: false)
-                        self.presenter?.presentCheckLogin(response: response)
+                        self.processNotLogined()
                     }
-                case .failure(let error):
-                    let response = Splash.CheckLogin.Response(isLogined: false)
-                    self.presenter?.presentCheckLogin(response: response)
+                case .failure:
+                    self.processNotLogined()
                 }
             }
         } else {
-            let response = Splash.CheckLogin.Response(isLogined: false)
-            self.presenter?.presentCheckLogin(response: response)
+            processNotLogined()
         }
     }
     
-    func setData() {
-        AuthManager.shared.autoSave = true
+    func request(_ request: SplashPresentableListenerRequest) {
+        switch request {
+        case .viewDidLoad:
+            AuthManager.shared.autoSave = true
+            checkLogin()
+        }
+    }
+    
+    private func processNotLogined() {
+        if !UserDefaults.standard.bool(forDefines: .hasTutorial) {
+            listener?.request(.tutorial)
+        } else {
+            listener?.request(.login)
+        }
     }
 }

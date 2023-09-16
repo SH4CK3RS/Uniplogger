@@ -13,53 +13,16 @@
 import UIKit
 import Then
 
-protocol SplashDisplayLogic: AnyObject {
-    func displayLogined()
-    func displayNotLogined()
-    func displayError(error: Common.CommonError, useCase: Splash.UseCase)
+enum SplashPresentableListenerRequest {
+    case viewDidLoad
 }
 
-final class SplashViewController: UIViewController {
-    var interactor: SplashBusinessLogic?
-    var router: (NSObjectProtocol & SplashRoutingLogic & SplashDataPassing)?
-    
-    // MARK: Object lifecycle
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
-    // MARK: Setup
-    
-    private func setup() {
-        let viewController = self
-        let interactor = SplashInteractor()
-        let presenter = SplashPresenter()
-        let router = SplashRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
-    }
-    
-    // MARK: Routing
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
+protocol SplashPresentableListener: AnyObject {
+    func request(_ request: SplashPresentableListenerRequest)
+}
+
+final class SplashViewController: UIViewController, SplashPresntable, SplashViewControllable {
+    weak var listener: SplashPresentableListener?
     
     // MARK: View lifecycle
     override func loadView() {
@@ -68,28 +31,12 @@ final class SplashViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor?.setData()
-        interactor?.checkLogin()
+        listener?.request(.viewDidLoad)
     }
     
     private let mainView = SplashView()
-}
-
-extension SplashViewController: SplashDisplayLogic {
-    func displayLogined() {
-        router?.routeToMain()
-    }
     
-    func displayNotLogined() {
-        if !UserDefaults.standard.bool(forDefines: .hasTutorial) {
-            router?.routeToTutorial()
-        } else {
-            router?.routeToLogin()
-        }
-        
-    }
-    
-    func displayError(error: Common.CommonError, useCase: Splash.UseCase) {
-        //handle error with its usecase
+    deinit {
+        print(#function)
     }
 }
