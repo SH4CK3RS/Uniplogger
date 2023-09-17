@@ -1,17 +1,17 @@
 PODS:
   - Alamofire (5.8.0)
   - IQKeyboardManagerSwift (6.5.12)
-  - Moya/Core (14.0.0):
+  - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
-  - Moya/RxSwift (14.0.0):
+  - Moya/RxSwift (15.0.0):
     - Moya/Core
-    - RxSwift (~> 5.0)
-  - RxCocoa (5.1.3):
-    - RxRelay (~> 5)
-    - RxSwift (~> 5)
-  - RxRelay (5.1.3):
-    - RxSwift (~> 5)
-  - RxSwift (5.1.3)
+    - RxSwift (~> 6.0)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
   - SnapKit (5.6.0)
   - Then (3.0.0)
   - Toast-Swift (5.0.1)
@@ -19,9 +19,8 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - IQKeyboardManagerSwift
-  - Moya/RxSwift (~> 14.0)
-  - RxCocoa (~> 5.0)
-  - RxSwift (~> 5.0)
+  - Moya/RxSwift (~> 15.0)
+  - RxCocoa (~> 6.0)
   - SnapKit
   - Then
   - Toast-Swift
@@ -41,14 +40,14 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 0e92e751b3e9e66d7982db43919d01f313b8eb91
   IQKeyboardManagerSwift: 371b08cb39664fb56030f5345c815a4ffc74bbc0
-  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
-  RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
-  RxRelay: 5a18c2eb2d68326ebaf0112f80d837ae41b92b97
-  RxSwift: 915abbdfb62214aa89ccd0b194d44fb478019b27
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: ae9d50996ee474a35b2e260400566a6830c263a4
+PODFILE CHECKSUM: 7d99ea010a55c11e19e779559bc57b924e65fd3b
 
 COCOAPODS: 1.12.1

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import IQKeyboardManagerSwift
-import Moya
+import RIBs
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

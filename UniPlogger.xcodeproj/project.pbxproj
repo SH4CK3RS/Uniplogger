@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,7 @@
 		3E43CA7A2AB61CF200B6C4D8 /* SplashBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA792AB61CF200B6C4D8 /* SplashBuilder.swift */; };
 		3E43CA7C2AB61D1400B6C4D8 /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */; };
 		3E43CA7E2AB61FAD00B6C4D8 /* ViewControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA7D2AB61FAD00B6C4D8 /* ViewControllable.swift */; };
+		3E43CA842AB6CF1800B6C4D8 /* RIBs in Frameworks */ = {isa = PBXBuildFile; productRef = 3E43CA832AB6CF1800B6C4D8 /* RIBs */; };
 		4C2D058C25562E4F00FA787F /* QuestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D058B25562E4F00FA787F /* QuestRouter.swift */; };
 		4C2D059B2556459400FA787F /* QuestDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D059A2556459400FA787F /* QuestDetailPresenter.swift */; };
 		4C3F54A4256123CE006D7C9F /* QuestListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F54A3256123CE006D7C9F /* QuestListTests.swift */; };
@@ -572,6 +573,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E43CA842AB6CF1800B6C4D8 /* RIBs in Frameworks */,
 				101A5C8A5DA8441CFEF982F0 /* Pods_UniPlogger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1422,6 +1424,9 @@
 			dependencies = (
 			);
 			name = UniPlogger;
+			packageProductDependencies = (
+				3E43CA832AB6CF1800B6C4D8 /* RIBs */,
+			);
 			productName = UniPlogger;
 			productReference = AAB3B4C42520A31100F0311A /* UniPlogger.app */;
 			productType = "com.apple.product-type.application";
@@ -1454,6 +1459,9 @@
 				Base,
 			);
 			mainGroup = AAB3B4BB2520A31100F0311A;
+			packageReferences = (
+				3E43CA822AB6CF1800B6C4D8 /* XCRemoteSwiftPackageReference "RIBs" */,
+			);
 			productRefGroup = AAB3B4C52520A31100F0311A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2048,6 +2056,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3E43CA822AB6CF1800B6C4D8 /* XCRemoteSwiftPackageReference "RIBs" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/uber/RIBs.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3E43CA832AB6CF1800B6C4D8 /* RIBs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E43CA822AB6CF1800B6C4D8 /* XCRemoteSwiftPackageReference "RIBs" */;
+			productName = RIBs;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		AAB3B4D02520A31100F0311A /* UniPlogger.xcdatamodeld */ = {
