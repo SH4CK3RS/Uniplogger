@@ -12,6 +12,7 @@ import RxSwift
 enum TutorialRootRouterRequest {
     case cleanUpViews
     case routeToTutorialFirst
+    case routeToTutorialSecond
 }
 
 protocol TutorialRootRouting: Routing {
@@ -44,6 +45,16 @@ final class TutorialRootInteractor: Interactor, TutorialRootInteractable {
 // MARK: - TutorialFirstListenerRequest
 extension TutorialRootInteractor {
     func request(_ request: TutorialFirstListenerRequest) {
+        switch request {
+        case .next: router?.request(.routeToTutorialSecond)
+        case .skip: break
+        }
+    }
+}
+
+// MARK: - TutorialSecondListenerRequest
+extension TutorialRootInteractor {
+    func request(_ request: TutorialSecondListenerRequest) {
         switch request {
         case .next: break
         case .skip: break

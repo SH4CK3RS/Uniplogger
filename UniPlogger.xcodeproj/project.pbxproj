@@ -24,6 +24,12 @@
 		3EDD64E62AB6E71600776C34 /* TutorialRootComponent+TutorialFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64E52AB6E71600776C34 /* TutorialRootComponent+TutorialFirst.swift */; };
 		3EDD64E92AB6EAE000776C34 /* SplashComponent+TutorialRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64E82AB6EAE000776C34 /* SplashComponent+TutorialRoot.swift */; };
 		3EDD64EB2AB6FF8700776C34 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64EA2AB6FF8700776C34 /* UINavigationController+Extensions.swift */; };
+		3EDD64F12AB704BC00776C34 /* TutorialSecondRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64ED2AB704BC00776C34 /* TutorialSecondRouter.swift */; };
+		3EDD64F22AB704BC00776C34 /* TutorialSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64EE2AB704BC00776C34 /* TutorialSecondViewController.swift */; };
+		3EDD64F32AB704BC00776C34 /* TutorialSecondBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64EF2AB704BC00776C34 /* TutorialSecondBuilder.swift */; };
+		3EDD64F42AB704BC00776C34 /* TutorialSecondInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64F02AB704BC00776C34 /* TutorialSecondInteractor.swift */; };
+		3EDD64F62AB7053200776C34 /* TutorialSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64F52AB7053200776C34 /* TutorialSecondView.swift */; };
+		3EDD64F82AB7094A00776C34 /* TutorialRootComponent+TutorialSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64F72AB7094A00776C34 /* TutorialRootComponent+TutorialSecond.swift */; };
 		4C2D058C25562E4F00FA787F /* QuestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D058B25562E4F00FA787F /* QuestRouter.swift */; };
 		4C2D059B2556459400FA787F /* QuestDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D059A2556459400FA787F /* QuestDetailPresenter.swift */; };
 		4C3F54A4256123CE006D7C9F /* QuestListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F54A3256123CE006D7C9F /* QuestListTests.swift */; };
@@ -176,7 +182,6 @@
 		AA38A73B257B692F00B26E1F /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A735257B692F00B26E1F /* RegistrationInteractor.swift */; };
 		AA38A73F257B6B5800B26E1F /* RegistrationViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A73E257B6B5800B26E1F /* RegistrationViewController+UI.swift */; };
 		AA38A752257B849900B26E1F /* TutorialThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A751257B849900B26E1F /* TutorialThirdViewController.swift */; };
-		AA38A773257BC9F400B26E1F /* TutorialSceondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A74D257B847E00B26E1F /* TutorialSceondViewController.swift */; };
 		AA38A785257BD4B400B26E1F /* TrashDetailPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A784257BD4B400B26E1F /* TrashDetailPopupView.swift */; };
 		AA38A789257BD80700B26E1F /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A788257BD80700B26E1F /* NSAttributedString+Extensions.swift */; };
 		AA4AD55425725C920087E060 /* LogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4AD55225725C920087E060 /* LogAPI.swift */; };
@@ -306,6 +311,12 @@
 		3EDD64E52AB6E71600776C34 /* TutorialRootComponent+TutorialFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TutorialRootComponent+TutorialFirst.swift"; sourceTree = "<group>"; };
 		3EDD64E82AB6EAE000776C34 /* SplashComponent+TutorialRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashComponent+TutorialRoot.swift"; sourceTree = "<group>"; };
 		3EDD64EA2AB6FF8700776C34 /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
+		3EDD64ED2AB704BC00776C34 /* TutorialSecondRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSecondRouter.swift; sourceTree = "<group>"; };
+		3EDD64EE2AB704BC00776C34 /* TutorialSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSecondViewController.swift; sourceTree = "<group>"; };
+		3EDD64EF2AB704BC00776C34 /* TutorialSecondBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSecondBuilder.swift; sourceTree = "<group>"; };
+		3EDD64F02AB704BC00776C34 /* TutorialSecondInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSecondInteractor.swift; sourceTree = "<group>"; };
+		3EDD64F52AB7053200776C34 /* TutorialSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSecondView.swift; sourceTree = "<group>"; };
+		3EDD64F72AB7094A00776C34 /* TutorialRootComponent+TutorialSecond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TutorialRootComponent+TutorialSecond.swift"; sourceTree = "<group>"; };
 		4C2D058B25562E4F00FA787F /* QuestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestRouter.swift; sourceTree = "<group>"; };
 		4C2D059A2556459400FA787F /* QuestDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDetailPresenter.swift; sourceTree = "<group>"; };
 		4C3F54A1256123CE006D7C9F /* QuestListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuestListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -468,7 +479,6 @@
 		AA38A734257B692F00B26E1F /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		AA38A735257B692F00B26E1F /* RegistrationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
 		AA38A73E257B6B5800B26E1F /* RegistrationViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegistrationViewController+UI.swift"; sourceTree = "<group>"; };
-		AA38A74D257B847E00B26E1F /* TutorialSceondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSceondViewController.swift; sourceTree = "<group>"; };
 		AA38A751257B849900B26E1F /* TutorialThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialThirdViewController.swift; sourceTree = "<group>"; };
 		AA38A784257BD4B400B26E1F /* TrashDetailPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashDetailPopupView.swift; sourceTree = "<group>"; };
 		AA38A788257BD80700B26E1F /* NSAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extensions.swift"; sourceTree = "<group>"; };
@@ -637,6 +647,7 @@
 			isa = PBXGroup;
 			children = (
 				3EDD64E52AB6E71600776C34 /* TutorialRootComponent+TutorialFirst.swift */,
+				3EDD64F72AB7094A00776C34 /* TutorialRootComponent+TutorialSecond.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -647,6 +658,18 @@
 				3EDD64E82AB6EAE000776C34 /* SplashComponent+TutorialRoot.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		3EDD64EC2AB704AE00776C34 /* TutorialSecond */ = {
+			isa = PBXGroup;
+			children = (
+				3EDD64ED2AB704BC00776C34 /* TutorialSecondRouter.swift */,
+				3EDD64EE2AB704BC00776C34 /* TutorialSecondViewController.swift */,
+				3EDD64EF2AB704BC00776C34 /* TutorialSecondBuilder.swift */,
+				3EDD64F02AB704BC00776C34 /* TutorialSecondInteractor.swift */,
+				3EDD64F52AB7053200776C34 /* TutorialSecondView.swift */,
+			);
+			path = TutorialSecond;
 			sourceTree = "<group>";
 		};
 		4C31BE942524A01100D47919 /* Views */ = {
@@ -1112,9 +1135,9 @@
 		AA38A746257B840000B26E1F /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				3EDD64EC2AB704AE00776C34 /* TutorialSecond */,
 				3EDD64D92AB6DDDC00776C34 /* TutorialFirst */,
 				3E43CAA12AB6DB2500B6C4D8 /* TutorialRoot */,
-				AA38A74D257B847E00B26E1F /* TutorialSceondViewController.swift */,
 				AA38A751257B849900B26E1F /* TutorialThirdViewController.swift */,
 				AA59BF15258DF26E003319D4 /* TutorialNavigationController.swift */,
 			);
@@ -1644,6 +1667,7 @@
 				4C401EAF253DE19100ABED84 /* ShareRouter.swift in Sources */,
 				8352489B25727CE900C9F495 /* Player.swift in Sources */,
 				3EDD64D82AB6DCCA00776C34 /* TutorialRootInteractor.swift in Sources */,
+				3EDD64F62AB7053200776C34 /* TutorialSecondView.swift in Sources */,
 				AAA1CBFE255D640C00EDB18A /* PloggingAPI.swift in Sources */,
 				835309B2257BE55D00C3626D /* TopView.swift in Sources */,
 				4C8956832532D0630099934E /* QuestFactory.swift in Sources */,
@@ -1671,6 +1695,7 @@
 				AA7658F1258279A500BA0A3E /* FindPasswordRouter.swift in Sources */,
 				AA38A73F257B6B5800B26E1F /* RegistrationViewController+UI.swift in Sources */,
 				835248A02572C9BF00C9F495 /* ChallengeAPI.swift in Sources */,
+				3EDD64F82AB7094A00776C34 /* TutorialRootComponent+TutorialSecond.swift in Sources */,
 				AA7F551D2533568D001C4012 /* SharePresenter.swift in Sources */,
 				AA38A724257A9DFA00B26E1F /* LoginModels.swift in Sources */,
 				4CE9149A257BB33000BCF398 /* QuestTutorialViewController3.swift in Sources */,
@@ -1702,6 +1727,7 @@
 				4CBA217B254EB1AF002BDCC3 /* QuestModels+ViewModel.swift in Sources */,
 				AAB559392549BB26000BB903 /* FormatDisplay.swift in Sources */,
 				AA7658EF258279A500BA0A3E /* FindPasswordPresenter.swift in Sources */,
+				3EDD64F42AB704BC00776C34 /* TutorialSecondInteractor.swift in Sources */,
 				835248B025743FD700C9F495 /* UserLogPresenter.swift in Sources */,
 				AA4AD579257265FF0087E060 /* DetailWorker.swift in Sources */,
 				3E43CA7C2AB61D1400B6C4D8 /* SplashRouter.swift in Sources */,
@@ -1735,6 +1761,7 @@
 				AA2CAE092543EAD600105748 /* PloggingRecordInteractor.swift in Sources */,
 				835248472572283C00C9F495 /* InfoBaseViewController.swift in Sources */,
 				AA35BC77254FEEFA00AE32A7 /* CoreDataStore.swift in Sources */,
+				3EDD64F12AB704BC00776C34 /* TutorialSecondRouter.swift in Sources */,
 				835248B42574417000C9F495 /* UserLogWorker.swift in Sources */,
 				AAB3B4C82520A31100F0311A /* AppDelegate.swift in Sources */,
 				83DE07772566AD050085AC72 /* DetailViewController+UI.swift in Sources */,
@@ -1763,6 +1790,7 @@
 				AA5EFBB82552AE3D00B5BD5B /* PloggingRecordCollectionViewLayout.swift in Sources */,
 				AA38A737257B692F00B26E1F /* RegistrationWorker.swift in Sources */,
 				AA38A722257A9DFA00B26E1F /* LoginWorker.swift in Sources */,
+				3EDD64F22AB704BC00776C34 /* TutorialSecondViewController.swift in Sources */,
 				83530984257B91E300C3626D /* SettingViewController.swift in Sources */,
 				8352484F2572283C00C9F495 /* InfoTableViewCell.swift in Sources */,
 				3EDD64E12AB6DDEB00776C34 /* TutorialFirstInteractor.swift in Sources */,
@@ -1786,8 +1814,8 @@
 				AA2CAE072543EAD600105748 /* PloggingRecordCollectionViewCell.swift in Sources */,
 				835249202577A70500C9F495 /* ReportPresenter.swift in Sources */,
 				AAB3B4E92520A78300F0311A /* MainTabBarController.swift in Sources */,
-				AA38A773257BC9F400B26E1F /* TutorialSceondViewController.swift in Sources */,
 				8353A377256911F900F9AA4F /* ReportItem.swift in Sources */,
+				3EDD64F32AB704BC00776C34 /* TutorialSecondBuilder.swift in Sources */,
 				AA4AD59B2574055C0087E060 /* PolicyViewController.swift in Sources */,
 				4C3F54BC25612818006D7C9F /* QuestManager.swift in Sources */,
 				AA35BC7C254FFC2B00AE32A7 /* Storage.swift in Sources */,

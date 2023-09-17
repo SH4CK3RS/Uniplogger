@@ -35,9 +35,11 @@ final class TutorialRootBuilder: Builder<TutorialRootDependency>, TutorialRootBu
         let interactor = TutorialRootInteractor()
         interactor.listener = listener
         
-        let tutiroaiFirstBuilder = TutorialFirstBuilder(dependency: component)
+        let tutorialFirstBuilder = TutorialFirstBuilder(dependency: component)
+        let tutorialSecondBuilder = TutorialSecondBuilder(dependency: component)
         return TutorialRootRouter(interactor: interactor,
                                   viewController: component.tutorialRootViewController,
-                                  tutorialFirstBuilder: tutiroaiFirstBuilder)
+                                  tutorialFirstBuilder: tutorialFirstBuilder,
+                                  tutorialSecondBuilder: tutorialSecondBuilder)
     }
 }
