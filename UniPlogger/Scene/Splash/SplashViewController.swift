@@ -10,6 +10,7 @@
 //  see http://clean-swift.com
 //
 
+import RIBs
 import UIKit
 import Then
 
@@ -38,5 +39,17 @@ final class SplashViewController: UIViewController, SplashPresntable, SplashView
     
     deinit {
         print(#function)
+    }
+}
+
+extension SplashViewController: TutorialRootViewControllable {
+    func present(_ viewController: ViewControllable, animated: Bool) {
+        DispatchQueue.main.async {
+            self.present(viewController.uiviewController, animated: animated)
+        }
+    }
+    func dismiss(_ viewController: ViewControllable, animated: Bool) {
+        guard viewController.uiviewController === presentedViewController else { return }
+        dismiss(animated: animated)
     }
 }

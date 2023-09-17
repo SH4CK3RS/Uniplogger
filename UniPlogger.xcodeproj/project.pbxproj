@@ -13,6 +13,17 @@
 		3E43CA7C2AB61D1400B6C4D8 /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */; };
 		3E43CA842AB6CF1800B6C4D8 /* RIBs in Frameworks */ = {isa = PBXBuildFile; productRef = 3E43CA832AB6CF1800B6C4D8 /* RIBs */; };
 		3E43CAA02AB6D3C200B6C4D8 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA9F2AB6D3C200B6C4D8 /* AppComponent.swift */; };
+		3EDD64D62AB6DCCA00776C34 /* TutorialRootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D32AB6DCCA00776C34 /* TutorialRootRouter.swift */; };
+		3EDD64D72AB6DCCA00776C34 /* TutorialRootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D42AB6DCCA00776C34 /* TutorialRootBuilder.swift */; };
+		3EDD64D82AB6DCCA00776C34 /* TutorialRootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D52AB6DCCA00776C34 /* TutorialRootInteractor.swift */; };
+		3EDD64DE2AB6DDEB00776C34 /* TutorialFirstRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64DA2AB6DDEB00776C34 /* TutorialFirstRouter.swift */; };
+		3EDD64DF2AB6DDEB00776C34 /* TutorialFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64DB2AB6DDEB00776C34 /* TutorialFirstViewController.swift */; };
+		3EDD64E02AB6DDEB00776C34 /* TutorialFirstBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64DC2AB6DDEB00776C34 /* TutorialFirstBuilder.swift */; };
+		3EDD64E12AB6DDEB00776C34 /* TutorialFirstInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64DD2AB6DDEB00776C34 /* TutorialFirstInteractor.swift */; };
+		3EDD64E32AB6DE9100776C34 /* TutorialFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64E22AB6DE9100776C34 /* TutorialFirstView.swift */; };
+		3EDD64E62AB6E71600776C34 /* TutorialRootComponent+TutorialFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64E52AB6E71600776C34 /* TutorialRootComponent+TutorialFirst.swift */; };
+		3EDD64E92AB6EAE000776C34 /* SplashComponent+TutorialRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64E82AB6EAE000776C34 /* SplashComponent+TutorialRoot.swift */; };
+		3EDD64EB2AB6FF8700776C34 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64EA2AB6FF8700776C34 /* UINavigationController+Extensions.swift */; };
 		4C2D058C25562E4F00FA787F /* QuestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D058B25562E4F00FA787F /* QuestRouter.swift */; };
 		4C2D059B2556459400FA787F /* QuestDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D059A2556459400FA787F /* QuestDetailPresenter.swift */; };
 		4C3F54A4256123CE006D7C9F /* QuestListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F54A3256123CE006D7C9F /* QuestListTests.swift */; };
@@ -164,7 +175,6 @@
 		AA38A73A257B692F00B26E1F /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A734257B692F00B26E1F /* RegistrationViewController.swift */; };
 		AA38A73B257B692F00B26E1F /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A735257B692F00B26E1F /* RegistrationInteractor.swift */; };
 		AA38A73F257B6B5800B26E1F /* RegistrationViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A73E257B6B5800B26E1F /* RegistrationViewController+UI.swift */; };
-		AA38A748257B841500B26E1F /* TutorialFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A747257B841500B26E1F /* TutorialFirstViewController.swift */; };
 		AA38A752257B849900B26E1F /* TutorialThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A751257B849900B26E1F /* TutorialThirdViewController.swift */; };
 		AA38A773257BC9F400B26E1F /* TutorialSceondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A74D257B847E00B26E1F /* TutorialSceondViewController.swift */; };
 		AA38A785257BD4B400B26E1F /* TrashDetailPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A784257BD4B400B26E1F /* TrashDetailPopupView.swift */; };
@@ -285,6 +295,17 @@
 		3E43CA792AB61CF200B6C4D8 /* SplashBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBuilder.swift; sourceTree = "<group>"; };
 		3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouter.swift; sourceTree = "<group>"; };
 		3E43CA9F2AB6D3C200B6C4D8 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
+		3EDD64D32AB6DCCA00776C34 /* TutorialRootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootRouter.swift; sourceTree = "<group>"; };
+		3EDD64D42AB6DCCA00776C34 /* TutorialRootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootBuilder.swift; sourceTree = "<group>"; };
+		3EDD64D52AB6DCCA00776C34 /* TutorialRootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootInteractor.swift; sourceTree = "<group>"; };
+		3EDD64DA2AB6DDEB00776C34 /* TutorialFirstRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialFirstRouter.swift; sourceTree = "<group>"; };
+		3EDD64DB2AB6DDEB00776C34 /* TutorialFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialFirstViewController.swift; sourceTree = "<group>"; };
+		3EDD64DC2AB6DDEB00776C34 /* TutorialFirstBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialFirstBuilder.swift; sourceTree = "<group>"; };
+		3EDD64DD2AB6DDEB00776C34 /* TutorialFirstInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialFirstInteractor.swift; sourceTree = "<group>"; };
+		3EDD64E22AB6DE9100776C34 /* TutorialFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialFirstView.swift; sourceTree = "<group>"; };
+		3EDD64E52AB6E71600776C34 /* TutorialRootComponent+TutorialFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TutorialRootComponent+TutorialFirst.swift"; sourceTree = "<group>"; };
+		3EDD64E82AB6EAE000776C34 /* SplashComponent+TutorialRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashComponent+TutorialRoot.swift"; sourceTree = "<group>"; };
+		3EDD64EA2AB6FF8700776C34 /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		4C2D058B25562E4F00FA787F /* QuestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestRouter.swift; sourceTree = "<group>"; };
 		4C2D059A2556459400FA787F /* QuestDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDetailPresenter.swift; sourceTree = "<group>"; };
 		4C3F54A1256123CE006D7C9F /* QuestListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuestListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -447,7 +468,6 @@
 		AA38A734257B692F00B26E1F /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		AA38A735257B692F00B26E1F /* RegistrationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
 		AA38A73E257B6B5800B26E1F /* RegistrationViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegistrationViewController+UI.swift"; sourceTree = "<group>"; };
-		AA38A747257B841500B26E1F /* TutorialFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialFirstViewController.swift; sourceTree = "<group>"; };
 		AA38A74D257B847E00B26E1F /* TutorialSceondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSceondViewController.swift; sourceTree = "<group>"; };
 		AA38A751257B849900B26E1F /* TutorialThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialThirdViewController.swift; sourceTree = "<group>"; };
 		AA38A784257BD4B400B26E1F /* TrashDetailPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashDetailPopupView.swift; sourceTree = "<group>"; };
@@ -590,6 +610,45 @@
 			path = AppStart;
 			sourceTree = "<group>";
 		};
+		3E43CAA12AB6DB2500B6C4D8 /* TutorialRoot */ = {
+			isa = PBXGroup;
+			children = (
+				3EDD64E42AB6E70300776C34 /* components */,
+				3EDD64D32AB6DCCA00776C34 /* TutorialRootRouter.swift */,
+				3EDD64D42AB6DCCA00776C34 /* TutorialRootBuilder.swift */,
+				3EDD64D52AB6DCCA00776C34 /* TutorialRootInteractor.swift */,
+			);
+			path = TutorialRoot;
+			sourceTree = "<group>";
+		};
+		3EDD64D92AB6DDDC00776C34 /* TutorialFirst */ = {
+			isa = PBXGroup;
+			children = (
+				3EDD64DA2AB6DDEB00776C34 /* TutorialFirstRouter.swift */,
+				3EDD64DB2AB6DDEB00776C34 /* TutorialFirstViewController.swift */,
+				3EDD64DC2AB6DDEB00776C34 /* TutorialFirstBuilder.swift */,
+				3EDD64DD2AB6DDEB00776C34 /* TutorialFirstInteractor.swift */,
+				3EDD64E22AB6DE9100776C34 /* TutorialFirstView.swift */,
+			);
+			path = TutorialFirst;
+			sourceTree = "<group>";
+		};
+		3EDD64E42AB6E70300776C34 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				3EDD64E52AB6E71600776C34 /* TutorialRootComponent+TutorialFirst.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		3EDD64E72AB6EAD400776C34 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3EDD64E82AB6EAE000776C34 /* SplashComponent+TutorialRoot.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		4C31BE942524A01100D47919 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -722,6 +781,7 @@
 		83524812257227BA00C9F495 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
+				3EDD64E72AB6EAD400776C34 /* Components */,
 				83524813257227BA00C9F495 /* SplashViewController.swift */,
 				83524817257227BA00C9F495 /* SplashInteractor.swift */,
 				3E43CA772AB60FF500B6C4D8 /* SplashView.swift */,
@@ -1052,7 +1112,8 @@
 		AA38A746257B840000B26E1F /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				AA38A747257B841500B26E1F /* TutorialFirstViewController.swift */,
+				3EDD64D92AB6DDDC00776C34 /* TutorialFirst */,
+				3E43CAA12AB6DB2500B6C4D8 /* TutorialRoot */,
 				AA38A74D257B847E00B26E1F /* TutorialSceondViewController.swift */,
 				AA38A751257B849900B26E1F /* TutorialThirdViewController.swift */,
 				AA59BF15258DF26E003319D4 /* TutorialNavigationController.swift */,
@@ -1315,6 +1376,7 @@
 				AA38A6D8257A780700B26E1F /* UIApplication+Extensions.swift */,
 				AA38A6DC257A78F100B26E1F /* UIViewController+Extensions.swift */,
 				AA38A788257BD80700B26E1F /* NSAttributedString+Extensions.swift */,
+				3EDD64EA2AB6FF8700776C34 /* UINavigationController+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1581,6 +1643,7 @@
 				AA4AD5A12574058E0087E060 /* AuthManager.swift in Sources */,
 				4C401EAF253DE19100ABED84 /* ShareRouter.swift in Sources */,
 				8352489B25727CE900C9F495 /* Player.swift in Sources */,
+				3EDD64D82AB6DCCA00776C34 /* TutorialRootInteractor.swift in Sources */,
 				AAA1CBFE255D640C00EDB18A /* PloggingAPI.swift in Sources */,
 				835309B2257BE55D00C3626D /* TopView.swift in Sources */,
 				4C8956832532D0630099934E /* QuestFactory.swift in Sources */,
@@ -1615,6 +1678,7 @@
 				AA38A725257A9DFA00B26E1F /* LoginViewController.swift in Sources */,
 				83DE07752566AD050085AC72 /* DetailViewController.swift in Sources */,
 				AAB3B4F12520B37100F0311A /* UIView+Extensions.swift in Sources */,
+				3EDD64E32AB6DE9100776C34 /* TutorialFirstView.swift in Sources */,
 				83530970257B918D00C3626D /* WithdrawViewController.swift in Sources */,
 				AA7F551F2533568D001C4012 /* ShareViewController.swift in Sources */,
 				AA7658F4258279A500BA0A3E /* FindPasswordInteractor.swift in Sources */,
@@ -1681,6 +1745,7 @@
 				83DE077B2566AD050085AC72 /* UserLogViewController+UI.swift in Sources */,
 				4C3F56182568F97B006D7C9F /* PloggingData.swift in Sources */,
 				8353097B257B91A900C3626D /* SignUpInfoType.swift in Sources */,
+				3EDD64D62AB6DCCA00776C34 /* TutorialRootRouter.swift in Sources */,
 				AA35BC86254FFEFA00AE32A7 /* ManagedTrashCan+CoreDataProperties.swift in Sources */,
 				AA38A6D9257A780700B26E1F /* UIApplication+Extensions.swift in Sources */,
 				AAA1CBE9255D5E9100EDB18A /* SessionManager.swift in Sources */,
@@ -1700,6 +1765,7 @@
 				AA38A722257A9DFA00B26E1F /* LoginWorker.swift in Sources */,
 				83530984257B91E300C3626D /* SettingViewController.swift in Sources */,
 				8352484F2572283C00C9F495 /* InfoTableViewCell.swift in Sources */,
+				3EDD64E12AB6DDEB00776C34 /* TutorialFirstInteractor.swift in Sources */,
 				4C89567D2532CB3A0099934E /* QuestNavigationController.swift in Sources */,
 				83DE077F2566AD050085AC72 /* ChallengeViewController+UI.swift in Sources */,
 				8352481D257227BA00C9F495 /* SplashInteractor.swift in Sources */,
@@ -1731,13 +1797,15 @@
 				8352480E2572279500C9F495 /* User.swift in Sources */,
 				AAC552B225848D8D000DAFDF /* BaseResponse.swift in Sources */,
 				AA4AD575257265BF0087E060 /* DetailPresenter.swift in Sources */,
+				3EDD64EB2AB6FF8700776C34 /* UINavigationController+Extensions.swift in Sources */,
+				3EDD64DE2AB6DDEB00776C34 /* TutorialFirstRouter.swift in Sources */,
 				AA7F54F72532C1E3001C4012 /* GradientView.swift in Sources */,
 				835249122577A68800C9F495 /* ReportRouter.swift in Sources */,
 				4CC9C7C825231581004D873D /* QuestViewController.swift in Sources */,
-				AA38A748257B841500B26E1F /* TutorialFirstViewController.swift in Sources */,
 				4C7248B52544297D00ACB32B /* HightlightButton.swift in Sources */,
 				AA38A789257BD80700B26E1F /* NSAttributedString+Extensions.swift in Sources */,
 				4C3F5646256A214F006D7C9F /* Date+.swift in Sources */,
+				3EDD64E02AB6DDEB00776C34 /* TutorialFirstBuilder.swift in Sources */,
 				AA4AD598257405570087E060 /* InfoItemType.swift in Sources */,
 				AA7F5528253356BE001C4012 /* PhotoManager.swift in Sources */,
 				8352484E2572283C00C9F495 /* MyPageViewController.swift in Sources */,
@@ -1748,6 +1816,7 @@
 				83530986257B91E300C3626D /* SettingTableViewCell.swift in Sources */,
 				AAB3B4EC2520B2B400F0311A /* UIImage+Extensions.swift in Sources */,
 				4C7248B12542FDA600ACB32B /* RecommandOtherView.swift in Sources */,
+				3EDD64E92AB6EAE000776C34 /* SplashComponent+TutorialRoot.swift in Sources */,
 				83530985257B91E300C3626D /* SettingType.swift in Sources */,
 				AA2CAE082543EAD600105748 /* PloggingRecordWorker.swift in Sources */,
 				8353A381256A617100F9AA4F /* ChallengeNavigationController.swift in Sources */,
@@ -1785,13 +1854,16 @@
 				83DE077D2566AD050085AC72 /* ChallengeModels.swift in Sources */,
 				83530979257B91A900C3626D /* SignUpTableViewCell.swift in Sources */,
 				AA4AD58C2573F95B0087E060 /* DetailModels.swift in Sources */,
+				3EDD64E62AB6E71600776C34 /* TutorialRootComponent+TutorialFirst.swift in Sources */,
 				AA7F54F02532C1A6001C4012 /* PloggingRouter.swift in Sources */,
 				8352484C2572283C00C9F495 /* MyPageModels.swift in Sources */,
 				AAB559352549BA2D000BB903 /* MultiColorPolyline.swift in Sources */,
 				AA38A723257A9DFA00B26E1F /* LoginRouter.swift in Sources */,
 				AA38A6DD257A78F100B26E1F /* UIViewController+Extensions.swift in Sources */,
+				3EDD64D72AB6DCCA00776C34 /* TutorialRootBuilder.swift in Sources */,
 				AAB3B4F92520B5B600F0311A /* Common.swift in Sources */,
 				835248AC25743C7200C9F495 /* UserLogInteractor.swift in Sources */,
+				3EDD64DF2AB6DDEB00776C34 /* TutorialFirstViewController.swift in Sources */,
 				83DE077E2566AD050085AC72 /* ChallengeWorker.swift in Sources */,
 				AAC552C62585C4C6000DAFDF /* ResetPasswordRouter.swift in Sources */,
 				835248602572285100C9F495 /* LogNavigationController.swift in Sources */,

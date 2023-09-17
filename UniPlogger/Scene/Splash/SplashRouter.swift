@@ -8,7 +8,7 @@
 
 import RIBs
 
-protocol SplashInteractable: Interactable {
+protocol SplashInteractable: Interactable, TutorialRootListener {
     var router: SplashRouting? { get set }
 }
 
@@ -18,12 +18,29 @@ protocol SplashViewControllable: ViewControllable {
 
 final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllable>, SplashRouting {
     
-    override init(interactor: SplashInteractable, viewController: SplashViewControllable) {
+    init(interactor: SplashInteractable,
+         viewController: SplashViewControllable,
+         tutorialRootBuilder: TutorialRootBuildable) {
+        self.tutorialRootBuilder = tutorialRootBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
     
     func request(_ request: SplashRouterRequest) {
-        
+        switch request {
+        case .routeToTutorial:
+            routeToTutorialRoot()
+        default:
+            break
+        }
+    }
+    
+    private let tutorialRootBuilder: TutorialRootBuildable
+    private var tutorialRootRouter: Routing?
+    
+    private func routeToTutorialRoot() {
+        let router = tutorialRootBuilder.build(withListener: interactor)
+        tutorialRootRouter = router
+        attachChild(router)
     }
 }

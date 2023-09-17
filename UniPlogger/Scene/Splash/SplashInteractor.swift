@@ -83,3 +83,8 @@ final class SplashInteractor: PresentableInteractor<SplashPresntable>, SplashInt
         }
     }
 }
+
+
+extension SplashInteractor {
+    
+}
