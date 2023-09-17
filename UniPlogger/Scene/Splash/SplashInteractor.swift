@@ -10,38 +10,42 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+import Foundation
+import RIBs
+
+enum SplashRouterRequest {
+    case routeToTutorial
+    case routeToLogin
+    case routeToMain
+}
+
+protocol SplashRouting: ViewableRouting {
+    func request(_ request: SplashRouterRequest)
+}
 
 protocol SplashPresntable: AnyObject {
     var listener: SplashPresentableListener? { get set }
 }
 
-
-protocol SplashRouting {
-    var viewController: SplashViewControllable { get }
-}
-
-enum SplashListenerRequest {
-    case main
-    case tutorial
-    case login
-}
-
-protocol SplashListener: AnyObject {
-    func request(_ request: SplashListenerRequest)
-}
-
-final class SplashInteractor: SplashInteractable, SplashPresentableListener {
-    var router: SplashRouting?
-    var presenter: SplashPresntable?
-    var listener: SplashListener?
+final class SplashInteractor: PresentableInteractor<SplashPresntable>, SplashInteractable, SplashPresentableListener {
+    weak var router: SplashRouting?
     
-    init(presenter: SplashPresntable) {
-        self.presenter = presenter
+    override init(presenter: SplashPresntable) {
+        super.init(presenter: presenter)
         presenter.listener = self
     }
     
-    func checkLogin() {
+    override func didBecomeActive() {
+        super.didBecomeActive()
+        
+    }
+    
+    override func willResignActive() {
+        super.willResignActive()
+        
+    }
+    
+    private func checkLogin() {
         if AuthManager.shared.userToken != nil,
            let user = AuthManager.shared.user {
             AuthAPI.shared.getUser(uid: user.id) { [weak self] response in
@@ -50,7 +54,7 @@ final class SplashInteractor: SplashInteractable, SplashPresentableListener {
                 case .success(let value):
                     if value.success, let user = value.data {
                         AuthManager.shared.user = user
-                        self.listener?.request(.main)
+                        self.router?.request(.routeToMain)
                     } else {
                         self.processNotLogined()
                     }
@@ -73,9 +77,9 @@ final class SplashInteractor: SplashInteractable, SplashPresentableListener {
     
     private func processNotLogined() {
         if !UserDefaults.standard.bool(forDefines: .hasTutorial) {
-            listener?.request(.tutorial)
+            router?.request(.routeToTutorial)
         } else {
-            listener?.request(.login)
+            router?.request(.routeToLogin)
         }
     }
 }

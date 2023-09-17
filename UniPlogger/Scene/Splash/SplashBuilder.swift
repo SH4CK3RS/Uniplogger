@@ -6,15 +6,31 @@
 //  Copyright © 2023 손병근. All rights reserved.
 //
 
-protocol SplashBuildable {
-    func build(withListener listener: SplashListener) -> SplashRouting
+import RIBs
+
+protocol SplashDependency: Dependency {}
+
+final class SplashComponent: Component<SplashDependency> {
+    let splashViewController: SplashViewController
+    
+    init(dependency: SplashDependency,
+         splashViewController: SplashViewController) {
+        self.splashViewController = splashViewController
+        super.init(dependency: dependency)
+    }
 }
 
-final class SplashBuilder: SplashBuildable {
-    func build(withListener listener: SplashListener) -> SplashRouting {
+protocol SplashBuildable {
+    func build() -> LaunchRouting
+}
+
+final class SplashBuilder: Builder<SplashDependency>, SplashBuildable {
+    func build() -> LaunchRouting {
         let viewController = SplashViewController()
+        let component = SplashComponent(dependency: dependency,
+                                        splashViewController: viewController)
         let interactor = SplashInteractor(presenter: viewController)
-        interactor.listener = listener
+        
         return SplashRouter(interactor: interactor, viewController: viewController)
     }
 }

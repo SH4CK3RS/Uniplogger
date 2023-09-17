@@ -15,22 +15,20 @@ import RIBs
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var rootNavigationController: UINavigationController?
     var rootRouting: SplashRouting?
+    
+    private var launchRouting: LaunchRouting?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
-        window.makeKeyAndVisible()
-        let router = SplashBuilder().build(withListener: self)
-        self.rootRouting = router
-        let nvc = UINavigationController(rootViewController: router.viewController.uiviewController)
-        nvc.isNavigationBarHidden = true
-        rootNavigationController = nvc
-        window.rootViewController = nvc
-        window.backgroundColor = .white
+
+        let router = SplashBuilder(dependency: AppComponent()).build()
+        self.launchRouting = router
+        
+        router.launch(from: window)
         
         return true
     }
@@ -79,24 +77,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-extension AppDelegate: SplashListener {
-    func request(_ request: SplashListenerRequest) {
-        switch request {
-        case .tutorial:
-            let tutorialViewController = TutorialFirstViewController()
-            let nvc = TutorialNavigationController(rootViewController: tutorialViewController)
-            nvc.modalPresentationStyle = .fullScreen
-            nvc.setNavigationBarHidden(true, animated: false)
-            rootNavigationController?.present(nvc, animated: true, completion: nil)
-        case .login:
-            let loginViewController = LoginViewController()
-            let nvc = TutorialNavigationController(rootViewController: loginViewController)
-            nvc.modalPresentationStyle = .fullScreen
-            nvc.setNavigationBarHidden(true, animated: false)
-            rootNavigationController?.present(nvc, animated: true, completion: nil)
-        case .main:
-            let mainTabbarController = MainTabBarController()
-            window?.rootViewController = mainTabbarController
-        }
-    }
-}
+//extension AppDelegate: SplashListener {
+//    func request(_ request: SplashListenerRequest) {
+//        switch request {
+//        case .tutorial:
+//            let tutorialViewController = TutorialFirstViewController()
+//            let nvc = TutorialNavigationController(rootViewController: tutorialViewController)
+//            nvc.modalPresentationStyle = .fullScreen
+//            nvc.setNavigationBarHidden(true, animated: false)
+//            rootNavigationController?.present(nvc, animated: true, completion: nil)
+//        case .login:
+//            let loginViewController = LoginViewController()
+//            let nvc = TutorialNavigationController(rootViewController: loginViewController)
+//            nvc.modalPresentationStyle = .fullScreen
+//            nvc.setNavigationBarHidden(true, animated: false)
+//            rootNavigationController?.present(nvc, animated: true, completion: nil)
+//        case .main:
+//            let mainTabbarController = MainTabBarController()
+//            window?.rootViewController = mainTabbarController
+//        }
+//    }
+//}

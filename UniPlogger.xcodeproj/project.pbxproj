@@ -11,8 +11,8 @@
 		3E43CA782AB60FF500B6C4D8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA772AB60FF500B6C4D8 /* SplashView.swift */; };
 		3E43CA7A2AB61CF200B6C4D8 /* SplashBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA792AB61CF200B6C4D8 /* SplashBuilder.swift */; };
 		3E43CA7C2AB61D1400B6C4D8 /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */; };
-		3E43CA7E2AB61FAD00B6C4D8 /* ViewControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA7D2AB61FAD00B6C4D8 /* ViewControllable.swift */; };
 		3E43CA842AB6CF1800B6C4D8 /* RIBs in Frameworks */ = {isa = PBXBuildFile; productRef = 3E43CA832AB6CF1800B6C4D8 /* RIBs */; };
+		3E43CAA02AB6D3C200B6C4D8 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA9F2AB6D3C200B6C4D8 /* AppComponent.swift */; };
 		4C2D058C25562E4F00FA787F /* QuestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D058B25562E4F00FA787F /* QuestRouter.swift */; };
 		4C2D059B2556459400FA787F /* QuestDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D059A2556459400FA787F /* QuestDetailPresenter.swift */; };
 		4C3F54A4256123CE006D7C9F /* QuestListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F54A3256123CE006D7C9F /* QuestListTests.swift */; };
@@ -284,7 +284,7 @@
 		3E43CA772AB60FF500B6C4D8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3E43CA792AB61CF200B6C4D8 /* SplashBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBuilder.swift; sourceTree = "<group>"; };
 		3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouter.swift; sourceTree = "<group>"; };
-		3E43CA7D2AB61FAD00B6C4D8 /* ViewControllable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllable.swift; sourceTree = "<group>"; };
+		3E43CA9F2AB6D3C200B6C4D8 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
 		4C2D058B25562E4F00FA787F /* QuestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestRouter.swift; sourceTree = "<group>"; };
 		4C2D059A2556459400FA787F /* QuestDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDetailPresenter.swift; sourceTree = "<group>"; };
 		4C3F54A1256123CE006D7C9F /* QuestListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuestListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -581,6 +581,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E43CA9E2AB6D3A300B6C4D8 /* AppStart */ = {
+			isa = PBXGroup;
+			children = (
+				AAB3B4C72520A31100F0311A /* AppDelegate.swift */,
+				3E43CA9F2AB6D3C200B6C4D8 /* AppComponent.swift */,
+			);
+			path = AppStart;
+			sourceTree = "<group>";
+		};
 		4C31BE942524A01100D47919 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1252,6 +1261,7 @@
 		AAB3B4C62520A31100F0311A /* UniPlogger */ = {
 			isa = PBXGroup;
 			children = (
+				3E43CA9E2AB6D3A300B6C4D8 /* AppStart */,
 				AA38A7AC257CB20400B26E1F /* UniPlogger.entitlements */,
 				AAA1CBF4255D62A900EDB18A /* Network */,
 				AA7F54F82532C20C001C4012 /* Resources */,
@@ -1259,7 +1269,6 @@
 				AAB3B4F62520B55700F0311A /* Model */,
 				AAB3B4E62520A77200F0311A /* Common */,
 				4CC9C7C525231565004D873D /* Scene */,
-				AAB3B4C72520A31100F0311A /* AppDelegate.swift */,
 				AAB3B4D32520A31200F0311A /* Assets.xcassets */,
 				AA59BF19258E0A7B003319D4 /* Color.xcassets */,
 				AAB3B4D52520A31200F0311A /* LaunchScreen.storyboard */,
@@ -1276,7 +1285,6 @@
 				AAB3B4ED2520B2F400F0311A /* View */,
 				AAB3B4EA2520A78800F0311A /* Extension */,
 				AAB3B4E72520A77700F0311A /* TabBarController */,
-				3E43CA7D2AB61FAD00B6C4D8 /* ViewControllable.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1667,6 +1675,7 @@
 				AAB3B4C82520A31100F0311A /* AppDelegate.swift in Sources */,
 				83DE07772566AD050085AC72 /* DetailViewController+UI.swift in Sources */,
 				83530971257B918D00C3626D /* LogOutInfoViewController.swift in Sources */,
+				3E43CAA02AB6D3C200B6C4D8 /* AppComponent.swift in Sources */,
 				AA4AD59E2574057D0087E060 /* AuthAPIResponse.swift in Sources */,
 				835248652572285100C9F495 /* LogPresenter.swift in Sources */,
 				83DE077B2566AD050085AC72 /* UserLogViewController+UI.swift in Sources */,
@@ -1735,7 +1744,6 @@
 				83DE077C2566AD050085AC72 /* UserLogViewController.swift in Sources */,
 				AA217515254CF5ED0076BAD5 /* TrashCan.swift in Sources */,
 				83DE07732566AD050085AC72 /* StartViewController.swift in Sources */,
-				3E43CA7E2AB61FAD00B6C4D8 /* ViewControllable.swift in Sources */,
 				AA38A738257B692F00B26E1F /* RegistrationRouter.swift in Sources */,
 				83530986257B91E300C3626D /* SettingTableViewCell.swift in Sources */,
 				AAB3B4EC2520B2B400F0311A /* UIImage+Extensions.swift in Sources */,

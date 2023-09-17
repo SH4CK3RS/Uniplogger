@@ -6,22 +6,24 @@
 //  Copyright © 2023 손병근. All rights reserved.
 //
 
+import RIBs
 
-protocol SplashInteractable {
+protocol SplashInteractable: Interactable {
     var router: SplashRouting? { get set }
-    var listener: SplashListener? { get set }
 }
 
 protocol SplashViewControllable: ViewControllable {
     
 }
 
-final class SplashRouter: SplashRouting {
-    let viewController: SplashViewControllable
-    let interactor: SplashInteractable
+final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllable>, SplashRouting {
     
-    init(interactor: SplashInteractable, viewController: SplashViewControllable) {
-        self.interactor = interactor
-        self.viewController = viewController
+    override init(interactor: SplashInteractable, viewController: SplashViewControllable) {
+        super.init(interactor: interactor, viewController: viewController)
+        interactor.router = self
+    }
+    
+    func request(_ request: SplashRouterRequest) {
+        
     }
 }
