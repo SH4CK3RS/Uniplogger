@@ -37,9 +37,11 @@ final class TutorialRootBuilder: Builder<TutorialRootDependency>, TutorialRootBu
         
         let tutorialFirstBuilder = TutorialFirstBuilder(dependency: component)
         let tutorialSecondBuilder = TutorialSecondBuilder(dependency: component)
+        let tutorialThirdBuilder = TutorialThirdBuilder(dependency: component)
         return TutorialRootRouter(interactor: interactor,
                                   viewController: component.tutorialRootViewController,
                                   tutorialFirstBuilder: tutorialFirstBuilder,
-                                  tutorialSecondBuilder: tutorialSecondBuilder)
+                                  tutorialSecondBuilder: tutorialSecondBuilder,
+                                  tutorialThirdBuilder: tutorialThirdBuilder)
     }
 }

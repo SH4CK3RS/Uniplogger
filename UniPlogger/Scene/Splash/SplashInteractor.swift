@@ -15,7 +15,9 @@ import RIBs
 
 enum SplashRouterRequest {
     case routeToTutorial
+    case detachTutorial
     case routeToLogin
+    case routeToRegistration(String)
     case routeToMain
 }
 
@@ -86,5 +88,13 @@ final class SplashInteractor: PresentableInteractor<SplashPresntable>, SplashInt
 
 
 extension SplashInteractor {
-    
+    func request(_ request: TutorialRootListenerRequest) {
+        router?.request(.detachTutorial)
+        switch request {
+        case .skip:
+            router?.request(.routeToLogin)
+        case let .next(nickname):
+            router?.request(.routeToRegistration(nickname))
+        }
+    }
 }

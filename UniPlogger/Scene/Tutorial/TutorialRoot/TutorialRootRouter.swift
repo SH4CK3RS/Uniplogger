@@ -9,7 +9,7 @@
 import RIBs
 import UIKit
 
-protocol TutorialRootInteractable: Interactable, TutorialFirstListener, TutorialSecondListener {
+protocol TutorialRootInteractable: Interactable, TutorialFirstListener, TutorialSecondListener, TutorialThirdListener {
     var router: TutorialRootRouting? { get set }
     var listener: TutorialRootListener? { get set }
 }
@@ -28,17 +28,21 @@ final class TutorialRootRouter: Router<TutorialRootInteractable>, TutorialRootRo
             routeToTutorialFirst()
         case .routeToTutorialSecond:
             routeToTutorialSecond()
+        case .routeToTutorialThird:
+            routeToTutorialThird()
         }
     }
 
     init(interactor: TutorialRootInteractable,
          viewController: TutorialRootViewControllable,
          tutorialFirstBuilder: TutorialFirstBuildable,
-         tutorialSecondBuilder: TutorialSecondBuildable
+         tutorialSecondBuilder: TutorialSecondBuildable,
+         tutorialThirdBuilder: TutorialThirdBuildable
     ) {
         self.viewController = viewController
         self.tutorialFirstBuilder = tutorialFirstBuilder
         self.tutorialSecondBuilder = tutorialSecondBuilder
+        self.tutorialThirdBuilder = tutorialThirdBuilder
         super.init(interactor: interactor)
         interactor.router = self
     }
@@ -53,6 +57,9 @@ final class TutorialRootRouter: Router<TutorialRootInteractable>, TutorialRootRo
     
     private let tutorialSecondBuilder: TutorialSecondBuildable
     private var tutorialSecondRouter: Routing?
+    
+    private let tutorialThirdBuilder: TutorialThirdBuildable
+    private var tutorialThirdRouter: Routing?
     
     private func cleanupViews() {
         if navigationController.isPresented {
@@ -81,6 +88,13 @@ final class TutorialRootRouter: Router<TutorialRootInteractable>, TutorialRootRo
     private func routeToTutorialSecond() {
         let router = tutorialSecondBuilder.build(withListener: interactor)
         tutorialSecondRouter = router
+        attachChild(router)
+        presentNavigationOrPush(with: router.viewControllable)
+    }
+    
+    private func routeToTutorialThird() {
+        let router = tutorialThirdBuilder.build(withListener: interactor)
+        tutorialThirdRouter = router
         attachChild(router)
         presentNavigationOrPush(with: router.viewControllable)
     }

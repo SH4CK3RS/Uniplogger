@@ -13,13 +13,21 @@ enum TutorialRootRouterRequest {
     case cleanUpViews
     case routeToTutorialFirst
     case routeToTutorialSecond
+    case routeToTutorialThird
 }
 
 protocol TutorialRootRouting: Routing {
     func request(_ reqeust: TutorialRootRouterRequest)
 }
 
-protocol TutorialRootListener: AnyObject {}
+enum TutorialRootListenerRequest {
+    case skip
+    case next(String)
+}
+
+protocol TutorialRootListener: AnyObject {
+    func request(_ request: TutorialRootListenerRequest)
+}
 
 final class TutorialRootInteractor: Interactor, TutorialRootInteractable {
 
@@ -56,8 +64,20 @@ extension TutorialRootInteractor {
 extension TutorialRootInteractor {
     func request(_ request: TutorialSecondListenerRequest) {
         switch request {
-        case .next: break
+        case .next:
+            router?.request(.routeToTutorialThird)
         case .skip: break
+        }
+    }
+}
+
+extension TutorialRootInteractor {
+    func request(_ request: TutorialThirdListenerReqeust) {
+        switch request {
+        case .skip:
+            listener?.request(.skip)
+        case let .next(nickname):
+            listener?.request(.next(nickname))
         }
     }
 }
