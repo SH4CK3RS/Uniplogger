@@ -96,6 +96,7 @@ private extension LoginView {
         accountField.do {
             $0.font = .notoSans(ofSize: 16, weight: .regular)
             $0.keyboardType = .emailAddress
+            $0.autocapitalizationType = .none
             $0.backgroundColor = .clear
             $0.borderStyle = .none
             $0.placeholder = "아이디 (이메일)"
