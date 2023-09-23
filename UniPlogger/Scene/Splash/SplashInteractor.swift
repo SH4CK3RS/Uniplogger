@@ -18,6 +18,7 @@ enum SplashRouterRequest {
     case detachTutorial
     case routeToLogin
     case routeToRegistration(String)
+    case detachRegistration
     case routeToMain
 }
 
@@ -86,7 +87,7 @@ final class SplashInteractor: PresentableInteractor<SplashPresntable>, SplashInt
     }
 }
 
-
+// MARK: - TutorialRootListenerRequest
 extension SplashInteractor {
     func request(_ request: TutorialRootListenerRequest) {
         router?.request(.detachTutorial)
@@ -95,6 +96,18 @@ extension SplashInteractor {
             router?.request(.routeToLogin)
         case let .next(nickname):
             router?.request(.routeToRegistration(nickname))
+        }
+    }
+}
+
+// MARK: - RegistrationListenerRequest
+extension SplashInteractor {
+    func request(_ request: RegistrationListenerRequest) {
+        switch request {
+        case .back: break // 올 상황이 없음
+        case .close:
+            router?.request(.detachRegistration)
+            router?.request(.routeToLogin)
         }
     }
 }

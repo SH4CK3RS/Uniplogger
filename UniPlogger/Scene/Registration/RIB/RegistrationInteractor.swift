@@ -24,8 +24,13 @@ protocol RegistrationPresentable: Presentable {
     func request(_ request: RegistrationPresentableRequest)
 }
 
+enum RegistrationListenerRequest {
+    case back
+    case close
+}
+
 protocol RegistrationListener: AnyObject {
-    // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+    func request(_ request: RegistrationListenerRequest)
 }
 
 final class RegistrationInteractor: PresentableInteractor<RegistrationPresentable>, RegistrationInteractable, RegistrationPresentableListener {
@@ -37,11 +42,11 @@ final class RegistrationInteractor: PresentableInteractor<RegistrationPresentabl
     // in constructor.
     init(presenter: RegistrationPresentable,
          service: RegistrationServiceable,
-         nickname: String?) {
+         entryPoint: RegistrationEntryPoint) {
         self.service = service
+        self.entryPoint = entryPoint
         super.init(presenter: presenter)
         presenter.listener = self
-        model.nickname = nickname ?? ""
     }
 
     override func didBecomeActive() {
@@ -57,7 +62,14 @@ final class RegistrationInteractor: PresentableInteractor<RegistrationPresentabl
     func request(_ request: RegistrationPresentableListenerRequest) {
         switch request {
         case .viewDidLoad:
-            presenter.request(.setNickname(model.nickname))
+            if case let .tutorial(nickname) = entryPoint {
+                model.nickname = nickname
+                presenter.request(.setNickname(nickname))
+            }
+        case .backButtonTapped:
+            listener?.request(.back)
+        case .closeButtonTapped:
+            listener?.request(.close)
         case let .accountChanged(account):
             model.nickname = account
             presenter.request(.activateRegistrationButton(model.isRegistrationButtonEnabled))
@@ -76,6 +88,7 @@ final class RegistrationInteractor: PresentableInteractor<RegistrationPresentabl
     }
     
     private let service: RegistrationServiceable
+    private let entryPoint: RegistrationEntryPoint
     private var model = RegistraionModel()
     
     private func handleRegistration() {

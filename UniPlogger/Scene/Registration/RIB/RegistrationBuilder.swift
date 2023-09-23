@@ -7,7 +7,10 @@
 //
 
 import RIBs
-
+enum RegistrationEntryPoint {
+    case login
+    case tutorial(String)
+}
 protocol RegistrationDependency: Dependency {
     // TODO: Declare the set of dependencies required by this RIB, but cannot be
     // created by this RIB.
@@ -22,7 +25,8 @@ final class RegistrationComponent: Component<RegistrationDependency> {
 // MARK: - Builder
 
 protocol RegistrationBuildable: Buildable {
-    func build(withListener listener: RegistrationListener, nickname: String?) -> RegistrationRouting
+    func build(withListener listener: RegistrationListener,
+               entryPoint: RegistrationEntryPoint) -> RegistrationRouting
 }
 
 final class RegistrationBuilder: Builder<RegistrationDependency>, RegistrationBuildable {
@@ -31,12 +35,12 @@ final class RegistrationBuilder: Builder<RegistrationDependency>, RegistrationBu
         super.init(dependency: dependency)
     }
 
-    func build(withListener listener: RegistrationListener, nickname: String?) -> RegistrationRouting {
+    func build(withListener listener: RegistrationListener, entryPoint: RegistrationEntryPoint) -> RegistrationRouting {
         let component = RegistrationComponent(dependency: dependency)
-        let viewController = RegistrationViewController()
+        let viewController = RegistrationViewController(entryPoint: entryPoint)
         let interactor = RegistrationInteractor(presenter: viewController,
                                                 service: component.service,
-                                                nickname: nickname)
+                                                entryPoint: entryPoint)
         interactor.listener = listener
         return RegistrationRouter(interactor: interactor, viewController: viewController)
     }

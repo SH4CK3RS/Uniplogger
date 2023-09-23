@@ -35,8 +35,8 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     }
     
     func routeToRegistration() {
-        let destinationVC = RegistrationViewController()
-        navigateToRegistration(source: viewController!, destination: destinationVC)
+//        let destinationVC = RegistrationViewController()
+//        navigateToRegistration(source: viewController!, destination: destinationVC)
     }
     
     func routeToFindPassword() {

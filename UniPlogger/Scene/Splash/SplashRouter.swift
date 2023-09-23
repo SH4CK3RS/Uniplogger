@@ -38,6 +38,8 @@ final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllabl
             routeToRegistration(nickname: nickname)
         case .detachTutorial:
             detachTutorialRoot()
+        case .detachRegistration:
+            detachRegistration()
         default:
             break
         }
@@ -74,9 +76,16 @@ final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllabl
     }
     
     private func routeToRegistration(nickname: String) {
-        let router = registrationBuilder.build(withListener: interactor, nickname: nickname)
+        let router = registrationBuilder.build(withListener: interactor, entryPoint: .tutorial(nickname))
         registrationRouter = router
         attachChild(router)
         presentNavigationOrPush(with: router.viewControllable)
+    }
+    
+    private func detachRegistration() {
+        guard let router = registrationRouter else { return }
+        registrationRouter = nil
+        navigationController.dismiss(animated: true)
+        detachChild(router)
     }
 }

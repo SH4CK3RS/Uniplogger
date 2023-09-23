@@ -12,6 +12,8 @@ import UIKit
 
 enum RegistrationPresentableListenerRequest {
     case viewDidLoad
+    case backButtonTapped
+    case closeButtonTapped
     case accountChanged(String)
     case passwordChanged(String)
     case passwordConfirmChanged(String)
@@ -25,6 +27,17 @@ protocol RegistrationPresentableListener: AnyObject {
 
 final class RegistrationViewController: UIViewController, RegistrationPresentable, RegistrationViewControllable {
 
+    private let entryPoint: RegistrationEntryPoint
+    
+    init(entryPoint: RegistrationEntryPoint) {
+        self.entryPoint = entryPoint
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         view = mainView
         mainView.listener = self
@@ -50,6 +63,14 @@ final class RegistrationViewController: UIViewController, RegistrationPresentabl
     private func setupNavigation() {
         title = "회원가입"
         navigationController?.navigationBar.tintColor = .text
+        switch entryPoint {
+        case .login:
+            let backIcon = UIImage(systemName: "arrow.left")?.withRenderingMode(.alwaysTemplate)
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: backIcon, style: .plain, target: self, action: #selector(backButtonTapped))
+        case .tutorial:
+            let closeIcon = UIImage(systemName: "xmark")?.withRenderingMode(.alwaysTemplate)
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: closeIcon, style: .plain, target: self, action: #selector(closeButtonTapped))
+        }
     }
     
     func request(_ request: RegistrationPresentableRequest) {
@@ -59,6 +80,16 @@ final class RegistrationViewController: UIViewController, RegistrationPresentabl
         case let .activateRegistrationButton(isActive):
             mainView.activateRegistrationButton(isActive)
         }
+    }
+    
+    @objc
+    private func backButtonTapped() {
+        listener?.request(.backButtonTapped)
+    }
+    
+    @objc
+    private func closeButtonTapped() {
+        listener?.request(.closeButtonTapped)
     }
     
 //    func displayFetchNickname(viewModel: Registration.FetchNickname.ViewModel) {
@@ -99,6 +130,7 @@ final class RegistrationViewController: UIViewController, RegistrationPresentabl
 //            }
 //        }
 //    }
+
 }
 
 extension RegistrationViewController: RegistrationViewListener {
