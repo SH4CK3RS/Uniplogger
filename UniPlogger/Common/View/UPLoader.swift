@@ -7,11 +7,22 @@
 //
 
 import UIKit
+import SnapKit
 
-class UPLoader: UIView {
+final class UPLoader: UIView {
     static let shared = UPLoader()
     
-    let images: [UIImage] = [
+    private init() {
+        super.init(frame: UIScreen.main.bounds)
+        setup()
+        layout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private let images: [UIImage] = [
         UIImage(named: "ic_loading001")!,
         UIImage(named: "ic_loading002")!,
         UIImage(named: "ic_loading003")!,
@@ -20,64 +31,31 @@ class UPLoader: UIView {
         UIImage(named: "ic_loading006")!
     ]
     
-    let timeInterval: TimeInterval = 10
-    var currentTime: TimeInterval = 10
-    var timer: Timer?
+    private let timeInterval: TimeInterval = 10
+    private var currentTime: TimeInterval = 10
+    private var timer: Timer?
     
-    var activityIndicator = UIActivityIndicatorView(style: .large)
     
-    lazy var container: UIView = {
-        let container = UIView(frame: UIScreen.main.bounds)
-        container.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
-        container.isUserInteractionEnabled = true
-        return container
-    }()
+    private let loadingView = UIView()
+    private let loadingImageView = UIImageView()
     
-    lazy var loadingView: UIView = {
-        var loadingView: UIView = UIView()
-        loadingView.frame = CGRect(x: 0, y: 0, width: 80, height: 90)
-        loadingView.backgroundColor = .clear
-        loadingView.clipsToBounds = true
-        //loadingView.layer.cornerRadius = 10
-        return loadingView
-    }()
     
     func show() {
-        self.addSubview(container)
-        container.addSubview(loadingView)
-        loadingView.center = container.center
-        loadingView.layer.shadowColor = UIColor.black.cgColor
-        loadingView.layer.shadowOpacity = 0.05
-        loadingView.layer.shadowOffset = CGSize(width: 0, height: 3)
-        loadingView.layer.shadowRadius = 3
-        
-        
-        let imageView = UIImageView()
-        imageView.animationImages = images
-        imageView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
-        imageView.clipsToBounds = true
-        loadingView.addSubview(imageView)
-        
-        
-        /*loadingView.center = container.center
-         loadingView.addSubview(activityIndicator)
-         activityIndicator.frame = loadingView.bounds
-         activityIndicator.startAnimating()*/
+        if let delegate = UIApplication.shared.delegate,
+           let window = delegate.window {
+            window?.addSubview(self)
+        }
         timerStart()
-        imageView.animationDuration = 3
-        imageView.startAnimating()
-        UIApplication.shared.keyWindow?.addSubview(container)
-        
+        loadingImageView.startAnimating()
     }
     
     func hidden(delay: Double = 0, completion: ((Bool) -> Void)? = nil) {
         UIView.animate(withDuration: 0.2, delay: delay, options: .curveEaseInOut, animations: {
-            //self.activityIndicator.startAnimating()
-            self.container.removeFromSuperview()
+            self.removeFromSuperview()
         }, completion: completion)
     }
     
-    func timerStart() {
+    private func timerStart() {
         if timer != nil {
             timer = nil
             currentTime = timeInterval
@@ -96,5 +74,41 @@ class UPLoader: UIView {
     func timerStop() {
         timer?.invalidate()
         currentTime = timeInterval
+    }
+}
+
+private extension UPLoader {
+    func setup() {
+        backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+        isUserInteractionEnabled = true
+        loadingView.do {
+            $0.frame = CGRect(x: 0, y: 0, width: 80, height: 90)
+            $0.backgroundColor = .clear
+            $0.clipsToBounds = true
+            $0.layer.shadowColor = UIColor.black.cgColor
+            $0.layer.shadowOpacity = 0.05
+            $0.layer.shadowOffset = CGSize(width: 0, height: 3)
+            $0.layer.shadowRadius = 3
+        }
+        loadingImageView.do {
+            $0.animationImages = images
+            $0.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+            $0.clipsToBounds = true
+            $0.animationDuration = 3
+        }
+        addSubview(loadingView)
+        loadingView.addSubview(loadingImageView)
+    }
+    
+    func layout() {
+        loadingView.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+            $0.width.equalTo(80)
+            $0.height.equalTo(90)
+        }
+        loadingImageView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(-10)
+        }
     }
 }
