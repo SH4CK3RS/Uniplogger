@@ -6,6 +6,7 @@
 //  Copyright © 2020 손병근. All rights reserved.
 //
 
+import Foundation
 import Moya
 
 enum AuthAPITarget{
@@ -42,7 +43,7 @@ extension AuthAPITarget: BaseTarget{
         }
     }
     
-    var method: Method{
+    var method: Moya.Method {
         switch self{
         case .login:
             return .post
@@ -123,7 +124,7 @@ extension AuthAPITarget: BaseTarget{
         }
     }
     
-    var sampleData: Data{
+    var sampleData: Data {
       switch self {
       default:
         return Data()

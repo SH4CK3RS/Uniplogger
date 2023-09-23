@@ -6,6 +6,7 @@
 //  Copyright © 2020 손병근. All rights reserved.
 //
 
+import Foundation
 import Alamofire
 
 ///URL Request를 구성하는데 도움을 주는 프로토콜
@@ -19,7 +20,7 @@ protocol APIConfiguration: URLRequestConvertible {
 
 extension APIConfiguration{
     var encoding: ParameterEncoding{
-        switch method{
+        switch method {
         case .post, .patch, .put, .delete:
             return JSONEncoding.default
         default:

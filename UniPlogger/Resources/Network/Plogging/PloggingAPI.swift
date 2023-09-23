@@ -8,6 +8,7 @@
 
 import Moya
 import RxSwift
+import UIKit
 
 struct PloggingAPI {
     typealias Response<T: Codable> = BaseResponse<T>

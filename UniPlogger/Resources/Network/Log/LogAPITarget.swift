@@ -6,6 +6,7 @@
 //  Copyright © 2020 손병근. All rights reserved.
 //
 
+import Foundation
 import Moya
 
 enum LogAPITarget{
@@ -36,7 +37,7 @@ extension LogAPITarget: BaseTarget{
         }
     }
     
-    var method: Method{
+    var method: Moya.Method {
         switch self{
         case .getFeed:
             return .get
@@ -82,7 +83,7 @@ extension LogAPITarget: BaseTarget{
         }
     }
     
-    var sampleData: Data{
+    var sampleData: Data {
       switch self {
       default:
         return Data()

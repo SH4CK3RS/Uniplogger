@@ -6,6 +6,7 @@
 //  Copyright © 2020 손병근. All rights reserved.
 //
 
+import Foundation
 import Moya
 
 enum QuestAPITarget {
@@ -34,7 +35,7 @@ extension QuestAPITarget: BaseTarget {
         return [:]
     }
     
-    var method: Method {
+    var method: Moya.Method {
         return .get
     }
     

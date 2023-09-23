@@ -6,7 +6,9 @@
 //  Copyright © 2020 손병근. All rights reserved.
 //
 
+import UIKit
 import Moya
+import Alamofire
 
 enum PloggingAPITarget{
     //쓰레기통 CRUD
@@ -16,7 +18,7 @@ enum PloggingAPITarget{
     case deleteTrashCan(id: Int64)
 }
 
-extension PloggingAPITarget: BaseTarget{
+extension PloggingAPITarget: BaseTarget {
     var path: String{
         switch self{
         case .createTrash:
@@ -30,7 +32,7 @@ extension PloggingAPITarget: BaseTarget{
         }
     }
     
-    var method: Method{
+    var method: Moya.Method {
         switch self{
         case .createTrash:
             return .post
@@ -61,7 +63,7 @@ extension PloggingAPITarget: BaseTarget{
         }
     }
     
-    var task: Task{
+    var task: Task {
         switch self{
         case .createTrash:
             return .requestParameters(parameters: parameters, encoding: encoding)
@@ -83,7 +85,7 @@ extension PloggingAPITarget: BaseTarget{
         
     }
     
-    var sampleData: Data{
+    var sampleData: Data {
       switch self {
       default:
         return Data()
