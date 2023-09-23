@@ -9,7 +9,7 @@
 import RIBs
 import UIKit
 
-protocol SplashInteractable: Interactable, TutorialRootListener, RegistrationListener {
+protocol SplashInteractable: Interactable, TutorialRootListener, RegistrationListener, LoginListener {
     var router: SplashRouting? { get set }
 }
 
@@ -23,8 +23,10 @@ final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllabl
     init(interactor: SplashInteractable,
          viewController: SplashViewControllable,
          tutorialRootBuilder: TutorialRootBuildable,
+         loginBuilder: LoginBuildable,
          registrationBuilder: RegistrationBuildable) {
         self.tutorialRootBuilder = tutorialRootBuilder
+        self.loginBuilder = loginBuilder
         self.registrationBuilder = registrationBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
@@ -34,12 +36,14 @@ final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllabl
         switch request {
         case .routeToTutorial:
             routeToTutorialRoot()
-        case let .routeToRegistration(nickname):
-            routeToRegistration(nickname: nickname)
+        case let .routeToRegistration(entryPoint):
+            routeToRegistration(entryPoint: entryPoint)
         case .detachTutorial:
             detachTutorialRoot()
-        case .detachRegistration:
-            detachRegistration()
+        case .routeToLogin:
+            routeToLogin()
+        case let .detachRegistration(completion):
+            detachRegistration(completion: completion)
         default:
             break
         }
@@ -50,8 +54,11 @@ final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllabl
     private let tutorialRootBuilder: TutorialRootBuildable
     private var tutorialRootRouter: Routing?
     
+    private let loginBuilder: LoginBuildable
+    private var loginRouter: LoginRouting?
+    
     private let registrationBuilder: RegistrationBuildable
-    private var registrationRouter: Routing?
+    private var registrationRouter: RegistrationRouting?
     
     private func presentNavigationOrPush(with viewController: ViewControllable) {
         if navigationController.isPresented {
@@ -60,6 +67,15 @@ final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllabl
             navigationController.modalPresentationStyle = .fullScreen
             navigationController.setViewControllers([viewController.uiviewController], animated: false)
             self.viewController.present(navigationController, animated: true)
+        }
+    }
+    
+    private func dismissOrPop(with viewController: ViewControllable, completion: (()-> Void)? = nil) {
+        if navigationController.viewControllers.count > 1 {
+            navigationController.popViewController(animated: true)
+        } else {
+            navigationController.setViewControllers([], animated: false)
+            navigationController.dismiss(animated: true, completion: completion)
         }
     }
     
@@ -75,17 +91,24 @@ final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllabl
         detachChild(router)
     }
     
-    private func routeToRegistration(nickname: String) {
-        let router = registrationBuilder.build(withListener: interactor, entryPoint: .tutorial(nickname))
+    private func routeToLogin() {
+        let router = loginBuilder.build(withListener: interactor)
+        loginRouter = router
+        attachChild(router)
+        presentNavigationOrPush(with: router.viewControllable)
+    }
+    
+    private func routeToRegistration(entryPoint: RegistrationEntryPoint) {
+        let router = registrationBuilder.build(withListener: interactor, entryPoint: entryPoint)
         registrationRouter = router
         attachChild(router)
         presentNavigationOrPush(with: router.viewControllable)
     }
     
-    private func detachRegistration() {
+    private func detachRegistration(completion: (() -> Void)?) {
         guard let router = registrationRouter else { return }
         registrationRouter = nil
-        navigationController.dismiss(animated: true)
         detachChild(router)
+        dismissOrPop(with: router.viewControllable, completion: completion)
     }
 }

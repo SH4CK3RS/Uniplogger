@@ -44,6 +44,14 @@
 		3EDD65122ABA152A00776C34 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD65112ABA152A00776C34 /* RegistrationModel.swift */; };
 		3EDD65142ABA190400776C34 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD65132ABA190400776C34 /* RegistrationService.swift */; };
 		3EDD65162ABB39BB00776C34 /* SplashComponent+Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD65152ABB39BB00776C34 /* SplashComponent+Registration.swift */; };
+		3EDD651C2ABF09DB00776C34 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD65182ABF09DB00776C34 /* LoginRouter.swift */; };
+		3EDD651D2ABF09DB00776C34 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD65192ABF09DB00776C34 /* LoginViewController.swift */; };
+		3EDD651E2ABF09DB00776C34 /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD651A2ABF09DB00776C34 /* LoginBuilder.swift */; };
+		3EDD651F2ABF09DB00776C34 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD651B2ABF09DB00776C34 /* LoginInteractor.swift */; };
+		3EDD65212ABF09E300776C34 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD65202ABF09E300776C34 /* LoginView.swift */; };
+		3EDD65232ABF105F00776C34 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD65222ABF105F00776C34 /* LoginService.swift */; };
+		3EDD65252ABF106500776C34 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD65242ABF106500776C34 /* LoginModel.swift */; };
+		3EDD65272ABF15FC00776C34 /* SplashComponent+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD65262ABF15FC00776C34 /* SplashComponent+Login.swift */; };
 		4C2D058C25562E4F00FA787F /* QuestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D058B25562E4F00FA787F /* QuestRouter.swift */; };
 		4C2D059B2556459400FA787F /* QuestDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D059A2556459400FA787F /* QuestDetailPresenter.swift */; };
 		4C3F54A4256123CE006D7C9F /* QuestListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F54A3256123CE006D7C9F /* QuestListTests.swift */; };
@@ -182,12 +190,6 @@
 		AA38A6D5257A761200B26E1F /* NetworkerrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A6D4257A761200B26E1F /* NetworkerrorManager.swift */; };
 		AA38A6D9257A780700B26E1F /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A6D8257A780700B26E1F /* UIApplication+Extensions.swift */; };
 		AA38A6DD257A78F100B26E1F /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A6DC257A78F100B26E1F /* UIViewController+Extensions.swift */; };
-		AA38A721257A9DFA00B26E1F /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A71B257A9DFA00B26E1F /* LoginPresenter.swift */; };
-		AA38A722257A9DFA00B26E1F /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A71C257A9DFA00B26E1F /* LoginWorker.swift */; };
-		AA38A723257A9DFA00B26E1F /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A71D257A9DFA00B26E1F /* LoginRouter.swift */; };
-		AA38A724257A9DFA00B26E1F /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A71E257A9DFA00B26E1F /* LoginModels.swift */; };
-		AA38A725257A9DFA00B26E1F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A71F257A9DFA00B26E1F /* LoginViewController.swift */; };
-		AA38A726257A9DFA00B26E1F /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A720257A9DFA00B26E1F /* LoginInteractor.swift */; };
 		AA38A785257BD4B400B26E1F /* TrashDetailPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A784257BD4B400B26E1F /* TrashDetailPopupView.swift */; };
 		AA38A789257BD80700B26E1F /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38A788257BD80700B26E1F /* NSAttributedString+Extensions.swift */; };
 		AA4AD55425725C920087E060 /* LogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4AD55225725C920087E060 /* LogAPI.swift */; };
@@ -337,6 +339,14 @@
 		3EDD65112ABA152A00776C34 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
 		3EDD65132ABA190400776C34 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
 		3EDD65152ABB39BB00776C34 /* SplashComponent+Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashComponent+Registration.swift"; sourceTree = "<group>"; };
+		3EDD65182ABF09DB00776C34 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		3EDD65192ABF09DB00776C34 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3EDD651A2ABF09DB00776C34 /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
+		3EDD651B2ABF09DB00776C34 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		3EDD65202ABF09E300776C34 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		3EDD65222ABF105F00776C34 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		3EDD65242ABF106500776C34 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		3EDD65262ABF15FC00776C34 /* SplashComponent+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashComponent+Login.swift"; sourceTree = "<group>"; };
 		4C2D058B25562E4F00FA787F /* QuestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestRouter.swift; sourceTree = "<group>"; };
 		4C2D059A2556459400FA787F /* QuestDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDetailPresenter.swift; sourceTree = "<group>"; };
 		4C3F54A1256123CE006D7C9F /* QuestListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuestListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -486,12 +496,6 @@
 		AA38A6D4257A761200B26E1F /* NetworkerrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkerrorManager.swift; sourceTree = "<group>"; };
 		AA38A6D8257A780700B26E1F /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		AA38A6DC257A78F100B26E1F /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
-		AA38A71B257A9DFA00B26E1F /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
-		AA38A71C257A9DFA00B26E1F /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
-		AA38A71D257A9DFA00B26E1F /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
-		AA38A71E257A9DFA00B26E1F /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
-		AA38A71F257A9DFA00B26E1F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		AA38A720257A9DFA00B26E1F /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		AA38A784257BD4B400B26E1F /* TrashDetailPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashDetailPopupView.swift; sourceTree = "<group>"; };
 		AA38A788257BD80700B26E1F /* NSAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		AA38A7AC257CB20400B26E1F /* UniPlogger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UniPlogger.entitlements; sourceTree = "<group>"; };
@@ -670,6 +674,7 @@
 			children = (
 				3EDD64E82AB6EAE000776C34 /* SplashComponent+TutorialRoot.swift */,
 				3EDD65152ABB39BB00776C34 /* SplashComponent+Registration.swift */,
+				3EDD65262ABF15FC00776C34 /* SplashComponent+Login.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1134,12 +1139,13 @@
 		AA38A71A257A9DE800B26E1F /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				AA38A71B257A9DFA00B26E1F /* LoginPresenter.swift */,
-				AA38A71C257A9DFA00B26E1F /* LoginWorker.swift */,
-				AA38A71D257A9DFA00B26E1F /* LoginRouter.swift */,
-				AA38A71E257A9DFA00B26E1F /* LoginModels.swift */,
-				AA38A71F257A9DFA00B26E1F /* LoginViewController.swift */,
-				AA38A720257A9DFA00B26E1F /* LoginInteractor.swift */,
+				3EDD65182ABF09DB00776C34 /* LoginRouter.swift */,
+				3EDD65192ABF09DB00776C34 /* LoginViewController.swift */,
+				3EDD651A2ABF09DB00776C34 /* LoginBuilder.swift */,
+				3EDD651B2ABF09DB00776C34 /* LoginInteractor.swift */,
+				3EDD65202ABF09E300776C34 /* LoginView.swift */,
+				3EDD65222ABF105F00776C34 /* LoginService.swift */,
+				3EDD65242ABF106500776C34 /* LoginModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1687,6 +1693,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83DE077A2566AD050085AC72 /* UserLogRouter.swift in Sources */,
+				3EDD651E2ABF09DB00776C34 /* LoginBuilder.swift in Sources */,
 				835249162577A6C500C9F495 /* ReportInteractor.swift in Sources */,
 				AA4AD5A12574058E0087E060 /* AuthManager.swift in Sources */,
 				4C401EAF253DE19100ABED84 /* ShareRouter.swift in Sources */,
@@ -1709,6 +1716,7 @@
 				AA4AD56925725D0D0087E060 /* ImageDownloadManager.swift in Sources */,
 				8355DF4B25858138001C63A5 /* ImagePreviewViewController.swift in Sources */,
 				3EDD65012AB70AC700776C34 /* TutorialThirdInteractor.swift in Sources */,
+				3EDD651C2ABF09DB00776C34 /* LoginRouter.swift in Sources */,
 				AA7F54E12532C176001C4012 /* UserDefault+Extensions.swift in Sources */,
 				835249242577A73600C9F495 /* ReportWorker.swift in Sources */,
 				AA2CAE0A2543EAD600105748 /* PloggingRecordRouter.swift in Sources */,
@@ -1723,18 +1731,17 @@
 				835248A02572C9BF00C9F495 /* ChallengeAPI.swift in Sources */,
 				3EDD64F82AB7094A00776C34 /* TutorialRootComponent+TutorialSecond.swift in Sources */,
 				AA7F551D2533568D001C4012 /* SharePresenter.swift in Sources */,
-				AA38A724257A9DFA00B26E1F /* LoginModels.swift in Sources */,
 				4CE9149A257BB33000BCF398 /* QuestTutorialViewController3.swift in Sources */,
 				AA7658F3258279A500BA0A3E /* FindPasswordViewController.swift in Sources */,
-				AA38A725257A9DFA00B26E1F /* LoginViewController.swift in Sources */,
 				83DE07752566AD050085AC72 /* DetailViewController.swift in Sources */,
 				AAB3B4F12520B37100F0311A /* UIView+Extensions.swift in Sources */,
+				3EDD651D2ABF09DB00776C34 /* LoginViewController.swift in Sources */,
 				3EDD64E32AB6DE9100776C34 /* TutorialFirstView.swift in Sources */,
 				83530970257B918D00C3626D /* WithdrawViewController.swift in Sources */,
 				AA7F551F2533568D001C4012 /* ShareViewController.swift in Sources */,
 				AA7658F4258279A500BA0A3E /* FindPasswordInteractor.swift in Sources */,
+				3EDD65212ABF09E300776C34 /* LoginView.swift in Sources */,
 				83530992257B9D3F00C3626D /* WithdrawViewController+UI.swift in Sources */,
-				AA38A726257A9DFA00B26E1F /* LoginInteractor.swift in Sources */,
 				83DE07842566AD050085AC72 /* RankTableViewCell.swift in Sources */,
 				4C3F5747256D5A7B006D7C9F /* QuestChecker.swift in Sources */,
 				3E43CA7A2AB61CF200B6C4D8 /* SplashBuilder.swift in Sources */,
@@ -1758,7 +1765,6 @@
 				835248B025743FD700C9F495 /* UserLogPresenter.swift in Sources */,
 				AA4AD579257265FF0087E060 /* DetailWorker.swift in Sources */,
 				3E43CA7C2AB61D1400B6C4D8 /* SplashRouter.swift in Sources */,
-				AA38A721257A9DFA00B26E1F /* LoginPresenter.swift in Sources */,
 				AAB559312549B846000BB903 /* Location.swift in Sources */,
 				AA7F551E2533568D001C4012 /* ShareInteractor.swift in Sources */,
 				4C42366525727A3D0068A252 /* QuestDetailInteractor.swift in Sources */,
@@ -1808,6 +1814,7 @@
 				4C6F0ABA257B8AEA008DF8D1 /* SuccessPopupView.swift in Sources */,
 				4C2D059B2556459400FA787F /* QuestDetailPresenter.swift in Sources */,
 				AA7658F0258279A500BA0A3E /* FindPasswordWorker.swift in Sources */,
+				3EDD65252ABF106500776C34 /* LoginModel.swift in Sources */,
 				4CF62089257B11750029FBD6 /* ProceedingQuest+CoreDataClass.swift in Sources */,
 				AAC9584F2545BC110092BA6E /* ScrollStackView.swift in Sources */,
 				AA7F55252533568D001C4012 /* ShareModels.swift in Sources */,
@@ -1818,7 +1825,6 @@
 				4CC9C7CE252315E0004D873D /* QuestPresenter.swift in Sources */,
 				3EDD65122ABA152A00776C34 /* RegistrationModel.swift in Sources */,
 				AA5EFBB82552AE3D00B5BD5B /* PloggingRecordCollectionViewLayout.swift in Sources */,
-				AA38A722257A9DFA00B26E1F /* LoginWorker.swift in Sources */,
 				3EDD64F22AB704BC00776C34 /* TutorialSecondViewController.swift in Sources */,
 				83530984257B91E300C3626D /* SettingViewController.swift in Sources */,
 				8352484F2572283C00C9F495 /* InfoTableViewCell.swift in Sources */,
@@ -1829,6 +1835,7 @@
 				8352481D257227BA00C9F495 /* SplashInteractor.swift in Sources */,
 				AAE05CE92568E3D400547501 /* Data+Extensions.swift in Sources */,
 				4C8956862532E3230099934E /* QuestTableViewCell.swift in Sources */,
+				3EDD651F2ABF09DB00776C34 /* LoginInteractor.swift in Sources */,
 				AA7F54F22532C1A6001C4012 /* PloggingViewController.swift in Sources */,
 				4C423647257232260068A252 /* QuestAPITarget.swift in Sources */,
 				3EDD650C2ABA0EFB00776C34 /* RegistrationViewController.swift in Sources */,
@@ -1869,6 +1876,7 @@
 				AA7F5528253356BE001C4012 /* PhotoManager.swift in Sources */,
 				8352484E2572283C00C9F495 /* MyPageViewController.swift in Sources */,
 				83DE077C2566AD050085AC72 /* UserLogViewController.swift in Sources */,
+				3EDD65272ABF15FC00776C34 /* SplashComponent+Login.swift in Sources */,
 				AA217515254CF5ED0076BAD5 /* TrashCan.swift in Sources */,
 				83DE07732566AD050085AC72 /* StartViewController.swift in Sources */,
 				83530986257B91E300C3626D /* SettingTableViewCell.swift in Sources */,
@@ -1919,13 +1927,13 @@
 				8352484C2572283C00C9F495 /* MyPageModels.swift in Sources */,
 				3EDD65052AB7447900776C34 /* TutorialRootComponent+TutorialThird.swift in Sources */,
 				AAB559352549BA2D000BB903 /* MultiColorPolyline.swift in Sources */,
-				AA38A723257A9DFA00B26E1F /* LoginRouter.swift in Sources */,
 				AA38A6DD257A78F100B26E1F /* UIViewController+Extensions.swift in Sources */,
 				3EDD64D72AB6DCCA00776C34 /* TutorialRootBuilder.swift in Sources */,
 				AAB3B4F92520B5B600F0311A /* Common.swift in Sources */,
 				835248AC25743C7200C9F495 /* UserLogInteractor.swift in Sources */,
 				3EDD64DF2AB6DDEB00776C34 /* TutorialFirstViewController.swift in Sources */,
 				83DE077E2566AD050085AC72 /* ChallengeWorker.swift in Sources */,
+				3EDD65232ABF105F00776C34 /* LoginService.swift in Sources */,
 				AAC552C62585C4C6000DAFDF /* ResetPasswordRouter.swift in Sources */,
 				835248602572285100C9F495 /* LogNavigationController.swift in Sources */,
 				4CE914AF257C01FD00BCF398 /* NextButtonView.swift in Sources */,

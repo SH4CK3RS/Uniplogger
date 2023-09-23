@@ -31,10 +31,12 @@ final class SplashBuilder: Builder<SplashDependency>, SplashBuildable {
                                         splashViewController: viewController)
         let interactor = SplashInteractor(presenter: viewController)
         let tutorialRootBuilder = TutorialRootBuilder(dependency: component)
+        let loginBuilder = LoginBuilder(dependency: component)
         let registrationBuilder = RegistrationBuilder(dependency: component)
         return SplashRouter(interactor: interactor,
                             viewController: viewController,
                             tutorialRootBuilder: tutorialRootBuilder,
+                            loginBuilder: loginBuilder,
                             registrationBuilder: registrationBuilder)
     }
 }

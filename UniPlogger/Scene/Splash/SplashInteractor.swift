@@ -17,8 +17,8 @@ enum SplashRouterRequest {
     case routeToTutorial
     case detachTutorial
     case routeToLogin
-    case routeToRegistration(String)
-    case detachRegistration
+    case routeToRegistration(RegistrationEntryPoint)
+    case detachRegistration(completion: (() -> Void)?)
     case routeToMain
 }
 
@@ -95,7 +95,21 @@ extension SplashInteractor {
         case .skip:
             router?.request(.routeToLogin)
         case let .next(nickname):
-            router?.request(.routeToRegistration(nickname))
+            router?.request(.routeToRegistration(.tutorial(nickname)))
+        }
+    }
+}
+
+// MARK: - LoginListenerRequest
+extension SplashInteractor {
+    func request(_ request: LoginListenerRequest) {
+        switch request {
+        case .loginFinished:
+            break
+        case .registration:
+            router?.request(.routeToRegistration(.login))
+        case .findPassword:
+            break
         }
     }
 }
@@ -104,10 +118,12 @@ extension SplashInteractor {
 extension SplashInteractor {
     func request(_ request: RegistrationListenerRequest) {
         switch request {
-        case .back: break // 올 상황이 없음
+        case .back:
+            router?.request(.detachRegistration(completion: nil))
         case .close:
-            router?.request(.detachRegistration)
-            router?.request(.routeToLogin)
+            router?.request(.detachRegistration(completion: { [weak router] in
+                router?.request(.routeToLogin)
+            }))
         }
     }
 }

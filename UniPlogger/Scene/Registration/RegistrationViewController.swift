@@ -26,9 +26,6 @@ protocol RegistrationPresentableListener: AnyObject {
 }
 
 final class RegistrationViewController: UIViewController, RegistrationPresentable, RegistrationViewControllable {
-
-    private let entryPoint: RegistrationEntryPoint
-    
     init(entryPoint: RegistrationEntryPoint) {
         self.entryPoint = entryPoint
         super.init(nibName: nil, bundle: nil)
@@ -58,6 +55,7 @@ final class RegistrationViewController: UIViewController, RegistrationPresentabl
     weak var listener: RegistrationPresentableListener?
     
     // MARK: - Private
+    private let entryPoint: RegistrationEntryPoint
     private let mainView = RegistrationView()
     
     private func setupNavigation() {
