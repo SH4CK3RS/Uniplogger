@@ -27,7 +27,7 @@ struct LogAPI {
             .map(Response<[Feed]>.self)
             .subscribe {
                 completionHandler(.success($0))
-            } onError: {
+            } onFailure: {
                 completionHandler(.failure($0))
             }.disposed(by: self.disposeBag)
     }
@@ -38,7 +38,7 @@ struct LogAPI {
             .map(Response<[Feed]>.self)
             .subscribe {
                 completionHandler(.success($0))
-            } onError: {
+            } onFailure: {
                 completionHandler(.failure($0))
             }.disposed(by: self.disposeBag)
     }
@@ -49,7 +49,7 @@ struct LogAPI {
             .map(BaseResponse<User>.self)
             .subscribe {
                 completionHandler(.success($0))
-            } onError: {
+            } onFailure: {
                 completionHandler(.failure($0))
             }.disposed(by: disposeBag)
     }
@@ -59,7 +59,7 @@ struct LogAPI {
             .filterSuccessfulStatusCodes()
             .subscribe { _ in
                 completionHandler(.success(()))
-            } onError: {
+            } onFailure: {
                 completionHandler(.failure($0))
             }.disposed(by: disposeBag)
     }
@@ -70,7 +70,7 @@ struct LogAPI {
             .map(Response<User>.self)
             .subscribe {
                 completionHandler(.success($0))
-            } onError: {
+            } onFailure: {
                 completionHandler(.failure($0))
             }.disposed(by: disposeBag)
     }
@@ -80,7 +80,7 @@ struct LogAPI {
             .filterSuccessfulStatusCodes()
             .subscribe { _ in
                 completionHandler(.success(()))
-            } onError: {
+            } onFailure: {
                 completionHandler(.failure($0))
             }.disposed(by: disposeBag)
     }

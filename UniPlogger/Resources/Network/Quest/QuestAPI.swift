@@ -25,7 +25,7 @@ struct QuestAPI {
             .map(Response<[QuestResponse]>.self)
             .subscribe {
                 completionHandler(.success($0))
-            } onError: {
+            } onFailure: {
                 completionHandler(.failure($0))
             }
             .disposed(by: disposeBag)
@@ -37,7 +37,7 @@ struct QuestAPI {
             .map(Response<QuestResponse>.self)
             .subscribe {
                 completionHandler(.success($0))
-            } onError: {
+            } onFailure: {
                 completionHandler(.failure($0))
             }
             .disposed(by: disposeBag)
@@ -48,7 +48,7 @@ struct QuestAPI {
             .filterSuccessfulStatusCodes()
             .subscribe {
                 completionHandler($0.statusCode)
-            } onError: {
+            } onFailure: {
                 debugPrint($0)
             }
             .disposed(by: disposeBag)
@@ -59,7 +59,7 @@ struct QuestAPI {
             .filterSuccessfulStatusCodes()
             .subscribe {
                 completionHandler($0.statusCode)
-            } onError: {
+            } onFailure: {
                 debugPrint($0)
             }
             .disposed(by: disposeBag)
@@ -70,7 +70,7 @@ struct QuestAPI {
             .filterSuccessfulStatusCodes()
             .subscribe {
                 completionHandler($0.statusCode)
-            } onError: {
+            } onFailure: {
                 debugPrint($0)
             }
             .disposed(by: disposeBag)
@@ -81,7 +81,7 @@ struct QuestAPI {
             .filterSuccessfulStatusCodes()
             .subscribe {
                 completionHandler($0.statusCode)
-            } onError: {
+            } onFailure: {
                 debugPrint($0)
             }
             .disposed(by: disposeBag)

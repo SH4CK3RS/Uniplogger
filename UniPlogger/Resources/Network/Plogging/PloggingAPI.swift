@@ -27,7 +27,7 @@ struct PloggingAPI {
             .map(Response<TrashCan>.self)
             .subscribe {
                 completionHandler(.success($0))
-            } onError: {
+            } onFailure: {
               completionHandler(.failure($0))
             }.disposed(by: disposeBag)
     }
@@ -38,7 +38,7 @@ struct PloggingAPI {
             .map(Response<[TrashCan]>.self)
             .subscribe(onSuccess: {
                 completionHandler(.success($0))
-            }, onError: { completionHandler(.failure($0)) })
+            }, onFailure: { completionHandler(.failure($0)) })
             .disposed(by: disposeBag)
     }
     
@@ -48,7 +48,7 @@ struct PloggingAPI {
             .map(Response<TrashCan>.self)
             .subscribe {
                 completionHandler(.success($0))
-            } onError: {
+            } onFailure: {
                 completionHandler(.failure($0))
             }.disposed(by: self.disposeBag)
     }
@@ -59,7 +59,7 @@ struct PloggingAPI {
             .map(Response<Feed>.self)
             .subscribe {
                 completionHandler(.success($0))
-            } onError: {
+            } onFailure: {
                 print($0.localizedDescription)
                 completionHandler(.failure($0))
             }.disposed(by: self.disposeBag)

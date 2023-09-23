@@ -26,7 +26,7 @@ struct AuthAPI {
             .map(Response<LoginResponse>.self)
             .subscribe {
                 completionHandler(.success($0))
-            } onError: {
+            } onFailure: {
                 completionHandler(.failure($0))
             }.disposed(by: disposeBag)
     }
@@ -37,7 +37,7 @@ struct AuthAPI {
             .map(Response<User>.self)
             .subscribe {
                 completionHandler(.success($0))
-            } onError: {
+            } onFailure: {
                 completionHandler(.failure($0))
             }.disposed(by: disposeBag)
     }
@@ -48,7 +48,7 @@ struct AuthAPI {
             .map(Response<LoginResponse>.self)
             .subscribe {
                 completion(.success($0))
-            } onError: {
+            } onFailure: {
                 completion(.failure($0))
             }.disposed(by: disposeBag)
     }
@@ -64,7 +64,7 @@ struct AuthAPI {
             .filterSuccessfulStatusCodes()
             .subscribe { (data) in
                 print(data)
-            } onError: { (error) in
+            } onFailure: { (error) in
                 print(error.localizedDescription)
             }.disposed(by: disposeBag)
 
@@ -75,7 +75,7 @@ struct AuthAPI {
             .filterSuccessfulStatusCodes()
             .subscribe { (data) in
                 print(data)
-            } onError: { (error) in
+            } onFailure: { (error) in
                 print(error.localizedDescription)
             }.disposed(by: disposeBag)
     }
@@ -86,7 +86,7 @@ struct AuthAPI {
             .map (Response<FindPasswordResponse>.self)
             .subscribe {
                 completion(.success($0))
-            } onError: {
+            } onFailure: {
                 completion(.failure($0))
             }.disposed(by: disposeBag)
     }
@@ -97,7 +97,7 @@ struct AuthAPI {
             .map (Response<ResetPasswordResponse>.self)
             .subscribe {
                 completion(.success($0))
-            } onError: {
+            } onFailure: {
                 completion(.failure($0))
             }.disposed(by: disposeBag)
     }

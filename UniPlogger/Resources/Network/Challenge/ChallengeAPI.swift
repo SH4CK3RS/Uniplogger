@@ -29,7 +29,7 @@ struct ChallengeAPI {
             .map(Response<Bool>.self)
             .subscribe(onSuccess: {
                 completion(.success($0))
-            }, onError: { completion(.failure($0)) })
+            }, onFailure: { completion(.failure($0)) })
             .disposed(by: disposeBag)
 
     }
@@ -40,7 +40,7 @@ struct ChallengeAPI {
             .map(Response<Planet?>.self)
             .subscribe(onSuccess: {
                 completionHandler(.success($0))
-            }, onError: { completionHandler(.failure($0)) })
+            }, onFailure: { completionHandler(.failure($0)) })
             .disposed(by: disposeBag)
     }
     
@@ -51,7 +51,7 @@ struct ChallengeAPI {
             .subscribe(onSuccess: {
                 print("success")
                 completion(.success($0))
-            }, onError: {
+            }, onFailure: {
                 print("error")
                 completion(.failure($0))
             })
