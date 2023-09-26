@@ -7,40 +7,27 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol LoginServiceable {
-    func login(model: LoginModel, completion: @escaping () -> Void)
+    func login(model: LoginModel, completion: @escaping (Result<LoginResponse, Common.CommonError>) -> Void)
 }
-    
+
 struct LoginService: LoginServiceable {
-    func login(model: LoginModel, completion: @escaping () -> Void) {
+    func login(model: LoginModel, completion: @escaping (Result<LoginResponse, Common.CommonError>) -> Void) {
         AuthAPI.shared.login(email: model.account,
-                             password: model.password) { (response) in
-            switch response {
-            case .success(let value):
-                if value.success, let loginResponse = value.data {
-//                    let response = Login.Login.Response(request:request, response: loginResponse)
-//                    completion(response)
-                    completion()
+                             password: model.password) {
+            switch $0 {
+            case let .success(response):
+                if response.success, let loginResponse = response.data {
+                    completion(.success(loginResponse))
                 } else {
-//                    let response = Login.Login.Response(request:request, error: .server(value.message))
-//                    completion(response)
-                    completion()
+                    completion(.failure(.server(response.message)))
                 }
-                
-            case .failure(let error):
-                print(error.localizedDescription)
-                completion()
+            case let .failure(error):
+                completion(.failure(.error(error)))
             }
         }
-        
-//        guard let loginResponse = response.response,
-//              response.error == nil else {
-//            viewController?.displayError(error: response.error!, useCase: .Login(response.request))
-//            return
-//        }
-//        AuthManager.shared.userToken = loginResponse.token
-//        AuthManager.shared.user = loginResponse.user
     }
 }
 

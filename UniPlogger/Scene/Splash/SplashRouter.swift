@@ -9,7 +9,7 @@
 import RIBs
 import UIKit
 
-protocol SplashInteractable: Interactable, TutorialRootListener, RegistrationListener, LoginListener {
+protocol SplashInteractable: Interactable, TutorialRootListener, RegistrationListener, LoginListener, MainTabBarListener {
     var router: SplashRouting? { get set }
 }
 
@@ -24,10 +24,12 @@ final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllabl
          viewController: SplashViewControllable,
          tutorialRootBuilder: TutorialRootBuildable,
          loginBuilder: LoginBuildable,
-         registrationBuilder: RegistrationBuildable) {
+         registrationBuilder: RegistrationBuildable,
+         mainTabBarBuilder: MainTabBarBuildable) {
         self.tutorialRootBuilder = tutorialRootBuilder
         self.loginBuilder = loginBuilder
         self.registrationBuilder = registrationBuilder
+        self.mainTabBarBuilder = mainTabBarBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
@@ -42,10 +44,12 @@ final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllabl
             detachTutorialRoot()
         case .routeToLogin:
             routeToLogin()
+        case let .detachLogin(completion):
+            detachLogin(completion: completion)
         case let .detachRegistration(completion):
             detachRegistration(completion: completion)
-        default:
-            break
+        case .routeToMain:
+            routeToMainTabBar()
         }
     }
     
@@ -59,6 +63,9 @@ final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllabl
     
     private let registrationBuilder: RegistrationBuildable
     private var registrationRouter: RegistrationRouting?
+    
+    private let mainTabBarBuilder: MainTabBarBuildable
+    private var mainTabBarRouter: MainTabBarRouting?
     
     private func presentNavigationOrPush(with viewController: ViewControllable) {
         if navigationController.isPresented {
@@ -98,6 +105,13 @@ final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllabl
         presentNavigationOrPush(with: router.viewControllable)
     }
     
+    private func detachLogin(completion: (() -> Void)?) {
+        guard let router = loginRouter else { return }
+        loginRouter = nil
+        detachChild(router)
+        dismissOrPop(with: router.viewControllable, completion: completion)
+    }
+    
     private func routeToRegistration(entryPoint: RegistrationEntryPoint) {
         let router = registrationBuilder.build(withListener: interactor, entryPoint: entryPoint)
         registrationRouter = router
@@ -110,5 +124,13 @@ final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllabl
         registrationRouter = nil
         detachChild(router)
         dismissOrPop(with: router.viewControllable, completion: completion)
+    }
+    
+    private func routeToMainTabBar() {
+        let router = mainTabBarBuilder.build(withListener: interactor)
+        mainTabBarRouter = router
+        router.viewControllable.uiviewController.modalPresentationStyle = .fullScreen
+        viewController.present(router.viewControllable, animated: true)
+        attachChild(router)
     }
 }

@@ -11,6 +11,23 @@
 		3E2FB85E2ABF1DF10096F554 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 3E2FB85D2ABF1DF10096F554 /* RxMoya */; };
 		3E2FB8612ABF1E3A0096F554 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3E2FB8602ABF1E3A0096F554 /* RxCocoa */; };
 		3E2FB8632ABF1E3A0096F554 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 3E2FB8622ABF1E3A0096F554 /* RxRelay */; };
+		3E2FB8662ABF525F0096F554 /* LoginResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E2FB8652ABF525F0096F554 /* LoginResponse.json */; };
+		3E2FB86C2ABFFBFC0096F554 /* MainTabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB8682ABFFBFC0096F554 /* MainTabBarRouter.swift */; };
+		3E2FB86D2ABFFBFC0096F554 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB8692ABFFBFC0096F554 /* MainTabBarViewController.swift */; };
+		3E2FB86E2ABFFBFC0096F554 /* MainTabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB86A2ABFFBFC0096F554 /* MainTabBarBuilder.swift */; };
+		3E2FB86F2ABFFBFC0096F554 /* MainTabBarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB86B2ABFFBFC0096F554 /* MainTabBarInteractor.swift */; };
+		3E2FB8752AC0016F0096F554 /* PloggingRootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB8712AC0016F0096F554 /* PloggingRootRouter.swift */; };
+		3E2FB8762AC0016F0096F554 /* PloggingRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB8722AC0016F0096F554 /* PloggingRootViewController.swift */; };
+		3E2FB8772AC0016F0096F554 /* PloggingRootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB8732AC0016F0096F554 /* PloggingRootBuilder.swift */; };
+		3E2FB8782AC0016F0096F554 /* PloggingRootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB8742AC0016F0096F554 /* PloggingRootInteractor.swift */; };
+		3E2FB87E2AC002070096F554 /* PloggingMainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB87A2AC002070096F554 /* PloggingMainRouter.swift */; };
+		3E2FB87F2AC002070096F554 /* PloggingMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB87B2AC002070096F554 /* PloggingMainViewController.swift */; };
+		3E2FB8802AC002070096F554 /* PloggingMainBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB87C2AC002070096F554 /* PloggingMainBuilder.swift */; };
+		3E2FB8812AC002070096F554 /* PloggingMainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB87D2AC002070096F554 /* PloggingMainInteractor.swift */; };
+		3E2FB8832AC002120096F554 /* PloggingMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB8822AC002120096F554 /* PloggingMainView.swift */; };
+		3E2FB8852AC00DC00096F554 /* PloggingRootComponent+PloggingMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB8842AC00DC00096F554 /* PloggingRootComponent+PloggingMain.swift */; };
+		3E2FB8892AC0111F0096F554 /* MainTabBarComponent+PloggingRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB8882AC0111F0096F554 /* MainTabBarComponent+PloggingRoot.swift */; };
+		3E2FB88B2AC011FC0096F554 /* SplashComponent+MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB88A2AC011FC0096F554 /* SplashComponent+MainTabBar.swift */; };
 		3E43CA782AB60FF500B6C4D8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA772AB60FF500B6C4D8 /* SplashView.swift */; };
 		3E43CA7A2AB61CF200B6C4D8 /* SplashBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA792AB61CF200B6C4D8 /* SplashBuilder.swift */; };
 		3E43CA7C2AB61D1400B6C4D8 /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */; };
@@ -307,6 +324,23 @@
 /* Begin PBXFileReference section */
 		1215DCB5253C626800C5D9BE /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		12330CE7D885C1CB00C8E874 /* Pods-UniPlogger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniPlogger.release.xcconfig"; path = "Target Support Files/Pods-UniPlogger/Pods-UniPlogger.release.xcconfig"; sourceTree = "<group>"; };
+		3E2FB8652ABF525F0096F554 /* LoginResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LoginResponse.json; sourceTree = "<group>"; };
+		3E2FB8682ABFFBFC0096F554 /* MainTabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarRouter.swift; sourceTree = "<group>"; };
+		3E2FB8692ABFFBFC0096F554 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		3E2FB86A2ABFFBFC0096F554 /* MainTabBarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarBuilder.swift; sourceTree = "<group>"; };
+		3E2FB86B2ABFFBFC0096F554 /* MainTabBarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarInteractor.swift; sourceTree = "<group>"; };
+		3E2FB8712AC0016F0096F554 /* PloggingRootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingRootRouter.swift; sourceTree = "<group>"; };
+		3E2FB8722AC0016F0096F554 /* PloggingRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingRootViewController.swift; sourceTree = "<group>"; };
+		3E2FB8732AC0016F0096F554 /* PloggingRootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingRootBuilder.swift; sourceTree = "<group>"; };
+		3E2FB8742AC0016F0096F554 /* PloggingRootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingRootInteractor.swift; sourceTree = "<group>"; };
+		3E2FB87A2AC002070096F554 /* PloggingMainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingMainRouter.swift; sourceTree = "<group>"; };
+		3E2FB87B2AC002070096F554 /* PloggingMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingMainViewController.swift; sourceTree = "<group>"; };
+		3E2FB87C2AC002070096F554 /* PloggingMainBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingMainBuilder.swift; sourceTree = "<group>"; };
+		3E2FB87D2AC002070096F554 /* PloggingMainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingMainInteractor.swift; sourceTree = "<group>"; };
+		3E2FB8822AC002120096F554 /* PloggingMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingMainView.swift; sourceTree = "<group>"; };
+		3E2FB8842AC00DC00096F554 /* PloggingRootComponent+PloggingMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PloggingRootComponent+PloggingMain.swift"; sourceTree = "<group>"; };
+		3E2FB8882AC0111F0096F554 /* MainTabBarComponent+PloggingRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabBarComponent+PloggingRoot.swift"; sourceTree = "<group>"; };
+		3E2FB88A2AC011FC0096F554 /* SplashComponent+MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashComponent+MainTabBar.swift"; sourceTree = "<group>"; };
 		3E43CA772AB60FF500B6C4D8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3E43CA792AB61CF200B6C4D8 /* SplashBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBuilder.swift; sourceTree = "<group>"; };
 		3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouter.swift; sourceTree = "<group>"; };
@@ -633,6 +667,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E2FB8642ABF524F0096F554 /* DummyResponses */ = {
+			isa = PBXGroup;
+			children = (
+				3E2FB8652ABF525F0096F554 /* LoginResponse.json */,
+			);
+			path = DummyResponses;
+			sourceTree = "<group>";
+		};
+		3E2FB8672ABFFAFA0096F554 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				3E2FB8872AC011140096F554 /* Components */,
+				3E2FB8682ABFFBFC0096F554 /* MainTabBarRouter.swift */,
+				3E2FB8692ABFFBFC0096F554 /* MainTabBarViewController.swift */,
+				3E2FB86A2ABFFBFC0096F554 /* MainTabBarBuilder.swift */,
+				3E2FB86B2ABFFBFC0096F554 /* MainTabBarInteractor.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		3E2FB8702AC001320096F554 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				3E2FB8862AC00DE70096F554 /* Components */,
+				3E2FB8712AC0016F0096F554 /* PloggingRootRouter.swift */,
+				3E2FB8722AC0016F0096F554 /* PloggingRootViewController.swift */,
+				3E2FB8732AC0016F0096F554 /* PloggingRootBuilder.swift */,
+				3E2FB8742AC0016F0096F554 /* PloggingRootInteractor.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		3E2FB8792AC001970096F554 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				3E2FB87A2AC002070096F554 /* PloggingMainRouter.swift */,
+				3E2FB87B2AC002070096F554 /* PloggingMainViewController.swift */,
+				3E2FB87C2AC002070096F554 /* PloggingMainBuilder.swift */,
+				3E2FB87D2AC002070096F554 /* PloggingMainInteractor.swift */,
+				3E2FB8822AC002120096F554 /* PloggingMainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		3E2FB8862AC00DE70096F554 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3E2FB8842AC00DC00096F554 /* PloggingRootComponent+PloggingMain.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		3E2FB8872AC011140096F554 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3E2FB8882AC0111F0096F554 /* MainTabBarComponent+PloggingRoot.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		3E43CA9E2AB6D3A300B6C4D8 /* AppStart */ = {
 			isa = PBXGroup;
 			children = (
@@ -681,6 +775,7 @@
 				3EDD64E82AB6EAE000776C34 /* SplashComponent+TutorialRoot.swift */,
 				3EDD65152ABB39BB00776C34 /* SplashComponent+Registration.swift */,
 				3EDD65262ABF15FC00776C34 /* SplashComponent+Login.swift */,
+				3E2FB88A2AC011FC0096F554 /* SplashComponent+MainTabBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -796,6 +891,7 @@
 		4CC9C7C525231565004D873D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				3E2FB8672ABFFAFA0096F554 /* MainTabBar */,
 				AAC552BD2585C4AB000DAFDF /* ResetPassword */,
 				AA7658E82582799400BA0A3E /* FindPassword */,
 				AA38A746257B840000B26E1F /* Tutorial */,
@@ -1229,6 +1325,8 @@
 		AA7F54E32532C1A6001C4012 /* Plogging */ = {
 			isa = PBXGroup;
 			children = (
+				3E2FB8792AC001970096F554 /* Main */,
+				3E2FB8702AC001320096F554 /* Root */,
 				AA2CADF42543EAD500105748 /* Annotation */,
 				AA2CADF72543EAD500105748 /* Record */,
 				AA7F54E42532C1A6001C4012 /* StartCountingViewController.swift */,
@@ -1327,6 +1425,7 @@
 		AAA1CBF4255D62A900EDB18A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				3E2FB8642ABF524F0096F554 /* DummyResponses */,
 				AA4AD55125725C920087E060 /* Log */,
 				835248252572280000C9F495 /* Auth */,
 				AAA1CBF6255D62D500EDB18A /* Plugin */,
@@ -1638,6 +1737,7 @@
 				AAC9585C2545BF130092BA6E /* NotoSansCJKkr-DemiLight.otf in Resources */,
 				83530996257BB6B600C3626D /* policy.html in Resources */,
 				AAC958582545BF130092BA6E /* NotoSansCJKkr-Regular.otf in Resources */,
+				3E2FB8662ABF525F0096F554 /* LoginResponse.json in Resources */,
 				AA7F55082532C20C001C4012 /* Roboto-Regular.ttf in Resources */,
 				AA59BF1A258E0A7B003319D4 /* Color.xcassets in Resources */,
 				AA7F550A2532C20C001C4012 /* Roboto-ThinItalic.ttf in Resources */,
@@ -1716,6 +1816,7 @@
 				4C8956832532D0630099934E /* QuestFactory.swift in Sources */,
 				AA7F54E22532C179001C4012 /* CLLocationCoordinated2D+Extensions.swift in Sources */,
 				AA7F54F12532C1A6001C4012 /* PloggingPresenter.swift in Sources */,
+				3E2FB86F2ABFFBFC0096F554 /* MainTabBarInteractor.swift in Sources */,
 				AA7F54EE2532C1A6001C4012 /* PloggingViewController+UI.swift in Sources */,
 				83530972257B918D00C3626D /* LogOutType.swift in Sources */,
 				4C3F561C2568FA2B006D7C9F /* PloggingItemType.swift in Sources */,
@@ -1723,6 +1824,7 @@
 				8352480F2572279500C9F495 /* PloggingData.swift in Sources */,
 				3EDD65162ABB39BB00776C34 /* SplashComponent+Registration.swift in Sources */,
 				8352482B2572280000C9F495 /* AuthAPITarget.swift in Sources */,
+				3E2FB87E2AC002070096F554 /* PloggingMainRouter.swift in Sources */,
 				4C7248AE2542F86200ACB32B /* VerticalRoundButton.swift in Sources */,
 				AA4AD56925725D0D0087E060 /* ImageDownloadManager.swift in Sources */,
 				8355DF4B25858138001C63A5 /* ImagePreviewViewController.swift in Sources */,
@@ -1743,6 +1845,8 @@
 				3EDD64F82AB7094A00776C34 /* TutorialRootComponent+TutorialSecond.swift in Sources */,
 				AA7F551D2533568D001C4012 /* SharePresenter.swift in Sources */,
 				4CE9149A257BB33000BCF398 /* QuestTutorialViewController3.swift in Sources */,
+				3E2FB88B2AC011FC0096F554 /* SplashComponent+MainTabBar.swift in Sources */,
+				3E2FB8812AC002070096F554 /* PloggingMainInteractor.swift in Sources */,
 				AA7658F3258279A500BA0A3E /* FindPasswordViewController.swift in Sources */,
 				83DE07752566AD050085AC72 /* DetailViewController.swift in Sources */,
 				AAB3B4F12520B37100F0311A /* UIView+Extensions.swift in Sources */,
@@ -1751,6 +1855,7 @@
 				83530970257B918D00C3626D /* WithdrawViewController.swift in Sources */,
 				AA7F551F2533568D001C4012 /* ShareViewController.swift in Sources */,
 				AA7658F4258279A500BA0A3E /* FindPasswordInteractor.swift in Sources */,
+				3E2FB8802AC002070096F554 /* PloggingMainBuilder.swift in Sources */,
 				3EDD65212ABF09E300776C34 /* LoginView.swift in Sources */,
 				83530992257B9D3F00C3626D /* WithdrawViewController+UI.swift in Sources */,
 				83DE07842566AD050085AC72 /* RankTableViewCell.swift in Sources */,
@@ -1760,6 +1865,7 @@
 				3EDD650D2ABA0EFB00776C34 /* RegistrationBuilder.swift in Sources */,
 				4C7248B925455B2C00ACB32B /* QuestBaseViewController.swift in Sources */,
 				AA2CAE012543EAD500105748 /* TrashAnnotationView.swift in Sources */,
+				3E2FB86D2ABFFBFC0096F554 /* MainTabBarViewController.swift in Sources */,
 				AA4AD571257265460087E060 /* DetailInteractor.swift in Sources */,
 				AA2CAE052543EAD600105748 /* PloggingRecordModels.swift in Sources */,
 				4C42366925727D360068A252 /* QuestDetailWorker.swift in Sources */,
@@ -1767,7 +1873,9 @@
 				835248642572285100C9F495 /* LogCollectionViewCell.swift in Sources */,
 				3EDD65142ABA190400776C34 /* RegistrationService.swift in Sources */,
 				AAAD690225562CB900895265 /* IntrinsicSizeCollectionView.swift in Sources */,
+				3E2FB8752AC0016F0096F554 /* PloggingRootRouter.swift in Sources */,
 				4C3F564F256A308F006D7C9F /* Calendar+.swift in Sources */,
+				3E2FB8772AC0016F0096F554 /* PloggingRootBuilder.swift in Sources */,
 				AAA1CBF2255D620100EDB18A /* BaseTarget.swift in Sources */,
 				4CBA217B254EB1AF002BDCC3 /* QuestModels+ViewModel.swift in Sources */,
 				AAB559392549BB26000BB903 /* FormatDisplay.swift in Sources */,
@@ -1775,6 +1883,7 @@
 				3EDD64F42AB704BC00776C34 /* TutorialSecondInteractor.swift in Sources */,
 				835248B025743FD700C9F495 /* UserLogPresenter.swift in Sources */,
 				AA4AD579257265FF0087E060 /* DetailWorker.swift in Sources */,
+				3E2FB8832AC002120096F554 /* PloggingMainView.swift in Sources */,
 				3E43CA7C2AB61D1400B6C4D8 /* SplashRouter.swift in Sources */,
 				AAB559312549B846000BB903 /* Location.swift in Sources */,
 				AA7F551E2533568D001C4012 /* ShareInteractor.swift in Sources */,
@@ -1793,6 +1902,7 @@
 				4C401EB2253DE1F200ABED84 /* QuestState.swift in Sources */,
 				AAB3B4EF2520B30600F0311A /* RoundShadowView.swift in Sources */,
 				AA6CE4F32551780E00C83D28 /* TrashCanStorage.swift in Sources */,
+				3E2FB8852AC00DC00096F554 /* PloggingRootComponent+PloggingMain.swift in Sources */,
 				AAE05CE72568E3C100547501 /* VerbosePlugin.swift in Sources */,
 				AA7F55212533568D001C4012 /* ShareWorker.swift in Sources */,
 				83DE07762566AD050085AC72 /* DetailRouter.swift in Sources */,
@@ -1811,6 +1921,7 @@
 				83DE07772566AD050085AC72 /* DetailViewController+UI.swift in Sources */,
 				83530971257B918D00C3626D /* LogOutInfoViewController.swift in Sources */,
 				3E43CAA02AB6D3C200B6C4D8 /* AppComponent.swift in Sources */,
+				3E2FB8892AC0111F0096F554 /* MainTabBarComponent+PloggingRoot.swift in Sources */,
 				3EDD65032AB70B6E00776C34 /* TutorialThirdView.swift in Sources */,
 				AA4AD59E2574057D0087E060 /* AuthAPIResponse.swift in Sources */,
 				835248652572285100C9F495 /* LogPresenter.swift in Sources */,
@@ -1842,6 +1953,7 @@
 				3EDD64FE2AB70AC700776C34 /* TutorialThirdRouter.swift in Sources */,
 				3EDD64E12AB6DDEB00776C34 /* TutorialFirstInteractor.swift in Sources */,
 				4C89567D2532CB3A0099934E /* QuestNavigationController.swift in Sources */,
+				3E2FB86E2ABFFBFC0096F554 /* MainTabBarBuilder.swift in Sources */,
 				83DE077F2566AD050085AC72 /* ChallengeViewController+UI.swift in Sources */,
 				8352481D257227BA00C9F495 /* SplashInteractor.swift in Sources */,
 				AAE05CE92568E3D400547501 /* Data+Extensions.swift in Sources */,
@@ -1877,6 +1989,8 @@
 				3EDD64EB2AB6FF8700776C34 /* UINavigationController+Extensions.swift in Sources */,
 				3EDD64DE2AB6DDEB00776C34 /* TutorialFirstRouter.swift in Sources */,
 				AA7F54F72532C1E3001C4012 /* GradientView.swift in Sources */,
+				3E2FB87F2AC002070096F554 /* PloggingMainViewController.swift in Sources */,
+				3E2FB86C2ABFFBFC0096F554 /* MainTabBarRouter.swift in Sources */,
 				835249122577A68800C9F495 /* ReportRouter.swift in Sources */,
 				4CC9C7C825231581004D873D /* QuestViewController.swift in Sources */,
 				4C7248B52544297D00ACB32B /* HightlightButton.swift in Sources */,
@@ -1926,6 +2040,7 @@
 				835248672572285100C9F495 /* LogRouter.swift in Sources */,
 				AAC552C92585C4C6000DAFDF /* ResetPasswordInteractor.swift in Sources */,
 				835248622572285100C9F495 /* LogViewController.swift in Sources */,
+				3E2FB8782AC0016F0096F554 /* PloggingRootInteractor.swift in Sources */,
 				4CF6208E257B5EBF0029FBD6 /* QuestStorage.swift in Sources */,
 				3E43CA782AB60FF500B6C4D8 /* SplashView.swift in Sources */,
 				835248492572283C00C9F495 /* MyPagePresenter.swift in Sources */,
@@ -1938,6 +2053,7 @@
 				8352484C2572283C00C9F495 /* MyPageModels.swift in Sources */,
 				3EDD65052AB7447900776C34 /* TutorialRootComponent+TutorialThird.swift in Sources */,
 				AAB559352549BA2D000BB903 /* MultiColorPolyline.swift in Sources */,
+				3E2FB8762AC0016F0096F554 /* PloggingRootViewController.swift in Sources */,
 				AA38A6DD257A78F100B26E1F /* UIViewController+Extensions.swift in Sources */,
 				3EDD64D72AB6DCCA00776C34 /* TutorialRootBuilder.swift in Sources */,
 				AAB3B4F92520B5B600F0311A /* Common.swift in Sources */,

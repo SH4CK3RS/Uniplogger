@@ -16,6 +16,7 @@ struct AuthAPI {
     
     static let shared = AuthAPI()
     private let provider = MoyaProvider<AuthAPITarget>(
+        stubClosure: MoyaProvider.immediatelyStub,
         session: SessionManager.shared,
         plugins: [VerbosePlugin(verbose: true)]
     )
@@ -24,6 +25,7 @@ struct AuthAPI {
         provider.rx.request(.login(email: email, password: password))
             .filterSuccessfulStatusCodes()
             .map(Response<LoginResponse>.self)
+            .observe(on: MainScheduler.instance)
             .subscribe {
                 completionHandler(.success($0))
             } onFailure: {

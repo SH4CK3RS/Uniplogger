@@ -33,11 +33,13 @@ final class SplashBuilder: Builder<SplashDependency>, SplashBuildable {
         let tutorialRootBuilder = TutorialRootBuilder(dependency: component)
         let loginBuilder = LoginBuilder(dependency: component)
         let registrationBuilder = RegistrationBuilder(dependency: component)
+        let mainTabBarBuilder = MainTabBarBuilder(dependency: component)
         return SplashRouter(interactor: interactor,
                             viewController: viewController,
                             tutorialRootBuilder: tutorialRootBuilder,
                             loginBuilder: loginBuilder,
-                            registrationBuilder: registrationBuilder)
+                            registrationBuilder: registrationBuilder,
+                            mainTabBarBuilder: mainTabBarBuilder)
     }
 }
 

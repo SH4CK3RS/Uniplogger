@@ -15,6 +15,7 @@ protocol LoginRouting: ViewableRouting {
 
 enum LoginPresentableRequest {
     case activateLoginButton(Bool)
+    case showError(Common.CommonError)
 }
 
 protocol LoginPresentable: Presentable {
@@ -78,8 +79,16 @@ final class LoginInteractor: PresentableInteractor<LoginPresentable>, LoginInter
     
     private func handleLogin() {
         UPLoader.shared.show()
-        service.login(model: model) {
+        service.login(model: model) { [weak self] result in
             UPLoader.shared.hidden()
+            switch result {
+            case let .success(loginResponse):
+                AuthManager.shared.userToken = loginResponse.token
+                AuthManager.shared.user = loginResponse.user
+                self?.listener?.request(.loginFinished)
+            case let .failure(error):
+                self?.presenter.request(.showError(error))
+            }
         }
     }
     

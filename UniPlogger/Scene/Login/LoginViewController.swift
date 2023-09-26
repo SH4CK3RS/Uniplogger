@@ -9,6 +9,7 @@
 import RIBs
 import RxSwift
 import UIKit
+import Moya
 
 enum LoginPresentableListenerRequest {
     case accountChanged(String)
@@ -37,45 +38,25 @@ final class LoginViewController: UIViewController, LoginPresentable, LoginViewCo
         switch request {
         case let .activateLoginButton(isActive):
             mainView.activateLoginButton(isActive)
+        case let .showError(error):
+            showError(error)
         }
     }
     
     private let mainView = LoginView()
-//    func displayValidation(viewModel: Login.ValidationViewModel) {
-//        self.loginButton.isEnabled = viewModel.isValid
-//        self.loginButton.backgroundColor = viewModel.isValid ? .buttonEnabled : .buttonDisabled
-//    }
-//    
-//    func displayLogin() {
-//        UPLoader.shared.hidden()
-//        self.router?.routeToSplash()
-//    }
-//    
-//    func displayError(error: Common.CommonError, useCase: Login.UseCase){
-//        //handle error with its usecase
-//        UPLoader.shared.hidden()
-//        switch error {
-//        case .server(let msg):
-//            self.errorAlert(title: "오류", message: msg, completion: nil)
-//        case .local(let msg):
-//            self.errorAlert(title: "오류", message: msg, completion: nil)
-//        case .error(let error):
-//            if let error = error as? URLError {
-//                NetworkErrorManager.alert(error) { _ in
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
-//                        guard let self = self else { return }
-//                        switch useCase{
-//                        case .Login(let request):
-//                            self.interactor?.login(request: request)
-//                        }
-//                    }
-//                }
-//            } else if let error = error as? MoyaError {
-//                NetworkErrorManager.alert(error)
-//            }
-//            
-//        }
-//    }
+    
+    private func showError(_ error: Common.CommonError){
+        switch error {
+        case let .server(msg):
+            self.errorAlert(title: "오류", message: msg, completion: nil)
+        case let .local(msg):
+            self.errorAlert(title: "오류", message: msg, completion: nil)
+        case let .error(error):
+            if let error = error as? URLError {
+                NetworkErrorManager.alert(error) { _ in }
+            }
+        }
+    }
 }
 
 extension LoginViewController: LoginViewListener{

@@ -309,20 +309,6 @@ class PloggingViewController: UIViewController {
         configuration()
         setupView()
         setupLayout()
-        let randomIndex = Int(arc4random() % 6)
-        let infoText = infoList[randomIndex]
-        self.bubbleLabel.text = infoText
-        
-        mapView.register(
-        TrashAnnotationView.self,
-        forAnnotationViewWithReuseIdentifier:
-          MKMapViewDefaultAnnotationViewReuseIdentifier)
-        
-        mapView.register(
-        TempTrashAnnotationView.self,
-        forAnnotationViewWithReuseIdentifier:
-          "TempTrashAnnotationView")
-        
         
         self.interactor?.setupLocationService()
         self.interactor?.fetchTrashCan()

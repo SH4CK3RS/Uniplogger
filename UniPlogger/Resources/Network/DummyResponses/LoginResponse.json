@@ -1,0 +1,19 @@
+{
+    "success": true,
+    "message": "성공했습니다.",
+    "data": {
+        "token": "aabbccdd",
+        "user": {
+            "id": 1,
+            "registeredDate": "2023-09-24 00:12:34",
+            "email": "qudrms007@naver.com",
+            "nickname": "Ever",
+            "level": 1,
+            "rank": 0.0,
+            "state": "N",
+            "planet": null,
+            "weekly_stats": "",
+            "monthly_stats": 1.0
+        }
+    }
+}

@@ -9,7 +9,7 @@
 import Foundation
 import Moya
 
-enum AuthAPITarget{
+enum AuthAPITarget {
     //쓰레기통 CRUD
     case login(email: String, password: String)
     case getUser(uid: Int)
@@ -21,7 +21,7 @@ enum AuthAPITarget{
     case resetPassword(password1: String, password2: String, uid: String, token: String)
 }
 
-extension AuthAPITarget: BaseTarget{
+extension AuthAPITarget: BaseTarget {
     var path: String{
         switch self{
         case .login:
@@ -126,6 +126,12 @@ extension AuthAPITarget: BaseTarget{
     
     var sampleData: Data {
       switch self {
+      case .login:
+          if let url = Bundle.main.url(forResource: "LoginResponse", withExtension: "json"),
+             let data = try? Data(contentsOf: url) {
+              return data
+          }
+          return Data()
       default:
         return Data()
       }

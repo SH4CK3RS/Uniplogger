@@ -55,7 +55,7 @@ extension PloggingViewController {
         setupBottomViews()
         setupDoingViews()
         setupTrashInfoViews()
-        if !UserDefaults.standard.bool(forDefines: .ploggingCoachmark){
+        if !UserDefaults.standard.bool(forDefines: .ploggingCoachmark) {
             setupCoachmarkViews()
         }
         
