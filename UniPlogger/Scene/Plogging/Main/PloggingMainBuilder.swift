@@ -14,8 +14,9 @@ protocol PloggingMainDependency: Dependency {
 }
 
 final class PloggingMainComponent: Component<PloggingMainDependency> {
-
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+    fileprivate var locationManager: LocationManagable {
+        LocationManager()
+    }
 }
 
 // MARK: - Builder
@@ -33,7 +34,8 @@ final class PloggingMainBuilder: Builder<PloggingMainDependency>, PloggingMainBu
     func build(withListener listener: PloggingMainListener) -> PloggingMainRouting {
         let component = PloggingMainComponent(dependency: dependency)
         let viewController = PloggingMainViewController()
-        let interactor = PloggingMainInteractor(presenter: viewController)
+        let interactor = PloggingMainInteractor(presenter: viewController,
+                                                locationManager: component.locationManager)
         interactor.listener = listener
         return PloggingMainRouter(interactor: interactor, viewController: viewController)
     }

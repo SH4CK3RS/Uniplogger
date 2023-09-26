@@ -28,6 +28,8 @@
 		3E2FB8852AC00DC00096F554 /* PloggingRootComponent+PloggingMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB8842AC00DC00096F554 /* PloggingRootComponent+PloggingMain.swift */; };
 		3E2FB8892AC0111F0096F554 /* MainTabBarComponent+PloggingRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB8882AC0111F0096F554 /* MainTabBarComponent+PloggingRoot.swift */; };
 		3E2FB88B2AC011FC0096F554 /* SplashComponent+MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB88A2AC011FC0096F554 /* SplashComponent+MainTabBar.swift */; };
+		3E2FB88D2AC36A6E0096F554 /* PloggingMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB88C2AC36A6E0096F554 /* PloggingMainService.swift */; };
+		3E2FB88F2AC36E410096F554 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB88E2AC36E410096F554 /* LocationManager.swift */; };
 		3E43CA782AB60FF500B6C4D8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA772AB60FF500B6C4D8 /* SplashView.swift */; };
 		3E43CA7A2AB61CF200B6C4D8 /* SplashBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA792AB61CF200B6C4D8 /* SplashBuilder.swift */; };
 		3E43CA7C2AB61D1400B6C4D8 /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */; };
@@ -289,7 +291,6 @@
 		AAB3B4F12520B37100F0311A /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3B4F02520B37100F0311A /* UIView+Extensions.swift */; };
 		AAB3B4F92520B5B600F0311A /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3B4F82520B5B600F0311A /* Common.swift */; };
 		AAB5592E2549B790000BB903 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB5592D2549B790000BB903 /* Route.swift */; };
-		AAB559312549B846000BB903 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB559302549B846000BB903 /* Location.swift */; };
 		AAB559352549BA2D000BB903 /* MultiColorPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB559342549BA2D000BB903 /* MultiColorPolyline.swift */; };
 		AAB559392549BB26000BB903 /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB559382549BB26000BB903 /* FormatDisplay.swift */; };
 		AAC552B225848D8D000DAFDF /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC552B125848D8D000DAFDF /* BaseResponse.swift */; };
@@ -341,6 +342,8 @@
 		3E2FB8842AC00DC00096F554 /* PloggingRootComponent+PloggingMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PloggingRootComponent+PloggingMain.swift"; sourceTree = "<group>"; };
 		3E2FB8882AC0111F0096F554 /* MainTabBarComponent+PloggingRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabBarComponent+PloggingRoot.swift"; sourceTree = "<group>"; };
 		3E2FB88A2AC011FC0096F554 /* SplashComponent+MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashComponent+MainTabBar.swift"; sourceTree = "<group>"; };
+		3E2FB88C2AC36A6E0096F554 /* PloggingMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingMainService.swift; sourceTree = "<group>"; };
+		3E2FB88E2AC36E410096F554 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		3E43CA772AB60FF500B6C4D8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3E43CA792AB61CF200B6C4D8 /* SplashBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBuilder.swift; sourceTree = "<group>"; };
 		3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouter.swift; sourceTree = "<group>"; };
@@ -609,7 +612,6 @@
 		AAB3B5062520D16800F0311A /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		AAB3B5092520D34D00F0311A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AAB5592D2549B790000BB903 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
-		AAB559302549B846000BB903 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		AAB559342549BA2D000BB903 /* MultiColorPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiColorPolyline.swift; sourceTree = "<group>"; };
 		AAB559382549BB26000BB903 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDisplay.swift; sourceTree = "<group>"; };
 		AAB8879425245320000A9D58 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -707,6 +709,7 @@
 				3E2FB87C2AC002070096F554 /* PloggingMainBuilder.swift */,
 				3E2FB87D2AC002070096F554 /* PloggingMainInteractor.swift */,
 				3E2FB8822AC002120096F554 /* PloggingMainView.swift */,
+				3E2FB88C2AC36A6E0096F554 /* PloggingMainService.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1418,6 +1421,7 @@
 			children = (
 				AA4AD56825725D0D0087E060 /* ImageDownloadManager.swift */,
 				AA7F5527253356BE001C4012 /* PhotoManager.swift */,
+				3E2FB88E2AC36E410096F554 /* LocationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1581,7 +1585,6 @@
 			isa = PBXGroup;
 			children = (
 				AAB5592D2549B790000BB903 /* Route.swift */,
-				AAB559302549B846000BB903 /* Location.swift */,
 				AAB559342549BA2D000BB903 /* MultiColorPolyline.swift */,
 				AAB559382549BB26000BB903 /* FormatDisplay.swift */,
 			);
@@ -1885,7 +1888,6 @@
 				AA4AD579257265FF0087E060 /* DetailWorker.swift in Sources */,
 				3E2FB8832AC002120096F554 /* PloggingMainView.swift in Sources */,
 				3E43CA7C2AB61D1400B6C4D8 /* SplashRouter.swift in Sources */,
-				AAB559312549B846000BB903 /* Location.swift in Sources */,
 				AA7F551E2533568D001C4012 /* ShareInteractor.swift in Sources */,
 				4C42366525727A3D0068A252 /* QuestDetailInteractor.swift in Sources */,
 				AAAD68F525556A7600895265 /* CALayer+Extensions.swift in Sources */,
@@ -1947,6 +1949,7 @@
 				4CC9C7CE252315E0004D873D /* QuestPresenter.swift in Sources */,
 				3EDD65122ABA152A00776C34 /* RegistrationModel.swift in Sources */,
 				AA5EFBB82552AE3D00B5BD5B /* PloggingRecordCollectionViewLayout.swift in Sources */,
+				3E2FB88D2AC36A6E0096F554 /* PloggingMainService.swift in Sources */,
 				3EDD64F22AB704BC00776C34 /* TutorialSecondViewController.swift in Sources */,
 				83530984257B91E300C3626D /* SettingViewController.swift in Sources */,
 				8352484F2572283C00C9F495 /* InfoTableViewCell.swift in Sources */,
@@ -1986,6 +1989,7 @@
 				8352480E2572279500C9F495 /* User.swift in Sources */,
 				AAC552B225848D8D000DAFDF /* BaseResponse.swift in Sources */,
 				AA4AD575257265BF0087E060 /* DetailPresenter.swift in Sources */,
+				3E2FB88F2AC36E410096F554 /* LocationManager.swift in Sources */,
 				3EDD64EB2AB6FF8700776C34 /* UINavigationController+Extensions.swift in Sources */,
 				3EDD64DE2AB6DDEB00776C34 /* TutorialFirstRouter.swift in Sources */,
 				AA7F54F72532C1E3001C4012 /* GradientView.swift in Sources */,

@@ -9,6 +9,7 @@
 import RIBs
 import RxSwift
 import Foundation
+import CoreLocation
 
 protocol PloggingMainRouting: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
@@ -28,12 +29,11 @@ protocol PloggingMainListener: AnyObject {}
 
 final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentable>, PloggingMainInteractable, PloggingMainPresentableListener {
 
-    weak var router: PloggingMainRouting?
-    weak var listener: PloggingMainListener?
-
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
-    override init(presenter: PloggingMainPresentable) {
+    init(presenter: PloggingMainPresentable,
+         locationManager: LocationManagable) {
+        self.locationManager = locationManager
         super.init(presenter: presenter)
         presenter.listener = self
     }
@@ -48,16 +48,23 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
         // TODO: Pause any business logic.
     }
     
+    // MARK: - Internal
+    weak var router: PloggingMainRouting?
+    weak var listener: PloggingMainListener?
+    
     func request(_ request: PloggingMainPresentableListenerRequest) {
         switch request {
         case .viewDidLoad:
             showCoachmarkIfNeeded()
+            locationManager.requestPermission()
         case .closeCoachmarkButtonTapped:
             hideCoachmark()
         default: break
         }
     }
     
+    // MARK: - Private
+    private let locationManager: LocationManagable
     private func showCoachmarkIfNeeded() {
         if !UserDefaults.standard.bool(forDefines: .ploggingCoachmark) {
             presenter.request(.showCoachmark)
@@ -67,5 +74,19 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
     private func hideCoachmark() {
         UserDefaults.standard.set(true, forDefines: .ploggingCoachmark)
         presenter.request(.hideCoachmark)
+    }
+}
+
+extension PloggingMainInteractor: LocationManagerListener {
+    func action(_ action: LocationManagerAction) {
+        switch action {
+        case let .routeUpdated(distance, location):
+            print("distance: \(distance)")
+            print("location: \(location)")
+        case .locationAuthorized:
+            locationManager.updateLocation()
+        case .locationAuthDenied:
+            print("need To get Authorization")
+        }
     }
 }
