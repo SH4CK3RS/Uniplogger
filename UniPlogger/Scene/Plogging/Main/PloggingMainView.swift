@@ -170,6 +170,7 @@ private extension PloggingMainView {
             $0.layer.cornerRadius = 22
             $0.layer.masksToBounds = true
             $0.backgroundColor = .mainBackgroundColor
+            $0.isHidden = true
         }
         distanceContainer.backgroundColor = .clear
         distanceImageView.do {
@@ -269,6 +270,7 @@ private extension PloggingMainView {
             $0.layer.cornerRadius = 22
             $0.layer.masksToBounds = true
             $0.backgroundColor = .mainBackgroundColor
+            $0.isHidden = true
         }
         trashInfoTitleLabel.do {
             $0.text = "이 위치에 쓰레기통을 추가 하시겠습니까?"

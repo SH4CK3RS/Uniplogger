@@ -52,6 +52,8 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
         switch request {
         case .viewDidLoad:
             showCoachmarkIfNeeded()
+        case .closeCoachmarkButtonTapped:
+            hideCoachmark()
         default: break
         }
     }
@@ -60,5 +62,10 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
         if !UserDefaults.standard.bool(forDefines: .ploggingCoachmark) {
             presenter.request(.showCoachmark)
         }
+    }
+    
+    private func hideCoachmark() {
+        UserDefaults.standard.set(true, forDefines: .ploggingCoachmark)
+        presenter.request(.hideCoachmark)
     }
 }
