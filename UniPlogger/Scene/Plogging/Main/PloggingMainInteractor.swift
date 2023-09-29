@@ -20,6 +20,7 @@ enum PloggingMainPresentableRequest {
     case hideCoachmark
     case showLocationSetting
     case goToMyLocation(Location)
+    case showAddressForAddTrashcan(String)
 }
 
 protocol PloggingMainPresentable: Presentable {
@@ -56,6 +57,8 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
             hideCoachmark()
         case .myLocationButtonTapped:
             handleMyLocation()
+        case let .addTrashCan(latitude, longitude):
+            handleAddTrashcan(with: latitude, longitude: longitude)
         default: break
         }
     }
@@ -82,6 +85,15 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
             needToSetMyLocation = true
             if !locationManager.isAuthorized {
                 locationManager.requestPermission()
+            }
+        }
+    }
+    
+    private func handleAddTrashcan(with latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        location.toAddress { [weak self] address in
+            DispatchQueue.main.async {
+                self?.presenter.request(.showAddressForAddTrashcan(address))
             }
         }
     }

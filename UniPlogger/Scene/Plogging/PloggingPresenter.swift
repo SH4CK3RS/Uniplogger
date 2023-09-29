@@ -103,7 +103,7 @@ class PloggingPresenter: NSObject, PloggingPresentationLogic {
     
     func presentAddTrashCan(response: Plogging.AddTrashCan.Response) {
         let location = CLLocation(latitude: response.latitude, longitude: response.longitude)
-        location.addressToPlace { (address) in
+        location.toAddress { (address) in
             let viewModel = Plogging.AddTrashCan.ViewModel(address: address)
             self.viewController?.displayAddTrashCan(viewModel: viewModel)
         }

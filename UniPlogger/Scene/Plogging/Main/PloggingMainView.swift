@@ -15,7 +15,6 @@ enum PloggingMainViewAction {
     case pauseButtonTapped
     case resumeButtonTapped
     case stopButtonTapped
-    case trashButtonTapped
     case addTrashCanConfirmButtonTapped
     case myLocationButtonTapped
     case closeCoachmarkButtonTapped
@@ -58,6 +57,17 @@ final class PloggingMainView: UIView {
         mapView.setRegion(region, animated: true)
     }
     
+    func showAddressForAddTrashcan(_ address: String) {
+        trashInfoAddressLabel.text = address
+        trashButton.isSelected = true
+        trashInfoContainer.isHidden = false
+        
+        trashButton.snp.remakeConstraints {
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.bottom.equalTo(trashInfoContainer.snp.top).offset(-16)
+        }
+    }
+    
     // MARK: - Private
     private let infoList: [String] = [
         "준비물을 확인해주세요",
@@ -68,6 +78,7 @@ final class PloggingMainView: UIView {
         "핀을 눌러 휴지통을 없애요"
     ]
     private var completedQuestIds = [Int]()
+    private var tempTrashcanAnnotation: TempTrashAnnotation?
     
     private let startBottomContainerView = UIView()
     private let doingPauseBottomContainerView = UIView()
@@ -141,8 +152,23 @@ final class PloggingMainView: UIView {
     }
     
     @objc
-    private func trashButtonTapped(){
-        listener?.action(.trashButtonTapped)
+    private func trashButtonTapped() {
+        guard !trashButton.isSelected else {
+            cancelAddingTrashcan()
+            return
+        }
+        
+        let coordinate = mapView.centerCoordinate
+        let annotation = TempTrashAnnotation(coordinate: coordinate, title: "title", subtitle: "content")
+        mapView.addAnnotation(annotation)
+        tempTrashcanAnnotation = annotation
+        
+        listener?.action(
+            .addTrashCan(
+                latitude: coordinate.latitude,
+                longitude: coordinate.longitude
+            )
+        )
     }
     
     @objc
@@ -162,6 +188,26 @@ final class PloggingMainView: UIView {
     
     func removeTrashCan(annotation: TrashcanAnnotation){
         listener?.action(.removeTrashCan(annotation))
+    }
+    
+    private func cancelAddingTrashcan() {
+        trashButton.isSelected = false
+        trashInfoContainer.isHidden = true
+        trashInfoAddressLabel.text = ""
+        if let tempTrashcanAnnotation {
+            mapView.removeAnnotation(tempTrashcanAnnotation)
+            self.tempTrashcanAnnotation = nil
+        }
+        
+        trashButton.snp.remakeConstraints {
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.bottom.equalTo(startBottomContainerView.snp.top).offset(-16)
+        }
+        // TODO: 플로깅 진행 상태에 따라 위치 분기해주기
+        // switch ploggingState {
+        // case .stop: startBottomContainerView.snp.top.offset -16
+        // case .doing: doingPauseBottomContainerView.snp.top.offset -16
+        // }
     }
 }
 
