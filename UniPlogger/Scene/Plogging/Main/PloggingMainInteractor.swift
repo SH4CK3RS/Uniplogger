@@ -28,7 +28,13 @@ protocol PloggingMainPresentable: Presentable {
     func request(_ request: PloggingMainPresentableRequest)
 }
 
-protocol PloggingMainListener: AnyObject {}
+enum PloggingMainListenerRequest {
+    case startButtonTapped
+}
+
+protocol PloggingMainListener: AnyObject {
+    func request(_ request: PloggingMainListenerRequest)
+}
 
 final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentable>, PloggingMainInteractable, PloggingMainPresentableListener {
 
@@ -59,6 +65,8 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
             handleMyLocation()
         case let .addTrashCan(latitude, longitude):
             handleAddTrashcan(with: latitude, longitude: longitude)
+        case .startButtonTapped:
+            listener?.request(.startButtonTapped)
         default: break
         }
     }

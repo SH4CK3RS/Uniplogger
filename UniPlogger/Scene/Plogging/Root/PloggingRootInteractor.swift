@@ -11,6 +11,8 @@ import RxSwift
 
 enum PloggingRootRouterRequest {
     case routeToPloggingMain
+    case routeToStartCounting
+    case detachStartCounting
 }
 
 protocol PloggingRootRouting: ViewableRouting {
@@ -46,5 +48,23 @@ final class PloggingRootInteractor: PresentableInteractor<PloggingRootPresentabl
     override func willResignActive() {
         super.willResignActive()
         // TODO: Pause any business logic.
+    }
+}
+
+// MARK: - PloggingMainListenerRequest
+extension PloggingRootInteractor {
+    func request(_ request: PloggingMainListenerRequest) {
+        router?.request(.routeToStartCounting)
+    }
+}
+
+// MARK: - StartCountingListenerRequest
+extension PloggingRootInteractor {
+    func request(_ request: StartCountingListenerRequest) {
+        switch request {
+        case .countDidEnd:
+            router?.request(.detachStartCounting)
+            // TODO: 스트림 생성하여 카운팅 끝남 알리기
+        }
     }
 }

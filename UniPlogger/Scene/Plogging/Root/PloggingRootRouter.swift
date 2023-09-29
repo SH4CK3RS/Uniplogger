@@ -8,7 +8,7 @@
 
 import RIBs
 
-protocol PloggingRootInteractable: Interactable, PloggingMainListener {
+protocol PloggingRootInteractable: Interactable, PloggingMainListener, StartCountingListener {
     var router: PloggingRootRouting? { get set }
     var listener: PloggingRootListener? { get set }
 }
@@ -16,6 +16,8 @@ protocol PloggingRootInteractable: Interactable, PloggingMainListener {
 protocol PloggingRootViewControllable: ViewControllable {
     func set(viewControllers: [ViewControllable], animated: Bool)
     func push(viewController: ViewControllable, animated: Bool)
+    func present(_ viewController: ViewControllable, animated: Bool)
+    func dismiss(_ viewController: ViewControllable, animated: Bool)
 }
 
 final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, PloggingRootViewControllable>, PloggingRootRouting {
@@ -23,8 +25,10 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
     // TODO: Constructor inject child builder protocols to allow building children.
     init(interactor: PloggingRootInteractable,
          viewController: PloggingRootViewControllable,
-         ploggingMainBuilder: PloggingMainBuildable) {
+         ploggingMainBuilder: PloggingMainBuildable,
+         startCountingBuilder: StartCountingBuildable) {
         self.ploggingMainBuilder = ploggingMainBuilder
+        self.startCountingBuilder = startCountingBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
@@ -33,16 +37,39 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
         switch request {
         case .routeToPloggingMain:
             routeToPloggingMain()
+        case .routeToStartCounting:
+            routeToStartCounting()
+        case .detachStartCounting:
+            detachStartCounting()
         }
     }
     
     private let ploggingMainBuilder: PloggingMainBuildable
     private var ploggingMainRouter: PloggingMainRouting?
     
+    private let startCountingBuilder: StartCountingBuildable
+    private var startCountingRouter: StartCountingRouting?
+    
     private func routeToPloggingMain() {
         let router = ploggingMainBuilder.build(withListener: interactor)
         ploggingMainRouter = router
         attachChild(router)
         viewController.set(viewControllers: [router.viewControllable], animated: false)
+    }
+    
+    private func routeToStartCounting() {
+        let router = startCountingBuilder.build(withListener: interactor)
+        startCountingRouter = router
+        attachChild(router)
+        router.viewControllable.uiviewController.modalPresentationStyle = .overFullScreen
+        router.viewControllable.uiviewController.modalTransitionStyle = .crossDissolve
+        viewController.present(router.viewControllable, animated: false)
+    }
+    
+    private func detachStartCounting() {
+        guard let router = startCountingRouter else { return }
+        startCountingRouter = nil
+        detachChild(router)
+        viewController.dismiss(router.viewControllable, animated: true)
     }
 }
