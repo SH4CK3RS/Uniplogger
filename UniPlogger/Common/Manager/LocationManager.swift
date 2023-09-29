@@ -20,6 +20,8 @@ protocol LocationManagerListener: AnyObject {
 }
 
 protocol LocationManagable {
+    var listener: LocationManagerListener? { get set }
+    var isAuthorized: Bool { get }
     func requestPermission()
     func updateLocation()
 }
@@ -28,6 +30,10 @@ struct Location {
     var latitude: Double
     var longitude: Double
     var timestamp: Date
+    
+    var coordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
 }
 
 final class LocationManager: NSObject, LocationManagable {
@@ -38,7 +44,12 @@ final class LocationManager: NSObject, LocationManagable {
     
     // MARK: - Internal
     weak var listener: LocationManagerListener?
+    var isAuthorized: Bool {
+        locationManager.authorizationStatus == .authorizedWhenInUse
+    }
+    
     func requestPermission() {
+        guard !isAuthorized else { return }
         locationManager.requestWhenInUseAuthorization()
     }
     func updateLocation() {
@@ -49,6 +60,9 @@ final class LocationManager: NSObject, LocationManagable {
     private let locationManager = CLLocationManager()
     private var locationList: [CLLocation] = []
     private var distance = Measurement(value: 0, unit: UnitLength.kilometers)
+    var currentLocation: CLLocation? {
+        locationList.last
+    }
 }
 
 extension LocationManager: CLLocationManagerDelegate {

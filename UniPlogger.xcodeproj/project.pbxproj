@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,6 +35,7 @@
 		3E43CA7C2AB61D1400B6C4D8 /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */; };
 		3E43CA842AB6CF1800B6C4D8 /* RIBs in Frameworks */ = {isa = PBXBuildFile; productRef = 3E43CA832AB6CF1800B6C4D8 /* RIBs */; };
 		3E43CAA02AB6D3C200B6C4D8 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA9F2AB6D3C200B6C4D8 /* AppComponent.swift */; };
+		3E67E1A72AC6CC26001FBA36 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 3E67E1A62AC6CC26001FBA36 /* Toast */; };
 		3EDD64D62AB6DCCA00776C34 /* TutorialRootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D32AB6DCCA00776C34 /* TutorialRootRouter.swift */; };
 		3EDD64D72AB6DCCA00776C34 /* TutorialRootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D42AB6DCCA00776C34 /* TutorialRootBuilder.swift */; };
 		3EDD64D82AB6DCCA00776C34 /* TutorialRootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D52AB6DCCA00776C34 /* TutorialRootInteractor.swift */; };
@@ -658,6 +659,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E67E1A72AC6CC26001FBA36 /* Toast in Frameworks */,
 				3E2FB8632ABF1E3A0096F554 /* RxRelay in Frameworks */,
 				3E2FB85E2ABF1DF10096F554 /* RxMoya in Frameworks */,
 				3E43CA842AB6CF1800B6C4D8 /* RIBs in Frameworks */,
@@ -1662,6 +1664,7 @@
 				3E2FB85D2ABF1DF10096F554 /* RxMoya */,
 				3E2FB8602ABF1E3A0096F554 /* RxCocoa */,
 				3E2FB8622ABF1E3A0096F554 /* RxRelay */,
+				3E67E1A62AC6CC26001FBA36 /* Toast */,
 			);
 			productName = UniPlogger;
 			productReference = AAB3B4C42520A31100F0311A /* UniPlogger.app */;
@@ -1699,6 +1702,7 @@
 				3E43CA822AB6CF1800B6C4D8 /* XCRemoteSwiftPackageReference "RIBs" */,
 				3E2FB85C2ABF1DF10096F554 /* XCRemoteSwiftPackageReference "Moya" */,
 				3E2FB85F2ABF1E3A0096F554 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				3E67E1A52AC6CC26001FBA36 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = AAB3B4C52520A31100F0311A /* Products */;
 			projectDirPath = "";
@@ -2198,7 +2202,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2252,7 +2256,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -2361,6 +2365,14 @@
 				kind = branch;
 			};
 		};
+		3E67E1A52AC6CC26001FBA36 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2383,6 +2395,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3E43CA822AB6CF1800B6C4D8 /* XCRemoteSwiftPackageReference "RIBs" */;
 			productName = RIBs;
+		};
+		3E67E1A62AC6CC26001FBA36 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E67E1A52AC6CC26001FBA36 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -18,6 +18,8 @@ protocol PloggingMainRouting: ViewableRouting {
 enum PloggingMainPresentableRequest {
     case showCoachmark
     case hideCoachmark
+    case showLocationSetting
+    case goToMyLocation(Location)
 }
 
 protocol PloggingMainPresentable: Presentable {
@@ -36,18 +38,9 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
         self.locationManager = locationManager
         super.init(presenter: presenter)
         presenter.listener = self
+        self.locationManager.listener = self
     }
 
-    override func didBecomeActive() {
-        super.didBecomeActive()
-        // TODO: Implement business logic here.
-    }
-
-    override func willResignActive() {
-        super.willResignActive()
-        // TODO: Pause any business logic.
-    }
-    
     // MARK: - Internal
     weak var router: PloggingMainRouting?
     weak var listener: PloggingMainListener?
@@ -55,16 +48,22 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
     func request(_ request: PloggingMainPresentableListenerRequest) {
         switch request {
         case .viewDidLoad:
+            needToSetMyLocation = true
+        case .viewDidAppear:
             showCoachmarkIfNeeded()
             locationManager.requestPermission()
         case .closeCoachmarkButtonTapped:
             hideCoachmark()
+        case .myLocationButtonTapped:
+            handleMyLocation()
         default: break
         }
     }
     
     // MARK: - Private
-    private let locationManager: LocationManagable
+    private var locationManager: LocationManagable
+    private var needToSetMyLocation: Bool = false
+    private var lastLocation: Location?
     private func showCoachmarkIfNeeded() {
         if !UserDefaults.standard.bool(forDefines: .ploggingCoachmark) {
             presenter.request(.showCoachmark)
@@ -75,18 +74,32 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
         UserDefaults.standard.set(true, forDefines: .ploggingCoachmark)
         presenter.request(.hideCoachmark)
     }
+    
+    private func handleMyLocation() {
+        if let lastLocation {
+            presenter.request(.goToMyLocation(lastLocation))
+        } else {
+            needToSetMyLocation = true
+            if !locationManager.isAuthorized {
+                locationManager.requestPermission()
+            }
+        }
+    }
 }
 
 extension PloggingMainInteractor: LocationManagerListener {
     func action(_ action: LocationManagerAction) {
         switch action {
         case let .routeUpdated(distance, location):
-            print("distance: \(distance)")
-            print("location: \(location)")
+            lastLocation = location
+            if needToSetMyLocation {
+                needToSetMyLocation = false
+                presenter.request(.goToMyLocation(location))
+            }
         case .locationAuthorized:
             locationManager.updateLocation()
         case .locationAuthDenied:
-            print("need To get Authorization")
+            presenter.request(.showLocationSetting)
         }
     }
 }

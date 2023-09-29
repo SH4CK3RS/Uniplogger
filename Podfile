@@ -9,6 +9,5 @@ target 'UniPlogger' do
   pod 'SnapKit'
   pod 'Then'
   pod 'Alamofire', '~> 5.2'
-  pod 'Toast-Swift'
   pod 'IQKeyboardManagerSwift'
 end

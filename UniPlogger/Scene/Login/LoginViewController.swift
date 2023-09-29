@@ -31,6 +31,11 @@ final class LoginViewController: UIViewController, LoginPresentable, LoginViewCo
         mainView.listener = self
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     // MARK: Internal
     weak var listener: LoginPresentableListener?
     

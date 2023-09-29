@@ -15,7 +15,7 @@ import SnapKit
 import Then
 import MapKit
 import CoreGraphics
-import Toast_Swift
+import Toast
 import Moya
 
 protocol PloggingDisplayLogic: AnyObject {

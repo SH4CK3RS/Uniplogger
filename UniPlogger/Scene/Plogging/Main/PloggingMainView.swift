@@ -50,6 +50,14 @@ final class PloggingMainView: UIView {
         coachmarkContainer.isHidden = true
     }
     
+    func setMyLocation(_ location: Location) {
+        let region = MKCoordinateRegion(
+            center: location.coordinate,
+            latitudinalMeters: 0.01,
+            longitudinalMeters: 0.01)
+        mapView.setRegion(region, animated: true)
+    }
+    
     // MARK: - Private
     private let infoList: [String] = [
         "준비물을 확인해주세요",

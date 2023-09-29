@@ -13,6 +13,7 @@ import CoreLocation
 
 enum PloggingMainPresentableListenerRequest {
     case viewDidLoad
+    case viewDidAppear
     case startButtonTapped
     case pauseButtonTapped
     case resumeButtonTapped
@@ -43,6 +44,11 @@ final class PloggingMainViewController: UIViewController, PloggingMainPresentabl
         listener?.request(.viewDidLoad)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        listener?.request(.viewDidAppear)
+    }
+    
     // MARK: - Internal
     func request(_ request: PloggingMainPresentableRequest) {
         switch request {
@@ -50,6 +56,10 @@ final class PloggingMainViewController: UIViewController, PloggingMainPresentabl
             showCoachmark()
         case .hideCoachmark:
             hideCoachmark()
+        case .showLocationSetting:
+            showLocationSetting()
+        case let .goToMyLocation(location):
+            mainView.setMyLocation(location)
         }
     }
     // MARK: - Private
@@ -63,6 +73,16 @@ final class PloggingMainViewController: UIViewController, PloggingMainPresentabl
     private func hideCoachmark() {
         tabBarController?.tabBar.alpha = 0
         mainView.hideCoachmark()
+    }
+    
+    private func showLocationSetting() {
+        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+        let alert = UIAlertController(title: "위치 권한 필요", message: "플로깅 중 경로 기록을 위해 설정에서 위치 권한을 허용해주세요.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "권한설정", style: .default, handler: { _ in
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
+        self.present(alert, animated: true)
     }
 }
 
