@@ -32,10 +32,10 @@ class PloggingRouter: NSObject, PloggingRoutingLogic, PloggingDataPassing {
         navigateToStartCounting(source: viewController!, destination: destinationVC)
     }
     func routeToPloggingRecord() {
-        let destinationVC = PloggingRecordViewController()
-        var destinationDs = destinationVC.router!.dataStore!
-        passDataToPloggingRecord(source: dataStore!, destination: &destinationDs)
-        navigateToPloggingRecord(source: viewController!, destination: destinationVC)
+//        let destinationVC = PloggingRecordViewController()
+//        var destinationDs = destinationVC.router!.dataStore!
+//        passDataToPloggingRecord(source: dataStore!, destination: &destinationDs)
+//        navigateToPloggingRecord(source: viewController!, destination: destinationVC)
     }
     
     
@@ -55,7 +55,7 @@ class PloggingRouter: NSObject, PloggingRoutingLogic, PloggingDataPassing {
     }
     
     //MARK: - Data Passing Logic
-    func passDataToPloggingRecord(source: PloggingDataStore, destination: inout PloggingRecordDataStore){
-        destination.ploggingData = source.ploggingData
-    }
+//    func passDataToPloggingRecord(source: PloggingDataStore, destination: inout PloggingRecordDataStore){
+//        destination.ploggingData = source.ploggingData
+//    }
 }

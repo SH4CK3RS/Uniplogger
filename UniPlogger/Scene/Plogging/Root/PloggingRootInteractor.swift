@@ -13,6 +13,7 @@ enum PloggingRootRouterRequest {
     case routeToPloggingMain
     case routeToStartCounting
     case detachStartCounting
+    case routeToPloggingRecord
 }
 
 protocol PloggingRootRouting: ViewableRouting {
@@ -58,7 +59,13 @@ final class PloggingRootInteractor: PresentableInteractor<PloggingRootPresentabl
 // MARK: - PloggingMainListenerRequest
 extension PloggingRootInteractor {
     func request(_ request: PloggingMainListenerRequest) {
-        router?.request(.routeToStartCounting)
+        switch request {
+        case .startButtonTapped:
+            router?.request(.routeToStartCounting)
+        case .stopButtonTapped:
+            router?.request(.routeToPloggingRecord)
+        }
+        
     }
 }
 

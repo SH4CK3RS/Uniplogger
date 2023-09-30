@@ -35,6 +35,7 @@ protocol PloggingMainPresentable: Presentable {
 
 enum PloggingMainListenerRequest {
     case startButtonTapped
+    case stopButtonTapped
 }
 
 protocol PloggingMainListener: AnyObject {
@@ -83,6 +84,8 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
             handlePausePlogging()
         case .resumeButtonTapped:
             handleResumePlogging()
+        case .stopButtonTapped:
+            handleStopPlogging()
         default: break
         }
     }
@@ -165,7 +168,7 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
         timer?.invalidate()
         timer = nil
         model.ploggingState = .stop
-//        self.router?.routeToPloggingRecord()
+        listener?.request(.stopButtonTapped)
     }
     
     private func getPolyLine(first: CLLocation, second: CLLocation) -> MultiColorPolyline {

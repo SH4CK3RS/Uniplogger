@@ -42,9 +42,11 @@ final class PloggingRootBuilder: Builder<PloggingRootDependency>, PloggingRootBu
         
         let ploggingMainBuilder = PloggingMainBuilder(dependency: component)
         let startCountingBuilder = StartCountingBuilder(dependency: component)
+        let ploggingRecordBuilder = PloggingRecordBuilder(dependency: component)
         return PloggingRootRouter(interactor: interactor,
                                   viewController: viewController,
                                   ploggingMainBuilder: ploggingMainBuilder,
-                                  startCountingBuilder: startCountingBuilder)
+                                  startCountingBuilder: startCountingBuilder,
+                                  ploggingRecordBuilder: ploggingRecordBuilder)
     }
 }

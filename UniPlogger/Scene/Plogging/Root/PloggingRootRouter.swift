@@ -8,7 +8,7 @@
 
 import RIBs
 
-protocol PloggingRootInteractable: Interactable, PloggingMainListener, StartCountingListener {
+protocol PloggingRootInteractable: Interactable, PloggingMainListener, StartCountingListener, PloggingRecordListener {
     var router: PloggingRootRouting? { get set }
     var listener: PloggingRootListener? { get set }
 }
@@ -26,9 +26,11 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
     init(interactor: PloggingRootInteractable,
          viewController: PloggingRootViewControllable,
          ploggingMainBuilder: PloggingMainBuildable,
-         startCountingBuilder: StartCountingBuildable) {
+         startCountingBuilder: StartCountingBuildable,
+         ploggingRecordBuilder: PloggingRecordBuildable) {
         self.ploggingMainBuilder = ploggingMainBuilder
         self.startCountingBuilder = startCountingBuilder
+        self.ploggingRecordBuilder = ploggingRecordBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
@@ -41,6 +43,8 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
             routeToStartCounting()
         case .detachStartCounting:
             detachStartCounting()
+        case .routeToPloggingRecord:
+            routeToPloggingRecord()
         }
     }
     
@@ -49,6 +53,9 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
     
     private let startCountingBuilder: StartCountingBuildable
     private var startCountingRouter: StartCountingRouting?
+    
+    private let ploggingRecordBuilder: PloggingRecordBuildable
+    private var ploggingRecordRouter: PloggingRecordRouting?
     
     private func routeToPloggingMain() {
         let router = ploggingMainBuilder.build(withListener: interactor)
@@ -71,5 +78,13 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
         startCountingRouter = nil
         detachChild(router)
         viewController.dismiss(router.viewControllable, animated: true)
+    }
+    
+    private func routeToPloggingRecord() {
+        let router = ploggingRecordBuilder.build(withListener: interactor)
+        ploggingRecordRouter = router
+        attachChild(router)
+        router.viewControllable.uiviewController.hidesBottomBarWhenPushed = true
+        viewController.push(viewController: router.viewControllable, animated: false)
     }
 }
