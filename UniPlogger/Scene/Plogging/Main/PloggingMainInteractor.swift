@@ -19,8 +19,11 @@ enum PloggingMainPresentableRequest {
     case showCoachmark
     case hideCoachmark
     case showLocationSetting
-    case goToMyLocation(Location)
+    case goToMyLocation(CLLocation)
     case showAddressForAddTrashcan(String)
+    case startPlogging
+    case updateTime(String)
+    case updateDistance(String)
 }
 
 protocol PloggingMainPresentable: Presentable {
@@ -37,17 +40,24 @@ protocol PloggingMainListener: AnyObject {
 }
 
 final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentable>, PloggingMainInteractable, PloggingMainPresentableListener {
-
+    
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
     init(presenter: PloggingMainPresentable,
-         locationManager: LocationManagable) {
+         locationManager: LocationManagable,
+         stream: PloggingStream) {
         self.locationManager = locationManager
+        self.stream = stream
         super.init(presenter: presenter)
         presenter.listener = self
         self.locationManager.listener = self
     }
-
+    
+    override func didBecomeActive() {
+        super.didBecomeActive()
+        bindStream()
+    }
+    
     // MARK: - Internal
     weak var router: PloggingMainRouting?
     weak var listener: PloggingMainListener?
@@ -67,6 +77,10 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
             handleAddTrashcan(with: latitude, longitude: longitude)
         case .startButtonTapped:
             listener?.request(.startButtonTapped)
+        case .pauseButtonTapped:
+            handlePausePlogging()
+        case .resumeButtonTapped:
+            handleResumePlogging()
         default: break
         }
     }
@@ -74,7 +88,17 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
     // MARK: - Private
     private var locationManager: LocationManagable
     private var needToSetMyLocation: Bool = false
-    private var lastLocation: Location?
+    private var model = PloggingMainModel()
+    private let stream: PloggingStream
+    private var timer: Timer?
+    
+    private func bindStream() {
+        stream.countingFinishedObservable
+            .observe(on: MainScheduler.instance)
+            .subscribe(with: self) { owner, _ in
+                owner.handleStartPlogging()
+            }.disposeOnDeactivate(interactor: self)
+    }
     private func showCoachmarkIfNeeded() {
         if !UserDefaults.standard.bool(forDefines: .ploggingCoachmark) {
             presenter.request(.showCoachmark)
@@ -87,8 +111,8 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
     }
     
     private func handleMyLocation() {
-        if let lastLocation {
-            presenter.request(.goToMyLocation(lastLocation))
+        if let currentLocation = model.currentLocation {
+            presenter.request(.goToMyLocation(currentLocation))
         } else {
             needToSetMyLocation = true
             if !locationManager.isAuthorized {
@@ -105,16 +129,69 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
             }
         }
     }
+    
+    private func handleStartPlogging() {
+        model.start()
+        timer = Timer.scheduledTimer(
+            timeInterval: 1,
+            target: self,
+            selector: #selector(updateTimer), 
+            userInfo: nil,
+            repeats: true
+        )
+        presenter.request(.startPlogging)
+    }
+    
+    private func handlePausePlogging() {
+        locationManager.stopUpdateLocation()
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    private func handleResumePlogging() {
+        locationManager.updateLocation()
+        timer = Timer.scheduledTimer(
+            timeInterval: 1,
+            target: self,
+            selector: #selector(updateTimer),
+            userInfo: nil,
+            repeats: true
+        )
+    }
+    
+    private func handleStopPlogging() {
+        timer?.invalidate()
+        timer = nil
+        model.ploggingState = .stop
+//        self.router?.routeToPloggingRecord()
+    }
+    
+    @objc 
+    private func updateTimer() {
+        model.seconds = model.seconds + 1
+        if model.seconds == 60 {
+            model.minutes += 1
+            model.seconds = 0
+        }
+        
+        let timeText = "\(String(format: "%02d", model.minutes)):\(String(format: "%02d", model.seconds))"
+        presenter.request(.updateTime(timeText))
+    }
 }
 
 extension PloggingMainInteractor: LocationManagerListener {
     func action(_ action: LocationManagerAction) {
         switch action {
-        case let .routeUpdated(distance, location):
-            lastLocation = location
+        case let .locationUpdated(newLocation):
+            if let lastLocation = model.currentLocation {
+                let delta = newLocation.distance(from: lastLocation)
+                model.distance = model.distance + Measurement(value: delta, unit: UnitLength.meters)
+                presenter.request(.updateDistance(model.distance.formattedString)) 
+            }
+            model.locationList.append(newLocation)
             if needToSetMyLocation {
                 needToSetMyLocation = false
-                presenter.request(.goToMyLocation(location))
+                presenter.request(.goToMyLocation(newLocation))
             }
         case .locationAuthorized:
             locationManager.updateLocation()

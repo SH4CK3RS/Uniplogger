@@ -12,7 +12,7 @@ import UIKit
 enum LocationManagerAction {
     case locationAuthDenied
     case locationAuthorized
-    case routeUpdated(distance: Measurement<UnitLength>, location: Location)
+    case locationUpdated(CLLocation)
 }
 
 protocol LocationManagerListener: AnyObject {
@@ -24,6 +24,7 @@ protocol LocationManagable {
     var isAuthorized: Bool { get }
     func requestPermission()
     func updateLocation()
+    func stopUpdateLocation()
 }
 
 struct Location {
@@ -40,6 +41,9 @@ final class LocationManager: NSObject, LocationManagable {
     override init() {
         super.init()
         locationManager.delegate = self
+        locationManager.activityType = .fitness
+        locationManager.distanceFilter = 5
+        locationManager.allowsBackgroundLocationUpdates = true
     }
     
     // MARK: - Internal
@@ -55,14 +59,12 @@ final class LocationManager: NSObject, LocationManagable {
     func updateLocation() {
         locationManager.startUpdatingLocation()
     }
+    func stopUpdateLocation() {
+        locationManager.stopUpdatingLocation()
+    }
     
     // MARK: - Private
     private let locationManager = CLLocationManager()
-    private var locationList: [CLLocation] = []
-    private var distance = Measurement(value: 0, unit: UnitLength.kilometers)
-    var currentLocation: CLLocation? {
-        locationList.last
-    }
 }
 
 extension LocationManager: CLLocationManagerDelegate {
@@ -81,22 +83,9 @@ extension LocationManager: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            if let newLocation = locations.last {
-                UserDefaults.standard.set(newLocation.coordinate.asDictionary, forDefines: .location)
-                let howRecent = newLocation.timestamp.timeIntervalSinceNow
-                
-                guard abs(howRecent) < 10 else { return }
-                if let lastLocation = self.locationList.last {
-                    let delta = newLocation.distance(from: lastLocation)
-                    distance = distance + Measurement(value: delta, unit: UnitLength.meters)
-                    let location = Location(
-                        latitude: newLocation.coordinate.latitude,
-                        longitude: newLocation.coordinate.longitude,
-                        timestamp: newLocation.timestamp)
-                    
-                    listener?.action(.routeUpdated(distance: distance, location: location))
-                }
-                locationList.append(newLocation)
-            }
-        }
+        guard let newLocation = locations.last,
+              abs(newLocation.timestamp.timeIntervalSinceNow) < 10
+        else { return }
+        listener?.action(.locationUpdated(newLocation))
+    }
 }

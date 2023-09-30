@@ -62,6 +62,12 @@ final class PloggingMainViewController: UIViewController, PloggingMainPresentabl
             mainView.setMyLocation(location)
         case let .showAddressForAddTrashcan(address):
             mainView.showAddressForAddTrashcan(address)
+        case .startPlogging:
+            mainView.startPlogging()
+        case let .updateTime(timeText):
+            mainView.updateTime(timeText)
+        case let .updateDistance(distance):
+            mainView.updateDistance(distance)
         }
     }
     // MARK: - Private
@@ -94,7 +100,7 @@ extension PloggingMainViewController: PloggingMainViewListener {
         case .startButtonTapped:
             listener?.request(.startButtonTapped)
         case .pauseButtonTapped:
-            listener?.request(.stopButtonTapped)
+            listener?.request(.pauseButtonTapped)
         case .resumeButtonTapped:
             listener?.request(.resumeButtonTapped)
         case .stopButtonTapped:

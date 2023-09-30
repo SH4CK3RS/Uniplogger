@@ -35,7 +35,9 @@ final class PloggingRootInteractor: PresentableInteractor<PloggingRootPresentabl
 
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
-    override init(presenter: PloggingRootPresentable) {
+    init(presenter: PloggingRootPresentable,
+         stream: PloggingMutableStream) {
+        self.stream = stream
         super.init(presenter: presenter)
         presenter.listener = self
     }
@@ -49,6 +51,8 @@ final class PloggingRootInteractor: PresentableInteractor<PloggingRootPresentabl
         super.willResignActive()
         // TODO: Pause any business logic.
     }
+    
+    private let stream: PloggingMutableStream
 }
 
 // MARK: - PloggingMainListenerRequest
@@ -64,7 +68,7 @@ extension PloggingRootInteractor {
         switch request {
         case .countDidEnd:
             router?.request(.detachStartCounting)
-            // TODO: 스트림 생성하여 카운팅 끝남 알리기
+            stream.updateCountingFinished()
         }
     }
 }

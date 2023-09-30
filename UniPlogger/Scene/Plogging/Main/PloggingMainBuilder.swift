@@ -9,13 +9,18 @@
 import RIBs
 
 protocol PloggingMainDependency: Dependency {
-    // TODO: Declare the set of dependencies required by this RIB, but cannot be
-    // created by this RIB.
+    var stream: PloggingStream { get }
 }
 
 final class PloggingMainComponent: Component<PloggingMainDependency> {
     fileprivate var locationManager: LocationManagable {
         LocationManager()
+    }
+    fileprivate let stream: PloggingStream
+    
+    override init(dependency: PloggingMainDependency) {
+        stream = dependency.stream
+        super.init(dependency: dependency)
     }
 }
 
@@ -35,7 +40,8 @@ final class PloggingMainBuilder: Builder<PloggingMainDependency>, PloggingMainBu
         let component = PloggingMainComponent(dependency: dependency)
         let viewController = PloggingMainViewController()
         let interactor = PloggingMainInteractor(presenter: viewController,
-                                                locationManager: component.locationManager)
+                                                locationManager: component.locationManager,
+                                                stream: component.stream)
         interactor.listener = listener
         return PloggingMainRouter(interactor: interactor, viewController: viewController)
     }

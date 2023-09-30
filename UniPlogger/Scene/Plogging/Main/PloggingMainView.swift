@@ -49,7 +49,7 @@ final class PloggingMainView: UIView {
         coachmarkContainer.isHidden = true
     }
     
-    func setMyLocation(_ location: Location) {
+    func setMyLocation(_ location: CLLocation) {
         let region = MKCoordinateRegion(
             center: location.coordinate,
             latitudinalMeters: 0.01,
@@ -66,6 +66,27 @@ final class PloggingMainView: UIView {
             $0.trailing.equalToSuperview().offset(-16)
             $0.bottom.equalTo(trashInfoContainer.snp.top).offset(-16)
         }
+    }
+    
+    func startPlogging() {
+        startBottomContainerView.isHidden = true
+        doingPauseBottomContainerView.isHidden = false
+        pauseButton.isHidden = false
+        stopButton.isHidden = true
+        resumeButton.isHidden = true
+        
+        trashButton.snp.remakeConstraints{
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.bottom.equalTo(doingPauseBottomContainerView.snp.top).offset(-16)
+        }
+    }
+    
+    func updateTime(_ timeText: String) {
+        timeLabel.text = timeText
+    }
+    
+    func updateDistance(_ distance: String) {
+        distanceLabel.text = distance
     }
     
     // MARK: - Private
@@ -139,16 +160,19 @@ final class PloggingMainView: UIView {
     @objc
     private func pauseButtonTapped(){
         listener?.action(.pauseButtonTapped)
+        pausePlogging()
     }
     
     @objc
     private func resumeButtonTapped(){
         listener?.action(.resumeButtonTapped)
+        resumePlogging()
     }
     
     @objc
     private func stopButtonTapped(){
         listener?.action(.stopButtonTapped)
+        stopPlogging()
     }
     
     @objc
@@ -208,6 +232,31 @@ final class PloggingMainView: UIView {
         // case .stop: startBottomContainerView.snp.top.offset -16
         // case .doing: doingPauseBottomContainerView.snp.top.offset -16
         // }
+    }
+    
+    private func pausePlogging() {
+        pauseButton.isHidden = true
+        stopButton.isHidden = false
+        resumeButton.isHidden = false
+    }
+    
+    private func resumePlogging() {
+        pauseButton.isHidden = false
+        stopButton.isHidden = true
+        resumeButton.isHidden = true
+    }
+    
+    private func stopPlogging() {
+        startBottomContainerView.isHidden = false
+        doingPauseBottomContainerView.isHidden = true
+        mapView.removeOverlays(mapView.overlays)
+        timeLabel.text = "00:00"
+        distanceLabel.text = "0.00 km"
+        
+        trashButton.snp.remakeConstraints {
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.bottom.equalTo(startBottomContainerView.snp.top).offset(-16)
+        }
     }
 }
 

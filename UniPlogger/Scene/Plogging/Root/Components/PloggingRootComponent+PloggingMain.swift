@@ -8,4 +8,8 @@
 
 import Foundation
 
-extension PloggingRootComponent: PloggingMainDependency {}
+extension PloggingRootComponent: PloggingMainDependency {
+    var stream: PloggingStream {
+        mutableStream
+    }
+}

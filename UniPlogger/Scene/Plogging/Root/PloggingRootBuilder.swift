@@ -14,8 +14,11 @@ protocol PloggingRootDependency: Dependency {
 }
 
 final class PloggingRootComponent: Component<PloggingRootDependency> {
-
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+    var mutableStream: PloggingMutableStream {
+        shared {
+            PloggingStreamImpl()
+        }
+    }
 }
 
 // MARK: - Builder
@@ -33,7 +36,8 @@ final class PloggingRootBuilder: Builder<PloggingRootDependency>, PloggingRootBu
     func build(withListener listener: PloggingRootListener) -> PloggingRootRouting {
         let component = PloggingRootComponent(dependency: dependency)
         let viewController = PloggingRootViewController()
-        let interactor = PloggingRootInteractor(presenter: viewController)
+        let interactor = PloggingRootInteractor(presenter: viewController,
+                                                stream: component.mutableStream)
         interactor.listener = listener
         
         let ploggingMainBuilder = PloggingMainBuilder(dependency: component)

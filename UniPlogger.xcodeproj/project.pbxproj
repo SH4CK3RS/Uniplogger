@@ -42,6 +42,9 @@
 		3E67E1B02AC72C95001FBA36 /* StartCountingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1AC2AC72C95001FBA36 /* StartCountingInteractor.swift */; };
 		3E67E1B22AC72D67001FBA36 /* StartCountingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1B12AC72D67001FBA36 /* StartCountingView.swift */; };
 		3E67E1B42AC732A5001FBA36 /* PloggingRootComponent+StartCounting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1B32AC732A5001FBA36 /* PloggingRootComponent+StartCounting.swift */; };
+		3E67E1B62AC7D70C001FBA36 /* PloggingStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1B52AC7D70C001FBA36 /* PloggingStream.swift */; };
+		3E67E1B82AC7E544001FBA36 /* PloggingMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1B72AC7E544001FBA36 /* PloggingMainModel.swift */; };
+		3E67E1BA2AC7F780001FBA36 /* Measurement+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1B92AC7F780001FBA36 /* Measurement+Extensions.swift */; };
 		3EDD64D62AB6DCCA00776C34 /* TutorialRootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D32AB6DCCA00776C34 /* TutorialRootRouter.swift */; };
 		3EDD64D72AB6DCCA00776C34 /* TutorialRootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D42AB6DCCA00776C34 /* TutorialRootBuilder.swift */; };
 		3EDD64D82AB6DCCA00776C34 /* TutorialRootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D52AB6DCCA00776C34 /* TutorialRootInteractor.swift */; };
@@ -360,6 +363,9 @@
 		3E67E1AC2AC72C95001FBA36 /* StartCountingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCountingInteractor.swift; sourceTree = "<group>"; };
 		3E67E1B12AC72D67001FBA36 /* StartCountingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCountingView.swift; sourceTree = "<group>"; };
 		3E67E1B32AC732A5001FBA36 /* PloggingRootComponent+StartCounting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PloggingRootComponent+StartCounting.swift"; sourceTree = "<group>"; };
+		3E67E1B52AC7D70C001FBA36 /* PloggingStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingStream.swift; sourceTree = "<group>"; };
+		3E67E1B72AC7E544001FBA36 /* PloggingMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingMainModel.swift; sourceTree = "<group>"; };
+		3E67E1B92AC7F780001FBA36 /* Measurement+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Measurement+Extensions.swift"; sourceTree = "<group>"; };
 		3EDD64D32AB6DCCA00776C34 /* TutorialRootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootRouter.swift; sourceTree = "<group>"; };
 		3EDD64D42AB6DCCA00776C34 /* TutorialRootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootBuilder.swift; sourceTree = "<group>"; };
 		3EDD64D52AB6DCCA00776C34 /* TutorialRootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootInteractor.swift; sourceTree = "<group>"; };
@@ -709,6 +715,7 @@
 				3E2FB8722AC0016F0096F554 /* PloggingRootViewController.swift */,
 				3E2FB8732AC0016F0096F554 /* PloggingRootBuilder.swift */,
 				3E2FB8742AC0016F0096F554 /* PloggingRootInteractor.swift */,
+				3E67E1B52AC7D70C001FBA36 /* PloggingStream.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -722,6 +729,7 @@
 				3E2FB87D2AC002070096F554 /* PloggingMainInteractor.swift */,
 				3E2FB8822AC002120096F554 /* PloggingMainView.swift */,
 				3E2FB88C2AC36A6E0096F554 /* PloggingMainService.swift */,
+				3E67E1B72AC7E544001FBA36 /* PloggingMainModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1566,6 +1574,7 @@
 				AA38A6DC257A78F100B26E1F /* UIViewController+Extensions.swift */,
 				AA38A788257BD80700B26E1F /* NSAttributedString+Extensions.swift */,
 				3EDD64EA2AB6FF8700776C34 /* UINavigationController+Extensions.swift */,
+				3E67E1B92AC7F780001FBA36 /* Measurement+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1844,6 +1853,7 @@
 				AAA1CBFE255D640C00EDB18A /* PloggingAPI.swift in Sources */,
 				835309B2257BE55D00C3626D /* TopView.swift in Sources */,
 				4C8956832532D0630099934E /* QuestFactory.swift in Sources */,
+				3E67E1BA2AC7F780001FBA36 /* Measurement+Extensions.swift in Sources */,
 				AA7F54E22532C179001C4012 /* CLLocationCoordinated2D+Extensions.swift in Sources */,
 				AA7F54F12532C1A6001C4012 /* PloggingPresenter.swift in Sources */,
 				3E2FB86F2ABFFBFC0096F554 /* MainTabBarInteractor.swift in Sources */,
@@ -1936,6 +1946,7 @@
 				3E2FB8852AC00DC00096F554 /* PloggingRootComponent+PloggingMain.swift in Sources */,
 				AAE05CE72568E3C100547501 /* VerbosePlugin.swift in Sources */,
 				AA7F55212533568D001C4012 /* ShareWorker.swift in Sources */,
+				3E67E1B82AC7E544001FBA36 /* PloggingMainModel.swift in Sources */,
 				83DE07762566AD050085AC72 /* DetailRouter.swift in Sources */,
 				AA4AD55525725C920087E060 /* LogAPITarget.swift in Sources */,
 				AA7F55242533568D001C4012 /* PloggingInfoView.swift in Sources */,
@@ -2055,6 +2066,7 @@
 				83DE07722566AD050085AC72 /* ScoreInfoView.swift in Sources */,
 				83DE07802566AD050085AC72 /* ChallengeRouter.swift in Sources */,
 				AA7F55232533568D001C4012 /* PloggingImageView.swift in Sources */,
+				3E67E1B62AC7D70C001FBA36 /* PloggingStream.swift in Sources */,
 				AAAD68F82555738300895265 /* CLLocation+Extensions.swift in Sources */,
 				8353A3732568FE9400F9AA4F /* ReportItemLabel.swift in Sources */,
 				8352484A2572283C00C9F495 /* MyPageViewController+UI.swift in Sources */,
