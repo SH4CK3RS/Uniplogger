@@ -14,6 +14,7 @@ enum PloggingRootRouterRequest {
     case routeToStartCounting
     case detachStartCounting
     case routeToPloggingRecord
+    case routeToCamera
 }
 
 protocol PloggingRootRouting: ViewableRouting {
@@ -76,6 +77,15 @@ extension PloggingRootInteractor {
         case .countDidEnd:
             router?.request(.detachStartCounting)
             stream.updateCountingFinished()
+        }
+    }
+}
+
+extension PloggingRootInteractor {
+    func request(_ request: PloggingRecordListenerRequest) {
+        switch request {
+        case .takePhoto:
+            router?.request(.routeToCamera)
         }
     }
 }

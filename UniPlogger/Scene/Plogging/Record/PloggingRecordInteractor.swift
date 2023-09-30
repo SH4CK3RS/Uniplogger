@@ -18,12 +18,16 @@ protocol PloggingRecordPresentable: Presentable {
     // TODO: Declare methods the interactor can invoke the presenter to present data.
 }
 
+enum PloggingRecordListenerRequest {
+    case takePhoto
+}
+
 protocol PloggingRecordListener: AnyObject {
-    // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+    func request(_ request: PloggingRecordListenerRequest)
 }
 
 final class PloggingRecordInteractor: PresentableInteractor<PloggingRecordPresentable>, PloggingRecordInteractable, PloggingRecordPresentableListener {
-
+    
     weak var router: PloggingRecordRouting?
     weak var listener: PloggingRecordListener?
 
@@ -42,5 +46,12 @@ final class PloggingRecordInteractor: PresentableInteractor<PloggingRecordPresen
     override func willResignActive() {
         super.willResignActive()
         // TODO: Pause any business logic.
+    }
+    
+    func request(_ request: PloggingRecordPresentableListenerRequest) {
+        switch request {
+        case .takePicture:
+            listener?.request(.takePhoto)
+        }
     }
 }

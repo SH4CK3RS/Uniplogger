@@ -12,7 +12,6 @@ import UIKit
 
 enum PloggingRecordPresentableListenerRequest {
     case takePicture
-    case 
 }
 
 protocol PloggingRecordPresentableListener: AnyObject {
@@ -36,10 +35,10 @@ final class PloggingRecordViewController: UIViewController, PloggingRecordPresen
 extension PloggingRecordViewController: PloggingRecordViewListener {
     func action(_ action: PloggingRecordViewAction) {
         switch action {
-        case .skipButtonTapped:
+        case .skipButtonTapped, .nextButtonTapped:
             let alert = UIAlertController(title: "플로깅 인증 사진을\n촬영하시겠습니까?", message: "사진 촬영을 위해 사진앱을 실행합니다.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "실행", style: .default) { (_) in
-//                self.router?.routeToCamera()
+            let okAction = UIAlertAction(title: "실행", style: .default) { [weak self] (_) in
+                self?.listener?.request(.takePicture)
             }
             let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
             alert.addAction(okAction)
@@ -50,24 +49,6 @@ extension PloggingRecordViewController: PloggingRecordViewListener {
             detailView.modalTransitionStyle = .crossDissolve
             detailView.modalPresentationStyle = .overFullScreen
             self.present(detailView, animated: true, completion: nil)
-        case .nextButtonTapped:
-            let alert = UIAlertController(title: "플로깅 인증 사진을\n촬영하시겠습니까?", message: "사진 촬영을 위해 사진앱을 실행합니다.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "실행", style: .default) { (_) in
-//                self.router?.routeToCamera()
-            }
-            let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-            alert.addAction(okAction)
-            alert.addAction(cancelAction)
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-}
-
-extension PloggingRecordViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        dismiss(animated: true) {
-            self.capturedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
-//            self.router?.routeToShare()
         }
     }
 }

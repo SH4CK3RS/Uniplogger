@@ -52,6 +52,12 @@
 		3E67E1C52AC81431001FBA36 /* PloggingRecordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1C12AC81431001FBA36 /* PloggingRecordInteractor.swift */; };
 		3E67E1C72AC8143D001FBA36 /* PloggingRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1C62AC8143D001FBA36 /* PloggingRecordView.swift */; };
 		3E67E1C92AC824AF001FBA36 /* PloggingRootComponent+PloggingRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1C82AC824AF001FBA36 /* PloggingRootComponent+PloggingRecord.swift */; };
+		3E67E1CB2AC840B5001FBA36 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1CA2AC840B5001FBA36 /* CameraView.swift */; };
+		3E67E1D12AC84F64001FBA36 /* CameraRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1CD2AC84F64001FBA36 /* CameraRouter.swift */; };
+		3E67E1D22AC84F65001FBA36 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1CE2AC84F64001FBA36 /* CameraViewController.swift */; };
+		3E67E1D32AC84F65001FBA36 /* CameraBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1CF2AC84F64001FBA36 /* CameraBuilder.swift */; };
+		3E67E1D42AC84F65001FBA36 /* CameraInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1D02AC84F64001FBA36 /* CameraInteractor.swift */; };
+		3E67E1D72AC852E1001FBA36 /* PloggingRootComponent+Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1D62AC852E1001FBA36 /* PloggingRootComponent+Camera.swift */; };
 		3EDD64D62AB6DCCA00776C34 /* TutorialRootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D32AB6DCCA00776C34 /* TutorialRootRouter.swift */; };
 		3EDD64D72AB6DCCA00776C34 /* TutorialRootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D42AB6DCCA00776C34 /* TutorialRootBuilder.swift */; };
 		3EDD64D82AB6DCCA00776C34 /* TutorialRootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D52AB6DCCA00776C34 /* TutorialRootInteractor.swift */; };
@@ -289,7 +295,6 @@
 		AAAD68F82555738300895265 /* CLLocation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD68F72555738300895265 /* CLLocation+Extensions.swift */; };
 		AAAD68FF2555A52B00895265 /* QuestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C401EC3253EE6B300ABED84 /* QuestDetailViewController.swift */; };
 		AAAD690225562CB900895265 /* IntrinsicSizeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD690125562CB900895265 /* IntrinsicSizeCollectionView.swift */; };
-		AAAD691025566B1400895265 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1215DCB5253C626800C5D9BE /* CameraViewController.swift */; };
 		AAB3B4C82520A31100F0311A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3B4C72520A31100F0311A /* AppDelegate.swift */; };
 		AAB3B4D22520A31100F0311A /* UniPlogger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAB3B4D02520A31100F0311A /* UniPlogger.xcdatamodeld */; };
 		AAB3B4D42520A31200F0311A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAB3B4D32520A31200F0311A /* Assets.xcassets */; };
@@ -332,7 +337,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1215DCB5253C626800C5D9BE /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		12330CE7D885C1CB00C8E874 /* Pods-UniPlogger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniPlogger.release.xcconfig"; path = "Target Support Files/Pods-UniPlogger/Pods-UniPlogger.release.xcconfig"; sourceTree = "<group>"; };
 		3E2FB8652ABF525F0096F554 /* LoginResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LoginResponse.json; sourceTree = "<group>"; };
 		3E2FB8682ABFFBFC0096F554 /* MainTabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarRouter.swift; sourceTree = "<group>"; };
@@ -373,6 +377,12 @@
 		3E67E1C12AC81431001FBA36 /* PloggingRecordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingRecordInteractor.swift; sourceTree = "<group>"; };
 		3E67E1C62AC8143D001FBA36 /* PloggingRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingRecordView.swift; sourceTree = "<group>"; };
 		3E67E1C82AC824AF001FBA36 /* PloggingRootComponent+PloggingRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PloggingRootComponent+PloggingRecord.swift"; sourceTree = "<group>"; };
+		3E67E1CA2AC840B5001FBA36 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		3E67E1CD2AC84F64001FBA36 /* CameraRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRouter.swift; sourceTree = "<group>"; };
+		3E67E1CE2AC84F64001FBA36 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		3E67E1CF2AC84F64001FBA36 /* CameraBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraBuilder.swift; sourceTree = "<group>"; };
+		3E67E1D02AC84F64001FBA36 /* CameraInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraInteractor.swift; sourceTree = "<group>"; };
+		3E67E1D62AC852E1001FBA36 /* PloggingRootComponent+Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PloggingRootComponent+Camera.swift"; sourceTree = "<group>"; };
 		3EDD64D32AB6DCCA00776C34 /* TutorialRootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootRouter.swift; sourceTree = "<group>"; };
 		3EDD64D42AB6DCCA00776C34 /* TutorialRootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootBuilder.swift; sourceTree = "<group>"; };
 		3EDD64D52AB6DCCA00776C34 /* TutorialRootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootInteractor.swift; sourceTree = "<group>"; };
@@ -740,6 +750,7 @@
 				3E2FB8842AC00DC00096F554 /* PloggingRootComponent+PloggingMain.swift */,
 				3E67E1B32AC732A5001FBA36 /* PloggingRootComponent+StartCounting.swift */,
 				3E67E1C82AC824AF001FBA36 /* PloggingRootComponent+PloggingRecord.swift */,
+				3E67E1D62AC852E1001FBA36 /* PloggingRootComponent+Camera.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -782,6 +793,15 @@
 				3E67E1B12AC72D67001FBA36 /* StartCountingView.swift */,
 			);
 			path = StartCounting;
+			sourceTree = "<group>";
+		};
+		3E67E1D52AC8503F001FBA36 /* ImagePreview */ = {
+			isa = PBXGroup;
+			children = (
+				8355DF4A25858138001C63A5 /* ImagePreviewViewController.swift */,
+				8355DF5D2585B5A9001C63A5 /* ImagePreviewRouter.swift */,
+			);
+			path = ImagePreview;
 			sourceTree = "<group>";
 		};
 		3EDD64D92AB6DDDC00776C34 /* TutorialFirst */ = {
@@ -938,7 +958,6 @@
 				8352482E2572283B00C9F495 /* MyPage */,
 				83524812257227BA00C9F495 /* Splash */,
 				83DE07502566AD050085AC72 /* Challenge */,
-				AA7F55122533568C001C4012 /* Share */,
 				AA7F54E32532C1A6001C4012 /* Plogging */,
 				4CC9C7C625231578004D873D /* Quest */,
 			);
@@ -1126,9 +1145,11 @@
 		8355DF522585AF4C001C63A5 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
-				1215DCB5253C626800C5D9BE /* CameraViewController.swift */,
-				8355DF4A25858138001C63A5 /* ImagePreviewViewController.swift */,
-				8355DF5D2585B5A9001C63A5 /* ImagePreviewRouter.swift */,
+				3E67E1CD2AC84F64001FBA36 /* CameraRouter.swift */,
+				3E67E1CE2AC84F64001FBA36 /* CameraViewController.swift */,
+				3E67E1CF2AC84F64001FBA36 /* CameraBuilder.swift */,
+				3E67E1D02AC84F64001FBA36 /* CameraInteractor.swift */,
+				3E67E1CA2AC840B5001FBA36 /* CameraView.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -1360,6 +1381,9 @@
 		AA7F54E32532C1A6001C4012 /* Plogging */ = {
 			isa = PBXGroup;
 			children = (
+				3E67E1D52AC8503F001FBA36 /* ImagePreview */,
+				8355DF522585AF4C001C63A5 /* Camera */,
+				AA7F55122533568C001C4012 /* Share */,
 				3E67E1A82AC72C7E001FBA36 /* StartCounting */,
 				3E2FB8792AC001970096F554 /* Main */,
 				3E2FB8702AC001320096F554 /* Root */,
@@ -1426,7 +1450,6 @@
 		AA7F55122533568C001C4012 /* Share */ = {
 			isa = PBXGroup;
 			children = (
-				8355DF522585AF4C001C63A5 /* Camera */,
 				4C401EAE253DE19100ABED84 /* ShareRouter.swift */,
 				AA7F55132533568C001C4012 /* SharePresenter.swift */,
 				AA7F55142533568C001C4012 /* ShareInteractor.swift */,
@@ -1887,7 +1910,9 @@
 				3EDD64F82AB7094A00776C34 /* TutorialRootComponent+TutorialSecond.swift in Sources */,
 				AA7F551D2533568D001C4012 /* SharePresenter.swift in Sources */,
 				4CE9149A257BB33000BCF398 /* QuestTutorialViewController3.swift in Sources */,
+				3E67E1D32AC84F65001FBA36 /* CameraBuilder.swift in Sources */,
 				3E2FB88B2AC011FC0096F554 /* SplashComponent+MainTabBar.swift in Sources */,
+				3E67E1D72AC852E1001FBA36 /* PloggingRootComponent+Camera.swift in Sources */,
 				3E2FB8812AC002070096F554 /* PloggingMainInteractor.swift in Sources */,
 				AA7658F3258279A500BA0A3E /* FindPasswordViewController.swift in Sources */,
 				83DE07752566AD050085AC72 /* DetailViewController.swift in Sources */,
@@ -1956,9 +1981,11 @@
 				835248472572283C00C9F495 /* InfoBaseViewController.swift in Sources */,
 				AA35BC77254FEEFA00AE32A7 /* CoreDataStore.swift in Sources */,
 				3EDD64F12AB704BC00776C34 /* TutorialSecondRouter.swift in Sources */,
+				3E67E1D42AC84F65001FBA36 /* CameraInteractor.swift in Sources */,
 				835248B42574417000C9F495 /* UserLogWorker.swift in Sources */,
 				AAB3B4C82520A31100F0311A /* AppDelegate.swift in Sources */,
 				83DE07772566AD050085AC72 /* DetailViewController+UI.swift in Sources */,
+				3E67E1CB2AC840B5001FBA36 /* CameraView.swift in Sources */,
 				83530971257B918D00C3626D /* LogOutInfoViewController.swift in Sources */,
 				3E43CAA02AB6D3C200B6C4D8 /* AppComponent.swift in Sources */,
 				3E2FB8892AC0111F0096F554 /* MainTabBarComponent+PloggingRoot.swift in Sources */,
@@ -2066,6 +2093,7 @@
 				AA7F55232533568D001C4012 /* PloggingImageView.swift in Sources */,
 				3E67E1B62AC7D70C001FBA36 /* PloggingStream.swift in Sources */,
 				AAAD68F82555738300895265 /* CLLocation+Extensions.swift in Sources */,
+				3E67E1D22AC84F65001FBA36 /* CameraViewController.swift in Sources */,
 				8353A3732568FE9400F9AA4F /* ReportItemLabel.swift in Sources */,
 				3E67E1C52AC81431001FBA36 /* PloggingRecordInteractor.swift in Sources */,
 				8352484A2572283C00C9F495 /* MyPageViewController+UI.swift in Sources */,
@@ -2107,6 +2135,7 @@
 				AAB3B4F92520B5B600F0311A /* Common.swift in Sources */,
 				835248AC25743C7200C9F495 /* UserLogInteractor.swift in Sources */,
 				3EDD64DF2AB6DDEB00776C34 /* TutorialFirstViewController.swift in Sources */,
+				3E67E1D12AC84F64001FBA36 /* CameraRouter.swift in Sources */,
 				83DE077E2566AD050085AC72 /* ChallengeWorker.swift in Sources */,
 				3EDD65232ABF105F00776C34 /* LoginService.swift in Sources */,
 				AAC552C62585C4C6000DAFDF /* ResetPasswordRouter.swift in Sources */,
@@ -2117,7 +2146,6 @@
 				AAC552C52585C4C6000DAFDF /* ResetPasswordWorker.swift in Sources */,
 				8352484D2572283C00C9F495 /* MyPageRouter.swift in Sources */,
 				AA2CAE022543EAD600105748 /* TrashcanAnnotation.swift in Sources */,
-				AAAD691025566B1400895265 /* CameraViewController.swift in Sources */,
 				8352484B2572283C00C9F495 /* MyPageInteractor.swift in Sources */,
 				AA7F55202533568D001C4012 /* ShareViewController+UI.swift in Sources */,
 				4CC9C7D7252315FC004D873D /* QuestWorker.swift in Sources */,

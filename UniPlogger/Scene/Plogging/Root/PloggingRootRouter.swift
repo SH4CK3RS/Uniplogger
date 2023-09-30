@@ -8,7 +8,7 @@
 
 import RIBs
 
-protocol PloggingRootInteractable: Interactable, PloggingMainListener, StartCountingListener, PloggingRecordListener {
+protocol PloggingRootInteractable: Interactable, PloggingMainListener, StartCountingListener, PloggingRecordListener, CameraListener {
     var router: PloggingRootRouting? { get set }
     var listener: PloggingRootListener? { get set }
 }
@@ -27,10 +27,12 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
          viewController: PloggingRootViewControllable,
          ploggingMainBuilder: PloggingMainBuildable,
          startCountingBuilder: StartCountingBuildable,
-         ploggingRecordBuilder: PloggingRecordBuildable) {
+         ploggingRecordBuilder: PloggingRecordBuildable,
+         cameraBuilder: CameraBuilder) {
         self.ploggingMainBuilder = ploggingMainBuilder
         self.startCountingBuilder = startCountingBuilder
         self.ploggingRecordBuilder = ploggingRecordBuilder
+        self.cameraBuilder = cameraBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
@@ -45,6 +47,8 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
             detachStartCounting()
         case .routeToPloggingRecord:
             routeToPloggingRecord()
+        case .routeToCamera:
+            routeToCamera()
         }
     }
     
@@ -56,6 +60,9 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
     
     private let ploggingRecordBuilder: PloggingRecordBuildable
     private var ploggingRecordRouter: PloggingRecordRouting?
+    
+    private let cameraBuilder: CameraBuildable
+    private var cameraRouter: CameraRouting?
     
     private func routeToPloggingMain() {
         let router = ploggingMainBuilder.build(withListener: interactor)
@@ -83,6 +90,14 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
     private func routeToPloggingRecord() {
         let router = ploggingRecordBuilder.build(withListener: interactor)
         ploggingRecordRouter = router
+        attachChild(router)
+        router.viewControllable.uiviewController.hidesBottomBarWhenPushed = true
+        viewController.push(viewController: router.viewControllable, animated: false)
+    }
+    
+    private func routeToCamera() {
+        let router = cameraBuilder.build(withListener: interactor)
+        cameraRouter = router
         attachChild(router)
         router.viewControllable.uiviewController.hidesBottomBarWhenPushed = true
         viewController.push(viewController: router.viewControllable, animated: false)

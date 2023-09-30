@@ -43,10 +43,12 @@ final class PloggingRootBuilder: Builder<PloggingRootDependency>, PloggingRootBu
         let ploggingMainBuilder = PloggingMainBuilder(dependency: component)
         let startCountingBuilder = StartCountingBuilder(dependency: component)
         let ploggingRecordBuilder = PloggingRecordBuilder(dependency: component)
+        let cameraBuilder = CameraBuilder(dependency: component)
         return PloggingRootRouter(interactor: interactor,
                                   viewController: viewController,
                                   ploggingMainBuilder: ploggingMainBuilder,
                                   startCountingBuilder: startCountingBuilder,
-                                  ploggingRecordBuilder: ploggingRecordBuilder)
+                                  ploggingRecordBuilder: ploggingRecordBuilder,
+                                  cameraBuilder: cameraBuilder)
     }
 }
