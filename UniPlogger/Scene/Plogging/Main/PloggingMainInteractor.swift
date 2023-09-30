@@ -9,7 +9,8 @@
 import RIBs
 import RxSwift
 import Foundation
-import CoreLocation
+import MapKit
+import UIKit
 
 protocol PloggingMainRouting: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
@@ -24,6 +25,7 @@ enum PloggingMainPresentableRequest {
     case startPlogging
     case updateTime(String)
     case updateDistance(String)
+    case updateRoute(MultiColorPolyline)
 }
 
 protocol PloggingMainPresentable: Presentable {
@@ -166,6 +168,27 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
 //        self.router?.routeToPloggingRecord()
     }
     
+    private func getPolyLine(first: CLLocation, second: CLLocation) -> MultiColorPolyline {
+        let distance = second.distance(from: first)
+        let time = second.timestamp.timeIntervalSince(first.timestamp)
+        let speed = time > 0 ? distance / time : 0
+        
+        model.speeds.append(speed)
+        model.minSpeed = min(model.minSpeed, speed)
+        model.maxSpeed = max(model.maxSpeed, speed)
+        
+        let coords = [first.coordinate, second.coordinate]
+        let segment = MultiColorPolyline(coordinates: coords, count: 2)
+        segment.color = MKPolyline.segmentColor(
+            speed: speed,
+            midSpeed: model.midSpeed,
+            slowestSpeed: model.minSpeed,
+            fastestSpeed: model.maxSpeed
+        )
+        
+        return segment
+    }
+    
     @objc 
     private func updateTimer() {
         model.seconds = model.seconds + 1
@@ -183,16 +206,21 @@ extension PloggingMainInteractor: LocationManagerListener {
     func action(_ action: LocationManagerAction) {
         switch action {
         case let .locationUpdated(newLocation):
-            if let lastLocation = model.currentLocation {
-                let delta = newLocation.distance(from: lastLocation)
-                model.distance = model.distance + Measurement(value: delta, unit: UnitLength.meters)
-                presenter.request(.updateDistance(model.distance.formattedString)) 
-            }
-            model.locationList.append(newLocation)
             if needToSetMyLocation {
                 needToSetMyLocation = false
                 presenter.request(.goToMyLocation(newLocation))
             }
+            
+            if let lastLocation = model.currentLocation,
+                model.ploggingState == .doing {
+                let delta = newLocation.distance(from: lastLocation)
+                let polyLine = getPolyLine(first: lastLocation, second: newLocation)
+                model.distance = model.distance + Measurement(value: delta, unit: UnitLength.meters)
+                presenter.request(.updateDistance(model.distance.formattedString)) 
+                presenter.request(.updateRoute(polyLine))
+            }
+            model.locationList.append(newLocation)
+            
         case .locationAuthorized:
             locationManager.updateLocation()
         case .locationAuthDenied:

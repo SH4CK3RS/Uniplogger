@@ -149,7 +149,7 @@ class PloggingPresenter: NSObject, PloggingPresentationLogic {
     func getPolyLine(first: Location, second: Location) -> MultiColorPolyline{
         let start = CLLocation(latitude: first.latitude, longitude: first.longitude)
         let end = CLLocation(latitude: second.latitude, longitude: second.longitude)
-        
+
         let distance = end.distance(from: start)
         let time = second.timestamp.timeIntervalSince(first.timestamp)
         let speed = time > 0 ? distance / time : 0

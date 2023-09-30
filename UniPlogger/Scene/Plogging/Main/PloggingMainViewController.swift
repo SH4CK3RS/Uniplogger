@@ -68,6 +68,8 @@ final class PloggingMainViewController: UIViewController, PloggingMainPresentabl
             mainView.updateTime(timeText)
         case let .updateDistance(distance):
             mainView.updateDistance(distance)
+        case let .updateRoute(polyLine):
+            mainView.updateRoute(polyLine)
         }
     }
     // MARK: - Private

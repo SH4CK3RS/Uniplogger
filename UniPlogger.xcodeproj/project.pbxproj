@@ -45,6 +45,7 @@
 		3E67E1B62AC7D70C001FBA36 /* PloggingStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1B52AC7D70C001FBA36 /* PloggingStream.swift */; };
 		3E67E1B82AC7E544001FBA36 /* PloggingMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1B72AC7E544001FBA36 /* PloggingMainModel.swift */; };
 		3E67E1BA2AC7F780001FBA36 /* Measurement+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1B92AC7F780001FBA36 /* Measurement+Extensions.swift */; };
+		3E67E1BC2AC7FF47001FBA36 /* MKPolyLine+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1BB2AC7FF47001FBA36 /* MKPolyLine+Extensions.swift */; };
 		3EDD64D62AB6DCCA00776C34 /* TutorialRootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D32AB6DCCA00776C34 /* TutorialRootRouter.swift */; };
 		3EDD64D72AB6DCCA00776C34 /* TutorialRootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D42AB6DCCA00776C34 /* TutorialRootBuilder.swift */; };
 		3EDD64D82AB6DCCA00776C34 /* TutorialRootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D52AB6DCCA00776C34 /* TutorialRootInteractor.swift */; };
@@ -366,6 +367,7 @@
 		3E67E1B52AC7D70C001FBA36 /* PloggingStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingStream.swift; sourceTree = "<group>"; };
 		3E67E1B72AC7E544001FBA36 /* PloggingMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingMainModel.swift; sourceTree = "<group>"; };
 		3E67E1B92AC7F780001FBA36 /* Measurement+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Measurement+Extensions.swift"; sourceTree = "<group>"; };
+		3E67E1BB2AC7FF47001FBA36 /* MKPolyLine+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPolyLine+Extensions.swift"; sourceTree = "<group>"; };
 		3EDD64D32AB6DCCA00776C34 /* TutorialRootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootRouter.swift; sourceTree = "<group>"; };
 		3EDD64D42AB6DCCA00776C34 /* TutorialRootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootBuilder.swift; sourceTree = "<group>"; };
 		3EDD64D52AB6DCCA00776C34 /* TutorialRootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootInteractor.swift; sourceTree = "<group>"; };
@@ -1575,6 +1577,7 @@
 				AA38A788257BD80700B26E1F /* NSAttributedString+Extensions.swift */,
 				3EDD64EA2AB6FF8700776C34 /* UINavigationController+Extensions.swift */,
 				3E67E1B92AC7F780001FBA36 /* Measurement+Extensions.swift */,
+				3E67E1BB2AC7FF47001FBA36 /* MKPolyLine+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1921,6 +1924,7 @@
 				AAA1CBF2255D620100EDB18A /* BaseTarget.swift in Sources */,
 				4CBA217B254EB1AF002BDCC3 /* QuestModels+ViewModel.swift in Sources */,
 				AAB559392549BB26000BB903 /* FormatDisplay.swift in Sources */,
+				3E67E1BC2AC7FF47001FBA36 /* MKPolyLine+Extensions.swift in Sources */,
 				AA7658EF258279A500BA0A3E /* FindPasswordPresenter.swift in Sources */,
 				3EDD64F42AB704BC00776C34 /* TutorialSecondInteractor.swift in Sources */,
 				835248B025743FD700C9F495 /* UserLogPresenter.swift in Sources */,

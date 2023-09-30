@@ -89,6 +89,10 @@ final class PloggingMainView: UIView {
         distanceLabel.text = distance
     }
     
+    func updateRoute(_ polyLine: MultiColorPolyline) {
+        mapView.addOverlay(polyLine)
+    }
+    
     // MARK: - Private
     private let infoList: [String] = [
         "준비물을 확인해주세요",
