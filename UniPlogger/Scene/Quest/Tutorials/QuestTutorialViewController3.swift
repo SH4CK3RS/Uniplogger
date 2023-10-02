@@ -45,13 +45,13 @@ class QuestTutorialViewController3: UIViewController {
     
     func setupLayouts() {
         skipButton.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(30)
             $0.trailing.equalToSuperview().offset(-30)
             $0.height.equalTo(20)
         }
         
         nextButton.snp.makeConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-30)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-30)
             $0.trailing.equalToSuperview().offset(-30)
             $0.width.equalTo(134)
             $0.height.equalTo(52)

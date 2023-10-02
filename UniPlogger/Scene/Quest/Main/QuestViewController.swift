@@ -136,7 +136,7 @@ final class QuestViewController: QuestBaseViewController {
         super.setupLayouts()
         
         navigationTabsView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(Metric.verticalSpacing)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(Metric.verticalSpacing)
             $0.leading.equalTo(backgroundView.snp.leading).offset(Metric.viewLeading)
             $0.trailing.equalTo(backgroundView.snp.trailing).offset(Metric.viewTrailing)
             $0.height.equalTo(42)

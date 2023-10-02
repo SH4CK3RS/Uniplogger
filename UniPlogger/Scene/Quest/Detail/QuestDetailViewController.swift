@@ -237,7 +237,7 @@ final class QuestDetailViewController: QuestBaseViewController {
     override func setupLayouts() {
         super.setupLayouts()
         contentScrollView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
         contentView.snp.makeConstraints {

@@ -18,7 +18,7 @@ extension WithdrawViewController {
     
     func setupLayout() {
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(24)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(24)
             $0.leading.equalTo(20)
         }
         descriptionLabel.snp.makeConstraints {

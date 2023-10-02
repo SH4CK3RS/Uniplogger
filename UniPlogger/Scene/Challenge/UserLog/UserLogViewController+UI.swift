@@ -24,7 +24,7 @@ extension UserLogViewController: UIGestureRecognizerDelegate {
     func setUpLayout() {
         scrollView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
         userInfoContainer.snp.makeConstraints {
             $0.top.equalToSuperview()

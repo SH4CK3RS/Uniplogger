@@ -577,7 +577,7 @@ private extension PloggingMainView {
         }
         trashInfoContainer.snp.makeConstraints{
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
+            $0.bottom.equalTo(safeAreaLayoutGuide)
         }
         trashInfoTitleLabel.snp.makeConstraints{
             $0.top.equalTo(30)

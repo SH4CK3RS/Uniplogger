@@ -73,11 +73,11 @@ extension PloggingViewController {
     func setupBasicViews() {
         
         mapView.snp.makeConstraints{
-            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.leading.trailing.bottom.equalToSuperview()
         }
         myLocationButton.snp.makeConstraints{
-            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(15)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(15)
             $0.trailing.equalTo(-17)
             $0.size.equalTo(40)
         }
@@ -97,7 +97,7 @@ extension PloggingViewController {
             $0.leading.equalTo(16)
             $0.trailing.equalTo(-16)
             $0.height.equalTo(56)
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-19)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-19)
         }
         ploggerImageView.snp.makeConstraints{
             $0.leading.equalTo(startButton).offset(36)
@@ -125,7 +125,7 @@ extension PloggingViewController {
             $0.leading.equalTo(16)
             $0.trailing.equalTo(-16)
             $0.height.equalTo(56)
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-19)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-19)
         }
         
         stopButton.snp.makeConstraints{
@@ -141,14 +141,14 @@ extension PloggingViewController {
         distanceContainer.snp.makeConstraints{
             $0.top.equalTo(32)
             $0.centerX.equalTo(stopButton)
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-95)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-95)
             
         }
         
         timeContainer.snp.makeConstraints{
             $0.top.equalTo(32)
             $0.centerX.equalTo(resumeButton)
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-95)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-95)
         }
         
         distanceLabel.snp.makeConstraints{
@@ -179,7 +179,7 @@ extension PloggingViewController {
     func setupTrashInfoViews() {
         trashInfoContainer.snp.makeConstraints{
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
         
         trashInfoTitleLabel.snp.makeConstraints{
@@ -228,7 +228,7 @@ extension PloggingViewController {
         }
         
         closeCoachmarkButton.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(20)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(20)
             $0.trailing.equalTo(-21)
             $0.size.equalTo(30)
         }

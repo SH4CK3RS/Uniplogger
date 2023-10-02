@@ -134,7 +134,7 @@ class ResetPasswordViewController: UIViewController {
         self.view.addSubview(resetPasswordButton)
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(22)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(22)
             $0.leading.equalTo(20)
         }
         
