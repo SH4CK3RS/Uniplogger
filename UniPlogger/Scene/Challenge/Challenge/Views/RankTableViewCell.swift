@@ -76,7 +76,7 @@ extension RankTableViewCell {
         userImageView.snp.makeConstraints {
             $0.leading.equalTo(rankLabel.snp.trailing).offset(11)
             $0.centerY.equalToSuperview()
-            $0.width.height.equalTo(40)
+            $0.size.equalTo(40)
         }
         nameLabel.snp.makeConstraints {
             $0.leading.equalTo(userImageView.snp.trailing).offset(10)

@@ -12,20 +12,20 @@ struct ImageDownloadManager {
     private let cache = NSCache<NSString, UIImage>()
     static let shared = ImageDownloadManager()
     private init() { }
-    func downloadImage(url: String, completion: @escaping (UIImage?) -> Void){
+    func downloadImage(url: String, completion: @escaping (UIImage?) -> Void) {
         let thumbnailImage = UIImage(named: "thumbnail")
-        if let cachedImage = cache.object(forKey: NSString(string: url)){
+        if let cachedImage = cache.object(forKey: NSString(string: url)) {
             completion(cachedImage)
-        }else{
+        } else {
             SessionManager.shared.download(url).responseData { (response) in
-                switch response.result{
+                switch response.result {
                 case .success(let data):
-                    if let imageToCache = UIImage(data: data){
+                    if let imageToCache = UIImage(data: data) {
                         self.cache.setObject(imageToCache, forKey: NSString(string: url))
                         DispatchQueue.main.async {
                             completion(imageToCache)
                         }
-                    }else{
+                    } else {
                         DispatchQueue.main.async {
                             completion(thumbnailImage)
                         }

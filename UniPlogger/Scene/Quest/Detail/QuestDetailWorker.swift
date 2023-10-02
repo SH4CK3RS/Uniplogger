@@ -8,7 +8,7 @@
 
 import Foundation
 
-class QuestDetailWorker {
+final class QuestDetailWorker {
     
     func start(quest: Quest, completionHandler: @escaping (Bool) -> Void) {
         QuestAPI.shared.start(quest: quest) { (success) in
@@ -34,7 +34,7 @@ class QuestDetailWorker {
     
     func detail(for quest: Quest, completionHandler: @escaping (_ quest: Quest, _ more: [Quest]) -> Void) {
         QuestAPI.shared.detail(quest: quest) { (response) in
-            switch response{
+            switch response {
             case let .success(value):
                 if value.success, let questResponse = value.data{
                     completionHandler(questResponse.quest, questResponse.moreQuest ?? [])

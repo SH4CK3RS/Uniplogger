@@ -84,7 +84,7 @@ private extension MainTabBarViewController {
         
     }
     
-    private func setupChallengeViewController(){
+    private func setupChallengeViewController() {
         let challengeItem = UITabBarItem(title: "챌린지", image: UIImage(named: "tabbar_challenge"), tag: 0)
         let vc = ChallengeNavigationController(rootViewController: hasPlanet() ?  ChallengeViewController() : StartViewController())
         vc.isNavigationBarHidden = true
@@ -92,7 +92,7 @@ private extension MainTabBarViewController {
         self.addChild(vc)
     }
     
-    private func setupQuestViewController(){
+    private func setupQuestViewController() {
         let questItem = UITabBarItem(title: "퀘스트", image: UIImage(named: "tabbar_quest"), tag: 1)
         let questNavVC = QuestNavigationController()
         let questVC = QuestViewController()
@@ -108,14 +108,14 @@ private extension MainTabBarViewController {
         self.addChild(questNavVC)
     }
     
-    private func setupPloggingViewController(){
+    private func setupPloggingViewController() {
         let ploggingItem = UITabBarItem(title: "플로깅", image: UIImage(named: "tabbar_plogging"), tag: 2)
         let vc = PloggingViewController()
         vc.tabBarItem = ploggingItem
         self.addChild(vc)
     }
     
-    private func setupLogViewController(){
+    private func setupLogViewController() {
         let logItem = UITabBarItem(title: "로그", image: UIImage(named: "tabbar_log"), tag: 3)
         let logVC = LogViewController()
         var destinationDS = logVC.router?.dataStore
@@ -125,7 +125,7 @@ private extension MainTabBarViewController {
         self.addChild(logNavVC)
     }
     
-    private func setupMyViewController(){
+    private func setupMyViewController() {
         let myItem = UITabBarItem(title: "마이", image: UIImage(named: "tabbar_my"), tag: 4)
         let vc = MyPageNavigationController(rootViewController: MyPageViewController())
         vc.tabBarItem = myItem

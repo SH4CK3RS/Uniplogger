@@ -41,7 +41,7 @@ final class GradientView: UIView {
         setupGradients()
     }
     
-    private func setupGradients(){
+    private func setupGradients() {
         updatePoints()
         updateLocations()
         updateColors()

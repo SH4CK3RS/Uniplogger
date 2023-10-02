@@ -36,7 +36,7 @@ extension CircleInfoView {
         backgroundColor = UIColor(named: "scoreCircleColor")
         layer.cornerRadius = 40
         infoLabel.snp.makeConstraints {
-            $0.leading.trailing.top.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
     }
 }

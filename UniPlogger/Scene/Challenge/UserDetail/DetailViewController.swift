@@ -108,7 +108,7 @@ class DetailViewController: UIViewController {
     @objc func touchUpReportButton() {
         router?.routeToReport()
     }
-    @objc func touchUpDeleteButton(){
+    @objc func touchUpDeleteButton() {
         self.interactor?.deleteFeed()
     }
     

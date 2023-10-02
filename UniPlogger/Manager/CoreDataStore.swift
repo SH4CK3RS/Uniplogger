@@ -15,7 +15,7 @@ final class CoreDataStore {
     var mainManagedObjectContext: NSManagedObjectContext
     var privateManagedObjectContext: NSManagedObjectContext
     
-    private init(){
+    private init() {
         guard let modelURL = Bundle.main.url(forResource: "UniPlogger", withExtension: "momd") else {
             fatalError("Error loading model from bundle")
         }

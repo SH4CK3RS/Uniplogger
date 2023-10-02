@@ -20,9 +20,9 @@ class UserLogWorker {
             completion()
         }
     }
-    func getFeed(uid: Int, completion: @escaping(Log.GetFeed.Response) -> Void){
+    func getFeed(uid: Int, completion: @escaping(Log.GetFeed.Response) -> Void) {
         LogAPI.shared.getUserFeed(uid: uid) { (response) in
-            switch response{
+            switch response {
             case let .success(value):
                 if value.success, let feedList = value.data {
                     let response = Log.GetFeed.Response(feedList: feedList)

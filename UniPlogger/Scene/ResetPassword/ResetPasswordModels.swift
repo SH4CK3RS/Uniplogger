@@ -40,7 +40,7 @@ enum ResetPassword {
       struct Request{
         var password: String
       }
-      struct Response{
+      struct Response {
         var isValid: Bool
       }
     }
@@ -50,7 +50,7 @@ enum ResetPassword {
         var password: String
         var passwordConfirm: String
       }
-      struct Response{
+      struct Response {
         var isValid: Bool
       }
     }

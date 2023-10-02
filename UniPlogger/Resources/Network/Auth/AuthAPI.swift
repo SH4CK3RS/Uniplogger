@@ -55,7 +55,7 @@ struct AuthAPI {
             }.disposed(by: disposeBag)
     }
     
-    func initQuest(){
+    func initQuest() {
         provider.rx.request(.initQuest)
             .filterSuccessfulStatusCodes()
             .subscribe().disposed(by: disposeBag)

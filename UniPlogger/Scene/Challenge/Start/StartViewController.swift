@@ -77,7 +77,7 @@ extension StartViewController {
     
     func setUpLayout() {
         backgroundView.snp.makeConstraints {
-            $0.leading.trailing.top.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
         spaceshipImageView.snp.makeConstraints {
             $0.top.equalTo(self.view.frame.height * 0.166)

@@ -48,7 +48,7 @@ enum Plogging {
     }
     
     enum LocationAuth{
-      struct Response{
+      struct Response {
         var status: CLAuthorizationStatus
       }
     }

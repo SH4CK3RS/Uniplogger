@@ -33,7 +33,7 @@ class FindPasswordInteractor: FindPasswordBusinessLogic, FindPasswordDataStore {
         }
     }
     
-    func validateAccount(request: FindPassword.ValidateAccount.Request){
+    func validateAccount(request: FindPassword.ValidateAccount.Request) {
         let text = request.account
         let result = worker.validateAccount(text: text)
         presenter?.presentValidateAccount(response: .init(isValid: result))

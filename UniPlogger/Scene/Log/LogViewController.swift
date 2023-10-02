@@ -173,13 +173,11 @@ class LogViewController: UIViewController {
         self.interactor?.getUser()
     }
     
-    
-    
-    func getFeed(){
+    func getFeed() {
         self.interactor?.getFeed()
     }
     
-    @objc func handleRefreshControl(){
+    @objc func handleRefreshControl() {
         self.interactor?.getUser()
         
     }
@@ -207,7 +205,7 @@ extension LogViewController: LogDisplayLogic{
             self.collectionView.reloadData()
         }
     }
-    func displayError(error: Common.CommonError, useCase: Log.UseCase){
+    func displayError(error: Common.CommonError, useCase: Log.UseCase) {
         UPLoader.shared.hidden()
         self.scrollView.refreshControl?.endRefreshing()
         switch error {
@@ -220,7 +218,7 @@ extension LogViewController: LogDisplayLogic{
                 NetworkErrorManager.alert(error) { _ in
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
                         guard let self = self else { return }
-                        switch useCase{
+                        switch useCase {
                         case .GetUser:
                             self.interactor?.getUser()
                         case .GetFeed:
@@ -236,7 +234,7 @@ extension LogViewController: LogDisplayLogic{
     }
 }
 
-extension LogViewController: UICollectionViewDataSource, UICollectionViewDelegate{
+extension LogViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.feedList.count
     }

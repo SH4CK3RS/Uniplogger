@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct LoginResponse: Codable{
+struct LoginResponse: Codable {
     var token: String?
     var user: User?
 }
 
-struct GetUserResponse: Codable{
+struct GetUserResponse: Codable {
     var user: User?
 }
 

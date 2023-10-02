@@ -104,7 +104,7 @@ final class RegistrationViewController: UIViewController, RegistrationPresentabl
 //        UPLoader.shared.hidden()
 //        self.router?.routeToSplash()
 //    }
-//    func displayError(error: Common.CommonError, useCase: Registration.UseCase){
+//    func displayError(error: Common.CommonError, useCase: Registration.UseCase) {
 //        //handle error with its usecase
 //        UPLoader.shared.hidden()
 //        switch error {
@@ -117,7 +117,7 @@ final class RegistrationViewController: UIViewController, RegistrationPresentabl
 //                NetworkErrorManager.alert(error) { _ in
 //                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
 //                        guard let self = self else { return }
-//                        switch useCase{
+//                        switch useCase {
 //                        case .Registration(let request):
 //                            self.interactor?.registration(request: request)
 //                        }

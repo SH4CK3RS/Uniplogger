@@ -18,7 +18,7 @@ class TrashcanAnnotation: NSObject, MKAnnotation{
         coordinate: CLLocationCoordinate2D,
         title: String,
         subtitle: String
-    ){
+    ) {
         self.id = id
         self.coordinate = coordinate
         self.title = title
@@ -35,7 +35,7 @@ class TempTrashAnnotation: NSObject, MKAnnotation{
         coordinate: CLLocationCoordinate2D,
         title: String,
         subtitle: String
-    ){
+    ) {
         self.coordinate = coordinate
         self.title = title
         self.subtitle = subtitle

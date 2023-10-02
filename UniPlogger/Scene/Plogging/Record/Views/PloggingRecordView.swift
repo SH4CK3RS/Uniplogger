@@ -184,7 +184,7 @@ private extension PloggingRecordView {
         nextImageView.snp.makeConstraints {
             $0.trailing.equalTo(-30)
             $0.centerY.equalToSuperview()
-            $0.width.height.equalTo(24)
+            $0.size.equalTo(24)
         }
         nextLabel.snp.makeConstraints {
             $0.trailing.equalTo(nextImageView.snp.leading).offset(-8)
@@ -213,7 +213,7 @@ extension PloggingRecordView: UICollectionViewDataSource {
     }
 }
 
-extension PloggingRecordView: UICollectionViewDelegate{
+extension PloggingRecordView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let index = selectedItems.firstIndex(of: indexPath.item) {
             selectedItems.remove(at: index)

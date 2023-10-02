@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User: Codable{
+struct User: Codable {
     ///UID
     var id: Int = -1
     /// 가입 날짜
@@ -60,7 +60,7 @@ struct User: Codable{
     
 }
 
-enum UserState: String, Codable{
+enum UserState: String, Codable {
     case normal = "N"
     case dormant = "D"
     case leaved = "L"

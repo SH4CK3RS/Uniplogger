@@ -33,7 +33,7 @@ class UserLogRouter: NSObject, UserLogRoutingLogic, UserLogDataPassing {
         source.navigationController?.pushViewController(destination, animated: false)
     }
     
-    func passDataToDetail(source: UserLogDataStore, destination: inout DetailDataStore){
+    func passDataToDetail(source: UserLogDataStore, destination: inout DetailDataStore) {
         if let selectedIndexPath = viewController?.collectionView.indexPathsForSelectedItems?.first {
             destination.feed = viewController?.feedList[selectedIndexPath.item]
             destination.uid = source.playerId

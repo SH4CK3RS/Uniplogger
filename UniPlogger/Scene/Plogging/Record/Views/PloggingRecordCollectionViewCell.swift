@@ -61,7 +61,7 @@ extension PloggingRecordCollectionViewCell {
     
     private func setupLayout() {
         titleLabel.snp.makeConstraints{
-            $0.centerX.centerY.equalToSuperview()
+            $0.center.equalToSuperview()
         }
     }
     

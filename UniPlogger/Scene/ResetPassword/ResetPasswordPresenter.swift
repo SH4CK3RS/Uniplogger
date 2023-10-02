@@ -34,13 +34,13 @@ class ResetPasswordPresenter: ResetPasswordPresentationLogic {
         self.viewController?.displayResetPassword(viewModel: viewModel)
     }
     
-    func presentValidatePassword(response: ResetPassword.ValidatePassword.Response){
+    func presentValidatePassword(response: ResetPassword.ValidatePassword.Response) {
         self.isValidPassword = response.isValid
         let viewModel = ResetPassword.ValidationViewModel(isValid: isValidPassword && isValidPasswordConfirm)
         viewController?.displayValidation(viewModel: viewModel)
     }
     
-    func presentValidatePasswordConfirm(response: ResetPassword.ValidatePasswordConfirm.Response){
+    func presentValidatePasswordConfirm(response: ResetPassword.ValidatePasswordConfirm.Response) {
         self.isValidPasswordConfirm = response.isValid
         let viewModel = ResetPassword.ValidationViewModel(isValid: isValidPassword && isValidPasswordConfirm)
         viewController?.displayValidation(viewModel: viewModel)

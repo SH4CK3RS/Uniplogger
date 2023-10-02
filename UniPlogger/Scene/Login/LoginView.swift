@@ -58,13 +58,13 @@ final class LoginView: UIView {
     }
     
     @objc
-    private func accountChanged(textField: UITextField){
+    private func accountChanged(textField: UITextField) {
         let account = textField.text ?? ""
         listener?.action(.accountChanged(account))
     }
     
     @objc
-    private func passwordChanged(textField: UITextField){
+    private func passwordChanged(textField: UITextField) {
         let password = textField.text ?? ""
         listener?.action(.passwordChanged(password))
     }

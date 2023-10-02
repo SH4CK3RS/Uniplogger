@@ -48,7 +48,7 @@ extension LogViewController {
         
     }
   
-    func setupNavigtationBar(){
+    func setupNavigtationBar() {
         if let navBar = self.navigationController?.navigationBar {
             navBar.barTintColor = .white
             navBar.barStyle = .black
@@ -70,7 +70,7 @@ extension LogViewController {
         }
     }
     
-    func setupPloggerContainer(){
+    func setupPloggerContainer() {
         ploggerContainer.snp.makeConstraints{
           $0.height.equalTo(self.view.frame.height * 0.36)
         }
@@ -111,7 +111,7 @@ extension LogViewController {
         }
     }
     
-    func setupStatContainer(){
+    func setupStatContainer() {
         statContainer.snp.makeConstraints{
             $0.height.equalTo(182)
         }
@@ -124,11 +124,11 @@ extension LogViewController {
         weeklyCircleView.snp.makeConstraints{
             $0.bottom.equalTo(-20)
             $0.trailing.equalTo(statTitleLabel.snp.leading).offset(-32)
-            $0.width.height.equalTo(82)
+            $0.size.equalTo(82)
         }
         
         weeklyContentLabel.snp.makeConstraints{
-            $0.centerX.centerY.equalToSuperview()
+            $0.center.equalToSuperview()
         }
         
         weeklyTitleLabel.snp.makeConstraints{
@@ -139,11 +139,11 @@ extension LogViewController {
         monthlyCircleView.snp.makeConstraints{
             $0.bottom.equalTo(-20)
             $0.leading.equalTo(statTitleLabel.snp.trailing).offset(32)
-            $0.width.height.equalTo(82)
+            $0.size.equalTo(82)
         }
         
         monthlyContentLabel.snp.makeConstraints{
-            $0.centerX.centerY.equalToSuperview()
+            $0.center.equalToSuperview()
         }
         
         monthlyTitleLabel.snp.makeConstraints{
@@ -152,7 +152,7 @@ extension LogViewController {
         }
     }
     
-    func setupCollectionView(){
+    func setupCollectionView() {
         
     }
 }

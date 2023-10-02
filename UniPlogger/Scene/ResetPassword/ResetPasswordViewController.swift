@@ -195,13 +195,13 @@ class ResetPasswordViewController: UIViewController {
       navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    @objc func validatePassword(){
+    @objc func validatePassword() {
         guard let text = password1Field.text else { return }
         let request = ResetPassword.ValidatePassword.Request(password: text)
         self.interactor?.validatePassword(request: request)
     }
     
-    @objc func validatePasswordConfirm(){
+    @objc func validatePasswordConfirm() {
         guard let password = password1Field.text else { return }
         guard let passwordConfirm = password2Field.text else { return }
         let request = ResetPassword.ValidatePasswordConfirm.Request(
@@ -242,7 +242,7 @@ extension ResetPasswordViewController: ResetPasswordDisplayLogic {
     }
     
     
-    func displayError(error: Common.CommonError, useCase: ResetPassword.UseCase){
+    func displayError(error: Common.CommonError, useCase: ResetPassword.UseCase) {
         //handle error with its usecase
         UPLoader.shared.hidden()
         switch error {
@@ -255,7 +255,7 @@ extension ResetPasswordViewController: ResetPasswordDisplayLogic {
                 NetworkErrorManager.alert(error) { _ in
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
                         guard let self = self else { return }
-                        switch useCase{
+                        switch useCase {
                         case .ResetPassword(let request):
                             self.interactor?.resetPassword(request: request)
                         }

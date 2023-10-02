@@ -22,7 +22,7 @@ class TrashAnnotationView: MKAnnotationView{
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configuration(){
+    func configuration() {
         self.image = UIImage(named: "ic_pinTrashCan")
         self.isDraggable = false
         self.isEnabled = false
@@ -32,7 +32,7 @@ class TrashAnnotationView: MKAnnotationView{
         self.addGestureRecognizer(gesture)
     }
     
-    @objc func longPressed(){
+    @objc func longPressed() {
         self.longPressClosure?()
     }
     
@@ -48,7 +48,7 @@ class TempTrashAnnotationView: MKAnnotationView{
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configuration(){
+    func configuration() {
         self.image = UIImage(named: "ic_pinTempTrashcan")
         self.isDraggable = true
     }

@@ -19,7 +19,7 @@ protocol DetailDataStore {
     var uid: Int? { get set }
 }
 
-class DetailInteractor: DetailBusinessLogic, DetailDataStore{
+class DetailInteractor: DetailBusinessLogic, DetailDataStore {
     var presenter: DetailPresentationLogic?
     let worker = DetailWorker()
     

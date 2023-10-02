@@ -93,7 +93,7 @@ extension PloggingInfoView {
         }
         ploggerImageView.snp.makeConstraints {
             $0.top.centerX.equalTo(leftView)
-            $0.width.height.equalTo(26)
+            $0.size.equalTo(26)
         }
         timerImageView.snp.makeConstraints {
             $0.top.centerX.equalTo(rightView)
@@ -110,7 +110,7 @@ extension PloggingInfoView {
         }
     }
     
-    func updateView(){
+    func updateView() {
         guard let viewModel else { return }
         distanceLabel.text = viewModel.distance
         timeLabel.text = viewModel.time

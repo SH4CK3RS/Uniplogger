@@ -23,7 +23,7 @@ enum FindPassword {
       struct Request{
         var account: String
       }
-      struct Response{
+      struct Response {
         var isValid: Bool
       }
     }

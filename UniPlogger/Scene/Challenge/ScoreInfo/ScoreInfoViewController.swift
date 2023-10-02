@@ -46,7 +46,7 @@ extension ScoreInfoViewController {
         infoView.snp.makeConstraints {
             $0.leading.equalTo(20)
             $0.trailing.equalTo(-20)
-            $0.centerX.centerY.equalToSuperview()
+            $0.center.equalToSuperview()
             $0.height.equalTo(infoView.snp.width)
         }
     }

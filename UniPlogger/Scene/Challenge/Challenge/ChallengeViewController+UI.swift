@@ -30,7 +30,7 @@ extension ChallengeViewController {
         infoButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(54)
             $0.trailing.equalToSuperview().offset(-20)
-            $0.width.height.equalTo(24)
+            $0.size.equalTo(24)
         }
         rankTableView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()

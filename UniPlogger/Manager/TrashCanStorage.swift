@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-protocol TrashCanStorageType{
+protocol TrashCanStorageType {
     func createTrashCan(
         _ trashCan: TrashCan,
         completion: @escaping (Result<TrashCan, Error>) -> Void
@@ -46,7 +46,7 @@ protocol TrashCanStorageType{
     )
 }
 
-extension Storage: TrashCanStorageType{
+extension Storage: TrashCanStorageType {
     func createTrashCan(_ trashCan: TrashCan, completion: @escaping (Result<TrashCan, Error>) -> Void) {
         context.perform {
             let managedTrashCan = ManagedTrashCan(context: self.context)
@@ -163,7 +163,7 @@ extension Storage: TrashCanStorageType{
                     }catch let error{
                         completion(.failure(StorageError.delete(error.localizedDescription)))
                     }
-                }else{
+                } else {
                     completion(.failure(StorageError.delete("해당 쓰레기통이 존재하지 않음")))
                 }
             } catch let error {

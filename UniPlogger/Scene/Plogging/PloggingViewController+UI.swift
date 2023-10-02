@@ -79,17 +79,17 @@ extension PloggingViewController {
         myLocationButton.snp.makeConstraints{
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(15)
             $0.trailing.equalTo(-17)
-            $0.width.height.equalTo(40)
+            $0.size.equalTo(40)
         }
         
         trashButton.snp.makeConstraints{
             $0.trailing.equalTo(self.view.snp.trailing).offset(-16)
             $0.bottom.equalTo(self.startBottomContainerView.snp.top).offset(-16)
-            $0.width.height.equalTo(50)
+            $0.size.equalTo(50)
         }
     }
     
-    func setupBottomViews(){
+    func setupBottomViews() {
         startBottomContainerView.snp.makeConstraints{
             $0.leading.trailing.bottom.equalToSuperview()
         }
@@ -116,7 +116,7 @@ extension PloggingViewController {
         }
     }
     
-    func setupDoingViews(){
+    func setupDoingViews() {
         doingPauseBottomContainerView.snp.makeConstraints{
             $0.leading.trailing.bottom.equalToSuperview()
         }
@@ -176,7 +176,7 @@ extension PloggingViewController {
         }
     }
     
-    func setupTrashInfoViews(){
+    func setupTrashInfoViews() {
         trashInfoContainer.snp.makeConstraints{
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
@@ -209,7 +209,7 @@ extension PloggingViewController {
         }
     }
     
-    func setupCoachmarkViews(){
+    func setupCoachmarkViews() {
         
         
         self.view.addSubview(coachmarkContainer)
@@ -230,7 +230,7 @@ extension PloggingViewController {
         closeCoachmarkButton.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(20)
             $0.trailing.equalTo(-21)
-            $0.width.height.equalTo(30)
+            $0.size.equalTo(30)
         }
         
         coachmarkDeleteTrashcanLabel.snp.makeConstraints {

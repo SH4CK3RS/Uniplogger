@@ -47,7 +47,7 @@ final class StartCountingView: UIView {
         if(count > 1) {
             count -= 1
             countLabel.text = String(count)
-        }else{
+        } else {
             self.timer?.invalidate()
             self.timer = nil
             listener?.action(.countDidEnd)
@@ -80,7 +80,7 @@ private extension StartCountingView {
             $0.edges.equalToSuperview()
         }
         countLabel.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
+            $0.center.equalToSuperview()
         }
     }
 }

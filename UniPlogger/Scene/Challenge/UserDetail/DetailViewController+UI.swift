@@ -25,7 +25,7 @@ extension DetailViewController: UIGestureRecognizerDelegate {
             $0.bottom.leading.trailing.equalToSuperview()
         }
         ploggingImageViewContainer.snp.makeConstraints {
-            $0.width.height.equalTo(340)
+            $0.size.equalTo(340)
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(view.frame.height * 0.25)
         }
@@ -39,8 +39,8 @@ extension DetailViewController: UIGestureRecognizerDelegate {
             $0.top.equalTo(ploggingImageView.snp.bottom)
         }
         shareButton.snp.makeConstraints {
-            $0.width.height.equalTo(100)
-            $0.centerX.centerY.equalTo(shareButtonView)
+            $0.size.equalTo(100)
+            $0.center.equalTo(shareButtonView)
         }
         shareButtonView.isHidden = true
     }

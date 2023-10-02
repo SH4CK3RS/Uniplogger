@@ -19,11 +19,11 @@ import Foundation
 //        navigateToShare(source: viewController!, destination: destinationVC)
 //    }
 //    
-//    func navigateToShare(source: ImagePreviewViewController, destination: ShareViewController){
+//    func navigateToShare(source: ImagePreviewViewController, destination: ShareViewController) {
 //        source.navigationController?.pushViewController(destination, animated: true)
 //    }
 //    
-//    func passDataToShare(source: CameraDataStore, destination: inout ShareDataStore){
+//    func passDataToShare(source: CameraDataStore, destination: inout ShareDataStore) {
 //        destination.ploggingData = source.ploggingData
 //        destination.ploggingData?.items = source.ploggingData!.items
 //        

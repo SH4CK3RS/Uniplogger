@@ -158,7 +158,7 @@ class FindPasswordViewController: UIViewController, UIGestureRecognizerDelegate 
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    @objc func validateAccount(){
+    @objc func validateAccount() {
         guard let text = accountField.text else { return }
         let request = FindPassword.ValidateAccount.Request(account: text)
         self.interactor?.validateAccount(request: request)
@@ -193,7 +193,7 @@ extension FindPasswordViewController: FindPasswordDisplayLogic {
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
-    func displayError(error: Common.CommonError, useCase: FindPassword.UseCase){
+    func displayError(error: Common.CommonError, useCase: FindPassword.UseCase) {
         //handle error with its usecase
         UPLoader.shared.hidden()
         switch error {
@@ -206,7 +206,7 @@ extension FindPasswordViewController: FindPasswordDisplayLogic {
                 NetworkErrorManager.alert(error) { _ in
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
                         guard let self = self else { return }
-                        switch useCase{
+                        switch useCase {
                         case .FindPassword(let request):
                             self.interactor?.findPassword(request: request)
                         }

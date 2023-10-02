@@ -185,7 +185,7 @@ private extension TutorialThirdView {
         nextImageView.snp.makeConstraints{
             $0.trailing.equalTo(-30)
             $0.centerY.equalToSuperview()
-            $0.width.height.equalTo(24)
+            $0.size.equalTo(24)
         }
         
         nextLabel.snp.makeConstraints{
@@ -242,7 +242,7 @@ private extension TutorialThirdView {
 
 extension TutorialThirdView {
     class NicknameField: UITextField {
-        override var intrinsicContentSize: CGSize{
+        override var intrinsicContentSize: CGSize {
             if let text, !text.isEmpty {
                 let label = UILabel()
                 label.font = font

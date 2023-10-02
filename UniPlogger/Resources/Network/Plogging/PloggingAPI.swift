@@ -21,7 +21,7 @@ struct PloggingAPI {
         plugins: [VerbosePlugin(verbose: true)]
     )
     
-    func createTrashCan(latitude: Double, longitude: Double, address: String, completionHandler: @escaping (Result<Response<TrashCan>, Error>) -> Void){
+    func createTrashCan(latitude: Double, longitude: Double, address: String, completionHandler: @escaping (Result<Response<TrashCan>, Error>) -> Void) {
         provider.rx.request(.createTrash(latitude: latitude, longitude: longitude, address: address))
             .filterSuccessfulStatusCodes()
             .map(Response<TrashCan>.self)
@@ -32,7 +32,7 @@ struct PloggingAPI {
             }.disposed(by: disposeBag)
     }
     
-    func fetchTrashList(completionHandler: @escaping (Result<Response<[TrashCan]>, Error>)-> Void){
+    func fetchTrashList(completionHandler: @escaping (Result<Response<[TrashCan]>, Error>)-> Void) {
         provider.rx.request(.fetchTrashList)
             .filterSuccessfulStatusCodes()
             .map(Response<[TrashCan]>.self)

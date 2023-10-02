@@ -194,7 +194,7 @@ private extension TutorialFirstView {
         nextImageView.snp.makeConstraints{
             $0.trailing.equalTo(-30)
             $0.centerY.equalToSuperview()
-            $0.width.height.equalTo(24)
+            $0.size.equalTo(24)
         }
         
         nextLabel.snp.makeConstraints{

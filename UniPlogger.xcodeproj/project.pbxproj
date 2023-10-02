@@ -64,6 +64,7 @@
 		3EB337122ACA7E3100A48BB3 /* ImagePreviewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB3370E2ACA7E3100A48BB3 /* ImagePreviewBuilder.swift */; };
 		3EB337132ACA7E3100A48BB3 /* ImagePreviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB3370F2ACA7E3100A48BB3 /* ImagePreviewInteractor.swift */; };
 		3EB337152ACA810C00A48BB3 /* PloggingRootComponent+ImagePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB337142ACA810C00A48BB3 /* PloggingRootComponent+ImagePreview.swift */; };
+		3EB337172ACA903400A48BB3 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB337162ACA903400A48BB3 /* ShareView.swift */; };
 		3EDD64D62AB6DCCA00776C34 /* TutorialRootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D32AB6DCCA00776C34 /* TutorialRootRouter.swift */; };
 		3EDD64D72AB6DCCA00776C34 /* TutorialRootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D42AB6DCCA00776C34 /* TutorialRootBuilder.swift */; };
 		3EDD64D82AB6DCCA00776C34 /* TutorialRootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D52AB6DCCA00776C34 /* TutorialRootInteractor.swift */; };
@@ -394,6 +395,7 @@
 		3EB3370E2ACA7E3100A48BB3 /* ImagePreviewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewBuilder.swift; sourceTree = "<group>"; };
 		3EB3370F2ACA7E3100A48BB3 /* ImagePreviewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewInteractor.swift; sourceTree = "<group>"; };
 		3EB337142ACA810C00A48BB3 /* PloggingRootComponent+ImagePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PloggingRootComponent+ImagePreview.swift"; sourceTree = "<group>"; };
+		3EB337162ACA903400A48BB3 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		3EDD64D32AB6DCCA00776C34 /* TutorialRootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootRouter.swift; sourceTree = "<group>"; };
 		3EDD64D42AB6DCCA00776C34 /* TutorialRootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootBuilder.swift; sourceTree = "<group>"; };
 		3EDD64D52AB6DCCA00776C34 /* TutorialRootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootInteractor.swift; sourceTree = "<group>"; };
@@ -1481,6 +1483,7 @@
 				AA7F55172533568C001C4012 /* ShareWorker.swift */,
 				AA7F55192533568C001C4012 /* Views */,
 				AA7F551C2533568C001C4012 /* ShareModels.swift */,
+				3EB337162ACA903400A48BB3 /* ShareView.swift */,
 			);
 			path = Share;
 			sourceTree = "<group>";
@@ -2148,6 +2151,7 @@
 				3E43CA782AB60FF500B6C4D8 /* SplashView.swift in Sources */,
 				835248492572283C00C9F495 /* MyPagePresenter.swift in Sources */,
 				3EDD650E2ABA0EFB00776C34 /* RegistrationInteractor.swift in Sources */,
+				3EB337172ACA903400A48BB3 /* ShareView.swift in Sources */,
 				83DE077D2566AD050085AC72 /* ChallengeModels.swift in Sources */,
 				83530979257B91A900C3626D /* SignUpTableViewCell.swift in Sources */,
 				3E67E1C42AC81431001FBA36 /* PloggingRecordBuilder.swift in Sources */,

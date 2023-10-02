@@ -36,13 +36,13 @@ class ResetPasswordInteractor: ResetPasswordBusinessLogic, ResetPasswordDataStor
         }
     }
     
-    func validatePassword(request: ResetPassword.ValidatePassword.Request){
+    func validatePassword(request: ResetPassword.ValidatePassword.Request) {
         let text = request.password
         let result = worker.validatePassword(text: text)
         presenter?.presentValidatePassword(response: .init(isValid: result))
     }
     
-    func validatePasswordConfirm(request: ResetPassword.ValidatePasswordConfirm.Request){
+    func validatePasswordConfirm(request: ResetPassword.ValidatePasswordConfirm.Request) {
         let password = request.password
         let passwordConfirm = request.passwordConfirm
         let result = worker.validatePasswordConfirm(password: password, passwordConfirm: passwordConfirm)

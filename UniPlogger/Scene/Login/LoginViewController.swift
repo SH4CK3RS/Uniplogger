@@ -50,7 +50,7 @@ final class LoginViewController: UIViewController, LoginPresentable, LoginViewCo
     
     private let mainView = LoginView()
     
-    private func showError(_ error: Common.CommonError){
+    private func showError(_ error: Common.CommonError) {
         switch error {
         case let .server(msg):
             self.errorAlert(title: "오류", message: msg, completion: nil)

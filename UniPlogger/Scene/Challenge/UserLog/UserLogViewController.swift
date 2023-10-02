@@ -144,13 +144,13 @@ class UserLogViewController: UIViewController, UserLogDisplayLogic {
         self.interactor?.getFeed()
     }
     
-    @objc func handleRefreshControl(){
+    @objc func handleRefreshControl() {
         self.interactor?.getOtherUser()
     }
 
 }
 
-extension UserLogViewController: UICollectionViewDataSource, UICollectionViewDelegate{
+extension UserLogViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.feedList.count
     }

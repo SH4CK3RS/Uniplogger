@@ -99,7 +99,7 @@ class PloggingInteractor: NSObject, PloggingBusinessLogic, PloggingDataStore {
     }
 }
 
-extension PloggingInteractor: PloggingWorkerDelegate{
+extension PloggingInteractor: PloggingWorkerDelegate {
     
     func updateRoute(distance: Measurement<UnitLength>, location: Location) {
         let response = Plogging.UpdatePloggingLocation.Response(

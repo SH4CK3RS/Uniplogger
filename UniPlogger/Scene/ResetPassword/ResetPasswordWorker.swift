@@ -29,7 +29,7 @@ class ResetPasswordWorker {
         completion: @escaping (ResetPassword.ResetPassword.Response) -> Void
     ) {
         AuthAPI.shared.resetPassword(password1: request.password1, password2: request.password2, uid: uid, token: token) { (response) in
-            switch response{
+            switch response {
             case let .success(value):
                 if value.success, let data = value.data{
                     let response = ResetPassword.ResetPassword.Response(request: request, response: data)

@@ -21,7 +21,7 @@ class FindPasswordPresenter: FindPasswordPresentationLogic {
     weak var viewController: FindPasswordDisplayLogic?
     var isValidAccount: Bool = false
     
-    func presentValidateAccount(response: FindPassword.ValidateAccount.Response){
+    func presentValidateAccount(response: FindPassword.ValidateAccount.Response) {
         self.isValidAccount = response.isValid
         let viewModel = FindPassword.ValidationViewModel(isValid: isValidAccount)
         viewController?.displayValidation(viewModel: viewModel)

@@ -21,7 +21,7 @@ enum Log {
     }
     
     enum GetUser{
-        struct Response{
+        struct Response {
             var response: User?
             var error: Common.CommonError?
         }
@@ -32,7 +32,7 @@ enum Log {
     }
     
     enum GetFeed{
-        struct Response{
+        struct Response {
             var feedList: [Feed]?
             var error: Common.CommonError?
         }

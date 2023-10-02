@@ -9,16 +9,16 @@
 import Foundation
 
 enum Detail{
-    enum UseCase{
+    enum UseCase {
         
     }
     
-    enum GetFeed{
-        struct Response{
+    enum GetFeed {
+        struct Response {
             var feed: Feed
         }
         
-        struct ViewModel{
+        struct ViewModel {
             var uid: Int
             var date: Date
             var time: String

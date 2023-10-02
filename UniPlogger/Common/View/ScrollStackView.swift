@@ -29,20 +29,20 @@ final class ScrollStackView: UIScrollView {
         setupUI()
     }
     
-    func addArrangedSubview(_ view: UIView){
+    func addArrangedSubview(_ view: UIView) {
         self.stackView.addArrangedSubview(view)
     }
     
-    private func setupUI(){
+    private func setupUI() {
         contentInsetAdjustmentBehavior = .never
         
         addSubview(containerView)
         containerView.addSubview(stackView)
         containerView.snp.makeConstraints{
-            $0.leading.trailing.top.bottom.width.equalToSuperview()
+            $0.edges.width.equalToSuperview()
         }
         stackView.snp.makeConstraints{
-            $0.leading.trailing.top.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
     }
 }

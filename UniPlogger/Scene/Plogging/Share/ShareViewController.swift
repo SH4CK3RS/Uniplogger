@@ -222,7 +222,7 @@ extension ShareViewController: ShareDisplayLogic {
                 NetworkErrorManager.alert(error) { _ in
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
                         guard let self = self else { return }
-                        switch useCase{
+                        switch useCase {
                         case .FetchRecord:
                             self.interactor?.fetchRecord()
                         }

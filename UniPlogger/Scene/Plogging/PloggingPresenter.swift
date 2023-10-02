@@ -30,7 +30,7 @@ protocol PloggingPresentationLogic {
     func presentRemoveTrashCan(response: Plogging.RemoveTrashCan.Response)
 }
 
-class PloggingPresenter: NSObject, PloggingPresentationLogic {
+final class PloggingPresenter: NSObject, PloggingPresentationLogic {
     weak var viewController: PloggingDisplayLogic?
     var locations: [Location] = []
     let locationManager = CLLocationManager()
@@ -88,7 +88,7 @@ class PloggingPresenter: NSObject, PloggingPresentationLogic {
             let second = response.location
             self.locations.append(second)
             let polyLine = getPolyLine(first: first, second: second)
-            if let region = mapRegion(){
+            if let region = mapRegion() {
                 let viewModel = Plogging.UpdatePloggingLocation.ViewModel(
                     distance: FormatDisplay.distance(response.distance),
                     region: region,
@@ -96,7 +96,7 @@ class PloggingPresenter: NSObject, PloggingPresentationLogic {
                 )
                 viewController?.displayUpdatePloggingLocation(viewModel: viewModel)
             }
-        }else{
+        } else {
             self.locations.append(response.location)
         }
     }
@@ -146,7 +146,7 @@ class PloggingPresenter: NSObject, PloggingPresentationLogic {
     }
     
     //MARK: - Helper
-    func getPolyLine(first: Location, second: Location) -> MultiColorPolyline{
+    func getPolyLine(first: Location, second: Location) -> MultiColorPolyline {
         let start = CLLocation(latitude: first.latitude, longitude: first.longitude)
         let end = CLLocation(latitude: second.latitude, longitude: second.longitude)
 
@@ -230,7 +230,7 @@ class PloggingPresenter: NSObject, PloggingPresentationLogic {
       return UIColor(red: red, green: green, blue: blue, alpha: 1)
     }
 }
-extension PloggingPresenter: CLLocationManagerDelegate{
+extension PloggingPresenter: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status{
         case .denied:

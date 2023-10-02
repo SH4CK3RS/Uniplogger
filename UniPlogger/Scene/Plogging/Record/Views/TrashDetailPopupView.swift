@@ -88,7 +88,7 @@ class TrashDetailPopupView: UIViewController {
     
     private func setupLayout() {
         infoContainer.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
+            $0.center.equalToSuperview()
             $0.width.equalTo(335)
             $0.height.equalTo(335)
         }
@@ -173,7 +173,7 @@ class TrashDetailPopupView: UIViewController {
         for (i, d) in self.itemType.detailItems.enumerated() {
             let itemView = TrashDetailPopupCircleView(text: d)
             itemView.snp.makeConstraints{
-                $0.width.height.equalTo(size)
+                $0.size.equalTo(size)
             }
             print(i)
             if i < 3 {
@@ -202,7 +202,7 @@ class TrashDetailPopupCircleView: UIView {
     }
     
     // MARK: Object lifecycle
-    required init(text: NSMutableAttributedString){
+    required init(text: NSMutableAttributedString) {
         self.text = text
         super.init(frame: .zero)
         setup()
@@ -238,7 +238,7 @@ extension TrashDetailPopupCircleView {
     
     private func setupLayout() {
         textLabel.snp.makeConstraints{
-            $0.centerX.centerY.equalToSuperview()
+            $0.center.equalToSuperview()
         }
     }
     

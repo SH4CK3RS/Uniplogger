@@ -19,7 +19,7 @@ enum Share
         case FetchRecord
     }
     enum FetchRecord{
-        struct Response{
+        struct Response {
             var feed: Feed?
             var error: Common.CommonError?
             var ploggingData: PloggingData

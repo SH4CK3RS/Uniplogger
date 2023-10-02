@@ -33,7 +33,7 @@ struct NetworkErrorManager {
         let viewController = UIApplication.topViewController()
         switch error {
         case .statusCode(let response):
-            if let baseResponse = try? response.map(BaseResponse<String>.self){
+            if let baseResponse = try? response.map(BaseResponse<String>.self) {
                 let message = baseResponse.message
                 let alert = UIAlertController(title: "오류", message: message, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))

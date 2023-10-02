@@ -42,7 +42,7 @@ protocol PloggingDisplayLogic: AnyObject {
     func displayError(error: Common.CommonError, useCase: Plogging.UseCase)
 }
 
-class PloggingViewController: UIViewController {
+final class PloggingViewController: UIViewController {
     var interactor: PloggingBusinessLogic?
     var router: (NSObjectProtocol & PloggingRoutingLogic & PloggingDataPassing)?
     
@@ -344,28 +344,28 @@ class PloggingViewController: UIViewController {
         completedQuestIds.append(questId)
     }
     
-    @objc func startButtonTapped(){
+    @objc func startButtonTapped() {
         self.router?.routeToStartCounting()
     }
     
-    @objc func pauseButtonTapped(){
+    @objc func pauseButtonTapped() {
         interactor?.pausePlogging()
     }
     
-    @objc func resumeButtonTapped(){
+    @objc func resumeButtonTapped() {
         interactor?.resumePlogging()
     }
     
-    @objc func stopButtonTapped(){
+    @objc func stopButtonTapped() {
         let request = Plogging.StopPlogging.Request(seconds: self.seconds, minutes: self.minutes)
         interactor?.stopPlogging(request: request)
     }
     
-    @objc func trashButtonTapped(){
+    @objc func trashButtonTapped() {
         if trashButton.isSelected{
             // cancelLogic
             displayAddTrashCanCancel()
-        }else{
+        } else {
             let coordinate = mapView.centerCoordinate
             let annotation = TempTrashAnnotation(coordinate: coordinate, title: "title", subtitle: "content")
             self.tempTrashcanAnnotation = annotation
@@ -383,7 +383,7 @@ class PloggingViewController: UIViewController {
         //Todo: 핀 추가 및 이동되도록함
     }
     
-    @objc func addTrashCanConfirmButtonTapped(){
+    @objc func addTrashCanConfirmButtonTapped() {
         if let tempAnnotation = self.tempTrashcanAnnotation{
             let latitude = tempAnnotation.coordinate.latitude
             let longitude = tempAnnotation.coordinate.longitude
@@ -393,7 +393,7 @@ class PloggingViewController: UIViewController {
         }
     }
     
-    @objc func myLocationButtonTapped(){
+    @objc func myLocationButtonTapped() {
         mapView.setCenter(mapView.userLocation.coordinate, animated: true)
     }
     
@@ -413,7 +413,7 @@ class PloggingViewController: UIViewController {
         }
     }
     
-    func removeTrashCan(annotation: TrashcanAnnotation){
+    func removeTrashCan(annotation: TrashcanAnnotation) {
         let alert = UIAlertController(title: "경고", message: "해당 쓰레기통을 제거하시겠습니까?", preferredStyle: .alert)
         alert.addAction(.init(title: "네", style: .default, handler: { _ in
             let id = annotation.id
@@ -512,7 +512,7 @@ extension PloggingViewController: PloggingDisplayLogic{
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(UpdateTimer), userInfo: nil, repeats: true)
     }
-    func displaySetting(message: String, url: URL){
+    func displaySetting(message: String, url: URL) {
         let alert = UIAlertController(title: "위치 권한 필요", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "권한설정", style: .default, handler: { _ in
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -528,7 +528,7 @@ extension PloggingViewController: PloggingDisplayLogic{
             longitudinalMeters: 0.01)
         mapView.setRegion(region, animated: true)
     }
-    func displayError(error: Common.CommonError, useCase: Plogging.UseCase){
+    func displayError(error: Common.CommonError, useCase: Plogging.UseCase) {
         //handle error with its usecase
         UPLoader.shared.hidden()
         switch error {
@@ -541,7 +541,7 @@ extension PloggingViewController: PloggingDisplayLogic{
                 NetworkErrorManager.alert(error) { _ in
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
                         guard let self = self else { return }
-                        switch useCase{
+                        switch useCase {
                         case .AddConfirmTrashCan(let request):
                             self.interactor?.addConfirmTrashCan(request: request)
                         case .FetchTrashCan:
@@ -616,13 +616,13 @@ extension PloggingViewController: PloggingDisplayLogic{
         }
     }
     
-    func displayLocationToast(){
+    func displayLocationToast() {
         DispatchQueue.main.async {
             self.view.makeToast("iPhone의 '설정 > 개인 정보 보호 > 위치 서비스'에 위치 서비스 항목을 허용해주시고 다시 시도해주세요")
         }
     }
 }
-extension PloggingViewController: MKMapViewDelegate{
+extension PloggingViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !annotation.isKind(of: MKUserLocation.self) else {
             let pin = MKAnnotationView(annotation: annotation, reuseIdentifier: "userLocation")
@@ -636,7 +636,7 @@ extension PloggingViewController: MKMapViewDelegate{
                 self?.removeTrashCan(annotation: annotation as! TrashcanAnnotation)
             }
             return pin
-        }else if annotation is TempTrashAnnotation {
+        } else if annotation is TempTrashAnnotation {
             let pin = TempTrashAnnotationView(annotation: annotation, reuseIdentifier: "TempTrashAnnotationView")
             return pin
         }

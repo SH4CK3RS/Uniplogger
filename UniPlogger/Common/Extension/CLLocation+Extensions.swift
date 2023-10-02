@@ -12,7 +12,7 @@ extension CLLocation {
     func geocode(completion: @escaping (_ placemark: [CLPlacemark]?, _ error: Error?) -> Void) {
         CLGeocoder().reverseGeocodeLocation(self, completionHandler: completion)
     }
-    func toAddress(completion: @escaping (String) -> Void){
+    func toAddress(completion: @escaping (String) -> Void) {
         self.geocode { placemark, error in
             guard error == nil,
             let placemark = placemark?.first else {

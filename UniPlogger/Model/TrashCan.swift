@@ -56,7 +56,7 @@ struct TrashCan: Codable {
     }
 }
 
-enum TrashCanState: String, Codable{
+enum TrashCanState: String, Codable {
     case enabled = "C"
     case disalbed = "NC"
 }

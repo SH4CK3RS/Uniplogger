@@ -144,7 +144,7 @@ final class PloggingMainView: UIView {
     // Constraints
     private let myLocationBottomPriority: ConstraintMakerFinalizable? = nil
     
-    private func setRandomBubbleLabel(){
+    private func setRandomBubbleLabel() {
         let randomIndex = Int(arc4random() % 6)
         let infoText = infoList[randomIndex]
         bubbleLabel.text = infoText
@@ -157,24 +157,24 @@ final class PloggingMainView: UIView {
     }
     
     @objc
-    private func startButtonTapped(){
+    private func startButtonTapped() {
         listener?.action(.startButtonTapped)
     }
     
     @objc
-    private func pauseButtonTapped(){
+    private func pauseButtonTapped() {
         listener?.action(.pauseButtonTapped)
         pausePlogging()
     }
     
     @objc
-    private func resumeButtonTapped(){
+    private func resumeButtonTapped() {
         listener?.action(.resumeButtonTapped)
         resumePlogging()
     }
     
     @objc
-    private func stopButtonTapped(){
+    private func stopButtonTapped() {
         listener?.action(.stopButtonTapped)
         stopPlogging()
     }
@@ -200,12 +200,12 @@ final class PloggingMainView: UIView {
     }
     
     @objc
-    private func addTrashCanConfirmButtonTapped(){
+    private func addTrashCanConfirmButtonTapped() {
         listener?.action(.addTrashCanConfirmButtonTapped)
     }
     
     @objc
-    private func myLocationButtonTapped(){
+    private func myLocationButtonTapped() {
         listener?.action(.myLocationButtonTapped)
     }
     
@@ -214,7 +214,7 @@ final class PloggingMainView: UIView {
         listener?.action(.closeCoachmarkButtonTapped)
     }
     
-    func removeTrashCan(annotation: TrashcanAnnotation){
+    func removeTrashCan(annotation: TrashcanAnnotation) {
         listener?.action(.removeTrashCan(annotation))
     }
     
@@ -493,13 +493,13 @@ private extension PloggingMainView {
         myLocationButton.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).offset(15)
             $0.trailing.equalTo(-17)
-            $0.width.height.equalTo(40)
+            $0.size.equalTo(40)
         }
         
         trashButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().offset(-16)
             $0.bottom.equalTo(startBottomContainerView.snp.top).offset(-16)
-            $0.width.height.equalTo(50)
+            $0.size.equalTo(50)
         }
         startBottomContainerView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
@@ -609,7 +609,7 @@ private extension PloggingMainView {
         closeCoachmarkButton.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).offset(20)
             $0.trailing.equalTo(-21)
-            $0.width.height.equalTo(30)
+            $0.size.equalTo(30)
         }
         
         coachmarkDeleteTrashcanLabel.snp.makeConstraints {
@@ -662,7 +662,7 @@ extension PloggingMainView: MKMapViewDelegate {
                 self?.removeTrashCan(annotation: annotation as! TrashcanAnnotation)
             }
             return pin
-        }else if annotation is TempTrashAnnotation {
+        } else if annotation is TempTrashAnnotation {
             let pin = TempTrashAnnotationView(annotation: annotation, reuseIdentifier: "TempTrashAnnotationView")
             return pin
         }

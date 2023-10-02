@@ -168,17 +168,17 @@ private extension CameraView {
             $0.height.equalTo(frame.width)
         }
         flashButton.snp.makeConstraints {
-            $0.width.height.equalTo(30)
+            $0.size.equalTo(30)
             $0.centerX.equalToSuperview()
             $0.top.equalTo(frame.height * 0.117)
         }
         cameraButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().offset(-frame.height * 0.098)
             $0.centerX.equalToSuperview()
-            $0.width.height.equalTo(frame.width * 0.17)
+            $0.size.equalTo(frame.width * 0.17)
         }
         descriptionLabel.snp.makeConstraints {
-            $0.centerX.centerY.equalTo(finderView)
+            $0.center.equalTo(finderView)
         }
     }
 }

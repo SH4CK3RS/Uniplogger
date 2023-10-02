@@ -21,7 +21,7 @@ protocol PloggingDataPassing {
     var dataStore: PloggingDataStore? { get }
 }
 
-class PloggingRouter: NSObject, PloggingRoutingLogic, PloggingDataPassing {
+final class PloggingRouter: NSObject, PloggingRoutingLogic, PloggingDataPassing {
     weak var viewController: PloggingViewController?
     var dataStore: PloggingDataStore?
     
@@ -40,13 +40,13 @@ class PloggingRouter: NSObject, PloggingRoutingLogic, PloggingDataPassing {
     
     
     //MARK: - Navigation Logic
-    func navigateToStartCounting(source: PloggingViewController, destination: StartCountingViewController){
+    func navigateToStartCounting(source: PloggingViewController, destination: StartCountingViewController) {
         destination.modalTransitionStyle = .crossDissolve
         destination.modalPresentationStyle = .fullScreen
         source.present(destination, animated: true)
     }
     
-    func navigateToPloggingRecord(source: PloggingViewController, destination: PloggingRecordViewController){
+    func navigateToPloggingRecord(source: PloggingViewController, destination: PloggingRecordViewController) {
         let nvc = UINavigationController(rootViewController: destination)
         nvc.navigationBar.isHidden = true
         nvc.modalTransitionStyle = .crossDissolve
@@ -55,7 +55,7 @@ class PloggingRouter: NSObject, PloggingRoutingLogic, PloggingDataPassing {
     }
     
     //MARK: - Data Passing Logic
-//    func passDataToPloggingRecord(source: PloggingDataStore, destination: inout PloggingRecordDataStore){
+//    func passDataToPloggingRecord(source: PloggingDataStore, destination: inout PloggingRecordDataStore) {
 //        destination.ploggingData = source.ploggingData
 //    }
 }

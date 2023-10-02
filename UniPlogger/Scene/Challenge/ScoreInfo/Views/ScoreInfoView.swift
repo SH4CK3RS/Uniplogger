@@ -86,7 +86,7 @@ extension ScoreInfoView {
         }
         infoImageView.snp.makeConstraints {
             $0.leading.centerY.equalTo(titleView)
-            $0.width.height.equalTo(24)
+            $0.size.equalTo(24)
         }
         headerLabel.snp.makeConstraints {
             $0.top.bottom.trailing.equalTo(titleView)
@@ -102,7 +102,7 @@ extension ScoreInfoView {
             $0.height.equalToSuperview().multipliedBy(0.155)
         }
         dismissLabel.snp.makeConstraints {
-            $0.leading.trailing.top.bottom.equalTo(dismissButton)
+            $0.edges.equalTo(dismissButton)
         }
         circleBackgroundView.snp.makeConstraints {
             $0.top.equalTo(descriptionLabel.snp.bottom)
@@ -112,14 +112,14 @@ extension ScoreInfoView {
         secondCircleView.snp.makeConstraints {
             $0.centerY.equalTo(circleBackgroundView)
             $0.centerX.equalToSuperview()
-            $0.width.height.equalTo(80)
+            $0.size.equalTo(80)
         }
         firstCircleView.snp.makeConstraints {
-            $0.top.width.height.equalTo(secondCircleView)
+            $0.top.size.equalTo(secondCircleView)
             $0.trailing.equalTo(secondCircleView.snp.leading).offset(-28)
         }
         thirdCircleView.snp.makeConstraints {
-            $0.top.width.height.equalTo(secondCircleView)
+            $0.top.size.equalTo(secondCircleView)
             $0.leading.equalTo(secondCircleView.snp.trailing).offset(28)
         }
     }

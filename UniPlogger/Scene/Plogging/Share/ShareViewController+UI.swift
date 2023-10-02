@@ -26,7 +26,7 @@ extension ShareViewController {
             $0.top.bottom.leading.trailing.equalToSuperview()
         }
         ploggingImageViewContainer.snp.makeConstraints {
-            $0.width.height.equalTo(340)
+            $0.size.equalTo(340)
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(179)
         }
@@ -34,7 +34,7 @@ extension ShareViewController {
             $0.edges.equalToSuperview()
         }
         dismissButton.snp.makeConstraints {
-            $0.width.height.equalTo(40)
+            $0.size.equalTo(40)
             $0.top.equalToSuperview().offset(58)
             $0.trailing.equalToSuperview().offset(-16)
         }
@@ -43,8 +43,8 @@ extension ShareViewController {
             $0.top.equalTo(ploggingImageView.snp.bottom)
         }
         shareButton.snp.makeConstraints {
-            $0.width.height.equalTo(100)
-            $0.centerX.centerY.equalTo(shareButtonView)
+            $0.size.equalTo(100)
+            $0.center.equalTo(shareButtonView)
         }
     }
 }
