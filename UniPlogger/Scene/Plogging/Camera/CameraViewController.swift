@@ -10,10 +10,11 @@ import RIBs
 import RxSwift
 import UIKit
 
+enum CameraPresentableListenerRequest {
+    case didTakePhoto(UIImage)
+}
 protocol CameraPresentableListener: AnyObject {
-    // TODO: Declare properties and methods that the view controller can invoke to perform
-    // business logic, such as signIn(). This protocol is implemented by the corresponding
-    // interactor class.
+    func request(_ request: CameraPresentableListenerRequest)
 }
 
 final class CameraViewController: UIViewController, CameraPresentable, CameraViewControllable {
@@ -43,6 +44,9 @@ final class CameraViewController: UIViewController, CameraPresentable, CameraVie
 
 extension CameraViewController: CameraViewListener {
     func action(_ action: CameraViewAction) {
-        
+        switch action {
+        case let .didTakePhoto(photo):
+            listener?.request(.didTakePhoto(photo))
+        }
     }
 }

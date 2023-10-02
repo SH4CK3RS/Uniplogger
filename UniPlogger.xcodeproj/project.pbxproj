@@ -58,6 +58,12 @@
 		3E67E1D32AC84F65001FBA36 /* CameraBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1CF2AC84F64001FBA36 /* CameraBuilder.swift */; };
 		3E67E1D42AC84F65001FBA36 /* CameraInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1D02AC84F64001FBA36 /* CameraInteractor.swift */; };
 		3E67E1D72AC852E1001FBA36 /* PloggingRootComponent+Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1D62AC852E1001FBA36 /* PloggingRootComponent+Camera.swift */; };
+		3EB3370A2ACA7C1800A48BB3 /* ImagePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB337092ACA7C1800A48BB3 /* ImagePreviewView.swift */; };
+		3EB337102ACA7E3100A48BB3 /* ImagePreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB3370C2ACA7E3100A48BB3 /* ImagePreviewRouter.swift */; };
+		3EB337112ACA7E3100A48BB3 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB3370D2ACA7E3100A48BB3 /* ImagePreviewViewController.swift */; };
+		3EB337122ACA7E3100A48BB3 /* ImagePreviewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB3370E2ACA7E3100A48BB3 /* ImagePreviewBuilder.swift */; };
+		3EB337132ACA7E3100A48BB3 /* ImagePreviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB3370F2ACA7E3100A48BB3 /* ImagePreviewInteractor.swift */; };
+		3EB337152ACA810C00A48BB3 /* PloggingRootComponent+ImagePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB337142ACA810C00A48BB3 /* PloggingRootComponent+ImagePreview.swift */; };
 		3EDD64D62AB6DCCA00776C34 /* TutorialRootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D32AB6DCCA00776C34 /* TutorialRootRouter.swift */; };
 		3EDD64D72AB6DCCA00776C34 /* TutorialRootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D42AB6DCCA00776C34 /* TutorialRootBuilder.swift */; };
 		3EDD64D82AB6DCCA00776C34 /* TutorialRootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD64D52AB6DCCA00776C34 /* TutorialRootInteractor.swift */; };
@@ -194,8 +200,7 @@
 		8353A377256911F900F9AA4F /* ReportItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353A376256911F900F9AA4F /* ReportItem.swift */; };
 		8353A37E256947D000F9AA4F /* ReportViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353A37D256947D000F9AA4F /* ReportViewController+UI.swift */; };
 		8353A381256A617100F9AA4F /* ChallengeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353A380256A617100F9AA4F /* ChallengeNavigationController.swift */; };
-		8355DF4B25858138001C63A5 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8355DF4A25858138001C63A5 /* ImagePreviewViewController.swift */; };
-		8355DF5E2585B5A9001C63A5 /* ImagePreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8355DF5D2585B5A9001C63A5 /* ImagePreviewRouter.swift */; };
+		8355DF5E2585B5A9001C63A5 /* ImagePreviewRouters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8355DF5D2585B5A9001C63A5 /* ImagePreviewRouters.swift */; };
 		83DE07702566AD050085AC72 /* ScoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DE07522566AD050085AC72 /* ScoreInfoViewController.swift */; };
 		83DE07712566AD050085AC72 /* CircleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DE07542566AD050085AC72 /* CircleInfoView.swift */; };
 		83DE07722566AD050085AC72 /* ScoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DE07552566AD050085AC72 /* ScoreInfoView.swift */; };
@@ -383,6 +388,12 @@
 		3E67E1CF2AC84F64001FBA36 /* CameraBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraBuilder.swift; sourceTree = "<group>"; };
 		3E67E1D02AC84F64001FBA36 /* CameraInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraInteractor.swift; sourceTree = "<group>"; };
 		3E67E1D62AC852E1001FBA36 /* PloggingRootComponent+Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PloggingRootComponent+Camera.swift"; sourceTree = "<group>"; };
+		3EB337092ACA7C1800A48BB3 /* ImagePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewView.swift; sourceTree = "<group>"; };
+		3EB3370C2ACA7E3100A48BB3 /* ImagePreviewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewRouter.swift; sourceTree = "<group>"; };
+		3EB3370D2ACA7E3100A48BB3 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
+		3EB3370E2ACA7E3100A48BB3 /* ImagePreviewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewBuilder.swift; sourceTree = "<group>"; };
+		3EB3370F2ACA7E3100A48BB3 /* ImagePreviewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewInteractor.swift; sourceTree = "<group>"; };
+		3EB337142ACA810C00A48BB3 /* PloggingRootComponent+ImagePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PloggingRootComponent+ImagePreview.swift"; sourceTree = "<group>"; };
 		3EDD64D32AB6DCCA00776C34 /* TutorialRootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootRouter.swift; sourceTree = "<group>"; };
 		3EDD64D42AB6DCCA00776C34 /* TutorialRootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootBuilder.swift; sourceTree = "<group>"; };
 		3EDD64D52AB6DCCA00776C34 /* TutorialRootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRootInteractor.swift; sourceTree = "<group>"; };
@@ -527,8 +538,7 @@
 		8353A376256911F900F9AA4F /* ReportItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportItem.swift; sourceTree = "<group>"; };
 		8353A37D256947D000F9AA4F /* ReportViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportViewController+UI.swift"; sourceTree = "<group>"; };
 		8353A380256A617100F9AA4F /* ChallengeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeNavigationController.swift; sourceTree = "<group>"; };
-		8355DF4A25858138001C63A5 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
-		8355DF5D2585B5A9001C63A5 /* ImagePreviewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewRouter.swift; sourceTree = "<group>"; };
+		8355DF5D2585B5A9001C63A5 /* ImagePreviewRouters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewRouters.swift; sourceTree = "<group>"; };
 		83DE07522566AD050085AC72 /* ScoreInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreInfoViewController.swift; sourceTree = "<group>"; };
 		83DE07542566AD050085AC72 /* CircleInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleInfoView.swift; sourceTree = "<group>"; };
 		83DE07552566AD050085AC72 /* ScoreInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreInfoView.swift; sourceTree = "<group>"; };
@@ -751,6 +761,7 @@
 				3E67E1B32AC732A5001FBA36 /* PloggingRootComponent+StartCounting.swift */,
 				3E67E1C82AC824AF001FBA36 /* PloggingRootComponent+PloggingRecord.swift */,
 				3E67E1D62AC852E1001FBA36 /* PloggingRootComponent+Camera.swift */,
+				3EB337142ACA810C00A48BB3 /* PloggingRootComponent+ImagePreview.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -798,10 +809,22 @@
 		3E67E1D52AC8503F001FBA36 /* ImagePreview */ = {
 			isa = PBXGroup;
 			children = (
-				8355DF4A25858138001C63A5 /* ImagePreviewViewController.swift */,
-				8355DF5D2585B5A9001C63A5 /* ImagePreviewRouter.swift */,
+				3EB3370B2ACA7E1000A48BB3 /* RIB */,
+				8355DF5D2585B5A9001C63A5 /* ImagePreviewRouters.swift */,
+				3EB337092ACA7C1800A48BB3 /* ImagePreviewView.swift */,
 			);
 			path = ImagePreview;
+			sourceTree = "<group>";
+		};
+		3EB3370B2ACA7E1000A48BB3 /* RIB */ = {
+			isa = PBXGroup;
+			children = (
+				3EB3370C2ACA7E3100A48BB3 /* ImagePreviewRouter.swift */,
+				3EB3370D2ACA7E3100A48BB3 /* ImagePreviewViewController.swift */,
+				3EB3370E2ACA7E3100A48BB3 /* ImagePreviewBuilder.swift */,
+				3EB3370F2ACA7E3100A48BB3 /* ImagePreviewInteractor.swift */,
+			);
+			path = RIB;
 			sourceTree = "<group>";
 		};
 		3EDD64D92AB6DDDC00776C34 /* TutorialFirst */ = {
@@ -1890,7 +1913,6 @@
 				3E2FB87E2AC002070096F554 /* PloggingMainRouter.swift in Sources */,
 				4C7248AE2542F86200ACB32B /* VerticalRoundButton.swift in Sources */,
 				AA4AD56925725D0D0087E060 /* ImageDownloadManager.swift in Sources */,
-				8355DF4B25858138001C63A5 /* ImagePreviewViewController.swift in Sources */,
 				3EDD65012AB70AC700776C34 /* TutorialThirdInteractor.swift in Sources */,
 				3EDD651C2ABF09DB00776C34 /* LoginRouter.swift in Sources */,
 				AA7F54E12532C176001C4012 /* UserDefault+Extensions.swift in Sources */,
@@ -1931,6 +1953,7 @@
 				4C7248A92541CDE300ACB32B /* QuestList.swift in Sources */,
 				3EDD650D2ABA0EFB00776C34 /* RegistrationBuilder.swift in Sources */,
 				4C7248B925455B2C00ACB32B /* QuestBaseViewController.swift in Sources */,
+				3EB337152ACA810C00A48BB3 /* PloggingRootComponent+ImagePreview.swift in Sources */,
 				AA2CAE012543EAD500105748 /* TrashAnnotationView.swift in Sources */,
 				3E2FB86D2ABFFBFC0096F554 /* MainTabBarViewController.swift in Sources */,
 				AA4AD571257265460087E060 /* DetailInteractor.swift in Sources */,
@@ -1962,6 +1985,7 @@
 				AA59BF16258DF26E003319D4 /* TutorialNavigationController.swift in Sources */,
 				4C42364B257234D50068A252 /* QuestAPI.swift in Sources */,
 				AAA1CBEC255D5F9C00EDB18A /* APIConfiguration.swift in Sources */,
+				3EB337112ACA7E3100A48BB3 /* ImagePreviewViewController.swift in Sources */,
 				AA7F54F32532C1A6001C4012 /* PloggingWorker.swift in Sources */,
 				AA4AD595257405490087E060 /* MyPageNavigationController.swift in Sources */,
 				4C401EB2253DE1F200ABED84 /* QuestState.swift in Sources */,
@@ -1970,6 +1994,7 @@
 				3E2FB8852AC00DC00096F554 /* PloggingRootComponent+PloggingMain.swift in Sources */,
 				AAE05CE72568E3C100547501 /* VerbosePlugin.swift in Sources */,
 				AA7F55212533568D001C4012 /* ShareWorker.swift in Sources */,
+				3EB3370A2ACA7C1800A48BB3 /* ImagePreviewView.swift in Sources */,
 				3E67E1B82AC7E544001FBA36 /* PloggingMainModel.swift in Sources */,
 				83DE07762566AD050085AC72 /* DetailRouter.swift in Sources */,
 				AA4AD55525725C920087E060 /* LogAPITarget.swift in Sources */,
@@ -1992,6 +2017,7 @@
 				3EDD65032AB70B6E00776C34 /* TutorialThirdView.swift in Sources */,
 				AA4AD59E2574057D0087E060 /* AuthAPIResponse.swift in Sources */,
 				835248652572285100C9F495 /* LogPresenter.swift in Sources */,
+				3EB337132ACA7E3100A48BB3 /* ImagePreviewInteractor.swift in Sources */,
 				83DE077B2566AD050085AC72 /* UserLogViewController+UI.swift in Sources */,
 				4C3F56182568F97B006D7C9F /* PloggingData.swift in Sources */,
 				8353097B257B91A900C3626D /* SignUpInfoType.swift in Sources */,
@@ -2034,7 +2060,7 @@
 				4C423647257232260068A252 /* QuestAPITarget.swift in Sources */,
 				3EDD650C2ABA0EFB00776C34 /* RegistrationViewController.swift in Sources */,
 				4C42365125723EF10068A252 /* QuestResponse.swift in Sources */,
-				8355DF5E2585B5A9001C63A5 /* ImagePreviewRouter.swift in Sources */,
+				8355DF5E2585B5A9001C63A5 /* ImagePreviewRouters.swift in Sources */,
 				AAB3B4D22520A31100F0311A /* UniPlogger.xcdatamodeld in Sources */,
 				835248692572285100C9F495 /* LogModels.swift in Sources */,
 				8353A37E256947D000F9AA4F /* ReportViewController+UI.swift in Sources */,
@@ -2053,6 +2079,7 @@
 				83524819257227BA00C9F495 /* SplashViewController.swift in Sources */,
 				8352480D2572279500C9F495 /* Feed.swift in Sources */,
 				8352489725727BFE00C9F495 /* Planet.swift in Sources */,
+				3EB337122ACA7E3100A48BB3 /* ImagePreviewBuilder.swift in Sources */,
 				8352480E2572279500C9F495 /* User.swift in Sources */,
 				AAC552B225848D8D000DAFDF /* BaseResponse.swift in Sources */,
 				AA4AD575257265BF0087E060 /* DetailPresenter.swift in Sources */,
@@ -2081,6 +2108,7 @@
 				83530986257B91E300C3626D /* SettingTableViewCell.swift in Sources */,
 				AAB3B4EC2520B2B400F0311A /* UIImage+Extensions.swift in Sources */,
 				4C7248B12542FDA600ACB32B /* RecommandOtherView.swift in Sources */,
+				3EB337102ACA7E3100A48BB3 /* ImagePreviewRouter.swift in Sources */,
 				3EDD64E92AB6EAE000776C34 /* SplashComponent+TutorialRoot.swift in Sources */,
 				83530985257B91E300C3626D /* SettingType.swift in Sources */,
 				8353A381256A617100F9AA4F /* ChallengeNavigationController.swift in Sources */,

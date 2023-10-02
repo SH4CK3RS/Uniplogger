@@ -8,6 +8,7 @@
 
 import RIBs
 import RxSwift
+import UIKit
 
 protocol CameraRouting: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
@@ -18,8 +19,11 @@ protocol CameraPresentable: Presentable {
     // TODO: Declare methods the interactor can invoke the presenter to present data.
 }
 
+enum CameraListenerRequest {
+    case didTakePhoto(UIImage)
+}
 protocol CameraListener: AnyObject {
-    // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+    func request(_ request: CameraListenerRequest)
 }
 
 final class CameraInteractor: PresentableInteractor<CameraPresentable>, CameraInteractable, CameraPresentableListener {
@@ -34,13 +38,10 @@ final class CameraInteractor: PresentableInteractor<CameraPresentable>, CameraIn
         presenter.listener = self
     }
 
-    override func didBecomeActive() {
-        super.didBecomeActive()
-        // TODO: Implement business logic here.
-    }
-
-    override func willResignActive() {
-        super.willResignActive()
-        // TODO: Pause any business logic.
+    func request(_ request: CameraPresentableListenerRequest) {
+        switch request {
+        case let .didTakePhoto(photo):
+            listener?.request(.didTakePhoto(photo))
+        }
     }
 }

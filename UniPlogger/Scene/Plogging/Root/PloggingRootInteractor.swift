@@ -8,6 +8,7 @@
 
 import RIBs
 import RxSwift
+import UIKit
 
 enum PloggingRootRouterRequest {
     case routeToPloggingMain
@@ -15,6 +16,7 @@ enum PloggingRootRouterRequest {
     case detachStartCounting
     case routeToPloggingRecord
     case routeToCamera
+    case routeToImagePreview(UIImage)
 }
 
 protocol PloggingRootRouting: ViewableRouting {
@@ -81,6 +83,7 @@ extension PloggingRootInteractor {
     }
 }
 
+// MARK: - PloggingRecordListenerRequest
 extension PloggingRootInteractor {
     func request(_ request: PloggingRecordListenerRequest) {
         switch request {
@@ -89,3 +92,14 @@ extension PloggingRootInteractor {
         }
     }
 }
+
+// MARK: - CameraListenerRequest
+extension PloggingRootInteractor {
+    func request(_ request: CameraListenerRequest) {
+        switch request {
+        case let .didTakePhoto(photo):
+            router?.request(.routeToImagePreview(photo))
+        }
+    }
+}
+

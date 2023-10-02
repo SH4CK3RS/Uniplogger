@@ -7,8 +7,14 @@
 //
 
 import RIBs
+import UIKit
 
-protocol PloggingRootInteractable: Interactable, PloggingMainListener, StartCountingListener, PloggingRecordListener, CameraListener {
+protocol PloggingRootInteractable: Interactable,
+                                   PloggingMainListener,
+                                   StartCountingListener,
+                                   PloggingRecordListener,
+                                   CameraListener,
+                                   ImagePreviewListener {
     var router: PloggingRootRouting? { get set }
     var listener: PloggingRootListener? { get set }
 }
@@ -28,11 +34,13 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
          ploggingMainBuilder: PloggingMainBuildable,
          startCountingBuilder: StartCountingBuildable,
          ploggingRecordBuilder: PloggingRecordBuildable,
-         cameraBuilder: CameraBuilder) {
+         cameraBuilder: CameraBuilder,
+         imagePreviewBuilder: ImagePreviewBuildable) {
         self.ploggingMainBuilder = ploggingMainBuilder
         self.startCountingBuilder = startCountingBuilder
         self.ploggingRecordBuilder = ploggingRecordBuilder
         self.cameraBuilder = cameraBuilder
+        self.imagePreviewBuilder = imagePreviewBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
@@ -49,6 +57,8 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
             routeToPloggingRecord()
         case .routeToCamera:
             routeToCamera()
+        case let .routeToImagePreview(photo):
+            routeToImagePreview(photo)
         }
     }
     
@@ -63,6 +73,9 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
     
     private let cameraBuilder: CameraBuildable
     private var cameraRouter: CameraRouting?
+    
+    private let imagePreviewBuilder: ImagePreviewBuildable
+    private var imagePreviewRouter: ImagePreviewRouting?
     
     private func routeToPloggingMain() {
         let router = ploggingMainBuilder.build(withListener: interactor)
@@ -98,6 +111,14 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
     private func routeToCamera() {
         let router = cameraBuilder.build(withListener: interactor)
         cameraRouter = router
+        attachChild(router)
+        router.viewControllable.uiviewController.hidesBottomBarWhenPushed = true
+        viewController.push(viewController: router.viewControllable, animated: false)
+    }
+    
+    private func routeToImagePreview(_ image: UIImage) {
+        let router = imagePreviewBuilder.build(withListener: interactor, image: image)
+        imagePreviewRouter = router
         attachChild(router)
         router.viewControllable.uiviewController.hidesBottomBarWhenPushed = true
         viewController.push(viewController: router.viewControllable, animated: false)
