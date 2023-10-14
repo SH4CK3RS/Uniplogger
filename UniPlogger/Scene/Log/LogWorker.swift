@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class LogWorker {
     func updateRank(completion: @escaping () -> Void) {
@@ -26,11 +27,11 @@ class LogWorker {
                     let response = Log.GetUser.Response(response: user)
                     completion(response)
                 } else {
-                    let res = Log.GetUser.Response(error: .server(value.message))
+                    let res = Log.GetUser.Response(error: .networkError(.responseError(value.message ?? "")))
                     completion(res)
                 }
             case let .failure(error):
-                let response = Log.GetUser.Response(error: .error(error))
+                let response = Log.GetUser.Response(error: UniPloggerError.networkError(.responseError(error.localizedDescription)))
                 completion(response)
             }
         }
@@ -44,30 +45,11 @@ class LogWorker {
                     let response = Log.GetUser.Response(response: user)
                     completion(response)
                 } else {
-                    let res = Log.GetUser.Response(error: .server(value.message))
+                    let res = Log.GetUser.Response(error: .networkError(.responseError(value.message ?? "")))
                     completion(res)
                 }
             case let .failure(error):
-                let response = Log.GetUser.Response(error: .error(error))
-                completion(response)
-            }
-        }
-    }
-    
-    func getFeed(uid: Int, completion: @escaping(Log.GetFeed.Response) -> Void) {
-        LogAPI.shared.getFeed(uid: uid) { (response) in
-            switch response {
-            case let .success(value):
-                if value.success, let feedList = value.data {
-                    let response = Log.GetFeed.Response(feedList: feedList)
-                    completion(response)
-                } else {
-                    let response = Log.GetFeed.Response(error: .server(value.message))
-                    completion(response)
-                }
-                
-            case let .failure(error):
-                let response = Log.GetFeed.Response(error: .error(error))
+                let response = Log.GetUser.Response(error: UniPloggerError.networkError(.responseError(error.localizedDescription)))
                 completion(response)
             }
         }

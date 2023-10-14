@@ -13,7 +13,7 @@ import UIKit
 enum ImagePreviewPresentableListenerRequest {
     case viewDidLoad
     case nextButtonTapped
-    case dismissButtonTapped
+    case backButtonTapped
 }
 
 protocol ImagePreviewPresentableListener: AnyObject {
@@ -48,7 +48,7 @@ extension ImagePreviewViewController: ImagepreviewViewListener {
     func action(_ action: ImagepreviewViewAction) {
         switch action {
         case .nextButtonTapped: listener?.request(.nextButtonTapped)
-        case .dismissButtonTapped: listener?.request(.dismissButtonTapped)
+        case .backButtonTapped: listener?.request(.backButtonTapped)
         }
     }
 }

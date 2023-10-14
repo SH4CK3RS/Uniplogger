@@ -11,6 +11,8 @@ import Foundation
 struct AuthManager {
     static var shared: AuthManager = AuthManager()
     
+    private init() {}
+    
     var userToken: String? {
         get {
             guard let userToken = UserDefaults.standard.string(forDefines: .userToken) else { return nil }

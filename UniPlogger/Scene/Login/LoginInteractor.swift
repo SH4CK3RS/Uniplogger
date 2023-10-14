@@ -15,7 +15,7 @@ protocol LoginRouting: ViewableRouting {
 
 enum LoginPresentableRequest {
     case activateLoginButton(Bool)
-    case showError(Common.CommonError)
+    case showError(UniPloggerError)
 }
 
 protocol LoginPresentable: Presentable {

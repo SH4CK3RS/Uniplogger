@@ -11,7 +11,7 @@ import RxSwift
 import UIKit
 
 enum PloggingRecordPresentableListenerRequest {
-    case takePicture
+    case takePicture([PloggingItemType])
 }
 
 protocol PloggingRecordPresentableListener: AnyObject {
@@ -30,20 +30,26 @@ final class PloggingRecordViewController: UIViewController, PloggingRecordPresen
     weak var listener: PloggingRecordPresentableListener?
     // MARK: - Private
     private let mainView = PloggingRecordView()
+    
+    private func handleSkipOrNext(items: [PloggingItemType]) {
+        let alert = UIAlertController(title: "플로깅 인증 사진을\n촬영하시겠습니까?", message: "사진 촬영을 위해 사진앱을 실행합니다.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "실행", style: .default) { [weak self] (_) in
+            self?.listener?.request(.takePicture(items))
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension PloggingRecordViewController: PloggingRecordViewListener {
     func action(_ action: PloggingRecordViewAction) {
         switch action {
-        case .skipButtonTapped, .nextButtonTapped:
-            let alert = UIAlertController(title: "플로깅 인증 사진을\n촬영하시겠습니까?", message: "사진 촬영을 위해 사진앱을 실행합니다.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "실행", style: .default) { [weak self] (_) in
-                self?.listener?.request(.takePicture)
-            }
-            let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-            alert.addAction(okAction)
-            alert.addAction(cancelAction)
-            self.present(alert, animated: true, completion: nil)
+        case .skipButtonTapped:
+            handleSkipOrNext(items: [])
+        case let .nextButtonTapped(items):
+            handleSkipOrNext(items: items)
         case let .ploggingItemSelected(itemType):
             let detailView = TrashDetailPopupView(type: itemType)
             detailView.modalTransitionStyle = .crossDissolve

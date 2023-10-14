@@ -16,7 +16,7 @@ import Moya
 protocol FindPasswordDisplayLogic: AnyObject {
     func displayValidation(viewModel: FindPassword.ValidationViewModel)
     func displayFindPassword(viewModel: FindPassword.FindPassword.ViewModel)
-    func displayError(error: Common.CommonError, useCase: FindPassword.UseCase)
+    func displayError(error: UniPloggerError, useCase: FindPassword.UseCase)
 }
 
 class FindPasswordViewController: UIViewController, UIGestureRecognizerDelegate {
@@ -193,29 +193,8 @@ extension FindPasswordViewController: FindPasswordDisplayLogic {
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
-    func displayError(error: Common.CommonError, useCase: FindPassword.UseCase) {
+    func displayError(error: UniPloggerError, useCase: FindPassword.UseCase) {
         //handle error with its usecase
         UPLoader.shared.hidden()
-        switch error {
-        case .server(let msg):
-            self.errorAlert(title: "오류", message: msg, completion: nil)
-        case .local(let msg):
-            self.errorAlert(title: "오류", message: msg, completion: nil)
-        case .error(let error):
-            if let error = error as? URLError {
-                NetworkErrorManager.alert(error) { _ in
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
-                        guard let self = self else { return }
-                        switch useCase {
-                        case .FindPassword(let request):
-                            self.interactor?.findPassword(request: request)
-                        }
-                    }
-                }
-            } else if let error = error as? MoyaError {
-                NetworkErrorManager.alert(error)
-            }
-            
-        }
     }
 }

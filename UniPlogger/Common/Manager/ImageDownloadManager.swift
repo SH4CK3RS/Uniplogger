@@ -9,11 +9,10 @@
 import UIKit
 
 struct ImageDownloadManager {
-    private let cache = NSCache<NSString, UIImage>()
+    
     static let shared = ImageDownloadManager()
     private init() { }
     func downloadImage(url: String, completion: @escaping (UIImage?) -> Void) {
-        let thumbnailImage = UIImage(named: "thumbnail")
         if let cachedImage = cache.object(forKey: NSString(string: url)) {
             completion(cachedImage)
         } else {
@@ -30,11 +29,15 @@ struct ImageDownloadManager {
                             completion(thumbnailImage)
                         }
                     }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                    completion(thumbnailImage)
+                case .failure:
+                    DispatchQueue.main.async {
+                        completion(thumbnailImage)
+                    }
                 }
             }
         }
     }
+    
+    private let cache = NSCache<NSString, UIImage>()
+    private let thumbnailImage = UIImage(named: "thumbnail")
 }

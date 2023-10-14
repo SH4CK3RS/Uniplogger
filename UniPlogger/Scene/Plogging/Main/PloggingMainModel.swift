@@ -14,6 +14,12 @@ enum PloggingState {
     case doing
 }
 
+// UID: -1
+// title - dateString
+// distance: Double
+// time: Int = minutes * 60 + seconds
+// image: UIImage
+
 struct PloggingMainModel {
     var distance = Measurement(value: 0, unit: UnitLength.kilometers)
     var locationList: [CLLocation] = []
@@ -50,6 +56,12 @@ struct PloggingMainModel {
                                     longitudeDelta: (maxLong - minLong) * 1.3)
         return MKCoordinateRegion(center: center, span: span)
     }
+    
+    // MARK: - Record
+    var time: Int {
+        return minutes * 60 + seconds
+    }
+    
     
     mutating func start() {
         distance = Measurement(value: 0, unit: UnitLength.meters)

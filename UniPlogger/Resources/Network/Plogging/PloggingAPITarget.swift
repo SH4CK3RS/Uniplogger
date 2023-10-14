@@ -76,7 +76,6 @@ extension PloggingAPITarget: BaseTarget {
             let distanceData = MultipartFormData(provider: .data("\(distance)".data(using: .utf8)!), name: "distance")
             let timeData = MultipartFormData(provider: .data("\(time)".data(using: .utf8)!), name: "time")
             let imageData = MultipartFormData(provider: .data(compImg), name: "photo", fileName: "\(title).jpg", mimeType: "image/jpeg")
-            //uidMultipartformData, titleMultipartformData, distnceMultipartformData, timeMultipartformData,
             return .uploadMultipart([uidData, titleData, distanceData, timeData, imageData])
                 
         case .deleteTrashCan:

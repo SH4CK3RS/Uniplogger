@@ -35,7 +35,7 @@ enum FindPassword {
         struct Response {
             var request: Request
             var data: FindPasswordResponse?
-            var error: Common.CommonError?
+            var error: UniPloggerError?
         }
         
         struct ViewModel {

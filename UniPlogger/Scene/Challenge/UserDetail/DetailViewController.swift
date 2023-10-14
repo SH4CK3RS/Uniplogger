@@ -27,15 +27,12 @@ class DetailViewController: UIViewController {
     }
     
     let ploggingImageViewContainer = UIView().then{
-        $0.backgroundColor = .clear
+        $0.backgroundColor = .lightGray
         $0.layer.cornerRadius = 10
         $0.clipsToBounds = true
     }
     
-    lazy var ploggingImageView = PloggingImageView().then {
-        $0.backgroundColor = .lightGray
-        
-    }
+    lazy var ploggingInfoView = PloggingInfoView()
     lazy var reportButton = UIBarButtonItem(image: UIImage(named: "report"), style: .plain, target: self, action: #selector(touchUpReportButton))
 
     lazy var shareButtonView = UIView()
@@ -114,15 +111,14 @@ class DetailViewController: UIViewController {
     
     @objc func touchUpSaveButton() {
         guard let image = imageForSave else { return }
-        let photoManager = PhotoManager(albumName: "UniPlogger")
-        photoManager.save(image) { (success, error) in
+        PhotoManager.shared.save(image) { [weak self] success in
             if success {
                 DispatchQueue.main.async {
-                    self.showAlert(title: "사진 저장", message: "사진이 저장되었습니다.")
+                    self?.showAlert(title: "사진 저장", message: "사진이 저장되었습니다.")
                 }
             } else {
                 DispatchQueue.main.async {
-                    self.showAlert(title: "ERROR", message: error?.localizedDescription ?? "error")
+                    self?.showAlert(title: "ERROR", message: "사진을 저장하는 도중 문제가 발생했습니다.")
                 }
             }
         }
@@ -146,8 +142,8 @@ class DetailViewController: UIViewController {
     }
     
     func shareImage(for image: UIImage) {
-        let photoManager = PhotoManager(albumName: "UniPlogger")
-        photoManager.save(image) { (success, error) in
+        PhotoManager.shared.save(image) { [weak self] success in
+            guard let self else { return }
             if success {
                 let fetchOptions = PHFetchOptions()
                 fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
@@ -159,7 +155,7 @@ class DetailViewController: UIViewController {
                 self.interactor?.shareToInstagram(assetIdentifier: lastAssetIdentifier)
             } else {
                 DispatchQueue.main.async {
-                    self.showAlert(title: "ERROR", message: error?.localizedDescription ?? "error")
+                    self.showAlert(title: "ERROR", message: "사진을 저장하는 도중 문제가 발생했습니다.")
                 }
             }
         }
@@ -184,21 +180,17 @@ class DetailViewController: UIViewController {
     }
     
     func mergeViews() -> UIImage? {
-        let image = ploggingImageView.asImage()
+        let image = ploggingInfoView.asImage()
         return image
     }
 }
 
 extension DetailViewController: DetailDisplayLogic {
     func displayGetFeed(viewModel: Detail.GetFeed.ViewModel, uid: Int) {
-        ploggingImageView.ploggingInfoView.viewModel = .init(distance: viewModel.distance, time: viewModel.time)
+//        ploggingImageView.ploggingInfoView.viewModel = .init(distance: viewModel.distance, time: viewModel.time)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YY.MM.d"
         self.navigationItem.title = dateFormatter.string(from: viewModel.date)
-        ImageDownloadManager.shared.downloadImage(url: viewModel.photo) { (image) in
-            self.ploggingImageView.image = image
-        }
-        print(viewModel)
         if let id = AuthManager.shared.user?.id, uid == id{
             setupMyFeed()
         } else {

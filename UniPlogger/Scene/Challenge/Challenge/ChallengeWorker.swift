@@ -21,8 +21,7 @@ class ChallengeWorker {
             case .success(let data):
                 print(data)
             case .failure(let error):
-                let error = Common.CommonError.error(error)
-                print(error)
+                let error = UniPloggerError.networkError(.responseError(error.localizedDescription))
             }
         }
     }
@@ -41,8 +40,7 @@ class ChallengeWorker {
                 }
                 
             case .failure(let error):
-                let error = Common.CommonError.error(error)
-                print(error)
+                let error = UniPloggerError.networkError(.responseError(error.localizedDescription))
             }
         }
     }

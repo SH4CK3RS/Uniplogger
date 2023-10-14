@@ -14,6 +14,10 @@ protocol PloggingRootDependency: Dependency {
 }
 
 final class PloggingRootComponent: Component<PloggingRootDependency> {
+    fileprivate var service: PloggingRootServiceable {
+        PloggingRootService()
+    }
+    
     var mutableStream: PloggingMutableStream {
         shared {
             PloggingStreamImpl()
@@ -37,7 +41,8 @@ final class PloggingRootBuilder: Builder<PloggingRootDependency>, PloggingRootBu
         let component = PloggingRootComponent(dependency: dependency)
         let viewController = PloggingRootViewController()
         let interactor = PloggingRootInteractor(presenter: viewController,
-                                                stream: component.mutableStream)
+                                                stream: component.mutableStream,
+                                                service: component.service)
         interactor.listener = listener
         
         let ploggingMainBuilder = PloggingMainBuilder(dependency: component)
@@ -45,12 +50,14 @@ final class PloggingRootBuilder: Builder<PloggingRootDependency>, PloggingRootBu
         let ploggingRecordBuilder = PloggingRecordBuilder(dependency: component)
         let cameraBuilder = CameraBuilder(dependency: component)
         let imagePreviewBuilder = ImagePreviewBuilder(dependency: component)
+        let shareBuilder = ShareBuilder(dependency: component)
         return PloggingRootRouter(interactor: interactor,
                                   viewController: viewController,
                                   ploggingMainBuilder: ploggingMainBuilder,
                                   startCountingBuilder: startCountingBuilder,
                                   ploggingRecordBuilder: ploggingRecordBuilder,
                                   cameraBuilder: cameraBuilder,
-                                  imagePreviewBuilder: imagePreviewBuilder)
+                                  imagePreviewBuilder: imagePreviewBuilder,
+                                  shareBuilder: shareBuilder)
     }
 }

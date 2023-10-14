@@ -39,7 +39,7 @@ protocol PloggingDisplayLogic: AnyObject {
     func displayRemoveTrashCan(viewModel: Plogging.RemoveTrashCan.ViewModel)
     
     // 에러 처리
-    func displayError(error: Common.CommonError, useCase: Plogging.UseCase)
+    func displayError(error: UniPloggerError, useCase: Plogging.UseCase)
 }
 
 final class PloggingViewController: UIViewController {
@@ -528,34 +528,9 @@ extension PloggingViewController: PloggingDisplayLogic{
             longitudinalMeters: 0.01)
         mapView.setRegion(region, animated: true)
     }
-    func displayError(error: Common.CommonError, useCase: Plogging.UseCase) {
+    func displayError(error: UniPloggerError, useCase: Plogging.UseCase) {
         //handle error with its usecase
         UPLoader.shared.hidden()
-        switch error {
-        case .server(let msg):
-            self.errorAlert(title: "오류", message: msg, completion: nil)
-        case .local(let msg):
-            self.errorAlert(title: "오류", message: msg, completion: nil)
-        case .error(let error):
-            if let error = error as? URLError {
-                NetworkErrorManager.alert(error) { _ in
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
-                        guard let self = self else { return }
-                        switch useCase {
-                        case .AddConfirmTrashCan(let request):
-                            self.interactor?.addConfirmTrashCan(request: request)
-                        case .FetchTrashCan:
-                            self.interactor?.fetchTrashCan()
-                        case .RemoveTrashCan(let request):
-                            self.interactor?.removeTrashCan(request: request)
-                        }
-                    }
-                }
-            } else if let error = error as? MoyaError {
-                NetworkErrorManager.alert(error)
-            }
-            
-        }
     }
     func displayAddTrashCan(viewModel: Plogging.AddTrashCan.ViewModel) {
         UPLoader.shared.hidden()

@@ -35,7 +35,7 @@ protocol PloggingMainPresentable: Presentable {
 
 enum PloggingMainListenerRequest {
     case startButtonTapped
-    case stopButtonTapped
+    case stopButtonTapped(distance: Double, time: Int)
 }
 
 protocol PloggingMainListener: AnyObject {
@@ -168,7 +168,7 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
         timer?.invalidate()
         timer = nil
         model.ploggingState = .stop
-        listener?.request(.stopButtonTapped)
+        listener?.request(.stopButtonTapped(distance: model.distance.value, time: model.time))
     }
     
     private func getPolyLine(first: CLLocation, second: CLLocation) -> MultiColorPolyline {

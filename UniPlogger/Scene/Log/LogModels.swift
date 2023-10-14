@@ -23,7 +23,7 @@ enum Log {
     enum GetUser{
         struct Response {
             var response: User?
-            var error: Common.CommonError?
+            var error: UniPloggerError?
         }
         
         struct ViewModel {
@@ -34,7 +34,7 @@ enum Log {
     enum GetFeed{
         struct Response {
             var feedList: [Feed]?
-            var error: Common.CommonError?
+            var error: UniPloggerError?
         }
         
         struct ViewModel{

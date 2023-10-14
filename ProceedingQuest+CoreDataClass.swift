@@ -15,7 +15,7 @@ class ProceedingQuest: NSManagedObject {
     
     func append(_ ploggingData: PloggingData) {
         time += Int64(ploggingData.time)
-        distance += floor((ploggingData.distance.value) * 100)
+        distance += floor((ploggingData.distance) * 100)
         finishDates?.append(Date())
         finishCount += 1
         ploggingData.items.forEach { item in

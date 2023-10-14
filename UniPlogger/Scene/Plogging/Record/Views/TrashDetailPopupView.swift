@@ -12,7 +12,7 @@ import Then
 
 class TrashDetailPopupView: UIViewController {
     var itemType: PloggingItemType
-    required init(type: PloggingItemType) {
+    init(type: PloggingItemType) {
         self.itemType = type
         super.init(nibName: nil, bundle: nil)
     }

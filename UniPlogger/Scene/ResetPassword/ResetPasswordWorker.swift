@@ -35,11 +35,11 @@ class ResetPasswordWorker {
                     let response = ResetPassword.ResetPassword.Response(request: request, response: data)
                     completion(response)
                 } else {
-                    let response = ResetPassword.ResetPassword.Response(request: request, error: .server(value.message))
+                    let response = ResetPassword.ResetPassword.Response(request: request, error: .networkError(.responseError(value.message ?? "")))
                     completion(response)
                 }
             case let .failure(error):
-                let response = ResetPassword.ResetPassword.Response(request: request, error: .error(error))
+                let response = ResetPassword.ResetPassword.Response(request: request, error: UniPloggerError.networkError(.responseError(error.localizedDescription)))
                 completion(response)
             }
         }

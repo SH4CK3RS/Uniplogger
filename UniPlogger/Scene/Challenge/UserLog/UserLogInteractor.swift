@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import RxSwift
+import RxRelay
+import RxCocoa
 
 protocol UserLogBusinessLogic {
     func getFeed()
@@ -22,14 +25,15 @@ class UserLogInteractor: UserLogBusinessLogic, UserLogDataStore {
     var playerId: Int?
     var presenter: UserLogPresentationLogic?
     var worker: UserLogWorker?
-
+    private let disposeBag = DisposeBag()
     func getFeed() {
         guard let playerId = playerId else { return }
-        worker = UserLogWorker()
-        self.worker?.getFeed(uid: playerId) { [weak self] response in
-            self?.presenter?.presentGetFeed(response: response)
-        }
-        
+        let worker = UserLogWorker()
+        self.worker = worker
+        worker.getFeeds(uid: playerId)
+            .subscribe(with: self) { owner, response in
+                
+            }
     }
     
     func getOtherUser() {

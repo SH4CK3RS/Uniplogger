@@ -17,6 +17,9 @@ enum PloggingRootRouterRequest {
     case routeToPloggingRecord
     case routeToCamera
     case routeToImagePreview(UIImage)
+    case detachImagePreview
+    case routeToShare(Feed)
+    case finishPlogging
 }
 
 protocol PloggingRootRouting: ViewableRouting {
@@ -40,8 +43,10 @@ final class PloggingRootInteractor: PresentableInteractor<PloggingRootPresentabl
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
     init(presenter: PloggingRootPresentable,
-         stream: PloggingMutableStream) {
+         stream: PloggingMutableStream,
+         service: PloggingRootServiceable) {
         self.stream = stream
+        self.service = service
         super.init(presenter: presenter)
         presenter.listener = self
     }
@@ -51,12 +56,9 @@ final class PloggingRootInteractor: PresentableInteractor<PloggingRootPresentabl
         router?.request(.routeToPloggingMain)
     }
 
-    override func willResignActive() {
-        super.willResignActive()
-        // TODO: Pause any business logic.
-    }
-    
+    private let service: PloggingRootServiceable
     private let stream: PloggingMutableStream
+    private var data = PloggingData()
 }
 
 // MARK: - PloggingMainListenerRequest
@@ -65,7 +67,9 @@ extension PloggingRootInteractor {
         switch request {
         case .startButtonTapped:
             router?.request(.routeToStartCounting)
-        case .stopButtonTapped:
+        case let .stopButtonTapped(distance, time):
+            data.distance = distance
+            data.time = time
             router?.request(.routeToPloggingRecord)
         }
         
@@ -87,7 +91,8 @@ extension PloggingRootInteractor {
 extension PloggingRootInteractor {
     func request(_ request: PloggingRecordListenerRequest) {
         switch request {
-        case .takePhoto:
+        case let .takePhoto(items):
+            data.items = items
             router?.request(.routeToCamera)
         }
     }
@@ -98,8 +103,36 @@ extension PloggingRootInteractor {
     func request(_ request: CameraListenerRequest) {
         switch request {
         case let .didTakePhoto(photo):
+            data.image = photo
             router?.request(.routeToImagePreview(photo))
         }
     }
 }
 
+// MARK: - ImagePreviewListenerRequest
+extension PloggingRootInteractor {
+    func request(_ request: ImagePreviewListenerRequest) {
+        switch request {
+        case .back:
+            data.image = nil
+            router?.request(.detachImagePreview)
+        case .next:
+            service.uploadPloggingRecord(data: data)
+                .observe(on: MainScheduler.instance)
+                .subscribe(with: self) { owner, feed in
+                    owner.router?.request(.routeToShare(feed))
+                } onFailure: { owner, error in
+                    
+                }.disposeOnDeactivate(interactor: self)
+        }
+    }
+}
+
+extension PloggingRootInteractor {
+    func request(_ request: ShareListenerRequest) {
+        switch request {
+        case .dismiss:
+            router?.request(.finishPlogging)
+        }
+    }
+}

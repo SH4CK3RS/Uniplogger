@@ -16,7 +16,7 @@ import Moya
 protocol LogDisplayLogic: AnyObject {
     func displayGetUser(viewModel: Log.GetUser.ViewModel)
     func displayGetFeed(viewModel: Log.GetFeed.ViewModel)
-    func displayError(error: Common.CommonError, useCase: Log.UseCase)
+    func displayError(error: UniPloggerError, useCase: Log.UseCase)
 }
 
 class LogViewController: UIViewController {
@@ -205,32 +205,9 @@ extension LogViewController: LogDisplayLogic{
             self.collectionView.reloadData()
         }
     }
-    func displayError(error: Common.CommonError, useCase: Log.UseCase) {
+    func displayError(error: UniPloggerError, useCase: Log.UseCase) {
         UPLoader.shared.hidden()
         self.scrollView.refreshControl?.endRefreshing()
-        switch error {
-        case .server(let msg):
-            self.errorAlert(title: "오류", message: msg, completion: nil)
-        case .local(let msg):
-            self.errorAlert(title: "오류", message: msg, completion: nil)
-        case .error(let error):
-            if let error = error as? URLError {
-                NetworkErrorManager.alert(error) { _ in
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
-                        guard let self = self else { return }
-                        switch useCase {
-                        case .GetUser:
-                            self.interactor?.getUser()
-                        case .GetFeed:
-                            self.interactor?.getFeed()
-                        }
-                    }
-                }
-            } else if let error = error as? MoyaError {
-                NetworkErrorManager.alert(error)
-            }
-            
-        }
     }
 }
 

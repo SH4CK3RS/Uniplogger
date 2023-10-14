@@ -14,7 +14,8 @@ protocol PloggingRootInteractable: Interactable,
                                    StartCountingListener,
                                    PloggingRecordListener,
                                    CameraListener,
-                                   ImagePreviewListener {
+                                   ImagePreviewListener,
+                                   ShareListener {
     var router: PloggingRootRouting? { get set }
     var listener: PloggingRootListener? { get set }
 }
@@ -35,12 +36,14 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
          startCountingBuilder: StartCountingBuildable,
          ploggingRecordBuilder: PloggingRecordBuildable,
          cameraBuilder: CameraBuilder,
-         imagePreviewBuilder: ImagePreviewBuildable) {
+         imagePreviewBuilder: ImagePreviewBuildable,
+         shareBuilder: ShareBuildable) {
         self.ploggingMainBuilder = ploggingMainBuilder
         self.startCountingBuilder = startCountingBuilder
         self.ploggingRecordBuilder = ploggingRecordBuilder
         self.cameraBuilder = cameraBuilder
         self.imagePreviewBuilder = imagePreviewBuilder
+        self.shareBuilder = shareBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
@@ -59,6 +62,12 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
             routeToCamera()
         case let .routeToImagePreview(photo):
             routeToImagePreview(photo)
+        case .detachImagePreview:
+            break
+        case let .routeToShare(feed):
+            routeToShare(feed)
+        case .finishPlogging:
+            finishPlogging()
         }
     }
     
@@ -76,6 +85,9 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
     
     private let imagePreviewBuilder: ImagePreviewBuildable
     private var imagePreviewRouter: ImagePreviewRouting?
+    
+    private let shareBuilder: ShareBuildable
+    private var shareRouter: ShareRouting?
     
     private func routeToPloggingMain() {
         let router = ploggingMainBuilder.build(withListener: interactor)
@@ -122,5 +134,31 @@ final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, Ploggin
         attachChild(router)
         router.viewControllable.uiviewController.hidesBottomBarWhenPushed = true
         viewController.push(viewController: router.viewControllable, animated: false)
+    }
+    
+    private func routeToShare(_ feed: Feed) {
+        let router = shareBuilder.build(withListener: interactor, feed: feed)
+        shareRouter = router
+        attachChild(router)
+        router.viewControllable.uiviewController.hidesBottomBarWhenPushed = true
+        viewController.push(viewController: router.viewControllable, animated: true)
+    }
+    
+    private func finishPlogging() {
+        guard let ploggingMainRouter,
+              let ploggingRecordRouter,
+              let cameraRouter,
+              let imagePreviewRouter,
+              let shareRouter
+        else { return }
+        [ploggingRecordRouter, cameraRouter, imagePreviewRouter, shareRouter].forEach {
+            detachChild($0)
+        }
+        self.ploggingRecordRouter = nil
+        self.cameraRouter = nil
+        self.imagePreviewRouter = nil
+        self.shareRouter = nil
+        
+        viewController.set(viewControllers: [ploggingMainRouter.viewControllable], animated: true)
     }
 }

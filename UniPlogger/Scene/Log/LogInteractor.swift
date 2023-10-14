@@ -37,12 +37,9 @@ class LogInteractor: LogBusinessLogic, LogDataStore {
     }
     func getFeed() {
         guard let uid = self.uid else {
-            let response = Log.GetFeed.Response(error: .local("유저 정보를 확인할 수 없습니다."))
+            let response = Log.GetFeed.Response(error: .other("유저 정보를 확인할 수 없습니다."))
             self.presenter?.presentGetFeed(response: response)
             return
-        }
-        self.worker.getFeed(uid: uid) { [weak self] response in
-            self?.presenter?.presentGetFeed(response: response)
         }
     }
 }

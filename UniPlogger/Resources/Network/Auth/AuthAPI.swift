@@ -10,8 +10,6 @@ import Moya
 import RxSwift
 
 struct AuthAPI {
-    typealias Response<T: Codable> = BaseResponse<T>
-    
     let disposeBag = DisposeBag()
     
     static let shared = AuthAPI()
@@ -21,10 +19,10 @@ struct AuthAPI {
         plugins: [VerbosePlugin(verbose: true)]
     )
     
-    func login(email: String, password: String, completionHandler: @escaping (Result<Response<LoginResponse>, Error>) -> Void) {
+    func login(email: String, password: String, completionHandler: @escaping (Result<BaseResponse<LoginResponse>, Error>) -> Void) {
         provider.rx.request(.login(email: email, password: password))
             .filterSuccessfulStatusCodes()
-            .map(Response<LoginResponse>.self)
+            .map(BaseResponse<LoginResponse>.self)
             .observe(on: MainScheduler.instance)
             .subscribe {
                 completionHandler(.success($0))
@@ -33,10 +31,10 @@ struct AuthAPI {
             }.disposed(by: disposeBag)
     }
     
-    func getUser(uid: Int, completionHandler: @escaping (Result<Response<User>, Error>) -> Void) {
+    func getUser(uid: Int, completionHandler: @escaping (Result<BaseResponse<User>, Error>) -> Void) {
         provider.rx.request(.getUser(uid: uid))
             .filterSuccessfulStatusCodes()
-            .map(Response<User>.self)
+            .map(BaseResponse<User>.self)
             .subscribe {
                 completionHandler(.success($0))
             } onFailure: {
@@ -44,10 +42,10 @@ struct AuthAPI {
             }.disposed(by: disposeBag)
     }
     
-    func registration(email: String, password1: String, password2: String, nickname: String, completion: @escaping (Result<Response<LoginResponse>, Error>) -> Void) {
+    func registration(email: String, password1: String, password2: String, nickname: String, completion: @escaping (Result<BaseResponse<LoginResponse>, Error>) -> Void) {
         provider.rx.request(.registration(email: email, password1: password1, password2: password2, nickname: nickname))
             .filterSuccessfulStatusCodes()
-            .map(Response<LoginResponse>.self)
+            .map(BaseResponse<LoginResponse>.self)
             .subscribe {
                 completion(.success($0))
             } onFailure: {
@@ -82,10 +80,10 @@ struct AuthAPI {
             }.disposed(by: disposeBag)
     }
     
-    func findPassword(email: String, completion: @escaping (Result<Response<FindPasswordResponse>, Error>) -> Void) {
+    func findPassword(email: String, completion: @escaping (Result<BaseResponse<FindPasswordResponse>, Error>) -> Void) {
         provider.rx.request(.findPassword(email: email))
             .filterSuccessfulStatusCodes()
-            .map (Response<FindPasswordResponse>.self)
+            .map (BaseResponse<FindPasswordResponse>.self)
             .subscribe {
                 completion(.success($0))
             } onFailure: {
@@ -93,10 +91,10 @@ struct AuthAPI {
             }.disposed(by: disposeBag)
     }
     
-    func resetPassword(password1: String, password2: String, uid:String, token: String, completion: @escaping (Result<Response<ResetPasswordResponse>, Error>) -> Void) {
+    func resetPassword(password1: String, password2: String, uid:String, token: String, completion: @escaping (Result<BaseResponse<ResetPasswordResponse>, Error>) -> Void) {
         provider.rx.request(.resetPassword(password1: password1, password2: password2, uid: uid, token: token))
             .filterSuccessfulStatusCodes()
-            .map (Response<ResetPasswordResponse>.self)
+            .map (BaseResponse<ResetPasswordResponse>.self)
             .subscribe {
                 completion(.success($0))
             } onFailure: {

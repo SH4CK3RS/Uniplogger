@@ -28,11 +28,11 @@ class FindPasswordWorker {
                     let response = FindPassword.FindPassword.Response(request: request, data: data)
                     completion(response)
                 } else {
-                    let response = FindPassword.FindPassword.Response(request: request, error: .server(value.message))
+                    let response = FindPassword.FindPassword.Response(request: request, error: .networkError(.responseError(value.message ?? "")))
                     completion(response)
                 }
             case let .failure(error):
-                let response = FindPassword.FindPassword.Response(request: request, error: .error(error))
+                let response = FindPassword.FindPassword.Response(request: request, error: UniPloggerError.networkError(.responseError(error.localizedDescription)))
                 completion(response)
             }
         }

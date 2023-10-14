@@ -12,7 +12,7 @@ import Then
 
 enum PloggingRecordViewAction {
     case skipButtonTapped
-    case nextButtonTapped
+    case nextButtonTapped([PloggingItemType])
     case ploggingItemSelected(PloggingItemType)
 }
 
@@ -61,7 +61,8 @@ final class PloggingRecordView: UIView {
     
     @objc
     private func nextButtonTapped() {
-        listener?.action(.nextButtonTapped)
+        let items = selectedItems.map { PloggingItemType.allCases[$0] }
+        listener?.action(.nextButtonTapped(items))
     }
     
     @objc

@@ -16,7 +16,7 @@ import Moya
 protocol ResetPasswordDisplayLogic: AnyObject {
     func displayResetPassword(viewModel: ResetPassword.ResetPassword.ViewModel)
     func displayValidation(viewModel: ResetPassword.ValidationViewModel)
-    func displayError(error: Common.CommonError, useCase: ResetPassword.UseCase)
+    func displayError(error: UniPloggerError, useCase: ResetPassword.UseCase)
 }
 
 class ResetPasswordViewController: UIViewController {
@@ -242,29 +242,8 @@ extension ResetPasswordViewController: ResetPasswordDisplayLogic {
     }
     
     
-    func displayError(error: Common.CommonError, useCase: ResetPassword.UseCase) {
+    func displayError(error: UniPloggerError, useCase: ResetPassword.UseCase) {
         //handle error with its usecase
         UPLoader.shared.hidden()
-        switch error {
-        case .server(let msg):
-            self.errorAlert(title: "오류", message: msg, completion: nil)
-        case .local(let msg):
-            self.errorAlert(title: "오류", message: msg, completion: nil)
-        case .error(let error):
-            if let error = error as? URLError {
-                NetworkErrorManager.alert(error) { _ in
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
-                        guard let self = self else { return }
-                        switch useCase {
-                        case .ResetPassword(let request):
-                            self.interactor?.resetPassword(request: request)
-                        }
-                    }
-                }
-            } else if let error = error as? MoyaError {
-                NetworkErrorManager.alert(error)
-            }
-            
-        }
     }
 }

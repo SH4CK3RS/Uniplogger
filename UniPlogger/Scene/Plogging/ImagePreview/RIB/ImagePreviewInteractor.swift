@@ -23,8 +23,13 @@ protocol ImagePreviewPresentable: Presentable {
     func request(_ request: ImagePreviewPresentableRequest)
 }
 
+enum ImagePreviewListenerRequest {
+    case back
+    case next
+}
+
 protocol ImagePreviewListener: AnyObject {
-    // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+    func request(_ request: ImagePreviewListenerRequest)
 }
 
 final class ImagePreviewInteractor: PresentableInteractor<ImagePreviewPresentable>, ImagePreviewInteractable, ImagePreviewPresentableListener {
@@ -45,8 +50,10 @@ final class ImagePreviewInteractor: PresentableInteractor<ImagePreviewPresentabl
         switch request {
         case .viewDidLoad:
             presenter.request(.setImage(image))
-        case .nextButtonTapped: break
-        case .dismissButtonTapped: break
+        case .nextButtonTapped: 
+            listener?.request(.next)
+        case .backButtonTapped:
+            listener?.request(.back)
         }
     }
     // MARK: - Private

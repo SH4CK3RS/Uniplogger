@@ -19,7 +19,7 @@ protocol PloggingRecordPresentable: Presentable {
 }
 
 enum PloggingRecordListenerRequest {
-    case takePhoto
+    case takePhoto([PloggingItemType])
 }
 
 protocol PloggingRecordListener: AnyObject {
@@ -50,8 +50,8 @@ final class PloggingRecordInteractor: PresentableInteractor<PloggingRecordPresen
     
     func request(_ request: PloggingRecordPresentableListenerRequest) {
         switch request {
-        case .takePicture:
-            listener?.request(.takePhoto)
+        case let .takePicture(items):
+            listener?.request(.takePhoto(items))
         }
     }
 }

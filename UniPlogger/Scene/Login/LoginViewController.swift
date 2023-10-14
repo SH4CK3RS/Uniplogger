@@ -50,18 +50,7 @@ final class LoginViewController: UIViewController, LoginPresentable, LoginViewCo
     
     private let mainView = LoginView()
     
-    private func showError(_ error: Common.CommonError) {
-        switch error {
-        case let .server(msg):
-            self.errorAlert(title: "오류", message: msg, completion: nil)
-        case let .local(msg):
-            self.errorAlert(title: "오류", message: msg, completion: nil)
-        case let .error(error):
-            if let error = error as? URLError {
-                NetworkErrorManager.alert(error) { _ in }
-            }
-        }
-    }
+    private func showError(_ error: UniPloggerError) {}
 }
 
 extension LoginViewController: LoginViewListener{

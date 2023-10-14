@@ -9,81 +9,91 @@
 import UIKit
 import Photos
 
-protocol PhotoManagerDelegate {
-    func showAuthAlert(completion: @escaping () -> ())
-}
-
 final class PhotoManager {
-
-    private var albumName: String
-    private var album: PHAssetCollection?
-    var delegate: PhotoManagerDelegate?
-
-    init(albumName: String) {
+    static let shared = PhotoManager(albumName: "UniPlogger")
+    private init(albumName: String) {
         self.albumName = albumName
-
-        if let album = getAlbum() {
-            self.album = album
+    }
+    
+    // MARK: Internal
+    func save(_ image: UIImage, completion: @escaping (Bool) -> ()) {
+        guard isAuthorized else {
+            nextAction = {
+                self.save(image, completion: completion)
+            }
+            checkAuthorization()
             return
         }
+        getAlbum { album in
+            guard let album else {
+                completion(false)
+                return
+            }
+            self.add(image: image, album: album) { result in
+                completion(result)
+            }
+        }
     }
+    
+    func getImageIdentifier() -> String? {
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        let fetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+        return fetchResult.firstObject?.localIdentifier
+    }
+    
+    // MARK: Private
+    private let albumName: String
+    private var album: PHAssetCollection?
+    private var isAuthorized: Bool {
+        guard case .authorized = PHPhotoLibrary.authorizationStatus(for: .readWrite) else {
+            return false
+        }
+        return true
+    }
+    private var nextAction: (() -> Void)?
 
-    private func getAlbum() -> PHAssetCollection? {
+    private func getAlbum(completion: @escaping ((PHAssetCollection?) -> Void)) {
         let options = PHFetchOptions()
         options.predicate = NSPredicate(format: "title = %@", albumName)
         let collection = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: options)
-        return collection.firstObject ?? nil
+        if let album = collection.firstObject {
+            completion(album)
+        } else {
+            createAlbum { result in
+                if result {
+                    self.getAlbum(completion: completion)
+                } else {
+                    completion(nil)
+                }
+            }
+        }
     }
 
-    private func createAlbum(completion: @escaping (Bool) -> ()) {
+    private func createAlbum(completion: @escaping ((Bool) -> Void)) {
         PHPhotoLibrary.shared().performChanges({
             PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: self.albumName)
         }, completionHandler: { (result, error) in
-            if let error = error {
-                print("error: \(error.localizedDescription)")
-            } else {
-                self.album = self.getAlbum()
-                completion(result)
-            }
+            completion(result)
         })
     }
 
-    private func add(image: UIImage, completion: @escaping (Bool, Error?) -> ()) {
+    private func add(image: UIImage, album: PHAssetCollection, completion: @escaping (Bool) -> ()) {
         PHPhotoLibrary.shared().performChanges({
             let assetChangeRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
-            if let album = self.album, let placeholder = assetChangeRequest.placeholderForCreatedAsset {
+            if let placeholder = assetChangeRequest.placeholderForCreatedAsset {
                 let albumChangeRequest = PHAssetCollectionChangeRequest(for: album)
                 let enumeration = NSArray(object: placeholder)
                 albumChangeRequest?.addAssets(enumeration)
             }
-        }, completionHandler: { (result, error) in
-            completion(result, error)
+        }, completionHandler: { (result, _) in
+            completion(result)
         })
     }
-
-    func save(_ image: UIImage, completion: @escaping (Bool, Error?) -> ()) {
-        PHPhotoLibrary.requestAuthorization { status in
-            guard status == .authorized else {
-                self.setAuth()
-                return
-            }
-            print(status)
-            if let _ = self.album {
-                self.add(image: image) { (result, error) in
-                    completion(result, error)
-                }
-                return
-            }
-
-            self.createAlbum(completion: { _ in
-                self.add(image: image) { (result, error) in
-                    completion(result, error)
-                }
-            })
-        }
-    }
     
-    private func setAuth() {
+    
+    
+    private func goToSetting() {
         if let appSettings = URL(string: UIApplication.openSettingsURLString) {
             DispatchQueue.main.async {
                 UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
@@ -91,4 +101,24 @@ final class PhotoManager {
         }
     }
     
+    private func checkAuthorization() {
+        switch PHPhotoLibrary.authorizationStatus(for: .readWrite) {
+        case .authorized:
+            nextAction?()
+            nextAction = nil
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+                guard status == .authorized else {
+                    self.checkAuthorization()
+                    return
+                }
+                self.nextAction?()
+                self.nextAction = nil
+            }
+        case .denied:
+            // TODO: 세팅 변경 시 활동 데이터가 모두 날아가므로 해당 데이터 세이빙 필요
+            goToSetting()
+        default: break
+        }
+    }
 }

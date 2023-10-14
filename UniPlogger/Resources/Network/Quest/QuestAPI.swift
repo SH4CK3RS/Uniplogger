@@ -10,7 +10,6 @@ import Moya
 import RxSwift
 
 struct QuestAPI {
-    typealias Response<T: Codable> = BaseResponse<T>
     let disposeBag = DisposeBag()
     
     static let shared = QuestAPI()
@@ -19,10 +18,10 @@ struct QuestAPI {
         plugins: [VerbosePlugin(verbose: true)]
     )
     
-    func fetchQuestList(completionHandler: @escaping (Result<Response<[QuestResponse]>, Error>) -> Void) {
+    func fetchQuestList(completionHandler: @escaping (Result<BaseResponse<[QuestResponse]>, Error>) -> Void) {
         provider.rx.request(.list)
             .filterSuccessfulStatusCodes()
-            .map(Response<[QuestResponse]>.self)
+            .map(BaseResponse<[QuestResponse]>.self)
             .subscribe {
                 completionHandler(.success($0))
             } onFailure: {
@@ -31,10 +30,10 @@ struct QuestAPI {
             .disposed(by: disposeBag)
     }
     
-    func detail(quest: Quest, completionHandler: @escaping(Result<Response<QuestResponse>, Error>) -> Void) {
+    func detail(quest: Quest, completionHandler: @escaping(Result<BaseResponse<QuestResponse>, Error>) -> Void) {
         provider.rx.request(.detail(id: quest.id))
             .filterSuccessfulStatusCodes()
-            .map(Response<QuestResponse>.self)
+            .map(BaseResponse<QuestResponse>.self)
             .subscribe {
                 completionHandler(.success($0))
             } onFailure: {

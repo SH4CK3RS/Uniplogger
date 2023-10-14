@@ -30,6 +30,12 @@
 		3E2FB88B2AC011FC0096F554 /* SplashComponent+MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB88A2AC011FC0096F554 /* SplashComponent+MainTabBar.swift */; };
 		3E2FB88D2AC36A6E0096F554 /* PloggingMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB88C2AC36A6E0096F554 /* PloggingMainService.swift */; };
 		3E2FB88F2AC36E410096F554 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB88E2AC36E410096F554 /* LocationManager.swift */; };
+		3E436C902AD298E0004345FF /* ShareRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436C8C2AD298E0004345FF /* ShareRouter.swift */; };
+		3E436C912AD298E0004345FF /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436C8D2AD298E0004345FF /* ShareViewController.swift */; };
+		3E436C922AD298E0004345FF /* ShareBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436C8E2AD298E0004345FF /* ShareBuilder.swift */; };
+		3E436C932AD298E0004345FF /* ShareInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436C8F2AD298E0004345FF /* ShareInteractor.swift */; };
+		3E436C972AD3CF38004345FF /* PloggingRootService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436C962AD3CF38004345FF /* PloggingRootService.swift */; };
+		3E436C992ADB081C004345FF /* PloggingRootComponent+Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436C982ADB081C004345FF /* PloggingRootComponent+Share.swift */; };
 		3E43CA782AB60FF500B6C4D8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA772AB60FF500B6C4D8 /* SplashView.swift */; };
 		3E43CA7A2AB61CF200B6C4D8 /* SplashBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA792AB61CF200B6C4D8 /* SplashBuilder.swift */; };
 		3E43CA7C2AB61D1400B6C4D8 /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */; };
@@ -113,7 +119,6 @@
 		4C3F5646256A214F006D7C9F /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F5645256A214F006D7C9F /* Date+.swift */; };
 		4C3F564F256A308F006D7C9F /* Calendar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F564E256A308F006D7C9F /* Calendar+.swift */; };
 		4C3F5747256D5A7B006D7C9F /* QuestChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F5746256D5A7B006D7C9F /* QuestChecker.swift */; };
-		4C401EAF253DE19100ABED84 /* ShareRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C401EAE253DE19100ABED84 /* ShareRouter.swift */; };
 		4C401EB2253DE1F200ABED84 /* QuestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C401EB1253DE1F200ABED84 /* QuestState.swift */; };
 		4C42364025722E9D0068A252 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C42363F25722E9D0068A252 /* Notification+Name.swift */; };
 		4C423647257232260068A252 /* QuestAPITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C423646257232260068A252 /* QuestAPITarget.swift */; };
@@ -283,14 +288,7 @@
 		AA7F550F2532C20C001C4012 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA7F55032532C20C001C4012 /* Roboto-Bold.ttf */; };
 		AA7F55102532C20C001C4012 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA7F55042532C20C001C4012 /* Roboto-Thin.ttf */; };
 		AA7F55112532C20C001C4012 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA7F55052532C20C001C4012 /* Roboto-Black.ttf */; };
-		AA7F551D2533568D001C4012 /* SharePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F55132533568C001C4012 /* SharePresenter.swift */; };
-		AA7F551E2533568D001C4012 /* ShareInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F55142533568C001C4012 /* ShareInteractor.swift */; };
-		AA7F551F2533568D001C4012 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F55152533568C001C4012 /* ShareViewController.swift */; };
-		AA7F55202533568D001C4012 /* ShareViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F55162533568C001C4012 /* ShareViewController+UI.swift */; };
-		AA7F55212533568D001C4012 /* ShareWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F55172533568C001C4012 /* ShareWorker.swift */; };
-		AA7F55232533568D001C4012 /* PloggingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F551A2533568C001C4012 /* PloggingImageView.swift */; };
 		AA7F55242533568D001C4012 /* PloggingInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F551B2533568C001C4012 /* PloggingInfoView.swift */; };
-		AA7F55252533568D001C4012 /* ShareModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F551C2533568C001C4012 /* ShareModels.swift */; };
 		AA7F5528253356BE001C4012 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F5527253356BE001C4012 /* PhotoManager.swift */; };
 		AAA1CBE9255D5E9100EDB18A /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1CBE8255D5E9100EDB18A /* SessionManager.swift */; };
 		AAA1CBEC255D5F9C00EDB18A /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1CBEB255D5F9C00EDB18A /* APIConfiguration.swift */; };
@@ -309,7 +307,7 @@
 		AAB3B4EC2520B2B400F0311A /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3B4EB2520B2B400F0311A /* UIImage+Extensions.swift */; };
 		AAB3B4EF2520B30600F0311A /* RoundShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3B4EE2520B30600F0311A /* RoundShadowView.swift */; };
 		AAB3B4F12520B37100F0311A /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3B4F02520B37100F0311A /* UIView+Extensions.swift */; };
-		AAB3B4F92520B5B600F0311A /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3B4F82520B5B600F0311A /* Common.swift */; };
+		AAB3B4F92520B5B600F0311A /* UniPloggerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3B4F82520B5B600F0311A /* UniPloggerError.swift */; };
 		AAB5592E2549B790000BB903 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB5592D2549B790000BB903 /* Route.swift */; };
 		AAB559352549BA2D000BB903 /* MultiColorPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB559342549BA2D000BB903 /* MultiColorPolyline.swift */; };
 		AAB559392549BB26000BB903 /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB559382549BB26000BB903 /* FormatDisplay.swift */; };
@@ -363,6 +361,12 @@
 		3E2FB88A2AC011FC0096F554 /* SplashComponent+MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashComponent+MainTabBar.swift"; sourceTree = "<group>"; };
 		3E2FB88C2AC36A6E0096F554 /* PloggingMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingMainService.swift; sourceTree = "<group>"; };
 		3E2FB88E2AC36E410096F554 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		3E436C8C2AD298E0004345FF /* ShareRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareRouter.swift; sourceTree = "<group>"; };
+		3E436C8D2AD298E0004345FF /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		3E436C8E2AD298E0004345FF /* ShareBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareBuilder.swift; sourceTree = "<group>"; };
+		3E436C8F2AD298E0004345FF /* ShareInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInteractor.swift; sourceTree = "<group>"; };
+		3E436C962AD3CF38004345FF /* PloggingRootService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingRootService.swift; sourceTree = "<group>"; };
+		3E436C982ADB081C004345FF /* PloggingRootComponent+Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PloggingRootComponent+Share.swift"; sourceTree = "<group>"; };
 		3E43CA772AB60FF500B6C4D8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3E43CA792AB61CF200B6C4D8 /* SplashBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBuilder.swift; sourceTree = "<group>"; };
 		3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouter.swift; sourceTree = "<group>"; };
@@ -446,7 +450,6 @@
 		4C3F5645256A214F006D7C9F /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		4C3F564E256A308F006D7C9F /* Calendar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+.swift"; sourceTree = "<group>"; };
 		4C3F5746256D5A7B006D7C9F /* QuestChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestChecker.swift; sourceTree = "<group>"; };
-		4C401EAE253DE19100ABED84 /* ShareRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareRouter.swift; sourceTree = "<group>"; };
 		4C401EB1253DE1F200ABED84 /* QuestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestState.swift; sourceTree = "<group>"; };
 		4C401EC3253EE6B300ABED84 /* QuestDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDetailViewController.swift; sourceTree = "<group>"; };
 		4C42363F25722E9D0068A252 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
@@ -616,14 +619,7 @@
 		AA7F55032532C20C001C4012 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		AA7F55042532C20C001C4012 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		AA7F55052532C20C001C4012 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
-		AA7F55132533568C001C4012 /* SharePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharePresenter.swift; sourceTree = "<group>"; };
-		AA7F55142533568C001C4012 /* ShareInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareInteractor.swift; sourceTree = "<group>"; };
-		AA7F55152533568C001C4012 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
-		AA7F55162533568C001C4012 /* ShareViewController+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShareViewController+UI.swift"; sourceTree = "<group>"; };
-		AA7F55172533568C001C4012 /* ShareWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareWorker.swift; sourceTree = "<group>"; };
-		AA7F551A2533568C001C4012 /* PloggingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PloggingImageView.swift; sourceTree = "<group>"; };
 		AA7F551B2533568C001C4012 /* PloggingInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PloggingInfoView.swift; sourceTree = "<group>"; };
-		AA7F551C2533568C001C4012 /* ShareModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareModels.swift; sourceTree = "<group>"; };
 		AA7F5527253356BE001C4012 /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		AAA1CBE8255D5E9100EDB18A /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		AAA1CBEB255D5F9C00EDB18A /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
@@ -645,7 +641,7 @@
 		AAB3B4EB2520B2B400F0311A /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		AAB3B4EE2520B30600F0311A /* RoundShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundShadowView.swift; sourceTree = "<group>"; };
 		AAB3B4F02520B37100F0311A /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		AAB3B4F82520B5B600F0311A /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		AAB3B4F82520B5B600F0311A /* UniPloggerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniPloggerError.swift; sourceTree = "<group>"; };
 		AAB3B4FA2520B6D900F0311A /* PloggingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingPresenter.swift; sourceTree = "<group>"; };
 		AAB3B4FC2520B6D900F0311A /* PloggingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingRouter.swift; sourceTree = "<group>"; };
 		AAB3B5062520D16800F0311A /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -738,6 +734,7 @@
 				3E2FB8732AC0016F0096F554 /* PloggingRootBuilder.swift */,
 				3E2FB8742AC0016F0096F554 /* PloggingRootInteractor.swift */,
 				3E67E1B52AC7D70C001FBA36 /* PloggingStream.swift */,
+				3E436C962AD3CF38004345FF /* PloggingRootService.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -764,6 +761,7 @@
 				3E67E1C82AC824AF001FBA36 /* PloggingRootComponent+PloggingRecord.swift */,
 				3E67E1D62AC852E1001FBA36 /* PloggingRootComponent+Camera.swift */,
 				3EB337142ACA810C00A48BB3 /* PloggingRootComponent+ImagePreview.swift */,
+				3E436C982ADB081C004345FF /* PloggingRootComponent+Share.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1475,15 +1473,11 @@
 		AA7F55122533568C001C4012 /* Share */ = {
 			isa = PBXGroup;
 			children = (
-				4C401EAE253DE19100ABED84 /* ShareRouter.swift */,
-				AA7F55132533568C001C4012 /* SharePresenter.swift */,
-				AA7F55142533568C001C4012 /* ShareInteractor.swift */,
-				AA7F55152533568C001C4012 /* ShareViewController.swift */,
-				AA7F55162533568C001C4012 /* ShareViewController+UI.swift */,
-				AA7F55172533568C001C4012 /* ShareWorker.swift */,
 				AA7F55192533568C001C4012 /* Views */,
-				AA7F551C2533568C001C4012 /* ShareModels.swift */,
-				3EB337162ACA903400A48BB3 /* ShareView.swift */,
+				3E436C8C2AD298E0004345FF /* ShareRouter.swift */,
+				3E436C8D2AD298E0004345FF /* ShareViewController.swift */,
+				3E436C8E2AD298E0004345FF /* ShareBuilder.swift */,
+				3E436C8F2AD298E0004345FF /* ShareInteractor.swift */,
 			);
 			path = Share;
 			sourceTree = "<group>";
@@ -1491,7 +1485,7 @@
 		AA7F55192533568C001C4012 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AA7F551A2533568C001C4012 /* PloggingImageView.swift */,
+				3EB337162ACA903400A48BB3 /* ShareView.swift */,
 				AA7F551B2533568C001C4012 /* PloggingInfoView.swift */,
 			);
 			path = Views;
@@ -1653,7 +1647,7 @@
 				AA35BC84254FFEFA00AE32A7 /* ManagedTrashCan+CoreDataProperties.swift */,
 				AAB559332549B9D6000BB903 /* Location */,
 				4C423654257241410068A252 /* Quest */,
-				AAB3B4F82520B5B600F0311A /* Common.swift */,
+				AAB3B4F82520B5B600F0311A /* UniPloggerError.swift */,
 				AA217514254CF5ED0076BAD5 /* TrashCan.swift */,
 				8352489625727BFE00C9F495 /* Planet.swift */,
 				8352489A25727CE900C9F495 /* Player.swift */,
@@ -1895,7 +1889,6 @@
 				3EDD651E2ABF09DB00776C34 /* LoginBuilder.swift in Sources */,
 				835249162577A6C500C9F495 /* ReportInteractor.swift in Sources */,
 				AA4AD5A12574058E0087E060 /* AuthManager.swift in Sources */,
-				4C401EAF253DE19100ABED84 /* ShareRouter.swift in Sources */,
 				8352489B25727CE900C9F495 /* Player.swift in Sources */,
 				3EDD64D82AB6DCCA00776C34 /* TutorialRootInteractor.swift in Sources */,
 				3EDD64F62AB7053200776C34 /* TutorialSecondView.swift in Sources */,
@@ -1913,6 +1906,7 @@
 				8352480F2572279500C9F495 /* PloggingData.swift in Sources */,
 				3EDD65162ABB39BB00776C34 /* SplashComponent+Registration.swift in Sources */,
 				8352482B2572280000C9F495 /* AuthAPITarget.swift in Sources */,
+				3E436C932AD298E0004345FF /* ShareInteractor.swift in Sources */,
 				3E2FB87E2AC002070096F554 /* PloggingMainRouter.swift in Sources */,
 				4C7248AE2542F86200ACB32B /* VerticalRoundButton.swift in Sources */,
 				AA4AD56925725D0D0087E060 /* ImageDownloadManager.swift in Sources */,
@@ -1933,7 +1927,6 @@
 				AA7658F1258279A500BA0A3E /* FindPasswordRouter.swift in Sources */,
 				835248A02572C9BF00C9F495 /* ChallengeAPI.swift in Sources */,
 				3EDD64F82AB7094A00776C34 /* TutorialRootComponent+TutorialSecond.swift in Sources */,
-				AA7F551D2533568D001C4012 /* SharePresenter.swift in Sources */,
 				4CE9149A257BB33000BCF398 /* QuestTutorialViewController3.swift in Sources */,
 				3E67E1D32AC84F65001FBA36 /* CameraBuilder.swift in Sources */,
 				3E2FB88B2AC011FC0096F554 /* SplashComponent+MainTabBar.swift in Sources */,
@@ -1945,8 +1938,8 @@
 				3EDD651D2ABF09DB00776C34 /* LoginViewController.swift in Sources */,
 				3EDD64E32AB6DE9100776C34 /* TutorialFirstView.swift in Sources */,
 				83530970257B918D00C3626D /* WithdrawViewController.swift in Sources */,
-				AA7F551F2533568D001C4012 /* ShareViewController.swift in Sources */,
 				AA7658F4258279A500BA0A3E /* FindPasswordInteractor.swift in Sources */,
+				3E436C902AD298E0004345FF /* ShareRouter.swift in Sources */,
 				3E2FB8802AC002070096F554 /* PloggingMainBuilder.swift in Sources */,
 				3EDD65212ABF09E300776C34 /* LoginView.swift in Sources */,
 				83530992257B9D3F00C3626D /* WithdrawViewController+UI.swift in Sources */,
@@ -1975,10 +1968,11 @@
 				AA7658EF258279A500BA0A3E /* FindPasswordPresenter.swift in Sources */,
 				3EDD64F42AB704BC00776C34 /* TutorialSecondInteractor.swift in Sources */,
 				835248B025743FD700C9F495 /* UserLogPresenter.swift in Sources */,
+				3E436C922AD298E0004345FF /* ShareBuilder.swift in Sources */,
 				AA4AD579257265FF0087E060 /* DetailWorker.swift in Sources */,
 				3E2FB8832AC002120096F554 /* PloggingMainView.swift in Sources */,
+				3E436C972AD3CF38004345FF /* PloggingRootService.swift in Sources */,
 				3E43CA7C2AB61D1400B6C4D8 /* SplashRouter.swift in Sources */,
-				AA7F551E2533568D001C4012 /* ShareInteractor.swift in Sources */,
 				4C42366525727A3D0068A252 /* QuestDetailInteractor.swift in Sources */,
 				AAAD68F525556A7600895265 /* CALayer+Extensions.swift in Sources */,
 				8353097A257B91A900C3626D /* SignUpInfoViewController.swift in Sources */,
@@ -1996,7 +1990,6 @@
 				AA6CE4F32551780E00C83D28 /* TrashCanStorage.swift in Sources */,
 				3E2FB8852AC00DC00096F554 /* PloggingRootComponent+PloggingMain.swift in Sources */,
 				AAE05CE72568E3C100547501 /* VerbosePlugin.swift in Sources */,
-				AA7F55212533568D001C4012 /* ShareWorker.swift in Sources */,
 				3EB3370A2ACA7C1800A48BB3 /* ImagePreviewView.swift in Sources */,
 				3E67E1B82AC7E544001FBA36 /* PloggingMainModel.swift in Sources */,
 				83DE07762566AD050085AC72 /* DetailRouter.swift in Sources */,
@@ -2035,7 +2028,6 @@
 				3EDD65252ABF106500776C34 /* LoginModel.swift in Sources */,
 				4CF62089257B11750029FBD6 /* ProceedingQuest+CoreDataClass.swift in Sources */,
 				AAC9584F2545BC110092BA6E /* ScrollStackView.swift in Sources */,
-				AA7F55252533568D001C4012 /* ShareModels.swift in Sources */,
 				AA7F54EF2532C1A6001C4012 /* PloggingModels.swift in Sources */,
 				835248502572283C00C9F495 /* UserInfoView.swift in Sources */,
 				835248A62572CA0000C9F495 /* ChallengeAPITarget.swift in Sources */,
@@ -2047,6 +2039,7 @@
 				3EDD64F22AB704BC00776C34 /* TutorialSecondViewController.swift in Sources */,
 				83530984257B91E300C3626D /* SettingViewController.swift in Sources */,
 				8352484F2572283C00C9F495 /* InfoTableViewCell.swift in Sources */,
+				3E436C992ADB081C004345FF /* PloggingRootComponent+Share.swift in Sources */,
 				3E67E1B02AC72C95001FBA36 /* StartCountingInteractor.swift in Sources */,
 				3EDD64FE2AB70AC700776C34 /* TutorialThirdRouter.swift in Sources */,
 				3EDD64E12AB6DDEB00776C34 /* TutorialFirstInteractor.swift in Sources */,
@@ -2121,7 +2114,6 @@
 				4CC9C7CB252315D7004D873D /* QuestInteractor.swift in Sources */,
 				83DE07722566AD050085AC72 /* ScoreInfoView.swift in Sources */,
 				83DE07802566AD050085AC72 /* ChallengeRouter.swift in Sources */,
-				AA7F55232533568D001C4012 /* PloggingImageView.swift in Sources */,
 				3E67E1B62AC7D70C001FBA36 /* PloggingStream.swift in Sources */,
 				AAAD68F82555738300895265 /* CLLocation+Extensions.swift in Sources */,
 				3E67E1D22AC84F65001FBA36 /* CameraViewController.swift in Sources */,
@@ -2155,6 +2147,7 @@
 				83DE077D2566AD050085AC72 /* ChallengeModels.swift in Sources */,
 				83530979257B91A900C3626D /* SignUpTableViewCell.swift in Sources */,
 				3E67E1C42AC81431001FBA36 /* PloggingRecordBuilder.swift in Sources */,
+				3E436C912AD298E0004345FF /* ShareViewController.swift in Sources */,
 				AA4AD58C2573F95B0087E060 /* DetailModels.swift in Sources */,
 				3EDD64E62AB6E71600776C34 /* TutorialRootComponent+TutorialFirst.swift in Sources */,
 				AA7F54F02532C1A6001C4012 /* PloggingRouter.swift in Sources */,
@@ -2164,7 +2157,7 @@
 				3E2FB8762AC0016F0096F554 /* PloggingRootViewController.swift in Sources */,
 				AA38A6DD257A78F100B26E1F /* UIViewController+Extensions.swift in Sources */,
 				3EDD64D72AB6DCCA00776C34 /* TutorialRootBuilder.swift in Sources */,
-				AAB3B4F92520B5B600F0311A /* Common.swift in Sources */,
+				AAB3B4F92520B5B600F0311A /* UniPloggerError.swift in Sources */,
 				835248AC25743C7200C9F495 /* UserLogInteractor.swift in Sources */,
 				3EDD64DF2AB6DDEB00776C34 /* TutorialFirstViewController.swift in Sources */,
 				3E67E1D12AC84F64001FBA36 /* CameraRouter.swift in Sources */,
@@ -2179,7 +2172,6 @@
 				8352484D2572283C00C9F495 /* MyPageRouter.swift in Sources */,
 				AA2CAE022543EAD600105748 /* TrashcanAnnotation.swift in Sources */,
 				8352484B2572283C00C9F495 /* MyPageInteractor.swift in Sources */,
-				AA7F55202533568D001C4012 /* ShareViewController+UI.swift in Sources */,
 				4CC9C7D7252315FC004D873D /* QuestWorker.swift in Sources */,
 				4C2D058C25562E4F00FA787F /* QuestRouter.swift in Sources */,
 				AAC552C82585C4C6000DAFDF /* ResetPasswordViewController.swift in Sources */,

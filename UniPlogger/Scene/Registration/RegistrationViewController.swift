@@ -104,7 +104,7 @@ final class RegistrationViewController: UIViewController, RegistrationPresentabl
 //        UPLoader.shared.hidden()
 //        self.router?.routeToSplash()
 //    }
-//    func displayError(error: Common.CommonError, useCase: Registration.UseCase) {
+//    func displayError(error: UniPloggerError, useCase: Registration.UseCase) {
 //        //handle error with its usecase
 //        UPLoader.shared.hidden()
 //        switch error {

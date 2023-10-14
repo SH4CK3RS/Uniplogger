@@ -11,9 +11,7 @@ import RxSwift
 import UIKit
 
 struct PloggingAPI {
-    typealias Response<T: Codable> = BaseResponse<T>
-    
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     static let shared = PloggingAPI()
     private let provider = MoyaProvider<PloggingAPITarget>(
@@ -21,10 +19,10 @@ struct PloggingAPI {
         plugins: [VerbosePlugin(verbose: true)]
     )
     
-    func createTrashCan(latitude: Double, longitude: Double, address: String, completionHandler: @escaping (Result<Response<TrashCan>, Error>) -> Void) {
+    func createTrashCan(latitude: Double, longitude: Double, address: String, completionHandler: @escaping (Result<BaseResponse<TrashCan>, Error>) -> Void) {
         provider.rx.request(.createTrash(latitude: latitude, longitude: longitude, address: address))
             .filterSuccessfulStatusCodes()
-            .map(Response<TrashCan>.self)
+            .map(BaseResponse<TrashCan>.self)
             .subscribe {
                 completionHandler(.success($0))
             } onFailure: {
@@ -32,20 +30,20 @@ struct PloggingAPI {
             }.disposed(by: disposeBag)
     }
     
-    func fetchTrashList(completionHandler: @escaping (Result<Response<[TrashCan]>, Error>)-> Void) {
+    func fetchTrashList(completionHandler: @escaping (Result<BaseResponse<[TrashCan]>, Error>)-> Void) {
         provider.rx.request(.fetchTrashList)
             .filterSuccessfulStatusCodes()
-            .map(Response<[TrashCan]>.self)
+            .map(BaseResponse<[TrashCan]>.self)
             .subscribe(onSuccess: {
                 completionHandler(.success($0))
             }, onFailure: { completionHandler(.failure($0)) })
             .disposed(by: disposeBag)
     }
     
-    func deleteTrashCan(id: Int64, completionHandler: @escaping (Result<Response<TrashCan>, Error>) -> Void) {
+    func deleteTrashCan(id: Int64, completionHandler: @escaping (Result<BaseResponse<TrashCan>, Error>) -> Void) {
         provider.rx.request(.deleteTrashCan(id: id))
             .filterSuccessfulStatusCodes()
-            .map(Response<TrashCan>.self)
+            .map(BaseResponse<TrashCan>.self)
             .subscribe {
                 completionHandler(.success($0))
             } onFailure: {
@@ -53,17 +51,43 @@ struct PloggingAPI {
             }.disposed(by: self.disposeBag)
     }
     
-    func uploadRecord(uid: Int, title: String, distance: Double, time: Int, image: UIImage, completionHandler: @escaping(Result<Response<Feed>, Error>) -> Void) {
-        provider.rx.request(.uploadRecord(uid: uid, title: title, distance: distance, time: time, image: image))
-            .filterSuccessfulStatusCodes()
-            .map(Response<Feed>.self)
-            .subscribe {
-                completionHandler(.success($0))
-            } onFailure: {
-                print($0.localizedDescription)
-                completionHandler(.failure($0))
-            }.disposed(by: self.disposeBag)
+    func uploadRecord(uid: Int, data: PloggingData, completionHandler: @escaping(Result<BaseResponse<Feed>, Error>) -> Void) {
+        provider.rx.request(.uploadRecord(
+            uid: uid,
+            title: data.title,
+            distance: data.distance,
+            time: data.time,
+            image: data.image!
+        ))
+        .filterSuccessfulStatusCodes()
+        .map(BaseResponse<Feed>.self)
+        .subscribe {
+            completionHandler(.success($0))
+        } onFailure: {
+            print($0.localizedDescription)
+            completionHandler(.failure($0))
+        }.disposed(by: self.disposeBag)
     }
     
-    
+    // MARK: RxSwift
+    func uploadRecord(data: PloggingData) -> Single<Feed> {
+        guard let uid = AuthManager.shared.user?.id else { return Single.error(UniPloggerError.networkError(.requestBuildError("")))}
+        return provider.rx.request(.uploadRecord(
+            uid: uid,
+            title: data.title,
+            distance: data.distance,
+            time: data.time,
+            image: data.image!
+        ))
+        .map(BaseResponse<Feed>.self)
+        .flatMap { response -> Single<Feed> in
+            if let data = response.data {
+                return .just(data)
+            } else {
+                return .error(UniPloggerError.networkError(.responseError("data is nil")))
+            }
+        }
+    }
 }
+
+

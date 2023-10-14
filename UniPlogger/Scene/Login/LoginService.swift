@@ -10,11 +10,11 @@ import Foundation
 import RxSwift
 
 protocol LoginServiceable {
-    func login(model: LoginModel, completion: @escaping (Result<LoginResponse, Common.CommonError>) -> Void)
+    func login(model: LoginModel, completion: @escaping (Result<LoginResponse, UniPloggerError>) -> Void)
 }
 
 struct LoginService: LoginServiceable {
-    func login(model: LoginModel, completion: @escaping (Result<LoginResponse, Common.CommonError>) -> Void) {
+    func login(model: LoginModel, completion: @escaping (Result<LoginResponse, UniPloggerError>) -> Void) {
         AuthAPI.shared.login(email: model.account,
                              password: model.password) {
             switch $0 {
@@ -22,10 +22,10 @@ struct LoginService: LoginServiceable {
                 if response.success, let loginResponse = response.data {
                     completion(.success(loginResponse))
                 } else {
-                    completion(.failure(.server(response.message)))
+                    completion(.failure(.networkError(.responseError(response.message ?? ""))))
                 }
             case let .failure(error):
-                completion(.failure(.error(error)))
+                completion(.failure(UniPloggerError.networkError(.responseError(error.localizedDescription))))
             }
         }
     }

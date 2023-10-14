@@ -9,6 +9,8 @@
 import Foundation
 
 struct Feed: Codable {
+    typealias TimeSet = (minutes: Int, seconds: Int)
+    
     var id: Int = -1
     var title: String = ""
     var date: String = ""
@@ -16,6 +18,10 @@ struct Feed: Codable {
     var time: Int = 0
     var photo: String = ""
     var user: User?
+    
+    var timeSet: TimeSet {
+        (time / 60, time % 60)
+    }
     
     private enum CodingKeys: String, CodingKey {
         case id

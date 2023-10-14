@@ -19,7 +19,7 @@ enum LogAPITarget{
     case updateRank
 }
 
-extension LogAPITarget: BaseTarget{
+extension LogAPITarget: BaseTarget {
     var path: String{
         switch self{
         case .getFeed:

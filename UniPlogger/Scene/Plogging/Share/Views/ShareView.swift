@@ -11,8 +11,8 @@ import SnapKit
 import Then
 
 enum ShareViewAction {
-    case dismissButtonTapped
-    case shareButtonTapped
+    case dismissButtonTapped(UIImage)
+    case shareButtonTapped(UIImage)
 }
 
 protocol ShareViewListener: AnyObject {
@@ -32,23 +32,32 @@ final class ShareView: UIView {
     
     // MARK: - Internal
     weak var listener: ShareViewListener?
+    func showUploadedFeed(_ feed: Feed) {
+        ploggingInfoView.updateInfo(with: feed)
+    }
+    
+    var mergedImage: UIImage? {
+        ploggingInfoView.asImage()
+    }
     
     // MARK: - Private
     private let backgroundImageView = UIImageView()
     private let ploggingImageViewContainer = UIView()
-    private let ploggingImageView = PloggingImageView()
+    private let ploggingInfoView = PloggingInfoView()
     private let dismissButton = UIButton()
     private let shareButtonView = UIView()
     private let shareButton = UIButton()
     
     @objc 
     private func dismissButtonTapped() {
-        listener?.action(.dismissButtonTapped)
+        guard let mergedImage else { return }
+        listener?.action(.dismissButtonTapped(mergedImage))
     }
     
     @objc 
     private func shareButtonTapped() {
-        listener?.action(.shareButtonTapped)
+        guard let mergedImage else { return }
+        listener?.action(.shareButtonTapped(mergedImage))
     }
 }
 
@@ -62,11 +71,10 @@ private extension ShareView {
             $0.clipsToBounds = true
         }
         ploggingImageViewContainer.do {
-            $0.backgroundColor = .clear
+            $0.backgroundColor = .lightGray
             $0.layer.cornerRadius = 10
             $0.clipsToBounds = true
         }
-        ploggingImageView.backgroundColor = .lightGray
         dismissButton.do {
             $0.setImage(UIImage(named: "share_dismiss"), for: .normal)
             $0.backgroundColor = UIColor(named: "dismissColor")
@@ -83,7 +91,7 @@ private extension ShareView {
         [backgroundImageView, ploggingImageViewContainer, dismissButton, shareButtonView, shareButton].forEach {
             addSubview($0)
         }
-        ploggingImageViewContainer.addSubview(ploggingImageView)
+        ploggingImageViewContainer.addSubview(ploggingInfoView)
     }
     func layout() {
         backgroundImageView.snp.makeConstraints {
@@ -94,8 +102,9 @@ private extension ShareView {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(179)
         }
-        ploggingImageView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        ploggingInfoView.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.height.equalTo(145)
         }
         dismissButton.snp.makeConstraints {
             $0.size.equalTo(40)
@@ -104,7 +113,7 @@ private extension ShareView {
         }
         shareButtonView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.top.equalTo(ploggingImageView.snp.bottom)
+            $0.top.equalTo(ploggingInfoView.snp.bottom)
         }
         shareButton.snp.makeConstraints {
             $0.size.equalTo(100)

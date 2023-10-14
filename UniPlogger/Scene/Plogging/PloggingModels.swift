@@ -78,7 +78,7 @@ enum Plogging {
         struct Response {
             var request: Request
             var response: TrashCan?
-            var error: Common.CommonError?
+            var error: UniPloggerError?
         }
         
         struct ViewModel {
@@ -89,7 +89,7 @@ enum Plogging {
     enum FetchTrashCan{
         struct Response {
             var list: [TrashCan]?
-            var error: Common.CommonError?
+            var error: UniPloggerError?
         }
         
         struct ViewModel {
@@ -107,7 +107,7 @@ enum Plogging {
         struct Response {
             var request: Request
             var trashcan: TrashCan?
-            var error: Common.CommonError?
+            var error: UniPloggerError?
         }
         
         struct ViewModel {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class UserLogWorker {
     func updateRank(completion: @escaping () -> Void) {
@@ -28,11 +29,11 @@ class UserLogWorker {
                     let response = Log.GetFeed.Response(feedList: feedList)
                     completion(response)
                 } else {
-                    let response = Log.GetFeed.Response(error: .server(value.message))
+                    let response = Log.GetFeed.Response(error: .networkError(.responseError(value.message ?? "")))
                     completion(response)
                 }
             case let .failure(error):
-                let response = Log.GetFeed.Response(error: .error(error))
+                let response = Log.GetFeed.Response(error: UniPloggerError.networkError(.responseError(error.localizedDescription)))
                 completion(response)
             }
         }
@@ -46,14 +47,16 @@ class UserLogWorker {
                     let response = Log.GetUser.Response(response: user)
                     completion(response)
                 } else {
-                    let res = Log.GetUser.Response(error: .server(value.message))
+                    let res = Log.GetUser.Response(error: .networkError(.responseError(value.message ?? "")))
                     completion(res)
                 }
             case let .failure(error):
-                let response = Log.GetUser.Response(error: .error(error))
+                let response = Log.GetUser.Response(error: UniPloggerError.networkError(.responseError(error.localizedDescription)))
                 completion(response)
             }
         }
     }
-    
+    func getFeeds(uid: Int) -> Single<BaseResponse<[Feed]>> {
+        LogAPI.shared.getFeed(uid: uid)
+    }
 }

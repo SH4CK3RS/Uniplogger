@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogCollectionViewCell: UICollectionViewCell{
+final class LogCollectionViewCell: UICollectionViewCell{
     struct ViewModel {
         var image: String
     }
@@ -56,15 +56,17 @@ extension LogCollectionViewCell {
     }
     
     private func setupLayout() {
-        imageView.snp.makeConstraints{
+        imageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
     
     private func updateView() {
         guard let vm = self.viewModel else { return }
-        ImageDownloadManager.shared.downloadImage(url: vm.image) { (image) in
-            self.imageView.image = image
+        ImageDownloadManager.shared.downloadImage(url: vm.image) { [weak self] image in
+            DispatchQueue.main.async {
+                self?.imageView.image = image
+            }
         }
     }
 }

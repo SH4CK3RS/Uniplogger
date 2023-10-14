@@ -28,7 +28,7 @@ enum ResetPassword {
         struct Response {
             var request: Request
             var response: ResetPasswordResponse?
-            var error: Common.CommonError?
+            var error: UniPloggerError?
         }
         
         struct ViewModel {

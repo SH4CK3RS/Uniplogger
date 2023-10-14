@@ -10,70 +10,71 @@ import UIKit
 import SnapKit
 import Then
 
-class PloggingInfoView: UIView {
-    struct ViewModel{
-        var feed: Feed?
-        var distance: String
-        var time: String
-    }
-    
-    var viewModel: ViewModel?{
-        didSet{
-            updateView()
-        }
-    }
-    
-    lazy var gradientView = GradientView().then {
-        $0.colors = [.clear, .black]
-        $0.locations = [0.02, 1]
-    }
-    lazy var characterImageView = UIImageView().then {
-        $0.image = UIImage(named: "share_character")
-    }
-    lazy var leftView = UIView()
-    lazy var ploggerImageView = UIImageView().then {
-        $0.image = UIImage(named: "share_plogger")
-    }
-    lazy var rightView = UIView()
-    lazy var timerImageView = UIImageView().then {
-        $0.image = UIImage(named: "share_timer")
-    }
-    lazy var distanceLabel = UILabel().then {
-        $0.textAlignment = .center
-        $0.textColor = .white
-        $0.text = "10.21 km"
-        $0.font = .roboto(ofSize: 20, weight: .bold)
-        $0.sizeToFit()
-    }
-    lazy var timeLabel = UILabel().then {
-        $0.textAlignment = .center
-        $0.textColor = .white
-        $0.text = "57 : 30"
-        $0.font = .roboto(ofSize: 20, weight: .bold)
-        $0.sizeToFit()
-    }
-    
+final class PloggingInfoView: UIView {
     init() {
         super.init(frame: .zero)
-        setUpView()
-        setUpLayout()
+        setup()
+        layout()
     }
     
     required init?(coder: NSCoder) {
-        super.init(frame: .zero)
+        fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Internal
+    func updateInfo(with feed: Feed) {
+        distanceLabel.text = FormatDisplay.distance(feed.distance)
+        timeLabel.text = "\(String(format: "%02d", feed.timeSet.minutes)):\(String(format: "%02d", feed.timeSet.seconds))"
+        
+        ImageDownloadManager.shared.downloadImage(url: feed.photo) { [weak self] image in
+            DispatchQueue.main.async {
+                self?.feedImageView.image = image
+            }
+        }
+    }
+    
+    // MARK: - Private
+    private let feedImageView = UIImageView()
+    private let gradientView = GradientView()
+    private let characterImageView = UIImageView()
+    private let leftView = UIView()
+    private let ploggerImageView = UIImageView()
+    private let rightView = UIView()
+    private let timerImageView = UIImageView()
+    private let distanceLabel = UILabel()
+    private let timeLabel = UILabel()
 }
 
 extension PloggingInfoView {
-    func setUpView() {
-        [gradientView, characterImageView, leftView, rightView, ploggerImageView, timerImageView, distanceLabel, timeLabel].forEach {
+    func setup() {
+        gradientView.do {
+            $0.colors = [.clear, .black]
+            $0.locations = [0.02, 1]
+        }
+        characterImageView.image = UIImage(named: "share_character")
+        ploggerImageView.image = UIImage(named: "share_plogger")
+        timerImageView.image = UIImage(named: "share_timer")
+        distanceLabel.do {
+            $0.textAlignment = .center
+            $0.textColor = .white
+            $0.font = .roboto(ofSize: 20, weight: .bold)
+        }
+        timeLabel.do {
+            $0.textAlignment = .center
+            $0.textColor = .white
+            $0.font = .roboto(ofSize: 20, weight: .bold)
+        }
+        [feedImageView, gradientView, characterImageView, leftView, rightView, ploggerImageView, timerImageView, distanceLabel, timeLabel].forEach {
             addSubview($0)
         }
     }
     
-    func setUpLayout() {
+    func layout() {
+        feedImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         gradientView.snp.makeConstraints {
-            $0.top.bottom.leading.trailing.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
         characterImageView.snp.makeConstraints {
             $0.bottom.equalToSuperview()
@@ -107,17 +108,6 @@ extension PloggingInfoView {
         timeLabel.snp.makeConstraints {
             $0.top.equalTo(timerImageView.snp.bottom).offset(2.38)
             $0.centerX.equalTo(timerImageView.snp.centerX)
-        }
-    }
-    
-    func updateView() {
-        guard let viewModel else { return }
-        distanceLabel.text = viewModel.distance
-        timeLabel.text = viewModel.time
-        
-        if let feed = viewModel.feed{
-            distanceLabel.text = "\(feed.distance)"
-            timeLabel.text = "\(feed.time)"
         }
     }
 }

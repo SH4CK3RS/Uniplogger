@@ -11,8 +11,6 @@ import RxSwift
 import RxMoya
 
 struct LogAPI {
-    typealias Response<T: Codable> = BaseResponse<T>
-    
     let disposeBag = DisposeBag()
     
     static let shared = LogAPI()
@@ -21,10 +19,15 @@ struct LogAPI {
         plugins: [VerbosePlugin(verbose: true)]
     )
     
-    func getFeed(uid: Int, completionHandler: @escaping (Result<Response<[Feed]>, Error>) -> Void) {
+    func getFeed(uid: Int) -> Single<BaseResponse<[Feed]>> {
+        provider.rx.request(.getFeed(uId: uid))
+            .map(BaseResponse<[Feed]>.self)
+    }
+    
+    func getFeed(uid: Int, completionHandler: @escaping (Result<BaseResponse<[Feed]>, Error>) -> Void) {
         provider.rx.request(.getFeed(uId: uid))
             .filterSuccessfulStatusCodes()
-            .map(Response<[Feed]>.self)
+            .map(BaseResponse<[Feed]>.self)
             .subscribe {
                 completionHandler(.success($0))
             } onFailure: {
@@ -32,10 +35,10 @@ struct LogAPI {
             }.disposed(by: self.disposeBag)
     }
     
-    func getUserFeed(uid: Int, completionHandler: @escaping (Result<Response<[Feed]>, Error>) -> Void) {
+    func getUserFeed(uid: Int, completionHandler: @escaping (Result<BaseResponse<[Feed]>, Error>) -> Void) {
         provider.rx.request(.getUserFeed(uid: uid))
             .filterSuccessfulStatusCodes()
-            .map(Response<[Feed]>.self)
+            .map(BaseResponse<[Feed]>.self)
             .subscribe {
                 completionHandler(.success($0))
             } onFailure: {
@@ -64,10 +67,10 @@ struct LogAPI {
             }.disposed(by: disposeBag)
     }
     
-    func updateLevel(completionHandler: @escaping (Result<Response<User>, Error>) -> Void) {
+    func updateLevel(completionHandler: @escaping (Result<BaseResponse<User>, Error>) -> Void) {
         provider.rx.request(.updateLevel)
             .filterSuccessfulStatusCodes()
-            .map(Response<User>.self)
+            .map(BaseResponse<User>.self)
             .subscribe {
                 completionHandler(.success($0))
             } onFailure: {

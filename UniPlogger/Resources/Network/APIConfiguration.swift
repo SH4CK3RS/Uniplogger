@@ -18,8 +18,8 @@ protocol APIConfiguration: URLRequestConvertible {
     var encoding: ParameterEncoding { get }
 }
 
-extension APIConfiguration{
-    var encoding: ParameterEncoding{
+extension APIConfiguration {
+    var encoding: ParameterEncoding {
         switch method {
         case .post, .patch, .put, .delete:
             return JSONEncoding.default

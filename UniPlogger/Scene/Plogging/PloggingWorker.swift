@@ -97,12 +97,12 @@ extension PloggingWorker{
                         
                     }
                 } else {
-                    let response = Plogging.FetchTrashCan.Response(error: .server(value.message))
+                    let response = Plogging.FetchTrashCan.Response(error: .networkError(.responseError(value.message ?? "")))
                     completion(response)
                 }
                 
             case .failure(let error):
-                let response = Plogging.FetchTrashCan.Response(error: .error(error))
+                let response = Plogging.FetchTrashCan.Response(error: UniPloggerError.networkError(.responseError(error.localizedDescription)))
                 completion(response)
             }
         }
@@ -147,16 +147,16 @@ extension PloggingWorker{
                             let response = Plogging.AddConfirmTrashCan.Response(request: request, response: trashcan)
                             completion(response)
                         case .failure(let error):
-                            let response = Plogging.AddConfirmTrashCan.Response(request: request, error: .error(error))
+                            let response = Plogging.AddConfirmTrashCan.Response(request: request, error: UniPloggerError.networkError(.responseError(error.localizedDescription)))
                             completion(response)
                         }
                     }
                 } else {
-                    let response = Plogging.AddConfirmTrashCan.Response(request: request, error: .server(value.message))
+                    let response = Plogging.AddConfirmTrashCan.Response(request: request, error: .networkError(.responseError(value.message ?? "")))
                     completion(response)
                 }
             case let .failure(error):
-                let response = Plogging.AddConfirmTrashCan.Response(request: request, error: .error(error))
+                let response = Plogging.AddConfirmTrashCan.Response(request: request, error: UniPloggerError.networkError(.responseError(error.localizedDescription)))
                 completion(response)
             }
         }
@@ -185,16 +185,16 @@ extension PloggingWorker{
                             let response = Plogging.RemoveTrashCan.Response(request: request, trashcan: trashcan)
                             completion(response)
                         case .failure(let error):
-                            let response = Plogging.RemoveTrashCan.Response(request: request, error: .error(error))
+                            let response = Plogging.RemoveTrashCan.Response(request: request, error: UniPloggerError.networkError(.responseError(error.localizedDescription)))
                             completion(response)
                         }
                     }
                 } else {
-                    let response = Plogging.RemoveTrashCan.Response(request: request, error: .server(value.message))
+                    let response = Plogging.RemoveTrashCan.Response(request: request, error: .networkError(.responseError(value.message ?? "")))
                     completion(response)
                 }
             case let .failure(error):
-                let response = Plogging.RemoveTrashCan.Response(request: request, error: .error(error))
+                let response = Plogging.RemoveTrashCan.Response(request: request, error: UniPloggerError.networkError(.responseError(error.localizedDescription)))
                 completion(response)
             }
         }
