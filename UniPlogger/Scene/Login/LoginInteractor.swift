@@ -79,17 +79,16 @@ final class LoginInteractor: PresentableInteractor<LoginPresentable>, LoginInter
     
     private func handleLogin() {
         UPLoader.shared.show()
-        service.login(model: model) { [weak self] result in
-            UPLoader.shared.hidden()
-            switch result {
-            case let .success(loginResponse):
-                AuthManager.shared.userToken = loginResponse.token
-                AuthManager.shared.user = loginResponse.user
-                self?.listener?.request(.loginFinished)
-            case let .failure(error):
-                self?.presenter.request(.showError(error))
-            }
-        }
+        service.login(model: model)
+            .observe(on: MainScheduler.instance)
+            .subscribe(with: self) { owner, response in
+                UPLoader.shared.hidden()
+                AuthManager.shared.userToken = response.token
+                AuthManager.shared.user = response.user
+                owner.listener?.request(.loginFinished)
+            } onFailure: { owner, error in
+                owner.presenter.request(.showError(UniPloggerError.networkError(.responseError(error.localizedDescription))))
+            }.disposeOnDeactivate(interactor: self)
     }
     
     private func handleRegistration() {

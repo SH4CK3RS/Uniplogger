@@ -101,5 +101,17 @@ struct AuthAPI {
                 completion(.failure($0))
             }.disposed(by: disposeBag)
     }
-    
+ 
+    // MARK: - RxSwift
+    func login(email: String, password: String) -> Single<LoginResponse> {
+        provider.rx.request(.login(email: email, password: password))
+            .map(BaseResponse<LoginResponse>.self)
+            .flatMap { response -> Single<LoginResponse> in
+                if let data = response.data {
+                    return .just(data)
+                } else {
+                    return .error(UniPloggerError.networkError(.responseError("")))
+                }
+            }
+    }
 }
