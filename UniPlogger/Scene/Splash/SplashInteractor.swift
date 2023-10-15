@@ -127,6 +127,10 @@ extension SplashInteractor {
             router?.request(.detachRegistration(completion: { [weak router] in
                 router?.request(.routeToLogin)
             }))
+        case .registrationFinished:
+            router?.request(.detachRegistration(completion: { [weak router] in
+                router?.request(.routeToMain)
+            }))
         }
     }
 }

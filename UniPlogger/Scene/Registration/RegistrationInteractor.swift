@@ -27,6 +27,7 @@ protocol RegistrationPresentable: Presentable {
 enum RegistrationListenerRequest {
     case back
     case close
+    case registrationFinished
 }
 
 protocol RegistrationListener: AnyObject {
@@ -89,14 +90,19 @@ final class RegistrationInteractor: PresentableInteractor<RegistrationPresentabl
     
     private let service: RegistrationServiceable
     private let entryPoint: RegistrationEntryPoint
-    private var model = RegistraionModel()
+    private var model = RegistrationModel()
     
     private func handleRegistration() {
         UPLoader.shared.show()
-        service.registration(model: model) {
-            DispatchQueue.main.async {
+        service.registration(model: model)
+            .observe(on: MainScheduler.instance)
+            .subscribe(with: self) { owner, response in
                 UPLoader.shared.hidden()
-            }
-        }
+                AuthManager.shared.userToken = response.token
+                AuthManager.shared.user = response.user
+                owner.listener?.request(.registrationFinished)
+            } onFailure: { owner, error in
+                UPLoader.shared.hidden()
+            }.disposeOnDeactivate(interactor: self)
     }
 }

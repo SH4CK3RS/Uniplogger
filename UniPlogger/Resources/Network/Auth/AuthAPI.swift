@@ -19,18 +19,6 @@ struct AuthAPI {
         plugins: [VerbosePlugin(verbose: true)]
     )
     
-    func login(email: String, password: String, completionHandler: @escaping (Result<BaseResponse<LoginResponse>, Error>) -> Void) {
-        provider.rx.request(.login(email: email, password: password))
-            .filterSuccessfulStatusCodes()
-            .map(BaseResponse<LoginResponse>.self)
-            .observe(on: MainScheduler.instance)
-            .subscribe {
-                completionHandler(.success($0))
-            } onFailure: {
-                completionHandler(.failure($0))
-            }.disposed(by: disposeBag)
-    }
-    
     func getUser(uid: Int, completionHandler: @escaping (Result<BaseResponse<User>, Error>) -> Void) {
         provider.rx.request(.getUser(uid: uid))
             .filterSuccessfulStatusCodes()
@@ -39,17 +27,6 @@ struct AuthAPI {
                 completionHandler(.success($0))
             } onFailure: {
                 completionHandler(.failure($0))
-            }.disposed(by: disposeBag)
-    }
-    
-    func registration(email: String, password1: String, password2: String, nickname: String, completion: @escaping (Result<BaseResponse<LoginResponse>, Error>) -> Void) {
-        provider.rx.request(.registration(email: email, password1: password1, password2: password2, nickname: nickname))
-            .filterSuccessfulStatusCodes()
-            .map(BaseResponse<LoginResponse>.self)
-            .subscribe {
-                completion(.success($0))
-            } onFailure: {
-                completion(.failure($0))
             }.disposed(by: disposeBag)
     }
     
@@ -113,5 +90,22 @@ struct AuthAPI {
                     return .error(UniPloggerError.networkError(.responseError("")))
                 }
             }
+    }
+    
+    func registration(data: RegistrationModel) -> Single<LoginResponse> {
+        provider.rx.request(.registration(
+            email: data.email,
+            password1: data.password,
+            password2: data.passwordConfirm,
+            nickname: data.nickname
+        ))
+        .map(BaseResponse<LoginResponse>.self)
+        .flatMap { response -> Single<LoginResponse> in
+            if let data = response.data {
+                return .just(data)
+            } else {
+                return .error(UniPloggerError.networkError(.responseError("")))
+            }
+        }
     }
 }

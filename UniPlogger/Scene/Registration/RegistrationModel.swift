@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RegistraionModel {
+struct RegistrationModel {
     var email: String = ""
     var password: String = ""
     var passwordConfirm: String = ""
