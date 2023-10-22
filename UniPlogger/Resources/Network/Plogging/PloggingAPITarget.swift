@@ -86,6 +86,12 @@ extension PloggingAPITarget: BaseTarget {
     
     var sampleData: Data {
       switch self {
+      case .uploadRecord:
+          if let url = Bundle.main.url(forResource: "UploadRecordResponse", withExtension: "json"),
+             let data = try? Data(contentsOf: url) {
+              return data
+          }
+          return Data()
       default:
         return Data()
       }

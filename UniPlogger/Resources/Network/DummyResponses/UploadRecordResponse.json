@@ -1,0 +1,24 @@
+{
+    "success": true,
+    "message": "성공했습니다.",
+    "data": {
+        "id": 1,
+        "title": "20230924001234",
+        "date": "2023-09-24",
+        "distance": 10.10,
+        "time": 500,
+        "photo": "https://source.unsplash.com/random/200x200?sig=1",
+        "user": {
+            "id": 1,
+            "registeredDate": "2023-09-24 00:12:34",
+            "email": "qudrms007@naver.com",
+            "nickname": "Ever",
+            "level": 1,
+            "rank": 0.0,
+            "state": "N",
+            "planet": null,
+            "weekly_stats": "",
+            "monthly_stats": 1.0
+        }
+    }
+}

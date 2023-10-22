@@ -37,6 +37,7 @@
 		3E436C972AD3CF38004345FF /* PloggingRootService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436C962AD3CF38004345FF /* PloggingRootService.swift */; };
 		3E436C992ADB081C004345FF /* PloggingRootComponent+Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436C982ADB081C004345FF /* PloggingRootComponent+Share.swift */; };
 		3E436C9B2AE4EED5004345FF /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436C9A2AE4EED5004345FF /* Array+Extensions.swift */; };
+		3E436C9D2AE4F4E2004345FF /* UploadRecordResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E436C9C2AE4F4E2004345FF /* UploadRecordResponse.json */; };
 		3E43CA782AB60FF500B6C4D8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA772AB60FF500B6C4D8 /* SplashView.swift */; };
 		3E43CA7A2AB61CF200B6C4D8 /* SplashBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA792AB61CF200B6C4D8 /* SplashBuilder.swift */; };
 		3E43CA7C2AB61D1400B6C4D8 /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */; };
@@ -207,7 +208,6 @@
 		8353A377256911F900F9AA4F /* ReportItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353A376256911F900F9AA4F /* ReportItem.swift */; };
 		8353A37E256947D000F9AA4F /* ReportViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353A37D256947D000F9AA4F /* ReportViewController+UI.swift */; };
 		8353A381256A617100F9AA4F /* ChallengeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353A380256A617100F9AA4F /* ChallengeNavigationController.swift */; };
-		8355DF5E2585B5A9001C63A5 /* ImagePreviewRouters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8355DF5D2585B5A9001C63A5 /* ImagePreviewRouters.swift */; };
 		83DE07702566AD050085AC72 /* ScoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DE07522566AD050085AC72 /* ScoreInfoViewController.swift */; };
 		83DE07712566AD050085AC72 /* CircleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DE07542566AD050085AC72 /* CircleInfoView.swift */; };
 		83DE07722566AD050085AC72 /* ScoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DE07552566AD050085AC72 /* ScoreInfoView.swift */; };
@@ -369,6 +369,7 @@
 		3E436C962AD3CF38004345FF /* PloggingRootService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingRootService.swift; sourceTree = "<group>"; };
 		3E436C982ADB081C004345FF /* PloggingRootComponent+Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PloggingRootComponent+Share.swift"; sourceTree = "<group>"; };
 		3E436C9A2AE4EED5004345FF /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		3E436C9C2AE4F4E2004345FF /* UploadRecordResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UploadRecordResponse.json; sourceTree = "<group>"; };
 		3E43CA772AB60FF500B6C4D8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3E43CA792AB61CF200B6C4D8 /* SplashBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBuilder.swift; sourceTree = "<group>"; };
 		3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouter.swift; sourceTree = "<group>"; };
@@ -545,7 +546,6 @@
 		8353A376256911F900F9AA4F /* ReportItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportItem.swift; sourceTree = "<group>"; };
 		8353A37D256947D000F9AA4F /* ReportViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportViewController+UI.swift"; sourceTree = "<group>"; };
 		8353A380256A617100F9AA4F /* ChallengeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeNavigationController.swift; sourceTree = "<group>"; };
-		8355DF5D2585B5A9001C63A5 /* ImagePreviewRouters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewRouters.swift; sourceTree = "<group>"; };
 		83DE07522566AD050085AC72 /* ScoreInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreInfoViewController.swift; sourceTree = "<group>"; };
 		83DE07542566AD050085AC72 /* CircleInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleInfoView.swift; sourceTree = "<group>"; };
 		83DE07552566AD050085AC72 /* ScoreInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreInfoView.swift; sourceTree = "<group>"; };
@@ -711,6 +711,7 @@
 			isa = PBXGroup;
 			children = (
 				3E2FB8652ABF525F0096F554 /* LoginResponse.json */,
+				3E436C9C2AE4F4E2004345FF /* UploadRecordResponse.json */,
 			);
 			path = DummyResponses;
 			sourceTree = "<group>";
@@ -811,22 +812,13 @@
 		3E67E1D52AC8503F001FBA36 /* ImagePreview */ = {
 			isa = PBXGroup;
 			children = (
-				3EB3370B2ACA7E1000A48BB3 /* RIB */,
-				8355DF5D2585B5A9001C63A5 /* ImagePreviewRouters.swift */,
-				3EB337092ACA7C1800A48BB3 /* ImagePreviewView.swift */,
-			);
-			path = ImagePreview;
-			sourceTree = "<group>";
-		};
-		3EB3370B2ACA7E1000A48BB3 /* RIB */ = {
-			isa = PBXGroup;
-			children = (
 				3EB3370C2ACA7E3100A48BB3 /* ImagePreviewRouter.swift */,
 				3EB3370D2ACA7E3100A48BB3 /* ImagePreviewViewController.swift */,
 				3EB3370E2ACA7E3100A48BB3 /* ImagePreviewBuilder.swift */,
 				3EB3370F2ACA7E3100A48BB3 /* ImagePreviewInteractor.swift */,
+				3EB337092ACA7C1800A48BB3 /* ImagePreviewView.swift */,
 			);
-			path = RIB;
+			path = ImagePreview;
 			sourceTree = "<group>";
 		};
 		3EDD64D92AB6DDDC00776C34 /* TutorialFirst */ = {
@@ -1804,6 +1796,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E436C9D2AE4F4E2004345FF /* UploadRecordResponse.json in Resources */,
 				AAB3B4D72520A31200F0311A /* LaunchScreen.storyboard in Resources */,
 				AA7F550C2532C20C001C4012 /* Roboto-LightItalic.ttf in Resources */,
 				AAC9585B2545BF130092BA6E /* NotoSansCJKkr-Black.otf in Resources */,
@@ -2060,7 +2053,6 @@
 				4C423647257232260068A252 /* QuestAPITarget.swift in Sources */,
 				3EDD650C2ABA0EFB00776C34 /* RegistrationViewController.swift in Sources */,
 				4C42365125723EF10068A252 /* QuestResponse.swift in Sources */,
-				8355DF5E2585B5A9001C63A5 /* ImagePreviewRouters.swift in Sources */,
 				AAB3B4D22520A31100F0311A /* UniPlogger.xcdatamodeld in Sources */,
 				835248692572285100C9F495 /* LogModels.swift in Sources */,
 				8353A37E256947D000F9AA4F /* ReportViewController+UI.swift in Sources */,
