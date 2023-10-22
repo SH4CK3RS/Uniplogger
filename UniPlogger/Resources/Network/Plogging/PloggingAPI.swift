@@ -15,6 +15,7 @@ struct PloggingAPI {
     
     static let shared = PloggingAPI()
     private let provider = MoyaProvider<PloggingAPITarget>(
+        stubClosure: MoyaProvider.immediatelyStub,
         session: SessionManager.shared,
         plugins: [VerbosePlugin(verbose: true)]
     )
