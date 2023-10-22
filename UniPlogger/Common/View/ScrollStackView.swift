@@ -7,42 +7,42 @@
 //
 
 import UIKit
+import Then
+import SnapKit
 
 final class ScrollStackView: UIScrollView {
-    var containerView = UIView()
-    private let stackView: UIStackView = {
-        let sv = UIStackView()
-        sv.alignment = .fill
-        sv.distribution = .fill
-        sv.axis = .vertical
-        sv.spacing = 0
-        return sv
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
+    init() {
+        super.init(frame: .zero)
+        setup()
+        layout()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupUI()
+        fatalError("init(coder:) has not been implemented")
     }
     
+    private let stackView = UIStackView()
+
     func addArrangedSubview(_ view: UIView) {
         self.stackView.addArrangedSubview(view)
     }
-    
-    private func setupUI() {
+}
+
+private extension ScrollStackView {
+    func setup() {
         contentInsetAdjustmentBehavior = .never
-        
-        addSubview(containerView)
-        containerView.addSubview(stackView)
-        containerView.snp.makeConstraints{
-            $0.edges.width.equalToSuperview()
+        stackView.do {
+            $0.alignment = .fill
+            $0.distribution = .fill
+            $0.axis = .vertical
+            $0.spacing = 0
         }
+        addSubview(stackView)
+    }
+    
+    func layout() {
         stackView.snp.makeConstraints{
-            $0.edges.equalToSuperview()
+            $0.edges.width.equalToSuperview()
         }
     }
 }
