@@ -152,9 +152,6 @@ private extension LoginView {
     }
     
     func layout() {
-        scrollView.containerView.snp.makeConstraints{
-            $0.width.equalToSuperview()
-        }
         scrollView.snp.makeConstraints{
             $0.edges.equalToSuperview()
         }

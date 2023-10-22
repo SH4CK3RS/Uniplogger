@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 enum TutorialFirstViewAction {
     case skipButtonTapped
@@ -150,14 +151,9 @@ private extension TutorialFirstView {
     }
     
     func layout() {
-        scrollView.containerView.snp.makeConstraints{
-            $0.width.equalToSuperview()
-        }
-        
         scrollView.snp.makeConstraints{
-            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.verticalEdges.equalTo(safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(safeAreaLayoutGuide)
         }
         
         backgroundImageView.snp.makeConstraints{

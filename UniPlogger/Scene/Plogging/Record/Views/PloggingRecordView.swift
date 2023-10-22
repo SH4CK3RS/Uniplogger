@@ -147,10 +147,6 @@ private extension PloggingRecordView {
     }
     
     func layout() {
-        scrollView.containerView.snp.makeConstraints {
-            $0.width.equalToSuperview()
-        }
-        
         scrollView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.top.equalTo(safeAreaLayoutGuide)

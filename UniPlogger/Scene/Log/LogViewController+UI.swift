@@ -43,10 +43,6 @@ extension LogViewController {
         setupPloggerContainer()
         setupStatContainer()
     }
-    
-    func updateView() {
-        
-    }
   
     func setupNavigtationBar() {
         if let navBar = self.navigationController?.navigationBar {
@@ -59,35 +55,31 @@ extension LogViewController {
     }
     
     func setupScrollView() {
-        self.view.addSubview(scrollView)
-        scrollView.containerView.snp.makeConstraints{
-            $0.width.equalTo(self.view)
-        }
-        
+        view.addSubview(scrollView)
         scrollView.snp.makeConstraints{
-          $0.top.leading.trailing.equalToSuperview()
-          $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
+            $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
     func setupPloggerContainer() {
         ploggerContainer.snp.makeConstraints{
-          $0.height.equalTo(self.view.frame.height * 0.36)
+            $0.height.equalTo(view.frame.height * 0.36)
         }
         ploggerImageView.snp.makeConstraints{
-            $0.bottom.equalTo(ploggerContainer).offset(-self.view.frame.height * 0.047)
-            $0.width.equalTo(self.view.frame.width * 0.21)
+            $0.bottom.equalTo(ploggerContainer).offset(-view.frame.height * 0.047)
+            $0.width.equalTo(view.frame.width * 0.21)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(ploggerImageView.snp.width).multipliedBy(1.67)
         }
         
         yellowStarImageView.snp.makeConstraints{
-            $0.bottom.equalTo(-self.view.frame.height * 0.093)
-            $0.trailing.equalTo(ploggerImageView.snp.leading).offset(-self.view.frame.width * 0.08)
+            $0.bottom.equalTo(-view.frame.height * 0.093)
+            $0.trailing.equalTo(ploggerImageView.snp.leading).offset(-view.frame.width * 0.08)
         }
         pinkStarImageView.snp.makeConstraints{
             $0.top.equalTo(yellowStarImageView.snp.top)
-            $0.leading.equalTo(ploggerImageView.snp.trailing).offset(self.view.frame.width * 0.08)
+            $0.leading.equalTo(ploggerImageView.snp.trailing).offset(view.frame.width * 0.08)
         }
         
         levelTitleLabel.snp.makeConstraints{
