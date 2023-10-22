@@ -97,11 +97,13 @@ final class CameraView: UIView {
         self.videoPreviewLayer = videoPreviewLayer
         
         finderView.layer.addSublayer(videoPreviewLayer)
-        captureSession.commitConfiguration()
-        captureSession.startRunning()
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            videoPreviewLayer.frame = self.finderView.bounds
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self else { return }
+            self.captureSession.commitConfiguration()
+            self.captureSession.startRunning()
+            DispatchQueue.main.async {
+                videoPreviewLayer.frame = self.finderView.bounds
+            }
         }
     }
     
