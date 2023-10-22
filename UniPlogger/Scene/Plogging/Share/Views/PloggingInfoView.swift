@@ -35,6 +35,7 @@ final class PloggingInfoView: UIView {
     
     // MARK: - Private
     private let feedImageView = UIImageView()
+    private let infoContainer = UIView()
     private let gradientView = GradientView()
     private let characterImageView = UIImageView()
     private let leftView = UIView()
@@ -64,14 +65,22 @@ extension PloggingInfoView {
             $0.textColor = .white
             $0.font = .roboto(ofSize: 20, weight: .bold)
         }
-        [feedImageView, gradientView, characterImageView, leftView, rightView, ploggerImageView, timerImageView, distanceLabel, timeLabel].forEach {
+        [feedImageView, infoContainer].forEach {
             addSubview($0)
+        }
+        
+        [gradientView, characterImageView, leftView, rightView, ploggerImageView, timerImageView, distanceLabel, timeLabel].forEach {
+            infoContainer.addSubview($0)
         }
     }
     
     func layout() {
         feedImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        infoContainer.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.height.equalTo(145)
         }
         gradientView.snp.makeConstraints {
             $0.edges.equalToSuperview()

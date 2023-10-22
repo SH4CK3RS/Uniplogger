@@ -103,8 +103,7 @@ private extension ShareView {
             $0.top.equalToSuperview().offset(179)
         }
         ploggingInfoView.snp.makeConstraints {
-            $0.leading.trailing.bottom.equalToSuperview()
-            $0.height.equalTo(145)
+            $0.edges.equalToSuperview()
         }
         dismissButton.snp.makeConstraints {
             $0.size.equalTo(40)
