@@ -12,6 +12,7 @@
 
 import Foundation
 import RIBs
+import RxSwift
 
 enum SplashRouterRequest {
     case routeToTutorial
@@ -52,20 +53,14 @@ final class SplashInteractor: PresentableInteractor<SplashPresntable>, SplashInt
     private func checkLogin() {
         if AuthManager.shared.userToken != nil,
            let user = AuthManager.shared.user {
-            AuthAPI.shared.getUser(uid: user.id) { [weak self] response in
-                guard let self else { return }
-                switch response {
-                case .success(let value):
-                    if value.success, let user = value.data {
-                        AuthManager.shared.user = user
-                        self.router?.request(.routeToMain)
-                    } else {
-                        self.processNotLogined()
-                    }
-                case .failure:
+            AuthAPI.shared.getUser(uid: user.id)
+                .observe(on: MainScheduler.instance)
+                .subscribe(with: self) { owner, user in
+                    AuthManager.shared.user = user
+                    self.router?.request(.routeToMain)
+                } onFailure: { owner, error in
                     self.processNotLogined()
-                }
-            }
+                }.disposeOnDeactivate(interactor: self)
         } else {
             processNotLogined()
         }
