@@ -126,7 +126,7 @@ extension AuthAPITarget: BaseTarget {
     
     var sampleData: Data {
       switch self {
-      case .login:
+      case .login, .getUser:
           if let url = Bundle.main.url(forResource: "LoginResponse", withExtension: "json"),
              let data = try? Data(contentsOf: url) {
               return data
