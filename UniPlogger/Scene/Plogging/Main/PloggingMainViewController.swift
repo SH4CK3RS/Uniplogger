@@ -41,6 +41,7 @@ final class PloggingMainViewController: UIViewController, PloggingMainPresentabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTabBar()
         listener?.request(.viewDidLoad)
     }
     
@@ -74,6 +75,11 @@ final class PloggingMainViewController: UIViewController, PloggingMainPresentabl
     }
     // MARK: - Private
     private let mainView = PloggingMainView()
+    
+    private func setupTabBar() {
+        let ploggingItem = UITabBarItem(title: "플로깅", image: UIImage(named: "tabbar_plogging"), tag: 2)
+        tabBarItem = ploggingItem
+    }
     
     private func showCoachmark() {
         tabBarController?.tabBar.alpha = 0

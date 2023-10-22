@@ -41,8 +41,9 @@ extension SignUpInfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SignUpTableViewCell.ID) as? SignUpTableViewCell else { return UITableViewCell() }
-        cell.configure(item: SignUpInfoType.allCases[indexPath.row])
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SignUpTableViewCell.ID) as? SignUpTableViewCell,
+              let item = SignUpInfoType.allCases[safe: indexPath.row] else { return UITableViewCell() }
+        cell.configure(item: item)
         return cell
     }
 

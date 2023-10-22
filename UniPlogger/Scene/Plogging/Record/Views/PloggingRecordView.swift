@@ -70,8 +70,8 @@ final class PloggingRecordView: UIView {
         guard gesture.state == .ended else { return }
         let p = gesture.location(in: collectionView)
         
-        if let indexPath = collectionView.indexPathForItem(at: p) {
-            let item = PloggingItemType.allCases[indexPath.item]
+        if let indexPath = collectionView.indexPathForItem(at: p),
+           let item = PloggingItemType.allCases[safe: indexPath.item] {
             listener?.action(.ploggingItemSelected(item))
         }
     }
@@ -204,9 +204,10 @@ extension PloggingRecordView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:  "PloggingRecordCollectionViewCell", for: indexPath) as? PloggingRecordCollectionViewCell else { fatalError() }
-        let item = PloggingItemType.allCases[indexPath.item]
-        let isSelected = self.selectedItems.contains(indexPath.item)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:  "PloggingRecordCollectionViewCell", for: indexPath) as? PloggingRecordCollectionViewCell,
+              let item = PloggingItemType.allCases[safe: indexPath.item] else { return .init() }
+        
+        let isSelected = selectedItems.contains(indexPath.item)
         cell.viewModel = .init(title: item.description, isSelected: isSelected)
         let gesture =  UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         cell.addGestureRecognizer(gesture)

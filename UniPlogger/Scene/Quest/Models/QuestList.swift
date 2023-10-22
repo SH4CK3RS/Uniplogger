@@ -38,7 +38,7 @@ struct QuestList {
             return nil
         }
         
-        return quests[indexPath.row]
+        return quests[safe: indexPath.row]
     }
     
     

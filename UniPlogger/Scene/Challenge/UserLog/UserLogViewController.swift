@@ -156,9 +156,8 @@ extension UserLogViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LogCollectionViewCell", for: indexPath) as? LogCollectionViewCell else { fatalError() }
-        let feed = feedList[indexPath.item]
-        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LogCollectionViewCell", for: indexPath) as? LogCollectionViewCell,
+              let feed = feedList[safe: indexPath.item] else { return .init() }
         cell.viewModel = .init(image: feed.photo)
         return cell
     }

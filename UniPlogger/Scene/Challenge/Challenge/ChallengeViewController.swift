@@ -160,14 +160,17 @@ extension ChallengeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = rankTableView.dequeueReusableCell(withIdentifier: "rankCell") as? RankTableViewCell else { return UITableViewCell() }
+        guard let cell = rankTableView.dequeueReusableCell(withIdentifier: "rankCell") as? RankTableViewCell else { return .init() }
         cell.selectionStyle = .none
-        guard let viewModels = self.viewModels else {
+        guard let viewModels = self.viewModels,
+              let viewModel = viewModels[safe: indexPath.row + 3]
+        else {
             let viewModel = Challenge.RankCellViewModel(id: 0, email: "asdf@naver.com", rank: 4, nickname: "띵숙이", score: 1234)
             cell.configure(viewModel: viewModel)
             return cell
         }
-        cell.configure(viewModel: viewModels[indexPath.row + 3])
+        
+        cell.configure(viewModel: viewModel)
         return cell
     }
     

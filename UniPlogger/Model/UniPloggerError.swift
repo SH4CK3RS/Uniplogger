@@ -21,3 +21,6 @@ enum UniPloggerError: Error {
     case other(String)
 }
 
+struct ErrorMessage {
+    static let decodeError: String = "데이터를 받아오는 데 실패했습니다."
+}

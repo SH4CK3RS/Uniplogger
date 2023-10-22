@@ -84,7 +84,7 @@ struct PloggingAPI {
             if let data = response.data {
                 return .just(data)
             } else {
-                return .error(UniPloggerError.networkError(.responseError("data is nil")))
+                return .error(UniPloggerError.networkError(.responseError(ErrorMessage.decodeError)))
             }
         }
     }

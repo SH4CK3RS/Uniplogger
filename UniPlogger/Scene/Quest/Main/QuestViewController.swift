@@ -204,7 +204,7 @@ extension QuestViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: QuestTableViewCell.identifire, for: indexPath) as? QuestTableViewCell,
               let questViewModel = questViewModel?.quest(at: indexPath)
         else {
-            return UITableViewCell()
+            return .init()
         }
         
         cell.configure(viewModel: questViewModel)

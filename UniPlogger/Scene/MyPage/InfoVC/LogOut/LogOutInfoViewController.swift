@@ -46,14 +46,16 @@ extension LogOutInfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: LogOutInfoTableViewCell.ID) as? LogOutInfoTableViewCell else { return UITableViewCell() }
-        cell.configure(item: LogOutType.allCases[indexPath.row])
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LogOutInfoTableViewCell.ID) as? LogOutInfoTableViewCell,
+              let item = LogOutType.allCases[safe: indexPath.row] else { return UITableViewCell() }
+        cell.configure(item: item)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        switch LogOutType.allCases[indexPath.row] {
+        guard let type = LogOutType.allCases[safe: indexPath.row] else { return }
+        switch type {
         case .logOut:
             dimView.isHidden = false 
             showAlert()

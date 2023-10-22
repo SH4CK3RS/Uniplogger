@@ -36,6 +36,7 @@
 		3E436C932AD298E0004345FF /* ShareInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436C8F2AD298E0004345FF /* ShareInteractor.swift */; };
 		3E436C972AD3CF38004345FF /* PloggingRootService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436C962AD3CF38004345FF /* PloggingRootService.swift */; };
 		3E436C992ADB081C004345FF /* PloggingRootComponent+Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436C982ADB081C004345FF /* PloggingRootComponent+Share.swift */; };
+		3E436C9B2AE4EED5004345FF /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436C9A2AE4EED5004345FF /* Array+Extensions.swift */; };
 		3E43CA782AB60FF500B6C4D8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA772AB60FF500B6C4D8 /* SplashView.swift */; };
 		3E43CA7A2AB61CF200B6C4D8 /* SplashBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA792AB61CF200B6C4D8 /* SplashBuilder.swift */; };
 		3E43CA7C2AB61D1400B6C4D8 /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */; };
@@ -367,6 +368,7 @@
 		3E436C8F2AD298E0004345FF /* ShareInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInteractor.swift; sourceTree = "<group>"; };
 		3E436C962AD3CF38004345FF /* PloggingRootService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingRootService.swift; sourceTree = "<group>"; };
 		3E436C982ADB081C004345FF /* PloggingRootComponent+Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PloggingRootComponent+Share.swift"; sourceTree = "<group>"; };
+		3E436C9A2AE4EED5004345FF /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		3E43CA772AB60FF500B6C4D8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3E43CA792AB61CF200B6C4D8 /* SplashBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBuilder.swift; sourceTree = "<group>"; };
 		3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouter.swift; sourceTree = "<group>"; };
@@ -1618,6 +1620,7 @@
 				3EDD64EA2AB6FF8700776C34 /* UINavigationController+Extensions.swift */,
 				3E67E1B92AC7F780001FBA36 /* Measurement+Extensions.swift */,
 				3E67E1BB2AC7FF47001FBA36 /* MKPolyLine+Extensions.swift */,
+				3E436C9A2AE4EED5004345FF /* Array+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1904,6 +1907,7 @@
 				4C3F561C2568FA2B006D7C9F /* PloggingItemType.swift in Sources */,
 				83DE07812566AD050085AC72 /* ChallengePresenter.swift in Sources */,
 				8352480F2572279500C9F495 /* PloggingData.swift in Sources */,
+				3E436C9B2AE4EED5004345FF /* Array+Extensions.swift in Sources */,
 				3EDD65162ABB39BB00776C34 /* SplashComponent+Registration.swift in Sources */,
 				8352482B2572280000C9F495 /* AuthAPITarget.swift in Sources */,
 				3E436C932AD298E0004345FF /* ShareInteractor.swift in Sources */,

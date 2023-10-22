@@ -74,7 +74,7 @@ class LogCollectionViewLayout: UICollectionViewFlowLayout {
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         if indexPath.item < cache.count {
-            return cache[indexPath.item]
+            return cache[safe: indexPath.item]
         } else {
             let columnWidth = contentWidth / CGFloat(numberOfColumns)
             let column = indexPath.item % 3

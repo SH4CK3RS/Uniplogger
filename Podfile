@@ -8,6 +8,5 @@ target 'UniPlogger' do
   # Pods for UniPlogger
   pod 'SnapKit'
   pod 'Then'
-  pod 'Alamofire', '~> 5.2'
   pod 'IQKeyboardManagerSwift'
 end

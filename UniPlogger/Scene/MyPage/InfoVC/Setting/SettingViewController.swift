@@ -41,9 +41,10 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.ID) as? SettingTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.ID) as? SettingTableViewCell,
+              let item = SettingType.allCases[safe: indexPath.row] else { return UITableViewCell() }
+        cell.configure(item: item)
         cell.contentView.isHidden = true
-        cell.configure(item: SettingType.allCases[indexPath.row])
         return cell
     }
 

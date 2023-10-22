@@ -46,15 +46,16 @@ extension QuestModels {
         }
         
         func quest(at indexPath: IndexPath) -> QuestViewModel? {
-            guard isInRagne(for: indexPath) else { return nil }
-            return questList[indexPath.row]
+            questList[safe: indexPath.row]
         }
         
         func height(at indexPath: IndexPath) -> CGFloat {
-            guard isInRagne(for: indexPath) else { return .zero }
-            return questList[indexPath.row].category == .training ?
-                    CellSize.trainingHeight :
-                    UITableView.automaticDimension
+            guard let category = questList[safe: indexPath.row]?.category else { return .zero }
+            switch category {
+            case .training: return CellSize.trainingHeight
+            case .routine: return  UITableView.automaticDimension
+            }
+                    
         }
         
         // MARK: Mutating
@@ -76,8 +77,7 @@ extension QuestModels {
         }
         
         subscript(indexPath: IndexPath) -> QuestViewModel? {
-            guard isInRagne(for: indexPath) else { return nil }
-            return questList[indexPath.row]
+            return questList[safe: indexPath.row]
         }
     }
 }

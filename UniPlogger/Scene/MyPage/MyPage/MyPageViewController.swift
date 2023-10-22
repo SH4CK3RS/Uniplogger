@@ -116,8 +116,9 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.ID) as? InfoTableViewCell else { return UITableViewCell() }
-        cell.configure(item: InfoItemType.allCases[indexPath.row])
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.ID) as? InfoTableViewCell,
+              let item = InfoItemType.allCases[safe: indexPath.row] else { return .init() }
+        cell.configure(item: item)
         return cell
     }
     

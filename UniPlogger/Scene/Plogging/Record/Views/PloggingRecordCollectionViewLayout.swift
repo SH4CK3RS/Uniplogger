@@ -74,7 +74,7 @@ class PloggingRecordCollectionViewLayout: UICollectionViewFlowLayout {
     }
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return cache[indexPath.item]
+        return cache[safe: indexPath.item]
     }
     
 }

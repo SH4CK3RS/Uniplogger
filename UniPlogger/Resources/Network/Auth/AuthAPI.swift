@@ -87,7 +87,7 @@ struct AuthAPI {
                 if let data = response.data {
                     return .just(data)
                 } else {
-                    return .error(UniPloggerError.networkError(.responseError("")))
+                    return .error(UniPloggerError.networkError(.responseError(ErrorMessage.decodeError)))
                 }
             }
     }
@@ -104,7 +104,7 @@ struct AuthAPI {
             if let data = response.data {
                 return .just(data)
             } else {
-                return .error(UniPloggerError.networkError(.responseError("")))
+                return .error(UniPloggerError.networkError(.responseError(ErrorMessage.decodeError)))
             }
         }
     }
