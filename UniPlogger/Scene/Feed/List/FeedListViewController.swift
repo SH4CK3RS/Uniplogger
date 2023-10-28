@@ -18,5 +18,11 @@ protocol FeedListPresentableListener: AnyObject {
 
 final class FeedListViewController: UIViewController, FeedListPresentable, FeedListViewControllable {
 
+    override func loadView() {
+        view = mainView
+    }
+    
     weak var listener: FeedListPresentableListener?
+    
+    private let mainView = FeedListView()
 }

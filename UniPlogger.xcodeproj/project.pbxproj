@@ -38,6 +38,25 @@
 		3E436C992ADB081C004345FF /* PloggingRootComponent+Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436C982ADB081C004345FF /* PloggingRootComponent+Share.swift */; };
 		3E436C9B2AE4EED5004345FF /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436C9A2AE4EED5004345FF /* Array+Extensions.swift */; };
 		3E436C9D2AE4F4E2004345FF /* UploadRecordResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E436C9C2AE4F4E2004345FF /* UploadRecordResponse.json */; };
+		3E436CA12AE4FDA3004345FF /* AutoLoginResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E436CA02AE4FDA3004345FF /* AutoLoginResponse.json */; };
+		3E436CA82AE503F2004345FF /* FeedListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CA42AE503F2004345FF /* FeedListRouter.swift */; };
+		3E436CA92AE503F2004345FF /* FeedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CA52AE503F2004345FF /* FeedListViewController.swift */; };
+		3E436CAA2AE503F2004345FF /* FeedListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CA62AE503F2004345FF /* FeedListBuilder.swift */; };
+		3E436CAB2AE503F2004345FF /* FeedListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CA72AE503F2004345FF /* FeedListInteractor.swift */; };
+		3E436CB12AE50403004345FF /* FeedDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CAD2AE50403004345FF /* FeedDetailRouter.swift */; };
+		3E436CB22AE50403004345FF /* FeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CAE2AE50403004345FF /* FeedDetailViewController.swift */; };
+		3E436CB32AE50403004345FF /* FeedDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CAF2AE50403004345FF /* FeedDetailBuilder.swift */; };
+		3E436CB42AE50403004345FF /* FeedDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CB02AE50403004345FF /* FeedDetailInteractor.swift */; };
+		3E436CB82AE50480004345FF /* FeedListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CB72AE50480004345FF /* FeedListCollectionViewCell.swift */; };
+		3E436CBA2AE50866004345FF /* FeedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CB92AE50866004345FF /* FeedListView.swift */; };
+		3E436CBC2AE5460E004345FF /* FeedListLevelRankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CBB2AE5460E004345FF /* FeedListLevelRankingView.swift */; };
+		3E436CBE2AE546EC004345FF /* FeedListStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CBD2AE546EC004345FF /* FeedListStatView.swift */; };
+		3E436CC42AECED73004345FF /* FeedRootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CC02AECED73004345FF /* FeedRootRouter.swift */; };
+		3E436CC52AECED73004345FF /* FeedRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CC12AECED73004345FF /* FeedRootViewController.swift */; };
+		3E436CC62AECED73004345FF /* FeedRootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CC22AECED73004345FF /* FeedRootBuilder.swift */; };
+		3E436CC72AECED73004345FF /* FeedRootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CC32AECED73004345FF /* FeedRootInteractor.swift */; };
+		3E436CCA2AECEE29004345FF /* FeedRootComponent+FeedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CC92AECEE29004345FF /* FeedRootComponent+FeedList.swift */; };
+		3E436CCC2AECF005004345FF /* MainTabBarComponent+FeedRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E436CCB2AECF005004345FF /* MainTabBarComponent+FeedRoot.swift */; };
 		3E43CA782AB60FF500B6C4D8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA772AB60FF500B6C4D8 /* SplashView.swift */; };
 		3E43CA7A2AB61CF200B6C4D8 /* SplashBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA792AB61CF200B6C4D8 /* SplashBuilder.swift */; };
 		3E43CA7C2AB61D1400B6C4D8 /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */; };
@@ -370,6 +389,25 @@
 		3E436C982ADB081C004345FF /* PloggingRootComponent+Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PloggingRootComponent+Share.swift"; sourceTree = "<group>"; };
 		3E436C9A2AE4EED5004345FF /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		3E436C9C2AE4F4E2004345FF /* UploadRecordResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UploadRecordResponse.json; sourceTree = "<group>"; };
+		3E436CA02AE4FDA3004345FF /* AutoLoginResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AutoLoginResponse.json; sourceTree = "<group>"; };
+		3E436CA42AE503F2004345FF /* FeedListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListRouter.swift; sourceTree = "<group>"; };
+		3E436CA52AE503F2004345FF /* FeedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListViewController.swift; sourceTree = "<group>"; };
+		3E436CA62AE503F2004345FF /* FeedListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListBuilder.swift; sourceTree = "<group>"; };
+		3E436CA72AE503F2004345FF /* FeedListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListInteractor.swift; sourceTree = "<group>"; };
+		3E436CAD2AE50403004345FF /* FeedDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailRouter.swift; sourceTree = "<group>"; };
+		3E436CAE2AE50403004345FF /* FeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewController.swift; sourceTree = "<group>"; };
+		3E436CAF2AE50403004345FF /* FeedDetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailBuilder.swift; sourceTree = "<group>"; };
+		3E436CB02AE50403004345FF /* FeedDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailInteractor.swift; sourceTree = "<group>"; };
+		3E436CB72AE50480004345FF /* FeedListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListCollectionViewCell.swift; sourceTree = "<group>"; };
+		3E436CB92AE50866004345FF /* FeedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListView.swift; sourceTree = "<group>"; };
+		3E436CBB2AE5460E004345FF /* FeedListLevelRankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListLevelRankingView.swift; sourceTree = "<group>"; };
+		3E436CBD2AE546EC004345FF /* FeedListStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListStatView.swift; sourceTree = "<group>"; };
+		3E436CC02AECED73004345FF /* FeedRootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRootRouter.swift; sourceTree = "<group>"; };
+		3E436CC12AECED73004345FF /* FeedRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRootViewController.swift; sourceTree = "<group>"; };
+		3E436CC22AECED73004345FF /* FeedRootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRootBuilder.swift; sourceTree = "<group>"; };
+		3E436CC32AECED73004345FF /* FeedRootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRootInteractor.swift; sourceTree = "<group>"; };
+		3E436CC92AECEE29004345FF /* FeedRootComponent+FeedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedRootComponent+FeedList.swift"; sourceTree = "<group>"; };
+		3E436CCB2AECF005004345FF /* MainTabBarComponent+FeedRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabBarComponent+FeedRoot.swift"; sourceTree = "<group>"; };
 		3E43CA772AB60FF500B6C4D8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3E43CA792AB61CF200B6C4D8 /* SplashBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBuilder.swift; sourceTree = "<group>"; };
 		3E43CA7B2AB61D1400B6C4D8 /* SplashRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouter.swift; sourceTree = "<group>"; };
@@ -647,7 +685,6 @@
 		AAB3B4FA2520B6D900F0311A /* PloggingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingPresenter.swift; sourceTree = "<group>"; };
 		AAB3B4FC2520B6D900F0311A /* PloggingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PloggingRouter.swift; sourceTree = "<group>"; };
 		AAB3B5062520D16800F0311A /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
-		AAB3B5092520D34D00F0311A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AAB5592D2549B790000BB903 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		AAB559342549BA2D000BB903 /* MultiColorPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiColorPolyline.swift; sourceTree = "<group>"; };
 		AAB559382549BB26000BB903 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDisplay.swift; sourceTree = "<group>"; };
@@ -712,6 +749,7 @@
 			children = (
 				3E2FB8652ABF525F0096F554 /* LoginResponse.json */,
 				3E436C9C2AE4F4E2004345FF /* UploadRecordResponse.json */,
+				3E436CA02AE4FDA3004345FF /* AutoLoginResponse.json */,
 			);
 			path = DummyResponses;
 			sourceTree = "<group>";
@@ -773,6 +811,80 @@
 			isa = PBXGroup;
 			children = (
 				3E2FB8882AC0111F0096F554 /* MainTabBarComponent+PloggingRoot.swift */,
+				3E436CCB2AECF005004345FF /* MainTabBarComponent+FeedRoot.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		3E436CA22AE503CE004345FF /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				3E436CBF2AECED52004345FF /* Root */,
+				3E436CAC2AE503F8004345FF /* Detail */,
+				3E436CA32AE503E6004345FF /* List */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		3E436CA32AE503E6004345FF /* List */ = {
+			isa = PBXGroup;
+			children = (
+				3E436CB62AE5046E004345FF /* Views */,
+				3E436CA42AE503F2004345FF /* FeedListRouter.swift */,
+				3E436CA52AE503F2004345FF /* FeedListViewController.swift */,
+				3E436CA62AE503F2004345FF /* FeedListBuilder.swift */,
+				3E436CA72AE503F2004345FF /* FeedListInteractor.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		3E436CAC2AE503F8004345FF /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				3E436CB52AE50409004345FF /* Views */,
+				3E436CAD2AE50403004345FF /* FeedDetailRouter.swift */,
+				3E436CAE2AE50403004345FF /* FeedDetailViewController.swift */,
+				3E436CAF2AE50403004345FF /* FeedDetailBuilder.swift */,
+				3E436CB02AE50403004345FF /* FeedDetailInteractor.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		3E436CB52AE50409004345FF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3E436CB62AE5046E004345FF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3E436CB72AE50480004345FF /* FeedListCollectionViewCell.swift */,
+				3E436CB92AE50866004345FF /* FeedListView.swift */,
+				3E436CBB2AE5460E004345FF /* FeedListLevelRankingView.swift */,
+				3E436CBD2AE546EC004345FF /* FeedListStatView.swift */,
+			);
+			name = Views;
+			path = "퍋ㅈㄴ";
+			sourceTree = "<group>";
+		};
+		3E436CBF2AECED52004345FF /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				3E436CC82AECEE1A004345FF /* Components */,
+				3E436CC02AECED73004345FF /* FeedRootRouter.swift */,
+				3E436CC12AECED73004345FF /* FeedRootViewController.swift */,
+				3E436CC22AECED73004345FF /* FeedRootBuilder.swift */,
+				3E436CC32AECED73004345FF /* FeedRootInteractor.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		3E436CC82AECEE1A004345FF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3E436CC92AECEE29004345FF /* FeedRootComponent+FeedList.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -965,6 +1077,7 @@
 		4CC9C7C525231565004D873D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				3E436CA22AE503CE004345FF /* Feed */,
 				3E2FB8672ABFFAFA0096F554 /* MainTabBar */,
 				AAC552BD2585C4AB000DAFDF /* ResetPassword */,
 				AA7658E82582799400BA0A3E /* FindPassword */,
@@ -1377,7 +1490,6 @@
 			isa = PBXGroup;
 			children = (
 				AAB3B4FA2520B6D900F0311A /* PloggingPresenter.swift */,
-				AAB3B5092520D34D00F0311A /* BaseViewController.swift */,
 				AAB3B4FC2520B6D900F0311A /* PloggingRouter.swift */,
 				AAB887A125245F65000A9D58 /* Roboto-Italic.ttf */,
 				AAB8879F25245F65000A9D58 /* Roboto-Bold.ttf */,
@@ -1797,6 +1909,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E436C9D2AE4F4E2004345FF /* UploadRecordResponse.json in Resources */,
+				3E436CA12AE4FDA3004345FF /* AutoLoginResponse.json in Resources */,
 				AAB3B4D72520A31200F0311A /* LaunchScreen.storyboard in Resources */,
 				AA7F550C2532C20C001C4012 /* Roboto-LightItalic.ttf in Resources */,
 				AAC9585B2545BF130092BA6E /* NotoSansCJKkr-Black.otf in Resources */,
@@ -1881,10 +1994,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E436CCC2AECF005004345FF /* MainTabBarComponent+FeedRoot.swift in Sources */,
 				83DE077A2566AD050085AC72 /* UserLogRouter.swift in Sources */,
 				3EDD651E2ABF09DB00776C34 /* LoginBuilder.swift in Sources */,
 				835249162577A6C500C9F495 /* ReportInteractor.swift in Sources */,
 				AA4AD5A12574058E0087E060 /* AuthManager.swift in Sources */,
+				3E436CBE2AE546EC004345FF /* FeedListStatView.swift in Sources */,
 				8352489B25727CE900C9F495 /* Player.swift in Sources */,
 				3EDD64D82AB6DCCA00776C34 /* TutorialRootInteractor.swift in Sources */,
 				3EDD64F62AB7053200776C34 /* TutorialSecondView.swift in Sources */,
@@ -1899,6 +2014,7 @@
 				83530972257B918D00C3626D /* LogOutType.swift in Sources */,
 				4C3F561C2568FA2B006D7C9F /* PloggingItemType.swift in Sources */,
 				83DE07812566AD050085AC72 /* ChallengePresenter.swift in Sources */,
+				3E436CA92AE503F2004345FF /* FeedListViewController.swift in Sources */,
 				8352480F2572279500C9F495 /* PloggingData.swift in Sources */,
 				3E436C9B2AE4EED5004345FF /* Array+Extensions.swift in Sources */,
 				3EDD65162ABB39BB00776C34 /* SplashComponent+Registration.swift in Sources */,
@@ -1923,8 +2039,10 @@
 				3E67E1C22AC81431001FBA36 /* PloggingRecordRouter.swift in Sources */,
 				AA7658F1258279A500BA0A3E /* FindPasswordRouter.swift in Sources */,
 				835248A02572C9BF00C9F495 /* ChallengeAPI.swift in Sources */,
+				3E436CC62AECED73004345FF /* FeedRootBuilder.swift in Sources */,
 				3EDD64F82AB7094A00776C34 /* TutorialRootComponent+TutorialSecond.swift in Sources */,
 				4CE9149A257BB33000BCF398 /* QuestTutorialViewController3.swift in Sources */,
+				3E436CC52AECED73004345FF /* FeedRootViewController.swift in Sources */,
 				3E67E1D32AC84F65001FBA36 /* CameraBuilder.swift in Sources */,
 				3E2FB88B2AC011FC0096F554 /* SplashComponent+MainTabBar.swift in Sources */,
 				3E67E1D72AC852E1001FBA36 /* PloggingRootComponent+Camera.swift in Sources */,
@@ -1938,8 +2056,10 @@
 				AA7658F4258279A500BA0A3E /* FindPasswordInteractor.swift in Sources */,
 				3E436C902AD298E0004345FF /* ShareRouter.swift in Sources */,
 				3E2FB8802AC002070096F554 /* PloggingMainBuilder.swift in Sources */,
+				3E436CC42AECED73004345FF /* FeedRootRouter.swift in Sources */,
 				3EDD65212ABF09E300776C34 /* LoginView.swift in Sources */,
 				83530992257B9D3F00C3626D /* WithdrawViewController+UI.swift in Sources */,
+				3E436CC72AECED73004345FF /* FeedRootInteractor.swift in Sources */,
 				83DE07842566AD050085AC72 /* RankTableViewCell.swift in Sources */,
 				4C3F5747256D5A7B006D7C9F /* QuestChecker.swift in Sources */,
 				3E43CA7A2AB61CF200B6C4D8 /* SplashBuilder.swift in Sources */,
@@ -1957,10 +2077,12 @@
 				AAAD690225562CB900895265 /* IntrinsicSizeCollectionView.swift in Sources */,
 				3E2FB8752AC0016F0096F554 /* PloggingRootRouter.swift in Sources */,
 				4C3F564F256A308F006D7C9F /* Calendar+.swift in Sources */,
+				3E436CB82AE50480004345FF /* FeedListCollectionViewCell.swift in Sources */,
 				3E2FB8772AC0016F0096F554 /* PloggingRootBuilder.swift in Sources */,
 				AAA1CBF2255D620100EDB18A /* BaseTarget.swift in Sources */,
 				4CBA217B254EB1AF002BDCC3 /* QuestModels+ViewModel.swift in Sources */,
 				AAB559392549BB26000BB903 /* FormatDisplay.swift in Sources */,
+				3E436CB32AE50403004345FF /* FeedDetailBuilder.swift in Sources */,
 				3E67E1BC2AC7FF47001FBA36 /* MKPolyLine+Extensions.swift in Sources */,
 				AA7658EF258279A500BA0A3E /* FindPasswordPresenter.swift in Sources */,
 				3EDD64F42AB704BC00776C34 /* TutorialSecondInteractor.swift in Sources */,
@@ -1975,6 +2097,7 @@
 				8353097A257B91A900C3626D /* SignUpInfoViewController.swift in Sources */,
 				4C6F0AC0257B9B99008DF8D1 /* QuestContents.swift in Sources */,
 				AA7F54ED2532C1A6001C4012 /* PloggingInteractor.swift in Sources */,
+				3E436CB22AE50403004345FF /* FeedDetailViewController.swift in Sources */,
 				AA35BC85254FFEFA00AE32A7 /* ManagedTrashCan+CoreDataClass.swift in Sources */,
 				AA59BF16258DF26E003319D4 /* TutorialNavigationController.swift in Sources */,
 				4C42364B257234D50068A252 /* QuestAPI.swift in Sources */,
@@ -1996,6 +2119,7 @@
 				4CE91490257BB2D100BCF398 /* QuestTutorialViewController1.swift in Sources */,
 				835248292572280000C9F495 /* AuthAPI.swift in Sources */,
 				4CB979C42524E5BC00498E81 /* NavigationTabsView.swift in Sources */,
+				3E436CAB2AE503F2004345FF /* FeedListInteractor.swift in Sources */,
 				835248472572283C00C9F495 /* InfoBaseViewController.swift in Sources */,
 				AA35BC77254FEEFA00AE32A7 /* CoreDataStore.swift in Sources */,
 				3EDD64F12AB704BC00776C34 /* TutorialSecondRouter.swift in Sources */,
@@ -2026,6 +2150,7 @@
 				4CF62089257B11750029FBD6 /* ProceedingQuest+CoreDataClass.swift in Sources */,
 				AAC9584F2545BC110092BA6E /* ScrollStackView.swift in Sources */,
 				AA7F54EF2532C1A6001C4012 /* PloggingModels.swift in Sources */,
+				3E436CCA2AECEE29004345FF /* FeedRootComponent+FeedList.swift in Sources */,
 				835248502572283C00C9F495 /* UserInfoView.swift in Sources */,
 				835248A62572CA0000C9F495 /* ChallengeAPITarget.swift in Sources */,
 				3EDD65102ABA0F1C00776C34 /* RegistrationView.swift in Sources */,
@@ -2072,6 +2197,7 @@
 				8352480D2572279500C9F495 /* Feed.swift in Sources */,
 				8352489725727BFE00C9F495 /* Planet.swift in Sources */,
 				3EB337122ACA7E3100A48BB3 /* ImagePreviewBuilder.swift in Sources */,
+				3E436CB42AE50403004345FF /* FeedDetailInteractor.swift in Sources */,
 				8352480E2572279500C9F495 /* User.swift in Sources */,
 				AAC552B225848D8D000DAFDF /* BaseResponse.swift in Sources */,
 				AA4AD575257265BF0087E060 /* DetailPresenter.swift in Sources */,
@@ -2079,6 +2205,7 @@
 				3EDD64EB2AB6FF8700776C34 /* UINavigationController+Extensions.swift in Sources */,
 				3EDD64DE2AB6DDEB00776C34 /* TutorialFirstRouter.swift in Sources */,
 				AA7F54F72532C1E3001C4012 /* GradientView.swift in Sources */,
+				3E436CA82AE503F2004345FF /* FeedListRouter.swift in Sources */,
 				3E2FB87F2AC002070096F554 /* PloggingMainViewController.swift in Sources */,
 				3E2FB86C2ABFFBFC0096F554 /* MainTabBarRouter.swift in Sources */,
 				835249122577A68800C9F495 /* ReportRouter.swift in Sources */,
@@ -2096,6 +2223,7 @@
 				3E67E1AE2AC72C95001FBA36 /* StartCountingViewController.swift in Sources */,
 				3EDD65272ABF15FC00776C34 /* SplashComponent+Login.swift in Sources */,
 				AA217515254CF5ED0076BAD5 /* TrashCan.swift in Sources */,
+				3E436CAA2AE503F2004345FF /* FeedListBuilder.swift in Sources */,
 				83DE07732566AD050085AC72 /* StartViewController.swift in Sources */,
 				83530986257B91E300C3626D /* SettingTableViewCell.swift in Sources */,
 				AAB3B4EC2520B2B400F0311A /* UIImage+Extensions.swift in Sources */,
@@ -2125,6 +2253,7 @@
 				83DE07832566AD050085AC72 /* TopRankView.swift in Sources */,
 				8353096F257B918D00C3626D /* LogOutInfoTableViewCell.swift in Sources */,
 				835248612572285100C9F495 /* LogViewController+UI.swift in Sources */,
+				3E436CBA2AE50866004345FF /* FeedListView.swift in Sources */,
 				4CC9C7D4252315F3004D873D /* QuestModels.swift in Sources */,
 				AAB5592E2549B790000BB903 /* Route.swift in Sources */,
 				3EDD650B2ABA0EFB00776C34 /* RegistrationRouter.swift in Sources */,
@@ -2140,6 +2269,7 @@
 				835248492572283C00C9F495 /* MyPagePresenter.swift in Sources */,
 				3EDD650E2ABA0EFB00776C34 /* RegistrationInteractor.swift in Sources */,
 				3EB337172ACA903400A48BB3 /* ShareView.swift in Sources */,
+				3E436CB12AE50403004345FF /* FeedDetailRouter.swift in Sources */,
 				83DE077D2566AD050085AC72 /* ChallengeModels.swift in Sources */,
 				83530979257B91A900C3626D /* SignUpTableViewCell.swift in Sources */,
 				3E67E1C42AC81431001FBA36 /* PloggingRecordBuilder.swift in Sources */,
@@ -2158,6 +2288,7 @@
 				3EDD64DF2AB6DDEB00776C34 /* TutorialFirstViewController.swift in Sources */,
 				3E67E1D12AC84F64001FBA36 /* CameraRouter.swift in Sources */,
 				83DE077E2566AD050085AC72 /* ChallengeWorker.swift in Sources */,
+				3E436CBC2AE5460E004345FF /* FeedListLevelRankingView.swift in Sources */,
 				3EDD65232ABF105F00776C34 /* LoginService.swift in Sources */,
 				AAC552C62585C4C6000DAFDF /* ResetPasswordRouter.swift in Sources */,
 				835248602572285100C9F495 /* LogNavigationController.swift in Sources */,

@@ -36,8 +36,10 @@ final class MainTabBarBuilder: Builder<MainTabBarDependency>, MainTabBarBuildabl
         let interactor = MainTabBarInteractor(presenter: viewController)
         interactor.listener = listener
         let ploggingRootBuilder = PloggingRootBuilder(dependency: component)
+        let feedRootBuilder = FeedRootBuilder(dependency: component)
         return MainTabBarRouter(interactor: interactor,
                                 viewController: viewController,
-                                ploggingRootBuilder: ploggingRootBuilder)
+                                ploggingRootBuilder: ploggingRootBuilder,
+                                feedRootBuilder: feedRootBuilder)
     }
 }

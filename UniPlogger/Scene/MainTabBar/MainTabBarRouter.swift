@@ -7,8 +7,9 @@
 //
 
 import RIBs
+import UIKit
 
-protocol MainTabBarInteractable: Interactable, PloggingRootListener {
+protocol MainTabBarInteractable: Interactable, PloggingRootListener, FeedRootListener {
     var router: MainTabBarRouting? { get set }
     var listener: MainTabBarListener? { get set }
 }
@@ -22,9 +23,11 @@ final class MainTabBarRouter: ViewableRouter<MainTabBarInteractable, MainTabBarV
     // TODO: Constructor inject child builder protocols to allow building children.
     init(interactor: MainTabBarInteractable,
          viewController: MainTabBarViewControllable,
-         ploggingRootBuilder: PloggingRootBuildable
+         ploggingRootBuilder: PloggingRootBuildable,
+         feedRootBuilder: FeedRootBuildable
     ) {
         self.ploggingRootBuilder = ploggingRootBuilder
+        self.feedRootBuilder = feedRootBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
@@ -39,10 +42,26 @@ final class MainTabBarRouter: ViewableRouter<MainTabBarInteractable, MainTabBarV
     private let ploggingRootBuilder: PloggingRootBuildable
     private var ploggingRootRouter: PloggingRootRouting?
     
+    private let feedRootBuilder: FeedRootBuildable
+    private var feedRootRouter: FeedRootRouting?
+    
     private func addChildren() {
-        let router = ploggingRootBuilder.build(withListener: interactor)
-        ploggingRootRouter = router
-        attachChild(router)
-        viewController.set(viewControllers: [router.viewControllable])
+        let ploggingRootRouter = ploggingRootBuilder.build(withListener: interactor)
+        self.ploggingRootRouter = ploggingRootRouter
+        let feedRootRouter = feedRootBuilder.build(withListener: interactor)
+        self.feedRootRouter = feedRootRouter
+        
+        attachChild(ploggingRootRouter)
+        attachChild(feedRootRouter)
+        
+        let ploggingItem = UITabBarItem(title: "플로깅", image: UIImage(named: "tabbar_plogging"), tag: 2)
+        ploggingRootRouter.viewControllable.uiviewController.tabBarItem = ploggingItem
+        let feedItem = UITabBarItem(title: "로그", image: UIImage(named: "tabbar_log"), tag: 3)
+        feedRootRouter.viewControllable.uiviewController.tabBarItem = feedItem
+        
+        viewController.set(viewControllers: [
+            ploggingRootRouter.viewControllable,
+            feedRootRouter.viewControllable
+        ])
     }
 }
