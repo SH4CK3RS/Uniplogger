@@ -87,6 +87,7 @@ final class LoginInteractor: PresentableInteractor<LoginPresentable>, LoginInter
                 AuthManager.shared.user = response.user
                 owner.listener?.request(.loginFinished)
             } onFailure: { owner, error in
+                UPLoader.shared.hidden()
                 owner.presenter.request(.showError(UniPloggerError.networkError(.responseError(error.localizedDescription))))
             }.disposeOnDeactivate(interactor: self)
     }
