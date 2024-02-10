@@ -13,6 +13,14 @@ struct AuthManager {
     
     private init() {}
     
+    var isLogined: Bool {
+        guard userToken != nil,
+              user != nil else {
+            return false
+        }
+        return true
+    }
+    
     var userToken: String? {
         get {
             guard let userToken = UserDefaults.standard.string(forDefines: .userToken) else { return nil }
