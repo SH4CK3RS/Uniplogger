@@ -43,35 +43,36 @@ final class SplashInteractor: PresentableInteractor<SplashPresntable>, SplashInt
     override func didBecomeActive() {
         super.didBecomeActive()
         
+        AuthManager.shared.autoSave = true
+        checkLogin()
     }
     
     override func willResignActive() {
         super.willResignActive()
-        
     }
     
     private func checkLogin() {
-        if AuthManager.shared.userToken != nil,
-           let user = AuthManager.shared.user {
-            AuthAPI.shared.getUser(uid: user.id)
-                .observe(on: MainScheduler.instance)
-                .subscribe(with: self) { owner, user in
-                    AuthManager.shared.user = user
-                    self.router?.request(.routeToMain)
-                } onFailure: { owner, error in
-                    self.processNotLogined()
-                }.disposeOnDeactivate(interactor: self)
+        if AuthManager.shared.isLogined {
+           handleAutoLogin()
         } else {
-            processNotLogined()
+             processNotLogined()
         }
     }
     
+    private func handleAutoLogin() {
+        guard let user = AuthManager.shared.user else { return }
+        UserAPI.shared.getUser(uid: user.id)
+            .observe(on: MainScheduler.instance)
+            .subscribe(with: self) { owner, user in
+                AuthManager.shared.user = user
+                self.router?.request(.routeToMain)
+            } onFailure: { owner, error in
+                self.processNotLogined()
+            }.disposeOnDeactivate(interactor: self)
+    }
+    
     func request(_ request: SplashPresentableListenerRequest) {
-        switch request {
-        case .viewDidLoad:
-            AuthManager.shared.autoSave = true
-            checkLogin()
-        }
+        switch request {}
     }
     
     private func processNotLogined() {

@@ -14,9 +14,7 @@ import RIBs
 import UIKit
 import Then
 
-enum SplashPresentableListenerRequest {
-    case viewDidLoad
-}
+enum SplashPresentableListenerRequest {}
 
 protocol SplashPresentableListener: AnyObject {
     func request(_ request: SplashPresentableListenerRequest)
@@ -28,11 +26,6 @@ final class SplashViewController: UIViewController, SplashPresntable, SplashView
     // MARK: View lifecycle
     override func loadView() {
         view = mainView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        listener?.request(.viewDidLoad)
     }
     
     private let mainView = SplashView()
