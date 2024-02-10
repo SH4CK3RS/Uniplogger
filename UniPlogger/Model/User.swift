@@ -10,13 +10,13 @@ import Foundation
 
 struct User: Codable {
     ///UID
-    var id: Int = -1
+    let id: Int
     /// 가입 날짜
-    var registeredDate: String = ""
+    var createdAt: String
     ///이메일
-    var email: String = ""
+    let email: String
     /// 닉네임
-    var nickname: String = ""
+    let nickname: String
     /// 레벨
     var level: Int = 0
     /// 랭킹
@@ -32,7 +32,7 @@ struct User: Codable {
     
     private enum CodingKeys: String, CodingKey {
         case id
-        case registeredDate
+        case createdAt
         case email
         case nickname
         case level
@@ -45,10 +45,10 @@ struct User: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: User.CodingKeys.self)
-        id = try container.decodeIfPresent(Int.self, forKey: .id) ?? -1
-        registeredDate = try container.decodeIfPresent(String.self, forKey: .registeredDate) ?? ""
-        email = try container.decodeIfPresent(String.self, forKey: .email) ?? ""
-        nickname = try container.decodeIfPresent(String.self, forKey: .nickname) ?? ""
+        id = try container.decode(Int.self, forKey: .id)
+        createdAt = try container.decode(String.self, forKey: .createdAt)
+        email = try container.decode(String.self, forKey: .email)
+        nickname = try container.decode(String.self, forKey: .nickname)
         level = try container.decodeIfPresent(Int.self, forKey: .level) ?? 0
         rank = try container.decodeIfPresent(Double.self, forKey: .rank) ?? 0
         state = try container.decodeIfPresent(UserState.self, forKey: .state) ?? .normal
@@ -57,7 +57,6 @@ struct User: Codable {
         monthlyStat = try container.decodeIfPresent(Double.self, forKey: .monthlyStat) ?? 0.0
         
     }
-    
 }
 
 enum UserState: String, Codable {

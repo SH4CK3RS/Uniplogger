@@ -35,7 +35,7 @@ final class SignUpTableViewCell: UITableViewCell {
         case .email:
             valueLabel.text = AuthManager.shared.user?.email
         case .resteredDate:
-            guard let dateString = AuthManager.shared.user?.registeredDate else { return }
+            guard let dateString = AuthManager.shared.user?.createdAt else { return }
             let date = FormatDisplay.date(dateString)
             let formatter = DateFormatter()
             formatter.dateFormat = "YYYY년 MM월 d일"
