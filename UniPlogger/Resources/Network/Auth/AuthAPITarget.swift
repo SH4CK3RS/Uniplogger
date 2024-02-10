@@ -12,7 +12,6 @@ import Moya
 enum AuthAPITarget {
     //쓰레기통 CRUD
     case login(email: String, password: String)
-    case getUser(uid: Int)
     case logout
     case withdraw(uid: Int)
     case registration(email: String, password1: String, password2: String, nickname: String)
@@ -25,21 +24,19 @@ extension AuthAPITarget: BaseTarget {
     var path: String{
         switch self{
         case .login:
-            return "users/login/"
-        case let .getUser(uid):
-            return "users/\(uid)/"
+            return "auth/signIn"
         case .logout:
-            return "users/logout/"
+            return "auth/logout"
         case let .withdraw(uid):
-            return "users/\(uid)/"
+            return "auth/\(uid)"
         case .registration:
-            return "users/registration/"
+            return "auth/signUp"
         case .findPassword:
-            return "users/password/reset/"
+            return "auth/password/reset"
         case .initQuest:
-            return "users/quest_to_user/"
+            return "auth/quest_to_user"
         case .resetPassword:
-            return "users/password/reset/confirm/"
+            return "auth/password/reset/confirm"
         }
     }
     
@@ -47,8 +44,6 @@ extension AuthAPITarget: BaseTarget {
         switch self{
         case .login:
             return .post
-        case .getUser:
-            return .get
         case .logout:
             return .post
         case .withdraw:
@@ -71,8 +66,6 @@ extension AuthAPITarget: BaseTarget {
               "email": email,
               "password": password
             ]
-        case .getUser:
-            return [:]
         case .logout:
             return [:]
         case let .withdraw(uid):
@@ -107,8 +100,6 @@ extension AuthAPITarget: BaseTarget {
         switch self{
         case .login:
             return .requestParameters(parameters: parameters, encoding: encoding)
-        case .getUser:
-            return .requestPlain
         case .logout:
             return .requestPlain
         case .withdraw:
@@ -128,12 +119,6 @@ extension AuthAPITarget: BaseTarget {
       switch self {
       case .login:
           if let url = Bundle.main.url(forResource: "LoginResponse", withExtension: "json"),
-             let data = try? Data(contentsOf: url) {
-              return data
-          }
-          return Data()
-      case .getUser:
-          if let url = Bundle.main.url(forResource: "AutoLoginResponse", withExtension: "json"),
              let data = try? Data(contentsOf: url) {
               return data
           }

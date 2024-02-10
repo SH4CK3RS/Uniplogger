@@ -23,11 +23,10 @@ extension BaseTarget {
         var headers = [
             "Content-type": "application/json",
         ]
-        if let token = AuthManager.shared.userToken{
-            headers["Authorization"] = "JWT \(token)"
+        if let token = AuthManager.shared.userToken {
+            headers["Authorization"] = "Bearer \(token)"
         }
         return headers
-
     }
     
     var encoding: ParameterEncoding {

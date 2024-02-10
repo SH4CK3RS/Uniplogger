@@ -36,7 +36,7 @@ final class QuestDetailWorker {
         QuestAPI.shared.detail(quest: quest) { (response) in
             switch response {
             case let .success(value):
-                if value.success, let questResponse = value.data{
+                if value.status == .success, let questResponse = value.data{
                     completionHandler(questResponse.quest, questResponse.moreQuest ?? [])
                 }
             case let .failure(error):

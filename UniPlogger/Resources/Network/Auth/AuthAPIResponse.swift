@@ -9,8 +9,8 @@
 import Foundation
 
 struct LoginResponse: Codable {
-    var token: String?
-    var user: User?
+    var token: String
+    var user: User
 }
 
 struct GetUserResponse: Codable {

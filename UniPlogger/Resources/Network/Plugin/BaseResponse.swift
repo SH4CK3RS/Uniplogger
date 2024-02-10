@@ -10,20 +10,24 @@ import Foundation
 
 struct BaseResponse<T: Codable>: Codable {
     // MARK: Properties
-    var success: Bool = false
-    var message: String?
+    enum Status: String, Codable {
+        case success
+        case fail
+    }
+    var status: Status
+    var errorMessage: String?
     var data: T?
     
     enum CodingKeys: String, CodingKey {
-        case success
-        case message
+        case status
+        case errorMessage
         case data
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: BaseResponse.CodingKeys.self)
-        success = try container.decodeIfPresent(Bool.self, forKey: .success) ?? false
-        message = try container.decodeIfPresent(String.self, forKey: .message)
+        status = try container.decode(Status.self, forKey: .status)
+        errorMessage = try container.decodeIfPresent(String.self, forKey: .errorMessage)
         data = try container.decodeIfPresent(T.self, forKey: .data)
     }
     

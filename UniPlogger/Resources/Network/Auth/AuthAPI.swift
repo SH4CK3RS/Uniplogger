@@ -14,21 +14,9 @@ struct AuthAPI {
     
     static let shared = AuthAPI()
     private let provider = MoyaProvider<AuthAPITarget>(
-        stubClosure: MoyaProvider.immediatelyStub,
         session: SessionManager.shared,
         plugins: [VerbosePlugin(verbose: true)]
     )
-    
-    func getUser(uid: Int, completionHandler: @escaping (Result<BaseResponse<User>, Error>) -> Void) {
-        provider.rx.request(.getUser(uid: uid))
-            .filterSuccessfulStatusCodes()
-            .map(BaseResponse<User>.self)
-            .subscribe {
-                completionHandler(.success($0))
-            } onFailure: {
-                completionHandler(.failure($0))
-            }.disposed(by: disposeBag)
-    }
     
     func initQuest() {
         provider.rx.request(.initQuest)
@@ -107,17 +95,5 @@ struct AuthAPI {
                 return .error(UniPloggerError.networkError(.responseError(ErrorMessage.decodeError)))
             }
         }
-    }
-    
-    func getUser(uid: Int) -> Single<User> {
-        provider.rx.request(.getUser(uid: uid))
-            .map(BaseResponse<User>.self)
-            .flatMap { response -> Single<User> in
-                if let data = response.data {
-                    return .just(data)
-                } else {
-                    return .error(UniPloggerError.networkError(.responseError(ErrorMessage.decodeError)))
-                }
-            }
     }
 }

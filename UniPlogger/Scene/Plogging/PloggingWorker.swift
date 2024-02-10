@@ -73,7 +73,7 @@ extension PloggingWorker{
         PloggingAPI.shared.fetchTrashList { (response) in
             switch response {
             case .success(let value):
-                if value.success, let trashcanList = value.data{
+                if value.status == .success, let trashcanList = value.data{
                     self.fetchTrashCan { list in
                         if list.isEmpty{
                             // Toto add list
@@ -97,7 +97,7 @@ extension PloggingWorker{
                         
                     }
                 } else {
-                    let response = Plogging.FetchTrashCan.Response(error: .networkError(.responseError(value.message ?? "")))
+                    let response = Plogging.FetchTrashCan.Response(error: .networkError(.responseError(value.errorMessage ?? "")))
                     completion(response)
                 }
                 
@@ -140,7 +140,7 @@ extension PloggingWorker{
             address: request.address) { (response) in
             switch response {
             case let .success(value):
-                if value.success, let trashcan = value.data{
+                if value.status == .success, let trashcan = value.data{
                     self.storage.createTrashCan(trashcan) { (result) in
                         switch result{
                         case .success(let trashcan):
@@ -152,7 +152,7 @@ extension PloggingWorker{
                         }
                     }
                 } else {
-                    let response = Plogging.AddConfirmTrashCan.Response(request: request, error: .networkError(.responseError(value.message ?? "")))
+                    let response = Plogging.AddConfirmTrashCan.Response(request: request, error: .networkError(.responseError(value.errorMessage ?? "")))
                     completion(response)
                 }
             case let .failure(error):
@@ -178,7 +178,7 @@ extension PloggingWorker{
         PloggingAPI.shared.deleteTrashCan(id: request.id) { (response) in
             switch response {
             case let .success(value):
-                if value.success, let trashcan = value.data {
+                if value.status == .success, let trashcan = value.data {
                     self.storage.deleteTrashCan(latitude: trashcan.latitude, longitude: trashcan.longitude) { (result) in
                         switch result{
                         case .success():
@@ -190,7 +190,7 @@ extension PloggingWorker{
                         }
                     }
                 } else {
-                    let response = Plogging.RemoveTrashCan.Response(request: request, error: .networkError(.responseError(value.message ?? "")))
+                    let response = Plogging.RemoveTrashCan.Response(request: request, error: .networkError(.responseError(value.errorMessage ?? "")))
                     completion(response)
                 }
             case let .failure(error):

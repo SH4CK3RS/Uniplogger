@@ -31,7 +31,7 @@ class ChallengeWorker {
             print("fetch")
             switch response {
             case .success(let value):
-                if value.success, let data = value.data {
+                if value.status == .success, let data = value.data {
                     guard let data = data else { return }
                     var user = AuthManager.shared.user
                     user?.planet = data

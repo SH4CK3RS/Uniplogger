@@ -20,14 +20,14 @@ class LogWorker {
         }
     }
     func getUser(uid: Int, completion: @escaping(Log.GetUser.Response) -> Void) {
-        AuthAPI.shared.getUser(uid: uid) { (response) in
+        UserAPI.shared.getUser(uid: uid) { (response) in
             switch response {
             case let .success(value):
-                if value.success, let user = value.data {
+                if value.status == .success, let user = value.data {
                     let response = Log.GetUser.Response(response: user)
                     completion(response)
                 } else {
-                    let res = Log.GetUser.Response(error: .networkError(.responseError(value.message ?? "")))
+                    let res = Log.GetUser.Response(error: .networkError(.responseError(value.errorMessage ?? "")))
                     completion(res)
                 }
             case let .failure(error):
@@ -41,11 +41,11 @@ class LogWorker {
         LogAPI.shared.updateLevel { response in
             switch response {
             case let .success(value):
-                if value.success, let user = value.data {
+                if value.status == .success, let user = value.data {
                     let response = Log.GetUser.Response(response: user)
                     completion(response)
                 } else {
-                    let res = Log.GetUser.Response(error: .networkError(.responseError(value.message ?? "")))
+                    let res = Log.GetUser.Response(error: .networkError(.responseError(value.errorMessage ?? "")))
                     completion(res)
                 }
             case let .failure(error):

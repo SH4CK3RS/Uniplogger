@@ -24,11 +24,11 @@ class FindPasswordWorker {
         AuthAPI.shared.findPassword(email: request.email) { (response) in
             switch response {
             case let .success(value):
-                if value.success, let data = value.data {
+                if value.status == .success, let data = value.data {
                     let response = FindPassword.FindPassword.Response(request: request, data: data)
                     completion(response)
                 } else {
-                    let response = FindPassword.FindPassword.Response(request: request, error: .networkError(.responseError(value.message ?? "")))
+                    let response = FindPassword.FindPassword.Response(request: request, error: .networkError(.responseError(value.errorMessage ?? "")))
                     completion(response)
                 }
             case let .failure(error):

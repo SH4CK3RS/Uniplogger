@@ -31,11 +31,11 @@ class ResetPasswordWorker {
         AuthAPI.shared.resetPassword(password1: request.password1, password2: request.password2, uid: uid, token: token) { (response) in
             switch response {
             case let .success(value):
-                if value.success, let data = value.data{
+                if value.status == .success, let data = value.data{
                     let response = ResetPassword.ResetPassword.Response(request: request, response: data)
                     completion(response)
                 } else {
-                    let response = ResetPassword.ResetPassword.Response(request: request, error: .networkError(.responseError(value.message ?? "")))
+                    let response = ResetPassword.ResetPassword.Response(request: request, error: .networkError(.responseError(value.errorMessage ?? "")))
                     completion(response)
                 }
             case let .failure(error):

@@ -25,11 +25,11 @@ class UserLogWorker {
         LogAPI.shared.getUserFeed(uid: uid) { (response) in
             switch response {
             case let .success(value):
-                if value.success, let feedList = value.data {
+                if value.status == .success, let feedList = value.data {
                     let response = Log.GetFeed.Response(feedList: feedList)
                     completion(response)
                 } else {
-                    let response = Log.GetFeed.Response(error: .networkError(.responseError(value.message ?? "")))
+                    let response = Log.GetFeed.Response(error: .networkError(.responseError(value.errorMessage ?? "")))
                     completion(response)
                 }
             case let .failure(error):
@@ -43,11 +43,11 @@ class UserLogWorker {
         LogAPI.shared.getOtherUser(uid: uid) { (response) in
             switch response {
             case let .success(value):
-                if value.success, let user = value.data {
+                if value.status == .success, let user = value.data {
                     let response = Log.GetUser.Response(response: user)
                     completion(response)
                 } else {
-                    let res = Log.GetUser.Response(error: .networkError(.responseError(value.message ?? "")))
+                    let res = Log.GetUser.Response(error: .networkError(.responseError(value.errorMessage ?? "")))
                     completion(res)
                 }
             case let .failure(error):

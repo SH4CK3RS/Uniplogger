@@ -28,7 +28,7 @@ class QuestWorker {
             guard let self = self else { return }
             switch result {
                 case .success(let value):
-                    if value.success, let quests = value.data{
+                if value.status == .success, let quests = value.data{
                         self.quests = self.filterTraining(for: quests.map { $0.quest })
                         completionHandler(self.quests)
                     }
@@ -62,7 +62,7 @@ class QuestWorker {
         QuestAPI.shared.detail(quest: quest) { (response) in
             switch response {
             case let .success(value):
-                if value.success, let questResponse = value.data {
+                if value.status == .success, let questResponse = value.data {
                     completionHandler(questResponse.quest, questResponse.moreQuest ?? [])
                 }
             case let .failure(error):
