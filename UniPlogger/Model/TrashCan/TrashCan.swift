@@ -20,7 +20,6 @@ struct TrashCan: Codable {
     var state: TrashCanState
     ///CoreData에서 구분용으로 사용하기 위한 구분자
     var address: String = ""
-    var objectIDString: String? = ""
     
     private enum CodingKeys: String, CodingKey {
         case id
@@ -37,22 +36,6 @@ struct TrashCan: Codable {
         longitude = try container.decodeIfPresent(Double.self, forKey: .longitude) ?? 0
         state = try container.decodeIfPresent(TrashCanState.self, forKey: .state) ?? TrashCanState.disalbed
         address = try container.decodeIfPresent(String.self, forKey: .address) ?? ""
-    }
-    
-    init(
-        id: Int64 = -1,
-        latitude: Double,
-        longitude: Double,
-        isRemoved: Bool = false,
-        address: String = "",
-        objectIDString: String? = nil
-    ) {
-        self.id = id
-        self.latitude = latitude
-        self.longitude = longitude
-        self.state = .enabled
-        self.address = address
-        self.objectIDString = objectIDString
     }
 }
 

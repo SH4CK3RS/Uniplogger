@@ -19,7 +19,8 @@ enum PloggingMainViewAction {
     case myLocationButtonTapped
     case closeCoachmarkButtonTapped
     case removeTrashCan(TrashcanAnnotation)
-    case addTrashCan(latitude: CLLocationDegrees, longitude: CLLocationDegrees)
+    case addTrashCanButtonTapped
+    case addTrashCanTempAnnotation(latitude: CLLocationDegrees, longitude: CLLocationDegrees)
 }
 
 protocol PloggingMainViewListener: AnyObject {
@@ -57,15 +58,57 @@ final class PloggingMainView: UIView {
         mapView.setRegion(region, animated: true)
     }
     
-    func showAddressForAddTrashcan(_ address: String) {
+    func showFetchedTrashCanAnnotations(_ trashCans: [TrashCan]) {
+        for trash in trashCans {
+            let coordinate = CLLocationCoordinate2D(
+                latitude: trash.latitude,
+                longitude: trash.longitude
+            )
+            let annotation = TrashcanAnnotation(id: trash.id, coordinate: coordinate, title: "title", subtitle: "content")
+            mapView.addAnnotation(annotation)
+        }
+    }
+    
+    func prepareAddTrashCanTempAnnotation() {
+        let coordinate = mapView.centerCoordinate
+        let annotation = TempTrashAnnotation(coordinate: coordinate, title: "title", subtitle: "content")
+        mapView.addAnnotation(annotation)
+        tempTrashcanAnnotation = annotation
+        
+        listener?.action(
+            .addTrashCanTempAnnotation(
+                latitude: coordinate.latitude,
+                longitude: coordinate.longitude
+            )
+        )
+    }
+    
+    func cancelAddTrashCanTempAnnotation() {
+        hideAddTrashCanTempAnnotation()
+    }
+    
+    func showAddressForAddTrashcanTempAnnotation(_ address: String) {
         trashInfoAddressLabel.text = address
-        trashButton.isSelected = true
+        addTrashCanButton.isSelected = true
         trashInfoContainer.isHidden = false
         
-        trashButton.snp.remakeConstraints {
+        addTrashCanButton.snp.remakeConstraints {
             $0.trailing.equalToSuperview().offset(-16)
             $0.bottom.equalTo(trashInfoContainer.snp.top).offset(-16)
         }
+    }
+    
+    func addTrashCan(_ trashCan: TrashCan) {
+        hideAddTrashCanTempAnnotation()
+        let annotation = TrashcanAnnotation(
+            id: trashCan.id,
+            coordinate: .init(latitude: trashCan.latitude, longitude: trashCan.longitude),
+            title: trashCan.address,
+            subtitle: ""
+        )
+        
+        annotations.append(annotation)
+        mapView.addAnnotation(annotation)
     }
     
     func startPlogging() {
@@ -75,7 +118,7 @@ final class PloggingMainView: UIView {
         stopButton.isHidden = true
         resumeButton.isHidden = true
         
-        trashButton.snp.remakeConstraints{
+        addTrashCanButton.snp.remakeConstraints{
             $0.trailing.equalToSuperview().offset(-16)
             $0.bottom.equalTo(doingPauseBottomContainerView.snp.top).offset(-16)
         }
@@ -104,6 +147,7 @@ final class PloggingMainView: UIView {
     ]
     private var completedQuestIds = [Int]()
     private var tempTrashcanAnnotation: TempTrashAnnotation?
+    var annotations: [TrashcanAnnotation] = []
     
     private let startBottomContainerView = UIView()
     private let doingPauseBottomContainerView = UIView()
@@ -120,7 +164,7 @@ final class PloggingMainView: UIView {
     private let resumeButton = UIButton()
     private let bubbleView = UIImageView()
     private let bubbleLabel = UILabel()
-    private let trashButton = UIButton(type: .custom)
+    private let addTrashCanButton = UIButton(type: .custom)
     private let myLocationButton = UIButton()
     private let mapView = MKMapView()
     private let trashInfoContainer = UIView()
@@ -180,23 +224,8 @@ final class PloggingMainView: UIView {
     }
     
     @objc
-    private func trashButtonTapped() {
-        guard !trashButton.isSelected else {
-            cancelAddingTrashcan()
-            return
-        }
-        
-        let coordinate = mapView.centerCoordinate
-        let annotation = TempTrashAnnotation(coordinate: coordinate, title: "title", subtitle: "content")
-        mapView.addAnnotation(annotation)
-        tempTrashcanAnnotation = annotation
-        
-        listener?.action(
-            .addTrashCan(
-                latitude: coordinate.latitude,
-                longitude: coordinate.longitude
-            )
-        )
+    private func addTrashButtonTapped() {
+        listener?.action(.addTrashCanButtonTapped)
     }
     
     @objc
@@ -214,12 +243,8 @@ final class PloggingMainView: UIView {
         listener?.action(.closeCoachmarkButtonTapped)
     }
     
-    func removeTrashCan(annotation: TrashcanAnnotation) {
-        listener?.action(.removeTrashCan(annotation))
-    }
-    
-    private func cancelAddingTrashcan() {
-        trashButton.isSelected = false
+    private func hideAddTrashCanTempAnnotation() {
+        addTrashCanButton.isSelected = false
         trashInfoContainer.isHidden = true
         trashInfoAddressLabel.text = ""
         if let tempTrashcanAnnotation {
@@ -227,7 +252,7 @@ final class PloggingMainView: UIView {
             self.tempTrashcanAnnotation = nil
         }
         
-        trashButton.snp.remakeConstraints {
+        addTrashCanButton.snp.remakeConstraints {
             $0.trailing.equalToSuperview().offset(-16)
             $0.bottom.equalTo(startBottomContainerView.snp.top).offset(-16)
         }
@@ -236,6 +261,10 @@ final class PloggingMainView: UIView {
         // case .stop: startBottomContainerView.snp.top.offset -16
         // case .doing: doingPauseBottomContainerView.snp.top.offset -16
         // }
+    }
+    
+    func removeTrashCan(annotation: TrashcanAnnotation) {
+        listener?.action(.removeTrashCan(annotation))
     }
     
     private func pausePlogging() {
@@ -257,7 +286,7 @@ final class PloggingMainView: UIView {
         timeLabel.text = "00:00"
         distanceLabel.text = "0.00 km"
         
-        trashButton.snp.remakeConstraints {
+        addTrashCanButton.snp.remakeConstraints {
             $0.trailing.equalToSuperview().offset(-16)
             $0.bottom.equalTo(startBottomContainerView.snp.top).offset(-16)
         }
@@ -342,13 +371,13 @@ private extension PloggingMainView {
             $0.textColor = .white
             $0.font = .systemFont(ofSize: 14)
         }
-        trashButton.do {
+        addTrashCanButton.do {
             $0.setImage(UIImage(named: "ic_ploggingAddTrashcan")?.withRenderingMode(.alwaysOriginal), for: .normal)
             $0.setImage(UIImage(named: "ic_ploggingAddTrashcanCancel")?.withRenderingMode(.alwaysOriginal), for: .selected)
             $0.setPreferredSymbolConfiguration(.init(scale: .default), forImageIn: .normal)
             $0.setPreferredSymbolConfiguration(.init(scale: .default), forImageIn: .selected)
             $0.imageView?.contentMode = .scaleAspectFit
-            $0.addTarget(self, action: #selector(trashButtonTapped), for: .touchUpInside)
+            $0.addTarget(self, action: #selector(addTrashButtonTapped), for: .touchUpInside)
         }
         myLocationButton.do {
             $0.backgroundColor = .mainBackgroundColor
@@ -444,7 +473,7 @@ private extension PloggingMainView {
         }
         
         addSubview(mapView)
-        addSubview(trashButton)
+        addSubview(addTrashCanButton)
         addSubview(myLocationButton)
         addSubview(startBottomContainerView)
         addSubview(doingPauseBottomContainerView)
@@ -496,7 +525,7 @@ private extension PloggingMainView {
             $0.size.equalTo(40)
         }
         
-        trashButton.snp.makeConstraints {
+        addTrashCanButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().offset(-16)
             $0.bottom.equalTo(startBottomContainerView.snp.top).offset(-16)
             $0.size.equalTo(50)
@@ -627,7 +656,7 @@ private extension PloggingMainView {
             $0.leading.equalTo(coachmarkTrashcanIcon.snp.centerX).offset(-8)
         }
         coachmarkAddTrashcanIcon.snp.makeConstraints {
-            $0.edges.equalTo(trashButton)
+            $0.edges.equalTo(addTrashCanButton)
         }
         coachmarkAddTrashcanLabel.snp.makeConstraints{
             $0.trailing.equalTo(coachmarkAddTrashcanIcon.snp.leading).offset(-12)
@@ -687,7 +716,7 @@ extension PloggingMainView: MKMapViewDelegate {
         if newState == .ending, let annotation = view.annotation {
             let latitude = annotation.coordinate.latitude
             let longitude = annotation.coordinate.longitude
-            listener?.action(.addTrashCan(latitude: latitude, longitude: longitude))
+            listener?.action(.addTrashCanTempAnnotation(latitude: latitude, longitude: longitude))
         }
     }
 }

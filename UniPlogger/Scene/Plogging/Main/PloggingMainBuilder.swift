@@ -16,6 +16,10 @@ final class PloggingMainComponent: Component<PloggingMainDependency> {
     fileprivate var locationManager: LocationManagable {
         LocationManager()
     }
+    fileprivate var service: PloggingMainServiceable {
+        PloggingMainService()
+    }
+    
     fileprivate let stream: PloggingStream
     
     override init(dependency: PloggingMainDependency) {
@@ -41,7 +45,8 @@ final class PloggingMainBuilder: Builder<PloggingMainDependency>, PloggingMainBu
         let viewController = PloggingMainViewController()
         let interactor = PloggingMainInteractor(presenter: viewController,
                                                 locationManager: component.locationManager,
-                                                stream: component.stream)
+                                                stream: component.stream,
+                                                service: component.service)
         interactor.listener = listener
         return PloggingMainRouter(interactor: interactor, viewController: viewController)
     }

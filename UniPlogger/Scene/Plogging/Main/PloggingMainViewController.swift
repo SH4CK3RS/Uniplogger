@@ -23,7 +23,8 @@ enum PloggingMainPresentableListenerRequest {
     case myLocationButtonTapped
     case closeCoachmarkButtonTapped
     case removeTrashCan(TrashcanAnnotation)
-    case addTrashCan(latitude: CLLocationDegrees, longitude: CLLocationDegrees)
+    case addTrashCanButtonTapped
+    case addTrashCanTempAnnotation(latitude: CLLocationDegrees, longitude: CLLocationDegrees)
 }
 
 protocol PloggingMainPresentableListener: AnyObject {
@@ -60,8 +61,16 @@ final class PloggingMainViewController: UIViewController, PloggingMainPresentabl
             showLocationSetting()
         case let .goToMyLocation(location):
             mainView.setMyLocation(location)
-        case let .showAddressForAddTrashcan(address):
-            mainView.showAddressForAddTrashcan(address)
+        case let .showFetchedTrashCanAnnotations(trashCans):
+            mainView.showFetchedTrashCanAnnotations(trashCans)
+        case .prepareAddTrashCanTempAnnotation:
+            mainView.prepareAddTrashCanTempAnnotation()
+        case let .showAddressForAddTrashcanTempAnnotation(address):
+            mainView.showAddressForAddTrashcanTempAnnotation(address)
+        case .cancelAddTrashCanTempAnnotation:
+            mainView.cancelAddTrashCanTempAnnotation()
+        case let .addTrashCan(trashCan):
+            mainView.addTrashCan(trashCan)
         case .startPlogging:
             mainView.startPlogging()
         case let .updateTime(timeText):
@@ -115,8 +124,10 @@ extension PloggingMainViewController: PloggingMainViewListener {
             listener?.request(.closeCoachmarkButtonTapped)
         case let .removeTrashCan(trashcanAnnotation):
             listener?.request(.removeTrashCan(trashcanAnnotation))
-        case let .addTrashCan(latitude, longitude):
-            listener?.request(.addTrashCan(latitude: latitude, longitude: longitude))
+        case .addTrashCanButtonTapped:
+            listener?.request(.addTrashCanButtonTapped)
+        case let .addTrashCanTempAnnotation(latitude, longitude):
+            listener?.request(.addTrashCanTempAnnotation(latitude: latitude, longitude: longitude))
         }
     }
 }

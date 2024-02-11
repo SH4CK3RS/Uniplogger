@@ -7,11 +7,20 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol PloggingMainServiceable {
-    
+    func getTrashCans() -> Single<[TrashCan]>
+    func addTrashCan(latitude: Double, longitude: Double) -> Single<TrashCan>
 }
 
 struct PloggingMainService: PloggingMainServiceable {
+    func getTrashCans() -> Single<[TrashCan]> {
+        TrashCanAPI.shared.getTrashCans()
+    }
     
+    func addTrashCan(latitude: Double, longitude: Double) -> Single<TrashCan> {
+        let requestDTO = TrashCanRequestDTO(latitude: latitude, longitude: longitude)
+        return TrashCanAPI.shared.addTrashCan(requestDTO: requestDTO)
+    }
 }

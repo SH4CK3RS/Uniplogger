@@ -21,7 +21,11 @@ enum PloggingMainPresentableRequest {
     case hideCoachmark
     case showLocationSetting
     case goToMyLocation(CLLocation)
-    case showAddressForAddTrashcan(String)
+    case showFetchedTrashCanAnnotations([TrashCan])
+    case prepareAddTrashCanTempAnnotation
+    case cancelAddTrashCanTempAnnotation
+    case showAddressForAddTrashcanTempAnnotation(String)
+    case addTrashCan(TrashCan)
     case startPlogging
     case updateTime(String)
     case updateDistance(String)
@@ -43,14 +47,20 @@ protocol PloggingMainListener: AnyObject {
 }
 
 final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentable>, PloggingMainInteractable, PloggingMainPresentableListener {
+    enum AddTrashCanState {
+        case none
+        case adding(CLLocation)
+    }
     
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
     init(presenter: PloggingMainPresentable,
          locationManager: LocationManagable,
-         stream: PloggingStream) {
+         stream: PloggingStream,
+         service: PloggingMainServiceable) {
         self.locationManager = locationManager
         self.stream = stream
+        self.service = service
         super.init(presenter: presenter)
         presenter.listener = self
         self.locationManager.listener = self
@@ -69,6 +79,7 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
         switch request {
         case .viewDidLoad:
             needToSetMyLocation = true
+            getTrashCans()
         case .viewDidAppear:
             showCoachmarkIfNeeded()
             locationManager.requestPermission()
@@ -76,8 +87,18 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
             hideCoachmark()
         case .myLocationButtonTapped:
             handleMyLocation()
-        case let .addTrashCan(latitude, longitude):
-            handleAddTrashcan(with: latitude, longitude: longitude)
+        case .addTrashCanButtonTapped:
+            switch addTrashCanState {
+            case .none:
+                presenter.request(.prepareAddTrashCanTempAnnotation)
+            case .adding:
+                addTrashCanState = .none
+                presenter.request(.cancelAddTrashCanTempAnnotation)
+            }
+        case let .addTrashCanTempAnnotation(latitude, longitude):
+            handleAddTrashCanTempAnnotation(with: latitude, longitude: longitude)
+        case .addTrashCanConfirmButtonTapped:
+            handleAddTrashCanConfirm()
         case .startButtonTapped:
             listener?.request(.startButtonTapped)
         case .pauseButtonTapped:
@@ -95,7 +116,9 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
     private var needToSetMyLocation: Bool = false
     private var model = PloggingMainModel()
     private let stream: PloggingStream
+    private let service: PloggingMainServiceable
     private var timer: Timer?
+    private var addTrashCanState: AddTrashCanState = .none
     
     private func bindStream() {
         stream.countingFinishedObservable
@@ -126,13 +149,44 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
         }
     }
     
-    private func handleAddTrashcan(with latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+    private func getTrashCans() {
+        UPLoader.shared.show()
+        service.getTrashCans()
+            .observe(on: MainScheduler.instance)
+            .subscribe(with: self) { owner, trashCans in
+                UPLoader.shared.hidden()
+                owner.presenter.request(.showFetchedTrashCanAnnotations(trashCans))
+            } onFailure: { owner, error in
+                UPLoader.shared.hidden()
+                print(error.localizedDescription)
+            }.disposeOnDeactivate(interactor: self)
+    }
+    
+    private func handleAddTrashCanTempAnnotation(with latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         let location = CLLocation(latitude: latitude, longitude: longitude)
+        self.addTrashCanState = .adding(location)
         location.toAddress { [weak self] address in
             DispatchQueue.main.async {
-                self?.presenter.request(.showAddressForAddTrashcan(address))
+                self?.presenter.request(.showAddressForAddTrashcanTempAnnotation(address))
             }
         }
+    }
+    
+    private func handleAddTrashCanConfirm() {
+        guard case let .adding(location) = addTrashCanState else { return }
+        UPLoader.shared.show()
+        service.addTrashCan(
+            latitude: location.coordinate.latitude,
+            longitude: location.coordinate.longitude
+        )
+        .observe(on: MainScheduler.instance)
+        .subscribe(with: self) { owner, trashCan in
+            UPLoader.shared.hidden()
+            owner.presenter.request(.addTrashCan(trashCan))
+        } onFailure: { owner, error in
+            UPLoader.shared.hidden()
+            print(error)
+        }.disposeOnDeactivate(interactor: self)
     }
     
     private func handleStartPlogging() {

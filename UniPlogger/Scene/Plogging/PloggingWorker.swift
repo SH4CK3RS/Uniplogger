@@ -74,28 +74,7 @@ extension PloggingWorker{
             switch response {
             case .success(let value):
                 if value.status == .success, let trashcanList = value.data{
-                    self.fetchTrashCan { list in
-                        if list.isEmpty{
-                            // Toto add list
-                            self.addTrashCanList(list: trashcanList) { list in
-                                let response = Plogging.FetchTrashCan.Response(list: list)
-                                completion(response)
-                            }
-                        } else {
-                            var createList: [TrashCan] = []
-                            trashcanList.forEach { item in
-                                if (list.filter { $0.latitude != item.latitude && $0.longitude == item.longitude}.count == 0) {
-                                    createList.append(item)
-                                }
-                            }
-                            self.addTrashCanList(list: createList) { _ in
-                                createList.append(contentsOf: createList)
-                                let response = Plogging.FetchTrashCan.Response(list: createList)
-                                completion(response)
-                            }
-                        }
-                        
-                    }
+                    
                 } else {
                     let response = Plogging.FetchTrashCan.Response(error: .networkError(.responseError(value.errorMessage ?? "")))
                     completion(response)
@@ -111,28 +90,6 @@ extension PloggingWorker{
 
 //MARK: - TrashCan CRUD
 extension PloggingWorker{
-    
-    func fetchTrashCan(completion: @escaping ([TrashCan]) -> Void) {
-        storage.fetchTrashCanList { (result) in
-            switch result{
-            case .success(let list):
-                completion(list)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    func addTrashCanList(list: [TrashCan], completion: @escaping ([TrashCan]) -> Void) {
-        storage.createTrashCanList(list) { (result) in
-            switch result{
-            case .success(let lis):
-                completion(lis)
-            case .failure(let error):
-                print(error.localizedDescription)
-                completion([])
-            }
-        }
-    }
     func addTrashCan(request: Plogging.AddConfirmTrashCan.Request, completion: @escaping (Plogging.AddConfirmTrashCan.Response) -> Void) {
         PloggingAPI.shared.createTrashCan(
             latitude: request.latitude,
@@ -141,16 +98,7 @@ extension PloggingWorker{
             switch response {
             case let .success(value):
                 if value.status == .success, let trashcan = value.data{
-                    self.storage.createTrashCan(trashcan) { (result) in
-                        switch result{
-                        case .success(let trashcan):
-                            let response = Plogging.AddConfirmTrashCan.Response(request: request, response: trashcan)
-                            completion(response)
-                        case .failure(let error):
-                            let response = Plogging.AddConfirmTrashCan.Response(request: request, error: UniPloggerError.networkError(.responseError(error.localizedDescription)))
-                            completion(response)
-                        }
-                    }
+
                 } else {
                     let response = Plogging.AddConfirmTrashCan.Response(request: request, error: .networkError(.responseError(value.errorMessage ?? "")))
                     completion(response)
@@ -163,32 +111,12 @@ extension PloggingWorker{
         
     }
     
-    func addTrashCan(trashCan: TrashCan, completion: @escaping (TrashCan) -> Void) {
-        storage.createTrashCan(trashCan) { (result) in
-            switch result{
-            case .success(let trashCan):
-                completion(trashCan)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
     func deleteTrashCan(request: Plogging.RemoveTrashCan.Request, completion: @escaping (Plogging.RemoveTrashCan.Response) -> Void) {
         PloggingAPI.shared.deleteTrashCan(id: request.id) { (response) in
             switch response {
             case let .success(value):
                 if value.status == .success, let trashcan = value.data {
-                    self.storage.deleteTrashCan(latitude: trashcan.latitude, longitude: trashcan.longitude) { (result) in
-                        switch result{
-                        case .success():
-                            let response = Plogging.RemoveTrashCan.Response(request: request, trashcan: trashcan)
-                            completion(response)
-                        case .failure(let error):
-                            let response = Plogging.RemoveTrashCan.Response(request: request, error: UniPloggerError.networkError(.responseError(error.localizedDescription)))
-                            completion(response)
-                        }
-                    }
+                    
                 } else {
                     let response = Plogging.RemoveTrashCan.Response(request: request, error: .networkError(.responseError(value.errorMessage ?? "")))
                     completion(response)
