@@ -10,7 +10,7 @@ import Foundation
 import Moya
 
 enum NetworkEnvironment: String {
-    case development = "http://49.50.174.68/"
+    case development = "http://192.168.1.104:8080/api/"
 }
 
 final class SessionManager: Session {

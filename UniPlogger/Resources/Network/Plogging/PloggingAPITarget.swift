@@ -14,7 +14,7 @@ enum PloggingAPITarget{
     //쓰레기통 CRUD
     case createTrash(latitude: Double, longitude: Double, address: String)
     case fetchTrashList
-    case uploadRecord(uid: Int, title: String, distance: Double, time: Int, image: UIImage)
+    case uploadRecord(distance: Double, time: Int, image: UIImage)
     case deleteTrashCan(id: Int64)
 }
 
@@ -26,7 +26,7 @@ extension PloggingAPITarget: BaseTarget {
         case .fetchTrashList:
             return "trashcans/"
         case .uploadRecord:
-            return "users/feed/"
+            return "plogging"
         case let .deleteTrashCan(id):
             return "trashcans/\(id)/"
         }
@@ -69,14 +69,12 @@ extension PloggingAPITarget: BaseTarget {
             return .requestParameters(parameters: parameters, encoding: encoding)
         case .fetchTrashList:
             return .requestPlain
-        case let .uploadRecord(uid, title, distance, time, image):
+        case let .uploadRecord(distance, time, image):
             let compImg = image.jpegData(compressionQuality: 1.0)!
-            let uidData = MultipartFormData(provider: .data("\(uid)".data(using: .utf8)!), name: "uid")
-            let titleData = MultipartFormData(provider: .data(title.data(using: .utf8)!), name: "title")
             let distanceData = MultipartFormData(provider: .data("\(distance)".data(using: .utf8)!), name: "distance")
             let timeData = MultipartFormData(provider: .data("\(time)".data(using: .utf8)!), name: "time")
-            let imageData = MultipartFormData(provider: .data(compImg), name: "photo", fileName: "\(title).jpg", mimeType: "image/jpeg")
-            return .uploadMultipart([uidData, titleData, distanceData, timeData, imageData])
+            let imageData = MultipartFormData(provider: .data(compImg), name: "photo", fileName: "photo.jpg", mimeType: "image/jpeg")
+            return .uploadMultipart([distanceData, timeData, imageData])
                 
         case .deleteTrashCan:
             return .requestParameters(parameters: parameters, encoding: encoding)

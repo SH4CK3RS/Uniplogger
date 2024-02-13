@@ -107,6 +107,8 @@ final class PloggingMainInteractor: PresentableInteractor<PloggingMainPresentabl
             handleResumePlogging()
         case .stopButtonTapped:
             handleStopPlogging()
+        case let .removeTrashCan(annotation):
+            print(annotation.coordinate)
         default: break
         }
     }

@@ -21,25 +21,11 @@ struct TrashCanAPI {
     
     func getTrashCans() -> Single<[TrashCan]> {
         provider.rx.request(.getTrashCans)
-            .map(BaseResponse<[TrashCan]>.self)
-            .flatMap { response -> Single<[TrashCan]> in
-                if let data = response.data {
-                    return .just(data)
-                } else {
-                    return .error(UniPloggerError.networkError(.responseError(ErrorMessage.decodeError)))
-                }
-            }
+            .handleResponse()
     }
     
     func addTrashCan(requestDTO: TrashCanRequestDTO) -> Single<TrashCan> {
         provider.rx.request(.addTrashCan(requestDTO: requestDTO))
-            .map(BaseResponse<TrashCan>.self)
-            .flatMap { response -> Single<TrashCan> in
-                if let data = response.data {
-                    return .just(data)
-                } else {
-                    return .error(UniPloggerError.networkError(.responseError(ErrorMessage.decodeError)))
-                }
-            }
+            .handleResponse()
     }
 }

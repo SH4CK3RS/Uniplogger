@@ -32,13 +32,6 @@ struct UserAPI {
     
     func getUser(uid: Int) -> Single<User> {
         provider.rx.request(.getUser(uid: uid))
-            .map(BaseResponse<User>.self)
-            .flatMap { response -> Single<User> in
-                if let data = response.data {
-                    return .just(data)
-                } else {
-                    return .error(UniPloggerError.networkError(.responseError(ErrorMessage.decodeError)))
-                }
-            }
+            .handleResponse()
     }
 }

@@ -15,7 +15,6 @@ struct PloggingAPI {
     
     static let shared = PloggingAPI()
     private let provider = MoyaProvider<PloggingAPITarget>(
-        stubClosure: MoyaProvider.immediatelyStub,
         session: SessionManager.shared,
         plugins: [VerbosePlugin(verbose: true)]
     )
@@ -54,8 +53,6 @@ struct PloggingAPI {
     
     func uploadRecord(uid: Int, data: PloggingData, completionHandler: @escaping(Result<BaseResponse<Feed>, Error>) -> Void) {
         provider.rx.request(.uploadRecord(
-            uid: uid,
-            title: data.title,
             distance: data.distance,
             time: data.time,
             image: data.image!
@@ -72,10 +69,7 @@ struct PloggingAPI {
     
     // MARK: RxSwift
     func uploadRecord(data: PloggingData) -> Single<Feed> {
-        guard let uid = AuthManager.shared.user?.id else { return Single.error(UniPloggerError.networkError(.requestBuildError("")))}
         return provider.rx.request(.uploadRecord(
-            uid: uid,
-            title: data.title,
             distance: data.distance,
             time: data.time,
             image: data.image!

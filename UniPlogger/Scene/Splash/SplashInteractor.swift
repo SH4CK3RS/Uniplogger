@@ -13,6 +13,7 @@
 import Foundation
 import RIBs
 import RxSwift
+import Moya
 
 enum SplashRouterRequest {
     case routeToTutorial
@@ -67,7 +68,7 @@ final class SplashInteractor: PresentableInteractor<SplashPresntable>, SplashInt
                 AuthManager.shared.user = user
                 self.router?.request(.routeToMain)
             } onFailure: { owner, error in
-                self.processNotLogined()
+                
             }.disposeOnDeactivate(interactor: self)
     }
     
