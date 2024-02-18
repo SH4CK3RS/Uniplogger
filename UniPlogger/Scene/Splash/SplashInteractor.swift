@@ -68,7 +68,7 @@ final class SplashInteractor: PresentableInteractor<SplashPresntable>, SplashInt
                 AuthManager.shared.user = user
                 self.router?.request(.routeToMain)
             } onFailure: { owner, error in
-                
+                self.router?.request(.routeToLogin)
             }.disposeOnDeactivate(interactor: self)
     }
     

@@ -16,7 +16,7 @@ enum BaseRouterRequest {
     case detachErrorAlert
 }
 
-protocol BaseRouting: AnyObject {
+protocol BaseRouting: ViewableRouting {
     func request(_ request: BaseRouterRequest)
 }
 
@@ -48,8 +48,10 @@ extension NavigatingViewControllable {
     }
 }
 
-class BaseRouter<InteractorType, ViewControllerType>: ViewableRouter<InteractorType, ViewControllerType>,
-                                                      BaseRouting where InteractorType: BaseInteractable, ViewControllerType: NavigatingViewControllable {
+class BaseRouter: ViewableRouter<BaseInteractable, NavigatingViewControllable>, BaseRouting {
+    let commonPopupBuilder: CommonPopupBuilder = CommonPopupBuilder(dependency: EmptyComponent())
+    var commonPopupRouter: ViewableRouting?
+    
     func request(_ request: BaseRouterRequest) {
         switch request {
         case let .showErrorAlert(message):
@@ -59,11 +61,16 @@ class BaseRouter<InteractorType, ViewControllerType>: ViewableRouter<InteractorT
         }
     }
     
-    private let commonPopupBuilder: CommonPopupBuilder = CommonPopupBuilder(dependency: EmptyComponent())
-    private var commonPopupRouter: ViewableRouting?
     func showErrorAlert(withMessage message: String) {
         guard commonPopupRouter == nil else { return }
-        let router = commonPopupBuilder.build(withListener: interactor)
+        guard let interactor = interactable as? BaseInteractable else { return }
+        
+        let viewTypes: [CommonPopupView.ViewType] = [
+            .spacer(23),
+            .title(message)
+        ]
+        
+        let router = commonPopupBuilder.build(withListener: interactor, viewTypes: viewTypes)
         self.commonPopupRouter = router
         attachChild(router)
         viewController.present(router.viewControllable, animated: true, completion: nil)

@@ -8,20 +8,20 @@
 
 import RIBs
 
-protocol CommonPopupDependency: Dependency {
-    // TODO: Declare the set of dependencies required by this RIB, but cannot be
-    // created by this RIB.
-}
+protocol CommonPopupDependency: Dependency {}
 
 final class CommonPopupComponent: Component<CommonPopupDependency> {
-
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+    let viewTypes: [CommonPopupView.ViewType]
+    init(dependency: CommonPopupDependency, viewTypes: [CommonPopupView.ViewType]) {
+        self.viewTypes = viewTypes
+        super.init(dependency: dependency)
+    }
 }
 
 // MARK: - Builder
 
 protocol CommonPopupBuildable: Buildable {
-    func build(withListener listener: CommonPopupListener) -> CommonPopupRouting
+    func build(withListener listener: CommonPopupListener, viewTypes: [CommonPopupView.ViewType]) -> CommonPopupRouting
 }
 
 final class CommonPopupBuilder: Builder<CommonPopupDependency>, CommonPopupBuildable {
@@ -30,9 +30,9 @@ final class CommonPopupBuilder: Builder<CommonPopupDependency>, CommonPopupBuild
         super.init(dependency: dependency)
     }
 
-    func build(withListener listener: CommonPopupListener) -> CommonPopupRouting {
-        let component = CommonPopupComponent(dependency: dependency)
-        let viewController = CommonPopupViewController()
+    func build(withListener listener: CommonPopupListener, viewTypes: [CommonPopupView.ViewType]) -> CommonPopupRouting {
+        let component = CommonPopupComponent(dependency: dependency, viewTypes: viewTypes)
+        let viewController = CommonPopupViewController(viewTypes: component.viewTypes)
         let interactor = CommonPopupInteractor(presenter: viewController)
         interactor.listener = listener
         return CommonPopupRouter(interactor: interactor, viewController: viewController)

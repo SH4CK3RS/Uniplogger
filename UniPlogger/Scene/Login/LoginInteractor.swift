@@ -9,9 +9,7 @@
 import RIBs
 import RxSwift
 
-protocol LoginRouting: ViewableRouting {
-    // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
-}
+protocol LoginRouting: BaseRouting {}
 
 enum LoginPresentableRequest {
     case activateLoginButton(Bool)
@@ -34,7 +32,6 @@ protocol LoginListener: AnyObject {
 }
 
 final class LoginInteractor: PresentableInteractor<LoginPresentable>, LoginInteractable, LoginPresentableListener {
-    
     // in constructor.
     init(presenter: LoginPresentable,
          service: LoginServiceable) {
@@ -54,7 +51,10 @@ final class LoginInteractor: PresentableInteractor<LoginPresentable>, LoginInter
     }
     
     // MARK: - Internal
-    weak var router: LoginRouting?
+    weak var router: BaseRouting?
+    var loginRouter: LoginRouting? {
+        return router as? LoginRouting
+    }
     weak var listener: LoginListener?
     
     func request(_ request: LoginPresentableListenerRequest) {
@@ -88,7 +88,8 @@ final class LoginInteractor: PresentableInteractor<LoginPresentable>, LoginInter
                 owner.listener?.request(.loginFinished)
             } onFailure: { owner, error in
                 UPLoader.shared.hidden()
-                owner.presenter.request(.showError(UniPloggerError.networkError(.responseError(error.localizedDescription))))
+                owner.loginRouter?.request(.showErrorAlert("로그인 실패!"))
+//                owner.presenter.request(.showError(UniPloggerError.networkError(.responseError(error.localizedDescription))))
             }.disposeOnDeactivate(interactor: self)
     }
     

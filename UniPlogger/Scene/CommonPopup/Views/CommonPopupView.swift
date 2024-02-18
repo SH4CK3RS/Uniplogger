@@ -100,7 +100,7 @@ private extension CommonPopupView {
             $0.trailing.equalTo(-20)
         }
         confirmButton.snp.makeConstraints {
-            $0.top.equalTo(52)
+            $0.top.equalTo(stackView.snp.bottom).offset(52)
             $0.horizontalEdges.bottom.equalToSuperview()
             $0.height.equalTo(52)
         }

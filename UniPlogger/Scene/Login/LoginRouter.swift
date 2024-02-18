@@ -8,19 +8,19 @@
 
 import RIBs
 
-protocol LoginInteractable: Interactable {
-    var router: LoginRouting? { get set }
+protocol LoginInteractable: BaseInteractable {
+    var loginRouter: LoginRouting? { get }
     var listener: LoginListener? { get set }
 }
 
-protocol LoginViewControllable: ViewControllable {
+protocol LoginViewControllable: NavigatingViewControllable {
     // TODO: Declare methods the router invokes to manipulate the view hierarchy.
 }
 
-final class LoginRouter: ViewableRouter<LoginInteractable, LoginViewControllable>, LoginRouting {
+final class LoginRouter: BaseRouter, LoginRouting {
 
     // TODO: Constructor inject child builder protocols to allow building children.
-    override init(interactor: LoginInteractable, viewController: LoginViewControllable) {
+    init(interactor: LoginInteractable, viewController: LoginViewControllable) {
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }

@@ -25,6 +25,8 @@ final class CommonPopupViewController: UIViewController, CommonPopupPresentable,
     init(viewTypes: [CommonPopupView.ViewType]) {
         self.mainView = .init(viewTypes: viewTypes)
         super.init(nibName: nil, bundle: nil)
+        self.modalPresentationStyle = .overFullScreen
+        self.modalTransitionStyle = .crossDissolve
     }
     
     required init?(coder: NSCoder) {
