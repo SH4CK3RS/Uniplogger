@@ -138,7 +138,6 @@
 		3EDD65272ABF15FC00776C34 /* SplashComponent+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD65262ABF15FC00776C34 /* SplashComponent+Login.swift */; };
 		3EE00EC22B79EABD00BBFAE8 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE00EC12B79EABD00BBFAE8 /* ErrorResponse.swift */; };
 		3EE00EC42B79EEB700BBFAE8 /* PrimitiveSequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE00EC32B79EEB700BBFAE8 /* PrimitiveSequence+Extensions.swift */; };
-		3EE00EC82B79F86400BBFAE8 /* ErrorShowableRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE00EC72B79F86400BBFAE8 /* ErrorShowableRouting.swift */; };
 		3EE00ECA2B79FB8D00BBFAE8 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE00EC92B79FB8D00BBFAE8 /* BaseRouter.swift */; };
 		3EE00ED02B7A2EE700BBFAE8 /* CommonPopupRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE00ECC2B7A2EE700BBFAE8 /* CommonPopupRouter.swift */; };
 		3EE00ED12B7A2EE700BBFAE8 /* CommonPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE00ECD2B7A2EE700BBFAE8 /* CommonPopupViewController.swift */; };
@@ -498,7 +497,6 @@
 		3EDD65262ABF15FC00776C34 /* SplashComponent+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashComponent+Login.swift"; sourceTree = "<group>"; };
 		3EE00EC12B79EABD00BBFAE8 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		3EE00EC32B79EEB700BBFAE8 /* PrimitiveSequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimitiveSequence+Extensions.swift"; sourceTree = "<group>"; };
-		3EE00EC72B79F86400BBFAE8 /* ErrorShowableRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorShowableRouting.swift; sourceTree = "<group>"; };
 		3EE00EC92B79FB8D00BBFAE8 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		3EE00ECC2B7A2EE700BBFAE8 /* CommonPopupRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonPopupRouter.swift; sourceTree = "<group>"; };
 		3EE00ECD2B7A2EE700BBFAE8 /* CommonPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonPopupViewController.swift; sourceTree = "<group>"; };
@@ -1051,7 +1049,6 @@
 		3EE00EC62B79F85900BBFAE8 /* RIBs */ = {
 			isa = PBXGroup;
 			children = (
-				3EE00EC72B79F86400BBFAE8 /* ErrorShowableRouting.swift */,
 				3EE00EC92B79FB8D00BBFAE8 /* BaseRouter.swift */,
 			);
 			path = RIBs;
@@ -2162,7 +2159,6 @@
 				4C42366925727D360068A252 /* QuestDetailWorker.swift in Sources */,
 				3E67E1B42AC732A5001FBA36 /* PloggingRootComponent+StartCounting.swift in Sources */,
 				835248642572285100C9F495 /* LogCollectionViewCell.swift in Sources */,
-				3EE00EC82B79F86400BBFAE8 /* ErrorShowableRouting.swift in Sources */,
 				3EDD65142ABA190400776C34 /* RegistrationService.swift in Sources */,
 				AAAD690225562CB900895265 /* IntrinsicSizeCollectionView.swift in Sources */,
 				3E2FB8752AC0016F0096F554 /* PloggingRootRouter.swift in Sources */,
