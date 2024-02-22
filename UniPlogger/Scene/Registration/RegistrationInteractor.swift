@@ -72,7 +72,7 @@ final class RegistrationInteractor: PresentableInteractor<RegistrationPresentabl
         case .closeButtonTapped:
             listener?.request(.close)
         case let .accountChanged(account):
-            model.nickname = account
+            model.email = account
             presenter.request(.activateRegistrationButton(model.isRegistrationButtonEnabled))
         case let .passwordChanged(password):
             model.password = password

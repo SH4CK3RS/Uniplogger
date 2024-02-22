@@ -83,8 +83,7 @@ struct AuthAPI {
     func registration(data: RegistrationModel) -> Single<LoginResponse> {
         provider.rx.request(.registration(
             email: data.email,
-            password1: data.password,
-            password2: data.passwordConfirm,
+            password: data.password,
             nickname: data.nickname
         ))
         .map(BaseResponse<LoginResponse>.self)

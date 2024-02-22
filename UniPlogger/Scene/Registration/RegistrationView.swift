@@ -40,6 +40,7 @@ final class RegistrationView: UIView {
     
     func activateRegistrationButton(_ isActive: Bool) {
         registrationButton.isEnabled = isActive
+        registrationButton.backgroundColor = isActive ? .buttonEnabled : .buttonDisabled
     }
     
     // MARK: - Private

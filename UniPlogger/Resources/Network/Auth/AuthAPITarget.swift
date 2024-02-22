@@ -14,7 +14,7 @@ enum AuthAPITarget {
     case login(email: String, password: String)
     case logout
     case withdraw(uid: Int)
-    case registration(email: String, password1: String, password2: String, nickname: String)
+    case registration(email: String, password: String, nickname: String)
     case findPassword(email: String)
     case initQuest
     case resetPassword(password1: String, password2: String, uid: String, token: String)
@@ -72,11 +72,10 @@ extension AuthAPITarget: BaseTarget {
             return [
                 "id":uid
             ]
-        case let .registration(email, password1, password2, nickname):
+        case let .registration(email, password, nickname):
             return [
                 "email": email,
-                "password1": password1,
-                "password2": password2,
+                "password": password,
                 "nickname": nickname
             ]
         case let .findPassword(email):
