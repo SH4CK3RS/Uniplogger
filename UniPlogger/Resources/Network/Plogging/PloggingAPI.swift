@@ -74,14 +74,7 @@ struct PloggingAPI {
             time: data.time,
             image: data.image!
         ))
-        .map(BaseResponse<Feed>.self)
-        .flatMap { response -> Single<Feed> in
-            if let data = response.data {
-                return .just(data)
-            } else {
-                return .error(UniPloggerError.networkError(.responseError(ErrorMessage.decodeError)))
-            }
-        }
+        .handleResponse()
     }
 }
 

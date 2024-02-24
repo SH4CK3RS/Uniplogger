@@ -13,6 +13,7 @@ struct ImageDownloadManager {
     static let shared = ImageDownloadManager()
     private init() { }
     func downloadImage(url: String, completion: @escaping (UIImage?) -> Void) {
+        let url = NetworkEnvironment.baseUrl.rawValue + url
         if let cachedImage = cache.object(forKey: NSString(string: url)) {
             completion(cachedImage)
         } else {

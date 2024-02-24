@@ -11,36 +11,14 @@ import Foundation
 struct Feed: Codable {
     typealias TimeSet = (minutes: Int, seconds: Int)
     
-    var id: Int = -1
-    var title: String = ""
-    var date: String = ""
-    var distance: Double = 0.0
-    var time: Int = 0
-    var photo: String = ""
-    var user: User?
+    let id: Int
+    let title: String
+    let distance: Double
+    let time: Int
+    let imageUrl: String
+    let user: User
     
     var timeSet: TimeSet {
         (time / 60, time % 60)
-    }
-    
-    private enum CodingKeys: String, CodingKey {
-        case id
-        case title
-        case date
-        case distance
-        case time
-        case photo
-        case user
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: Feed.CodingKeys.self)
-        id = try container.decodeIfPresent(Int.self, forKey: .id) ?? -1
-        title = try container.decodeIfPresent(String.self, forKey: .title) ?? ""
-        date = try container.decodeIfPresent(String.self, forKey: .date) ?? ""
-        distance = try container.decodeIfPresent(Double.self, forKey: .distance) ?? 0.0
-        time = try container.decodeIfPresent(Int.self, forKey: .time) ?? 0
-        photo = try container.decodeIfPresent(String.self, forKey: .photo) ?? ""
-        user = try container.decodeIfPresent(User.self, forKey: .user)
     }
 }
