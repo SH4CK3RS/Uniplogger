@@ -10,7 +10,7 @@ import RIBs
 import RxSwift
 import UIKit
 
-protocol RegistrationRouting: BaseRouting {
+protocol RegistrationRouting: BaseViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
 }
 
@@ -35,12 +35,8 @@ protocol RegistrationListener: AnyObject {
 }
 
 final class RegistrationInteractor: PresentableInteractor<RegistrationPresentable>, RegistrationInteractable, RegistrationPresentableListener {
-    var router: BaseRouting?
-    var registrationRouter: RegistrationRouting? {
-        return router as? RegistrationRouting
-    }
     weak var listener: RegistrationListener?
-
+    weak var router: RegistrationRouting?
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
     init(presenter: RegistrationPresentable,

@@ -9,7 +9,7 @@
 import RIBs
 import RxSwift
 
-protocol LoginRouting: BaseRouting {}
+protocol LoginRouting: BaseViewableRouting {}
 
 enum LoginPresentableRequest {
     case activateLoginButton(Bool)
@@ -51,11 +51,8 @@ final class LoginInteractor: PresentableInteractor<LoginPresentable>, LoginInter
     }
     
     // MARK: - Internal
-    weak var router: BaseRouting?
-    var loginRouter: LoginRouting? {
-        return router as? LoginRouting
-    }
     weak var listener: LoginListener?
+    weak var router: LoginRouting?
     
     func request(_ request: LoginPresentableListenerRequest) {
         switch request {
@@ -89,8 +86,7 @@ final class LoginInteractor: PresentableInteractor<LoginPresentable>, LoginInter
             } onFailure: { owner, error in
                 UPLoader.shared.hidden()
                 let errorMessage = error.localizedDescription
-                owner.loginRouter?.request(.showErrorAlert(errorMessage))
-//                owner.presenter.request(.showError(UniPloggerError.networkError(.responseError(error.localizedDescription))))
+                owner.router?.request(.showErrorAlert(errorMessage))
             }.disposeOnDeactivate(interactor: self)
     }
     

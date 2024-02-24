@@ -22,7 +22,7 @@ enum PloggingRootRouterRequest {
     case finishPlogging
 }
 
-protocol PloggingRootRouting: ViewableRouting {
+protocol PloggingRootRouting: BaseViewableRouting {
     func request(_ request: PloggingRootRouterRequest)
 }
 
@@ -122,7 +122,8 @@ extension PloggingRootInteractor {
                 .subscribe(with: self) { owner, feed in
                     owner.router?.request(.routeToShare(feed))
                 } onFailure: { owner, error in
-                    
+                    let message = error.localizedDescription
+                    owner.router?.request(.showErrorAlert(message))
                 }.disposeOnDeactivate(interactor: self)
         }
     }

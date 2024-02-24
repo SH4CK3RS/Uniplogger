@@ -9,7 +9,7 @@
 import RIBs
 import UIKit
 
-protocol SplashInteractable: Interactable, TutorialRootListener, RegistrationListener, LoginListener, MainTabBarListener {
+protocol SplashInteractable: Interactable, TutorialRootListener, RegistrationListener, LoginListener, MainTabBarListener, CommonPopupListener {
     var router: SplashRouting? { get set }
 }
 
@@ -25,11 +25,13 @@ final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllabl
          tutorialRootBuilder: TutorialRootBuildable,
          loginBuilder: LoginBuildable,
          registrationBuilder: RegistrationBuildable,
-         mainTabBarBuilder: MainTabBarBuildable) {
+         mainTabBarBuilder: MainTabBarBuildable,
+         commonPopupBuilder: CommonPopupBuildable) {
         self.tutorialRootBuilder = tutorialRootBuilder
         self.loginBuilder = loginBuilder
         self.registrationBuilder = registrationBuilder
         self.mainTabBarBuilder = mainTabBarBuilder
+        self.commonPopupBuilder = commonPopupBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
@@ -50,6 +52,10 @@ final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllabl
             detachRegistration(completion: completion)
         case .routeToMain:
             routeToMainTabBar()
+        case let .showErrorAlert(message):
+            showErrorAlert(message)
+        case .detachCommonPopup:
+            detachCommonPopup()
         }
     }
     
@@ -66,6 +72,9 @@ final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllabl
     
     private let mainTabBarBuilder: MainTabBarBuildable
     private var mainTabBarRouter: MainTabBarRouting?
+    
+    private let commonPopupBuilder: CommonPopupBuildable
+    private var commonPopupRouter: CommonPopupRouting?
     
     private func presentNavigationOrPush(with viewController: ViewControllable) {
         if navigationController.isPresented {
@@ -132,5 +141,24 @@ final class SplashRouter: LaunchRouter<SplashInteractable, SplashViewControllabl
         router.viewControllable.uiviewController.modalPresentationStyle = .fullScreen
         viewController.present(router.viewControllable, animated: true)
         attachChild(router)
+    }
+    
+    private func showErrorAlert(_ message: String) {
+        guard commonPopupRouter == nil else { return }
+        let viewTypes: [CommonPopupView.ViewType] = [
+            .spacer(23),
+            .title(message)
+        ]
+        let router = commonPopupBuilder.build(withListener: interactor, viewTypes: viewTypes)
+        commonPopupRouter = router
+        attachChild(router)
+        viewController.present(router.viewControllable, animated: false)
+    }
+    
+    private func detachCommonPopup() {
+        guard let router = commonPopupRouter else { return }
+        commonPopupRouter = nil
+        detachChild(router)
+        viewController.dismiss(router.viewControllable, animated: true)
     }
 }

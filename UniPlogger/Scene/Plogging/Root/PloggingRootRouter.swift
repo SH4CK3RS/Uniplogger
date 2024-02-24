@@ -27,7 +27,7 @@ protocol PloggingRootViewControllable: ViewControllable {
     func dismiss(_ viewController: ViewControllable, animated: Bool)
 }
 
-final class PloggingRootRouter: ViewableRouter<PloggingRootInteractable, PloggingRootViewControllable>, PloggingRootRouting {
+final class PloggingRootRouter: BaseViewableRouter<PloggingRootInteractable, PloggingRootViewControllable>, PloggingRootRouting {
 
     // TODO: Constructor inject child builder protocols to allow building children.
     init(interactor: PloggingRootInteractable,

@@ -23,6 +23,8 @@ enum SplashRouterRequest {
     case routeToRegistration(RegistrationEntryPoint)
     case detachRegistration(completion: (() -> Void)?)
     case routeToMain
+    case showErrorAlert(String)
+    case detachCommonPopup
 }
 
 protocol SplashRouting: ViewableRouting {
@@ -128,6 +130,16 @@ extension SplashInteractor {
             router?.request(.detachRegistration(completion: { [weak router] in
                 router?.request(.routeToMain)
             }))
+        }
+    }
+}
+
+// MARK: - CommonPopupListenerRequest
+extension SplashInteractor {
+    func request(_ request: CommonPopupListenerRequest) {
+        switch request {
+        case .confirm:
+            router?.request(.detachCommonPopup)
         }
     }
 }
