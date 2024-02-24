@@ -26,7 +26,7 @@ final class PloggingInfoView: UIView {
         distanceLabel.text = FormatDisplay.distance(feed.distance)
         timeLabel.text = "\(String(format: "%02d", feed.timeSet.minutes)):\(String(format: "%02d", feed.timeSet.seconds))"
         
-        ImageDownloadManager.shared.downloadImage(url: feed.photo) { [weak self] image in
+        ImageDownloadManager.shared.downloadImage(url: feed.imageUrl) { [weak self] image in
             DispatchQueue.main.async {
                 self?.feedImageView.image = image
             }
