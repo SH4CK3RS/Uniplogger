@@ -8,19 +8,19 @@
 
 import RIBs
 
-protocol RegistrationInteractable: Interactable {
-    var router: RegistrationRouting? { get set }
+protocol RegistrationInteractable: BaseInteractable {
+    var registrationRouter: RegistrationRouting? { get }
     var listener: RegistrationListener? { get set }
 }
 
-protocol RegistrationViewControllable: ViewControllable {
+protocol RegistrationViewControllable: NavigatingViewControllable {
     // TODO: Declare methods the router invokes to manipulate the view hierarchy.
 }
 
-final class RegistrationRouter: ViewableRouter<RegistrationInteractable, RegistrationViewControllable>, RegistrationRouting {
+final class RegistrationRouter: BaseRouter, RegistrationRouting {
 
     // TODO: Constructor inject child builder protocols to allow building children.
-    override init(interactor: RegistrationInteractable, viewController: RegistrationViewControllable) {
+    init(interactor: RegistrationInteractable, viewController: RegistrationViewControllable) {
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }

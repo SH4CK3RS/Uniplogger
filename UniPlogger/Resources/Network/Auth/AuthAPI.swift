@@ -70,14 +70,7 @@ struct AuthAPI {
     // MARK: - RxSwift
     func login(email: String, password: String) -> Single<LoginResponse> {
         provider.rx.request(.login(email: email, password: password))
-            .map(BaseResponse<LoginResponse>.self)
-            .flatMap { response -> Single<LoginResponse> in
-                if let data = response.data {
-                    return .just(data)
-                } else {
-                    return .error(UniPloggerError.networkError(.responseError(ErrorMessage.decodeError)))
-                }
-            }
+            .handleResponse()
     }
     
     func registration(data: RegistrationModel) -> Single<LoginResponse> {
@@ -86,13 +79,6 @@ struct AuthAPI {
             password: data.password,
             nickname: data.nickname
         ))
-        .map(BaseResponse<LoginResponse>.self)
-        .flatMap { response -> Single<LoginResponse> in
-            if let data = response.data {
-                return .just(data)
-            } else {
-                return .error(UniPloggerError.networkError(.responseError(ErrorMessage.decodeError)))
-            }
-        }
+        .handleResponse()
     }
 }

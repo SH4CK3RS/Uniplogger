@@ -88,7 +88,8 @@ final class LoginInteractor: PresentableInteractor<LoginPresentable>, LoginInter
                 owner.listener?.request(.loginFinished)
             } onFailure: { owner, error in
                 UPLoader.shared.hidden()
-                owner.loginRouter?.request(.showErrorAlert("로그인 실패!"))
+                let errorMessage = error.localizedDescription
+                owner.loginRouter?.request(.showErrorAlert(errorMessage))
 //                owner.presenter.request(.showError(UniPloggerError.networkError(.responseError(error.localizedDescription))))
             }.disposeOnDeactivate(interactor: self)
     }
