@@ -19,11 +19,11 @@ enum Detail{
         }
         
         struct ViewModel {
-            var uid: Int
-            var date: Date
-            var time: String
-            var distance: String
-            var photo: String
+            let uid: Int
+            let title: String
+            let time: String
+            let distance: String
+            let photo: String
         }
     }
 }

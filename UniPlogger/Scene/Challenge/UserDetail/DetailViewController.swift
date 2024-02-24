@@ -190,7 +190,7 @@ extension DetailViewController: DetailDisplayLogic {
 //        ploggingImageView.ploggingInfoView.viewModel = .init(distance: viewModel.distance, time: viewModel.time)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YY.MM.d"
-        self.navigationItem.title = dateFormatter.string(from: viewModel.date)
+        self.navigationItem.title = viewModel.title
         if let id = AuthManager.shared.user?.id, uid == id{
             setupMyFeed()
         } else {

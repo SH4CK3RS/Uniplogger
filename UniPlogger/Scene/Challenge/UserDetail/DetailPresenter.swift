@@ -18,12 +18,10 @@ class DetailPresenter: DetailPresentationLogic{
     
     func presentGetFeed(response: Detail.GetFeed.Response, uid: Int) {
         let feed = response.feed
-
-        let date = FormatDisplay.date(feed.date)
         let timeString = FormatDisplay.time(feed.time)
         let distanceString = FormatDisplay.distance(feed.distance)
         
-        let viewModel = Detail.GetFeed.ViewModel(uid: uid, date: date, time: timeString, distance: distanceString, photo: feed.photo)
+        let viewModel = Detail.GetFeed.ViewModel(uid: uid, title: feed.title, time: timeString, distance: distanceString, photo: feed.imageUrl)
         viewController?.displayGetFeed(viewModel: viewModel, uid: uid)
     }
     
